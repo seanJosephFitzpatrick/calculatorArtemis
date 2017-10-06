@@ -49,8 +49,6 @@ public class FXMLBasicController {
     @FXML
     private Button btnThree;
     @FXML
-    private Button btnClear;
-    @FXML
     private Button btnDivision;
     @FXML
     private Button btnMultiplication;
@@ -60,6 +58,10 @@ public class FXMLBasicController {
     private Button btnEquals;
     @FXML
     private Button btnAddition;
+    @FXML
+    private Button btnAllClear;
+    @FXML
+    private Button btnBack;
 
     boolean lastValueIsOperator(){
     	boolean recentOperator = false;
@@ -102,9 +104,14 @@ public class FXMLBasicController {
     }
 
     @FXML
-    void OnActionBtnClear(ActionEvent event) {
+    void OnActionBtnAllClear(ActionEvent event) {
     	inputTextField.clear();
     	inputTextField2.clear();
+    }
+    
+    @FXML
+    void OnActionBtnBack(ActionEvent event) {
+    	inputTextField.setText(inputTextField.getText().substring(0, inputTextField.getText ().length() - 1));
     }
 
     @FXML

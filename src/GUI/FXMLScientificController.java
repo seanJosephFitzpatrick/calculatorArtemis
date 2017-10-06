@@ -94,9 +94,9 @@ public class FXMLScientificController implements Initializable {
     @FXML
     private Button powerOf;
     @FXML
-    private TextField inputTextField;
+    private TextField inputTextField3;
     @FXML
-    private TextField inputTextField2;
+    private TextField inputTextField4;
 
     @FXML
     void NavigateBasicCalculator(ActionEvent event) {
@@ -122,17 +122,18 @@ public class FXMLScientificController implements Initializable {
 	
     @FXML
     void OnActionBtnAddition(ActionEvent event) {
-    	
+    	inputTextField3.appendText("+");
     }
 
     @FXML
     void OnActionBtnAllClear(ActionEvent event) {
-
+    	inputTextField3.clear();
+    	inputTextField4.clear();
     }
 
     @FXML
     void OnActionBtnArccos(ActionEvent event) {
-
+    	
     }
 
     @FXML
@@ -147,57 +148,59 @@ public class FXMLScientificController implements Initializable {
 
     @FXML
     void OnActionBtnBack(ActionEvent event) {
-
+    	inputTextField3.setText(inputTextField3.getText().substring(0, inputTextField3.getText ().length() - 1));
     }
 
     @FXML
     void OnActionBtnCos(ActionEvent event) {
-
+    	inputTextField3.appendText("cos(");
     }
 
     @FXML
     void OnActionBtnDivide(ActionEvent event) {
-
+    	inputTextField3.appendText("/");
     }
 
     @FXML
     void OnActionBtnDot(ActionEvent event) {
-
+    	inputTextField3.appendText(".");
     }
 
     @FXML
     void OnActionBtnEight(ActionEvent event) {
-
+    	inputTextField3.appendText("8");
     }
 
     @FXML
     void OnActionBtnEquals(ActionEvent event) {
-
+    	inputTextField4.clear();
+    	inputTextField4.appendText(inputTextField3.getText());
+    	inputTextField3.clear();
     }
 
     @FXML
     void OnActionBtnFive(ActionEvent event) {
-
+    	inputTextField3.appendText("5");
     }
 
     @FXML
     void OnActionBtnFour(ActionEvent event) {
-
+    	inputTextField3.appendText("4");
     }
 
     @FXML
     void OnActionBtnLeftBrace(ActionEvent event) {
-
+    	inputTextField3.appendText("(");
     }
 
     @FXML
     void OnActionBtnLogTen(ActionEvent event) {
-
+    	inputTextField3.appendText("log(");
     }
 
     @FXML
     void OnActionBtnMemoryAdd(ActionEvent event) {
-
+    	
     }
 
     @FXML
@@ -207,32 +210,32 @@ public class FXMLScientificController implements Initializable {
 
     @FXML
     void OnActionBtnMultiply(ActionEvent event) {
-
+    	inputTextField3.appendText("*");
     }
 
     @FXML
     void OnActionBtnNaturalLog(ActionEvent event) {
-
+    	inputTextField3.appendText("ln(");
     }
 
     @FXML
     void OnActionBtnNine(ActionEvent event) {
-
+    	inputTextField3.appendText("9");
     }
 
     @FXML
     void OnActionBtnOne(ActionEvent event) {
-
+    	inputTextField3.appendText("1");
     }
 
     @FXML
     void OnActionBtnPercentage(ActionEvent event) {
-
+    	
     }
 
     @FXML
     void OnActionBtnPi(ActionEvent event) {
-
+    	inputTextField3.appendText("3.141592654");
     }
 
     @FXML
@@ -247,17 +250,17 @@ public class FXMLScientificController implements Initializable {
 
     @FXML
     void OnActionBtnSeven(ActionEvent event) {
-
+    	inputTextField3.appendText("7");
     }
 
     @FXML
     void OnActionBtnSin(ActionEvent event) {
-
+    	inputTextField3.appendText("sin(");
     }
 
     @FXML
     void OnActionBtnSix(ActionEvent event) {
-
+    	inputTextField3.appendText("6");
     }
 
     @FXML
@@ -267,27 +270,27 @@ public class FXMLScientificController implements Initializable {
 
     @FXML
     void OnActionBtnSubtract(ActionEvent event) {
-
+    	inputTextField3.appendText("-");
     }
 
     @FXML
     void OnActionBtnTan(ActionEvent event) {
-
+    	inputTextField3.appendText("tan(");
     }
 
     @FXML
     void OnActionBtnThree(ActionEvent event) {
-
+    	inputTextField3.appendText("3");
     }
 
     @FXML
     void OnActionBtnTwo(ActionEvent event) {
-
+    	inputTextField3.appendText("2");
     }
 
     @FXML
     void OnActionBtnZero(ActionEvent event) {
-
+    	inputTextField3.appendText("0");
     }
 
     @FXML
@@ -302,7 +305,7 @@ public class FXMLScientificController implements Initializable {
 
     @FXML
     void OnActionRightBrace(ActionEvent event) {
-
+    	inputTextField3.appendText(")");
     }
 
 }

@@ -51,8 +51,8 @@
             <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Logical Functions" GridPane.columnSpan="3" GridPane.rowIndex="7" />
             <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Constant Values" GridPane.columnSpan="3" GridPane.rowIndex="8" />
             <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Conversions" GridPane.columnSpan="3" GridPane.rowIndex="9" />
-            <TextField GridPane.columnIndex="4" GridPane.columnSpan="8" GridPane.rowIndex="4" />
-            <TextField prefHeight="83.0" prefWidth="120.0" GridPane.columnIndex="4" GridPane.columnSpan="8" GridPane.rowIndex="1" GridPane.rowSpan="3" />
+            <TextField fx:id="inputTextField3" alignment="BASELINE_RIGHT" GridPane.columnIndex="4" GridPane.columnSpan="8" GridPane.rowIndex="4" />
+            <TextField fx:id="inputTextField4" prefHeight="83.0" prefWidth="120.0" GridPane.columnIndex="4" GridPane.columnSpan="8" GridPane.rowIndex="1" GridPane.rowSpan="3" />
             <Label alignment="CENTER" prefHeight="100.0" prefWidth="400.0" text="Mode" GridPane.columnSpan="2">
                <font>
                   <Font size="16.0" />
@@ -89,7 +89,7 @@
             <Button id="pad1" fx:id="btnOne" mnemonicParsing="false" onAction="#OnActionBtnOne" prefHeight="100.0" prefWidth="200.0" text="1" GridPane.columnIndex="8" GridPane.rowIndex="8" />
             <Button id="pad1" fx:id="btnZero" mnemonicParsing="false" onAction="#OnActionBtnZero" prefHeight="100.0" prefWidth="200.0" text="0" GridPane.columnIndex="8" GridPane.rowIndex="9" />
             <Button id="pad1" fx:id="allClear" mnemonicParsing="false" onAction="#OnActionBtnAllClear" prefHeight="100.0" prefWidth="200.0" text="AC" GridPane.columnIndex="9" GridPane.rowIndex="5" />
-            <Button id="pad1" fx:id="btnBack" mnemonicParsing="false" onAction="#OnActionBtnBack" prefHeight="100.0" prefWidth="200.0" text="Back" GridPane.columnIndex="10" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+            <Button id="pad1" fx:id="btnBack" mnemonicParsing="false" onAction="#OnActionBtnBack" prefHeight="100.0" prefWidth="200.0" text="DEL" GridPane.columnIndex="10" GridPane.columnSpan="2" GridPane.rowIndex="5" />
             <Button id="pad1" fx:id="btnEight" mnemonicParsing="false" onAction="#OnActionBtnEight" prefHeight="100.0" prefWidth="200.0" text="8" GridPane.columnIndex="9" GridPane.rowIndex="6" />
             <Button id="pad1" fx:id="btnNine" mnemonicParsing="false" onAction="#OnActionBtnNine" prefHeight="100.0" prefWidth="200.0" text="9" GridPane.columnIndex="10" GridPane.rowIndex="6" />
             <Button id="pad1" fx:id="btnDivide" mnemonicParsing="false" onAction="#OnActionBtnDivide" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="11" GridPane.rowIndex="6" />
