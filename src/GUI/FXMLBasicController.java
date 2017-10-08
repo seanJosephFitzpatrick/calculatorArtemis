@@ -1,6 +1,5 @@
 package GUI;
 import java.io.IOException;
-
 import ReversePolishNotation.CalcInterface;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
