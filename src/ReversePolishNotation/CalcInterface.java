@@ -41,25 +41,31 @@ public class CalcInterface {
 		String storedInput;
 		String input = expression;
 		String result = "";
-
-		storedInput = input;
-		input = formatInputString(input); // method to format input string to allow any number of spaces.
-		workingInput = input;
-		if(ShuntingYard.checkForFunction(workingInput)){
-			workingInput = ShuntingYard.parseFunction(workingInput, true);
-			input = formatInputString(workingInput);
+		try {
+			storedInput = input;
+			input = formatInputString(input); // method to format input string to allow any number of spaces.
+			MathematicalEvaluator ME = new MathematicalEvaluator();
+			System.out.println(input);
+			workingInput = input;
+			if(ShuntingYard.checkForFunction(workingInput)){
+				workingInput = ShuntingYard.parseFunction(workingInput, true);
+				input = formatInputString(workingInput);
+			}
+			String postfix = "";
+			postfix = ShuntingYard.postfix(workingInput);
+			System.out.println(postfix);
+			System.out.println("----------");
+			System.out.println("Input Expression: " + formatInputString(storedInput));
+			result = ME.evaluateExpression(postfix);
+			ME.opCharList.clear();
+			ME.opList.clear();
+			ME.opListRev.clear();
+			ME.workingList.clear();
+		} catch (java.util.EmptyStackException e) {
+			result = "Syntax Error";
+		} catch (java.lang.NumberFormatException a) {
+			result = "Syntax Error";
 		}
-		String postfix = "";
-		postfix = ShuntingYard.postfix(workingInput);
-		System.out.println(postfix);
-		MathematicalEvaluator ME = new MathematicalEvaluator();
-		System.out.println("----------");
-		System.out.println("Input Expression: " + formatInputString(storedInput));
-		result = ME.evaluateExpression(postfix);
-		ME.opCharList.clear();
-		ME.opList.clear();
-		ME.opListRev.clear();
-		ME.workingList.clear();
 		return result;
 	}
 	
