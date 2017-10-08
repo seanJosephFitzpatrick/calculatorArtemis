@@ -35,12 +35,16 @@ public class FourierSeries extends Application {
 
 	@Override
 	public void start(final Stage stage) {
-
-		System.out.print("Please enter the number of harmonics to be included: ");
-		Scanner sc = new Scanner(System.in);
-		int harmonic = sc.nextInt();
-		System.out.print("Please enter the period of the signal in seconds: ");
-		double period = sc.nextDouble();
+		
+		Parameters variables =getParameters();
+		String values = variables.getRaw().toString();
+		System.out.println(values);
+		
+		String waveform = values.substring(1, values.indexOf(",", 1));
+		String harmonicString = values.substring(4, values.indexOf(",", 4));
+		String periodText = values.substring(7, values.indexOf("]", 7));
+		int harmonic = Integer.parseInt(harmonicString);
+		double period = Double.parseDouble(periodText);
 
 		Axes axes = new Axes(
 				500, 350,
@@ -62,7 +66,7 @@ public class FourierSeries extends Application {
 		layout.setPadding(new Insets(20));
 		layout.setStyle("-fx-background-color: rgb(35, 39, 50);");
 
-		stage.setTitle("Square Wave Fourier Series");
+		stage.setTitle("Fourier Series");
 		this.setSceneEvents(plot);
 		stage.setScene(new Scene(layout, Color.rgb(35, 39, 50)));
 		stage.show();
@@ -206,11 +210,29 @@ public class FourierSeries extends Application {
 
 			setPivot(x, y, scale);
 		}
+		 public void fitWidth () {
+	            double scale = getParent().getLayoutBounds().getMaxX()/getLayoutBounds().getMaxX();
+	            double oldScale = 1.0;
+
+	            double f = scale - oldScale;
+
+	            double dx = getTranslateX() - getBoundsInParent().getMinX() - getBoundsInParent().getWidth()/2;
+	            double dy = getTranslateY() - getBoundsInParent().getMinY() - getBoundsInParent().getHeight()/2;
+
+	            double newX = f*dx + getBoundsInParent().getMinX();
+	            double newY = f*dy + getBoundsInParent().getMinY();
+
+	            setPivot(newX, newY, scale);
+
+	        }
 	}
 
 
 	private void setSceneEvents(final Plot plot) {
 		//handles mouse scrolling
+		DragContext dragContext = new DragContext();
+	
+		
 		plot.setOnScroll(
 				new EventHandler<ScrollEvent>() {
 					@Override
@@ -246,7 +268,49 @@ public class FourierSeries extends Application {
 								plot.resetZoom();
 							} 
 						}
+						if (event.getButton().equals(MouseButton.SECONDARY)) {
+		                    if (event.getClickCount() == 2) {
+		                        plot.fitWidth();
+		                    }
+		                }
 					}
 				});
+		plot.setOnMousePressed(
+				new EventHandler<MouseEvent>() {
+			@Override
+            public void handle(MouseEvent event) {
+
+                 dragContext.mouseAnchorX = event.getX();
+                 dragContext.mouseAnchorY = event.getY();
+
+                dragContext.translateAnchorX = plot.getTranslateX();
+                dragContext.translateAnchorY = plot.getTranslateY();
+
+            }
+
+        });
+		plot.setOnMouseDragged(
+				new EventHandler<MouseEvent>() {
+			@Override
+            public void handle(MouseEvent event) {
+
+				plot.setTranslateX(dragContext.translateAnchorX + event.getX() - dragContext.mouseAnchorX);
+                plot.setTranslateY(dragContext.translateAnchorY + event.getY() - dragContext.mouseAnchorY);
+
+                event.consume();
+
+            }
+
+        });
 	}
+	class DragContext {
+
+        double mouseAnchorX;
+        double mouseAnchorY;
+
+        double translateAnchorX;
+        double translateAnchorY;
+
+    }
+	
 }
