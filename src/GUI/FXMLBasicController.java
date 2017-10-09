@@ -129,7 +129,7 @@ public class FXMLBasicController {
     void OnActionBtnDot(ActionEvent event) {
     	answer = "clear";
     	String curr = inputTextField.getText();
-    	if(inputTextField.getText().toString().length() == 0){
+    	if(curr.length() == 0){
     		inputTextField.appendText("0.");
     	} else if(!Character.isDigit(curr.charAt(curr.length() -1))){
     		inputTextField.appendText("0.");
