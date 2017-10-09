@@ -38,11 +38,26 @@ public class FourierSeries extends Application {
 		
 		Parameters variables =getParameters();
 		String values = variables.getRaw().toString();
-		System.out.println(values);
+		String mode = values.substring(1, values.indexOf(",", 1));
+		if(mode.equalsIgnoreCase("1")){
+		plotFourierSeriesofWaveform(values,stage);
+		}
+		else{
+			
+		}
+	}
+
+	private void plotFourierSeriesofWaveform(String values, Stage stage) {
+		// TODO Auto-generated method stub
+		values=values.substring(values.indexOf(",")+2);
 		
-		String waveform = values.substring(1, values.indexOf(",", 1));
-		String harmonicString = values.substring(4, values.indexOf(",", 4));
-		String periodText = values.substring(7, values.indexOf("]", 7));
+		String waveform = values.substring(0, values.indexOf(","));
+		values=values.substring(values.indexOf(",")+2);
+		
+		String harmonicString = values.substring(0, values.indexOf(","));
+		values=values.substring(values.indexOf(",")+2);
+		String periodText = values.substring(0, values.indexOf("]"));
+		
 		int harmonic = Integer.parseInt(harmonicString);
 		double period = Double.parseDouble(periodText);
 
@@ -55,7 +70,7 @@ public class FourierSeries extends Application {
 
 
 		Plot plot = new Plot(
-				harmonic,period,
+				harmonic,period,waveform,
 				-(period+period*.5), (period+period*.5), period*0.01,
 				axes
 				);
@@ -116,7 +131,7 @@ public class FourierSeries extends Application {
 
 	class Plot extends Pane {
 		public Plot(
-				int harmonic,double period,
+				int harmonic,double period,String waveform,
 				double xMin, double xMax, double xInc,
 				Axes axes
 				) {
@@ -134,12 +149,8 @@ public class FourierSeries extends Application {
 
 			double x = xMin;
 			double y = 0;
-			for(int har=1;har<=harmonic;har+=2)
-			{
-				y=y+(6/(Math.PI*har))*(Math.sin(x*(1/period)*2*Math.PI*har));
 
-			}
-
+			y=generateYCoordinates(harmonic,period,waveform,x);
 			path.getElements().add(
 					new MoveTo(
 							mapX(x, axes), mapY(y, axes)
@@ -148,11 +159,8 @@ public class FourierSeries extends Application {
 			y=0;
 			x += xInc;
 			while (x < xMax) {
-				for(int har=1;har<=harmonic;har+=2)
-				{
-					y=y+(6/(Math.PI*har))*(Math.sin(x*(1/period)*2*Math.PI*har));
 
-				}
+				y=generateYCoordinates(harmonic,period,waveform,x);
 				path.getElements().add(
 						new LineTo(
 								mapX(x, axes), mapY(y, axes)
@@ -168,6 +176,35 @@ public class FourierSeries extends Application {
 			setMaxSize(Pane.USE_PREF_SIZE, Pane.USE_PREF_SIZE);
 
 			getChildren().setAll(axes, path);
+		}
+
+		private double generateYCoordinates(int harmonic, double period, String waveform, double x) {
+			double y=0;
+			
+			if(waveform.equalsIgnoreCase("square")){
+				for(int har=1;har<=harmonic;har+=2)
+					{
+						y=y+(6/(Math.PI*har))*(Math.sin(x*(1/period)*2*Math.PI*har));
+
+					}
+			}
+			else if(waveform.equalsIgnoreCase("triangle")){
+				for(int har=1;har<=harmonic;har+=2)
+					{
+						y=y+(8/(Math.pow(Math.PI, 2)))*(Math.cos(x*(1/period)*2*Math.PI*har)/(Math.pow(har, 2)));
+		
+					}
+			}
+			else{
+				for(int har=1;har<=harmonic;har++){
+					y=y+(Math.pow(1, har+1)*2)*(Math.sin(x*(1/period)*2*Math.PI*har)/(har));
+
+				}
+			}
+			
+			
+			
+			return y;
 		}
 
 		private double mapX(double x, Axes axes) {
