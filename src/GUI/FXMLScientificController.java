@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 public class FXMLScientificController implements Initializable {
 
 	String answer = "clear";
+	String memory = "0";
 	String userInput = "";
 	double PI = Math.PI;
 	
@@ -162,7 +163,9 @@ public class FXMLScientificController implements Initializable {
 
     @FXML
     void OnActionBtnBack(ActionEvent event) {
-    	inputTextField3.setText(inputTextField3.getText().substring(0, inputTextField3.getText ().length() - 1));
+    	do {
+    		inputTextField3.setText(inputTextField3.getText().substring(0, inputTextField3.getText().length() - 1));
+    	} while(Character.isLetter(inputTextField3.getText().charAt(inputTextField3.getText().length() - 1)));
     }
 
     @FXML
@@ -249,12 +252,18 @@ public class FXMLScientificController implements Initializable {
 
     @FXML
     void OnActionBtnMemoryAdd(ActionEvent event) {
-    	
+    	double inMem = Double.parseDouble(memory);
+    	double toAdd = Double.parseDouble(inputTextField4.getText());
+    	memory = "";
+    	memory += Double.toString(inMem + toAdd);
     }
 
     @FXML
     void OnActionBtnMemorySubtract(ActionEvent event) {
-
+    	double inMem = Double.parseDouble(memory);
+    	double toAdd = Double.parseDouble(inputTextField4.getText());
+    	memory = "";
+    	memory += Double.toString(inMem - toAdd);
     }
 
     @FXML
@@ -318,7 +327,10 @@ public class FXMLScientificController implements Initializable {
 
     @FXML
     void OnActionBtnRecall(ActionEvent event) {
-    	
+    	if(!memory.equals("0")){
+    		inputTextField3.appendText(memory);
+    		userInput += memory;
+    	}
     }
 
     @FXML
@@ -339,7 +351,7 @@ public class FXMLScientificController implements Initializable {
     void OnActionBtnSix(ActionEvent event) {
     	answer = "clear";
     	inputTextField3.appendText("6");
-    	userInput += "sin";
+    	userInput += "6";
     }
 
     @FXML
@@ -392,12 +404,15 @@ public class FXMLScientificController implements Initializable {
 
     @FXML
     void OnActionMemoryClear(ActionEvent event) {
-
+    	memory = "0";
     }
 
     @FXML
     void OnActionMemoryStore(ActionEvent event) {
-
+    	if(inputTextField4.getText().length() != 0){
+    		memory = "";
+    		memory += inputTextField4.getText();
+    	}
     }
 
     @FXML
@@ -408,4 +423,3 @@ public class FXMLScientificController implements Initializable {
     }
 
 }
-
