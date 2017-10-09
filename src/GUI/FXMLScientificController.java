@@ -17,6 +17,8 @@ import javafx.stage.Stage;
 
 public class FXMLScientificController implements Initializable {
 
+	String answer = "clear";
+	
     @FXML
     private Button basicCalculator;
     @FXML
