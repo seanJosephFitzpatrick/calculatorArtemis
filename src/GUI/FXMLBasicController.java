@@ -94,7 +94,7 @@ public class FXMLBasicController {
     
     @FXML
     void OnActionBtnAddition(ActionEvent event) {
-    	if(!answer.equals("clear")){
+    	if(!answer.equals("clear") && (!answer.equals("Syntax Error"))){
     		inputTextField.appendText(answer + "+");
     		answer = "clear";
     	} else {
@@ -116,7 +116,7 @@ public class FXMLBasicController {
 
     @FXML
     void OnActionBtnDivision(ActionEvent event) {
-    	if(!answer.equals("clear")){
+    	if(!answer.equals("clear") && (!answer.equals("Syntax Error"))){
     		inputTextField.appendText(answer + "/");
     		answer = "clear";
     	} else {
@@ -167,7 +167,7 @@ public class FXMLBasicController {
 
     @FXML
     void OnActionBtnMultiplication(ActionEvent event) {
-    	if(!answer.equals("clear")){
+    	if(!answer.equals("clear") && (!answer.equals("Syntax Error"))){
     		inputTextField.appendText(answer + "*");
     		answer = "clear";
     	} else {
@@ -208,7 +208,7 @@ public class FXMLBasicController {
 
     @FXML
     void OnActionBtnSubtraction(ActionEvent event) {
-    	if(!answer.equals("clear")){
+    	if(!answer.equals("clear") && (!answer.equals("Syntax Error"))){
     		inputTextField.appendText(answer + "-");
     		answer = "clear";
     	} else {
