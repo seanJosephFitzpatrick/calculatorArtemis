@@ -94,11 +94,12 @@ public class FXMLBasicController {
     
     @FXML
     void OnActionBtnAddition(ActionEvent event) {
-    	if(answer.equals("clear") && !lastValueIsOperator()){
-    		inputTextField.appendText("+");
-    	} else if(!answer.equals("clear")){
+    	if(!answer.equals("clear")){
     		inputTextField.appendText(answer + "+");
     		answer = "clear";
+    	} else {
+    		answer = "clear";
+    		inputTextField.appendText("+");
     	}
     }
 
@@ -115,18 +116,26 @@ public class FXMLBasicController {
 
     @FXML
     void OnActionBtnDivision(ActionEvent event) {
-    	if(answer.equals("clear") && !lastValueIsOperator()){
-    		inputTextField.appendText("/");
-    	} else if(!answer.equals("clear")){
+    	if(!answer.equals("clear")){
     		inputTextField.appendText(answer + "/");
     		answer = "clear";
+    	} else {
+    		answer = "clear";
+    		inputTextField.appendText("/");
     	}
     }
 
     @FXML
     void OnActionBtnDot(ActionEvent event) {
     	answer = "clear";
-    	inputTextField.appendText(".");
+    	String curr = inputTextField.getText();
+    	if(curr.length() == 0){
+    		inputTextField.appendText("0.");
+    	} else if(!Character.isDigit(curr.charAt(curr.length() -1))){
+    		inputTextField.appendText("0.");
+    	} else {
+    		inputTextField.appendText(".");
+    	}
     }
 
     @FXML
@@ -158,11 +167,12 @@ public class FXMLBasicController {
 
     @FXML
     void OnActionBtnMultiplication(ActionEvent event) {
-    	if(answer.equals("clear") && !lastValueIsOperator()){
-    		inputTextField.appendText("*");
-    	} else if(!answer.equals("clear")){
+    	if(!answer.equals("clear")){
     		inputTextField.appendText(answer + "*");
     		answer = "clear";
+    	} else {
+    		answer = "clear";
+    		inputTextField.appendText("*");
     	}
     }
 
@@ -198,11 +208,12 @@ public class FXMLBasicController {
 
     @FXML
     void OnActionBtnSubtraction(ActionEvent event) {
-    	if(answer.equals("clear") && !lastValueIsOperator()){
-    		inputTextField.appendText("-");
-    	} else if(!answer.equals("clear") && inputTextField.toString().length() == 0){
+    	if(!answer.equals("clear")){
     		inputTextField.appendText(answer + "-");
     		answer = "clear";
+    	} else {
+    		answer = "clear";
+    		inputTextField.appendText("-");
     	}
     }
 

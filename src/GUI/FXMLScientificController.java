@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import ReversePolishNotation.CalcInterface;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +18,11 @@ import javafx.stage.Stage;
 
 public class FXMLScientificController implements Initializable {
 
+	String answer = "clear";
+	String memory = "0";
+	String userInput = "";
+	double PI = Math.PI;
+	
     @FXML
     private Button basicCalculator;
     @FXML
@@ -122,13 +128,22 @@ public class FXMLScientificController implements Initializable {
 	
     @FXML
     void OnActionBtnAddition(ActionEvent event) {
-    	inputTextField3.appendText("+");
+    	if(!answer.equals("clear")){
+    		inputTextField3.appendText(answer + "+");
+    		userInput += (answer + "+");
+    		answer = "clear";
+    	} else {
+    		answer = "clear";
+    		inputTextField3.appendText("+");
+    		userInput += "+";
+    	}
     }
 
     @FXML
     void OnActionBtnAllClear(ActionEvent event) {
     	inputTextField3.clear();
     	inputTextField4.clear();
+    	userInput = "";
     }
 
     @FXML
@@ -148,84 +163,141 @@ public class FXMLScientificController implements Initializable {
 
     @FXML
     void OnActionBtnBack(ActionEvent event) {
-    	inputTextField3.setText(inputTextField3.getText().substring(0, inputTextField3.getText ().length() - 1));
+    	do {
+    		inputTextField3.setText(inputTextField3.getText().substring(0, inputTextField3.getText().length() - 1));
+    	} while(Character.isLetter(inputTextField3.getText().charAt(inputTextField3.getText().length() - 1)));
     }
 
     @FXML
     void OnActionBtnCos(ActionEvent event) {
-    	inputTextField3.appendText("cos(");
+    	answer = "clear";
+    	inputTextField3.appendText("cos");
+    	userInput += "cos";
     }
 
     @FXML
     void OnActionBtnDivide(ActionEvent event) {
-    	inputTextField3.appendText("/");
+    	if(!answer.equals("clear")){
+    		inputTextField3.appendText(answer + "/");
+    		userInput += (answer + "/");
+    		answer = "clear";
+    	} else {
+    		answer = "clear";
+    		inputTextField3.appendText("/");
+    		userInput += "/";
+    	}
     }
 
     @FXML
     void OnActionBtnDot(ActionEvent event) {
-    	inputTextField3.appendText(".");
+    	answer = "clear";
+    	String curr = inputTextField3.getText();
+    	if(curr.length() == 0){
+    		inputTextField3.appendText("0.");
+    		userInput += "0.";
+    	} else if(!Character.isDigit(curr.charAt(curr.length() -1))){
+    		inputTextField3.appendText("0.");
+    		userInput += "0.";
+    	} else {
+    		inputTextField3.appendText(".");
+    		userInput += ".";
+    	}
     }
 
     @FXML
     void OnActionBtnEight(ActionEvent event) {
+    	answer = "clear";
     	inputTextField3.appendText("8");
+    	userInput += "8";
     }
 
     @FXML
     void OnActionBtnEquals(ActionEvent event) {
+    	System.out.println(userInput);
     	inputTextField4.clear();
-    	inputTextField4.appendText(inputTextField3.getText());
+    	String result = CalcInterface.run(userInput);
+    	answer = result;
+    	inputTextField4.appendText(result);
     	inputTextField3.clear();
+    	userInput = "";
     }
 
     @FXML
     void OnActionBtnFive(ActionEvent event) {
+    	answer = "clear";
     	inputTextField3.appendText("5");
+    	userInput += "5";
     }
 
     @FXML
     void OnActionBtnFour(ActionEvent event) {
+    	answer = "clear";
     	inputTextField3.appendText("4");
+    	userInput += "4";
     }
 
     @FXML
     void OnActionBtnLeftBrace(ActionEvent event) {
+    	answer = "clear";
     	inputTextField3.appendText("(");
+    	userInput += "(";
     }
 
     @FXML
     void OnActionBtnLogTen(ActionEvent event) {
-    	inputTextField3.appendText("log(");
+    	answer = "clear";
+    	inputTextField3.appendText("log");
+    	userInput += "lgt";
     }
 
     @FXML
     void OnActionBtnMemoryAdd(ActionEvent event) {
-    	
+    	double inMem = Double.parseDouble(memory);
+    	double toAdd = Double.parseDouble(inputTextField4.getText());
+    	memory = "";
+    	memory += Double.toString(inMem + toAdd);
     }
 
     @FXML
     void OnActionBtnMemorySubtract(ActionEvent event) {
-
+    	double inMem = Double.parseDouble(memory);
+    	double toAdd = Double.parseDouble(inputTextField4.getText());
+    	memory = "";
+    	memory += Double.toString(inMem - toAdd);
     }
 
     @FXML
     void OnActionBtnMultiply(ActionEvent event) {
-    	inputTextField3.appendText("*");
+    	if(!answer.equals("clear")){
+    		inputTextField3.appendText(answer + "*");
+    		userInput += (answer + "*");
+    		answer = "clear";
+    	} else {
+    		answer = "clear";
+    		inputTextField3.appendText("*");
+    		userInput += "*";
+    	}
     }
 
     @FXML
     void OnActionBtnNaturalLog(ActionEvent event) {
-    	inputTextField3.appendText("ln(");
+    	answer = "clear";
+    	inputTextField3.appendText("ln");
+    	userInput += "elg";
     }
 
     @FXML
     void OnActionBtnNine(ActionEvent event) {
+    	answer = "clear";
     	inputTextField3.appendText("9");
+    	userInput += "9";
     }
 
     @FXML
     void OnActionBtnOne(ActionEvent event) {
+    	answer = "clear";
     	inputTextField3.appendText("1");
+    	userInput += "1";
     }
 
     @FXML
@@ -235,78 +307,119 @@ public class FXMLScientificController implements Initializable {
 
     @FXML
     void OnActionBtnPi(ActionEvent event) {
-    	inputTextField3.appendText("3.141592654");
+    	answer = "clear";
+    	inputTextField3.appendText(Double.toString(PI));
+    	userInput += Double.toString(PI);
     }
 
     @FXML
     void OnActionBtnPowerOf(ActionEvent event) {
-
+    	if(!answer.equals("clear")){
+    		inputTextField3.appendText(answer + "\u00B2");
+    		userInput += (answer + "^2");
+    		answer = "clear";
+    	} else {
+    		answer = "clear";
+    		inputTextField3.appendText("\u00B2");
+    		userInput += "^2";
+    	}
     }
 
     @FXML
     void OnActionBtnRecall(ActionEvent event) {
-
+    	if(!memory.equals("0")){
+    		inputTextField3.appendText(memory);
+    		userInput += memory;
+    	}
     }
 
     @FXML
     void OnActionBtnSeven(ActionEvent event) {
+    	answer = "clear";
     	inputTextField3.appendText("7");
+    	userInput += "7";
     }
 
     @FXML
     void OnActionBtnSin(ActionEvent event) {
-    	inputTextField3.appendText("sin(");
+    	answer = "clear";
+    	inputTextField3.appendText("sin");
+    	userInput += "sin";
     }
 
     @FXML
     void OnActionBtnSix(ActionEvent event) {
+    	answer = "clear";
     	inputTextField3.appendText("6");
+    	userInput += "6";
     }
 
     @FXML
     void OnActionBtnSquareRoot(ActionEvent event) {
-
+    	answer = "clear";
+    	inputTextField3.appendText("\u221A");
+    	userInput += "rts";
     }
 
     @FXML
     void OnActionBtnSubtract(ActionEvent event) {
-    	inputTextField3.appendText("-");
+    	if(!answer.equals("clear")){
+    		inputTextField3.appendText(answer + "-");
+    		userInput += "-";
+    		answer = "clear";
+    	} else {
+    		answer = "clear";
+    		inputTextField3.appendText("-");
+    		userInput += "-";
+    	}
     }
 
     @FXML
     void OnActionBtnTan(ActionEvent event) {
-    	inputTextField3.appendText("tan(");
+    	answer = "clear";
+    	inputTextField3.appendText("tan");
+    	userInput += "tan";
     }
 
     @FXML
     void OnActionBtnThree(ActionEvent event) {
+    	answer = "clear";
     	inputTextField3.appendText("3");
+    	userInput += "3";
     }
 
     @FXML
     void OnActionBtnTwo(ActionEvent event) {
+    	answer = "clear";
     	inputTextField3.appendText("2");
+    	userInput += "2";
     }
 
     @FXML
     void OnActionBtnZero(ActionEvent event) {
+    	answer = "clear";
     	inputTextField3.appendText("0");
+    	userInput += "0";
     }
 
     @FXML
     void OnActionMemoryClear(ActionEvent event) {
-
+    	memory = "0";
     }
 
     @FXML
     void OnActionMemoryStore(ActionEvent event) {
-
+    	if(inputTextField4.getText().length() != 0){
+    		memory = "";
+    		memory += inputTextField4.getText();
+    	}
     }
 
     @FXML
     void OnActionRightBrace(ActionEvent event) {
+    	answer = "clear";
     	inputTextField3.appendText(")");
+    	userInput += ")";
     }
 
 }
-
