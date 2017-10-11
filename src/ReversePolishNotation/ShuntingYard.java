@@ -64,6 +64,7 @@ public class ShuntingYard {
 					
 						// left parenthesis
 					} else if (token.equals("(")) {
+						opLastEncountered = true;
 						stack.push(token);
 
 						// right parenthesis

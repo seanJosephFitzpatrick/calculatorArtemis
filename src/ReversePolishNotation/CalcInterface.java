@@ -8,33 +8,33 @@ public class CalcInterface {
 
 	//Commented Main method to move to GUI input!
 	
-//	public static void main(String[] args){
-//		String workingInput;
-//		String storedInput;
-//		String input = "";
-//		System.out.println("Please input an expression to evaluate: ");
-//		System.out.println("(Leave a space between each token)");
-//		System.out.print("Input: ");
-//		input = sc.nextLine();
-//		storedInput = input;
-//		input = formatInputString(input); // method to format input string to allow any number of spaces.
-//		workingInput = input;
-//		if(ShuntingYard.checkForFunction(workingInput)){
-//			workingInput = ShuntingYard.parseFunction(workingInput, true);
-//			input = formatInputString(workingInput);
-//		}
-//		String postfix = "";
-//		postfix = ShuntingYard.postfix(workingInput);
-//		System.out.println(postfix);
-//		MathematicalEvaluator ME = new MathematicalEvaluator();
-//		System.out.println("----------");
-//		System.out.println("Input Expression: " + formatInputString(storedInput));
-//		ME.evaluateExpression(postfix);
-//		ME.opCharList.clear();
-//		ME.opList.clear();
-//		ME.opListRev.clear();
-//		ME.workingList.clear();
-//	}
+	public static void main(String[] args){
+		String workingInput;
+		String storedInput;
+		String input = "";
+		System.out.println("Please input an expression to evaluate: ");
+		System.out.println("(Leave a space between each token)");
+		System.out.print("Input: ");
+		input = sc.nextLine();
+		storedInput = input;
+		input = formatInputString(input); // method to format input string to allow any number of spaces.
+		workingInput = input;
+		if(ShuntingYard.checkForFunction(workingInput)){
+			workingInput = ShuntingYard.parseFunction(workingInput, true);
+			input = formatInputString(workingInput);
+		}
+		String postfix = "";
+		postfix = ShuntingYard.postfix(workingInput);
+		System.out.println(postfix);
+		MathematicalEvaluator ME = new MathematicalEvaluator();
+		System.out.println("----------");
+		System.out.println("Input Expression: " + formatInputString(storedInput));
+		ME.evaluateExpression(postfix);
+		ME.opCharList.clear();
+		ME.opList.clear();
+		ME.opListRev.clear();
+		ME.workingList.clear();
+	}
 	
 	public static String run(String expression){
 		String workingInput;

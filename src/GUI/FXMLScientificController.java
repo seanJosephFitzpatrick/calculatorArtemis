@@ -173,13 +173,23 @@ public class FXMLScientificController implements Initializable {
     			curr = curr.substring(0, curr.length() - 1);
     			i--;
     		}
+    		if(curr.length() != 0 && curr.charAt(curr.length() - 1) == 'a'){
+    			curr = curr.substring(0, curr.length() - 1);	//Temporary fix allows acos, asin, atan! longer functions need 
+    		}													//something more robust!
     		inputTextField3.setText(curr);
     	}
-    	int i = 3;
-    	while(i > 0 && userInput.length() != 0){
+    	
+    	if(!Character.isLetter(userInput.charAt(userInput.length() - 1))){
     		userInput = userInput.substring(0, userInput.length() - 1);
-    		i--;
+    	} else {
+    		int i = 3;
+    		while(i > 0 && userInput.length() != 0){
+    			userInput = userInput.substring(0, userInput.length() - 1);
+    			i--;
+    		}
     	}
+    	System.out.println("Front: " + inputTextField3.getText());
+    	System.out.println("Back: " + userInput);
     }
 
     @FXML

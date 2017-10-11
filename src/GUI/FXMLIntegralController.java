@@ -46,8 +46,9 @@ public class FXMLIntegralController {
     	double valueA = Double.parseDouble(bottomValueTextField.getText());
     	System.out.println("value a : "+ valueA);
        	double valueB = Double.parseDouble(topValueTextField.getText());
-    	double answer = rule.integrate(valueA, valueB );
+    	double answer = rule.integrate(valueA, valueB, inputTextField.getText());
     	String str = Double.toString(answer);
+    	outputTextField.clear();
     	outputTextField.appendText(str);
     }
     
