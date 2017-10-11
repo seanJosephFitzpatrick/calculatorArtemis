@@ -148,17 +148,23 @@ public class FXMLScientificController implements Initializable {
 
     @FXML
     void OnActionBtnArccos(ActionEvent event) {
-    	
+    	answer = "clear";
+    	inputTextField3.appendText("cos");
+    	userInput += "bac";
     }
 
     @FXML
     void OnActionBtnArcsin(ActionEvent event) {
-
+    	answer = "clear";
+    	inputTextField3.appendText("asin");
+    	userInput += "dsn";
     }
 
     @FXML
     void OnActionBtnArctan(ActionEvent event) {
-
+    	answer = "clear";
+    	inputTextField3.appendText("atan");
+    	userInput += "atn";
     }
 
     @FXML
@@ -239,7 +245,7 @@ public class FXMLScientificController implements Initializable {
     void OnActionBtnEquals(ActionEvent event) {
     	System.out.println(userInput);
     	inputTextField4.clear();
-    	String result = CalcInterface.run(userInput);
+    	String result = CalcInterface.run(userInput, true);	//boolean value needs to be set from GUI button
     	answer = result;
     	inputTextField4.appendText(result);
     	inputTextField3.clear();

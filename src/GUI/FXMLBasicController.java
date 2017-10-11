@@ -147,8 +147,8 @@ public class FXMLBasicController {
     @FXML
     void OnActionBtnEquals(ActionEvent event) {
     	inputTextField2.clear();
-    	String result = CalcInterface.run(inputTextField.getText());
-    	answer = result;
+    	String result = CalcInterface.run(inputTextField.getText(), true);	//True here needs to be a boolean 
+    	answer = result;														//Set on the GUI
     	inputTextField2.appendText(result);
     	inputTextField.clear();
     }

@@ -20,13 +20,13 @@ public class CalcInterface {
 		input = formatInputString(input); // method to format input string to allow any number of spaces.
 		workingInput = input;
 		if(ShuntingYard.checkForFunction(workingInput)){
-			workingInput = ShuntingYard.parseFunction(workingInput, true);
+			workingInput = ShuntingYard.parseFunction(workingInput, true);	//true = result in rads!
 			input = formatInputString(workingInput);
 		}
 		String postfix = "";
 		postfix = ShuntingYard.postfix(workingInput);
 		System.out.println(postfix);
-		MathematicalEvaluator ME = new MathematicalEvaluator();
+		MathematicalEvaluator ME = new MathematicalEvaluator(true);
 		System.out.println("----------");
 		System.out.println("Input Expression: " + formatInputString(storedInput));
 		ME.evaluateExpression(postfix);
@@ -36,7 +36,7 @@ public class CalcInterface {
 		ME.workingList.clear();
 	}
 	
-	public static String run(String expression){
+	public static String run(String expression, boolean resInRadians){
 		String workingInput;
 		String storedInput;
 		String input = expression;
@@ -44,7 +44,7 @@ public class CalcInterface {
 		try {
 			storedInput = input;
 			input = formatInputString(input); // method to format input string to allow any number of spaces.
-			MathematicalEvaluator ME = new MathematicalEvaluator();
+			MathematicalEvaluator ME = new MathematicalEvaluator(resInRadians);
 			System.out.println(input);
 			workingInput = input;
 			if(ShuntingYard.checkForFunction(workingInput)){
@@ -78,12 +78,12 @@ public class CalcInterface {
 		input = input.replace("(", " ( ");
 		input = input.replace(")", " ) ");
 		input = input.replace("^", " ^ ");
+		
+		input = input.replace("bac", " bac "); 		//ACos
+		input = input.replace("dsn", " dsn ");		//ASin
+		input = input.replace("atn", " atn ");		//ATan 
+		
 		input = input.replace("cos", " cos ");		//Cosine
-		
-		input = input.replace("bac", " bac "); 		//ACos (NOT DONE)
-		input = input.replace("dsn", " dsn ");		//ASin (NOT DONE)
-		input = input.replace("atn", " atn ");		//ATan (NOT DONE)
-		
 		input = input.replace("sin", " sin ");		//Sine
 		input = input.replace("tan", " tan ");		//Tangent
 		input = input.replace("rts", " rts ");		//Square root

@@ -46,8 +46,8 @@ public class FXMLIntegralController {
     	double valueA = Double.parseDouble(bottomValueTextField.getText());
     	System.out.println("value a : "+ valueA);
        	double valueB = Double.parseDouble(topValueTextField.getText());
-    	double answer = rule.integrate(valueA, valueB, inputTextField.getText());
-    	String str = Double.toString(answer);
+    	double answer = rule.integrate(valueA, valueB, inputTextField.getText(), true);	//boolean value needs to be assigned
+    	String str = Double.toString(answer);											//from GUI
     	outputTextField.clear();
     	outputTextField.appendText(str);
     }
