@@ -128,7 +128,7 @@ public class FXMLScientificController implements Initializable {
 	
     @FXML
     void OnActionBtnAddition(ActionEvent event) {
-    	if(!answer.equals("clear")){
+    	if(!answer.equals("clear") && (!answer.equals("Syntax Error"))){
     		inputTextField3.appendText(answer + "+");
     		userInput += (answer + "+");
     		answer = "clear";
@@ -148,24 +148,54 @@ public class FXMLScientificController implements Initializable {
 
     @FXML
     void OnActionBtnArccos(ActionEvent event) {
-    	
+    	answer = "clear";
+    	inputTextField3.appendText("cos");
+    	userInput += "bac";
     }
 
     @FXML
     void OnActionBtnArcsin(ActionEvent event) {
-
+    	answer = "clear";
+    	inputTextField3.appendText("asin");
+    	userInput += "dsn";
     }
 
     @FXML
     void OnActionBtnArctan(ActionEvent event) {
-
+    	answer = "clear";
+    	inputTextField3.appendText("atan");
+    	userInput += "atn";
     }
 
     @FXML
     void OnActionBtnBack(ActionEvent event) {
-    	do {
-    		inputTextField3.setText(inputTextField3.getText().substring(0, inputTextField3.getText().length() - 1));
-    	} while(Character.isLetter(inputTextField3.getText().charAt(inputTextField3.getText().length() - 1)));
+    	String curr = inputTextField3.getText();
+    	if(!Character.isLetter(curr.charAt(curr.length() - 1))){
+    		curr = curr.substring(0, curr.length() - 1);
+    		inputTextField3.setText(curr);
+    	} else {
+    		int i = 3;
+    		while(i > 0 && curr.length() != 0){
+    			curr = curr.substring(0, curr.length() - 1);
+    			i--;
+    		}
+    		if(curr.length() != 0 && curr.charAt(curr.length() - 1) == 'a'){
+    			curr = curr.substring(0, curr.length() - 1);	//Temporary fix allows acos, asin, atan! longer functions need 
+    		}													//something more robust!
+    		inputTextField3.setText(curr);
+    	}
+    	
+    	if(!Character.isLetter(userInput.charAt(userInput.length() - 1))){
+    		userInput = userInput.substring(0, userInput.length() - 1);
+    	} else {
+    		int i = 3;
+    		while(i > 0 && userInput.length() != 0){
+    			userInput = userInput.substring(0, userInput.length() - 1);
+    			i--;
+    		}
+    	}
+    	System.out.println("Front: " + inputTextField3.getText());
+    	System.out.println("Back: " + userInput);
     }
 
     @FXML
@@ -177,7 +207,7 @@ public class FXMLScientificController implements Initializable {
 
     @FXML
     void OnActionBtnDivide(ActionEvent event) {
-    	if(!answer.equals("clear")){
+    	if(!answer.equals("clear") && (!answer.equals("Syntax Error"))){
     		inputTextField3.appendText(answer + "/");
     		userInput += (answer + "/");
     		answer = "clear";
@@ -215,7 +245,7 @@ public class FXMLScientificController implements Initializable {
     void OnActionBtnEquals(ActionEvent event) {
     	System.out.println(userInput);
     	inputTextField4.clear();
-    	String result = CalcInterface.run(userInput);
+    	String result = CalcInterface.run(userInput, true);	//boolean value needs to be set from GUI button
     	answer = result;
     	inputTextField4.appendText(result);
     	inputTextField3.clear();
@@ -268,7 +298,7 @@ public class FXMLScientificController implements Initializable {
 
     @FXML
     void OnActionBtnMultiply(ActionEvent event) {
-    	if(!answer.equals("clear")){
+    	if(!answer.equals("clear") && (!answer.equals("Syntax Error"))){
     		inputTextField3.appendText(answer + "*");
     		userInput += (answer + "*");
     		answer = "clear";
@@ -314,7 +344,7 @@ public class FXMLScientificController implements Initializable {
 
     @FXML
     void OnActionBtnPowerOf(ActionEvent event) {
-    	if(!answer.equals("clear")){
+    	if(!answer.equals("clear") && (!answer.equals("Syntax Error"))){
     		inputTextField3.appendText(answer + "\u00B2");
     		userInput += (answer + "^2");
     		answer = "clear";
@@ -363,7 +393,7 @@ public class FXMLScientificController implements Initializable {
 
     @FXML
     void OnActionBtnSubtract(ActionEvent event) {
-    	if(!answer.equals("clear")){
+    	if(!answer.equals("clear") && (!answer.equals("Syntax Error"))){
     		inputTextField3.appendText(answer + "-");
     		userInput += "-";
     		answer = "clear";
