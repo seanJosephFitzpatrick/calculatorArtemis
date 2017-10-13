@@ -20,7 +20,7 @@ public class SimpsonsRule {
      static Scanner sc = new Scanner (System.in);
      public static double integrate(double a, double b, String function, boolean resInRadians) {
      
-    int N = 10000;
+    int N = 10;
 	// System.out.println("Enter precision parament : ");
 	// int N = sc.nextInt();
 	 
