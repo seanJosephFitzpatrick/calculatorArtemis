@@ -5,11 +5,14 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 
 public class FourierSeriesRunner {
+	private static int input;
+	
 	private static Scanner sc = new Scanner(System.in);
 	private static String[] variables = new String[5];
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int input = getInputMode();
+		System.out.println("1 - Fourier Series\n2 - Uder Defined Waveform");
+		input=sc.nextInt();
 		variables[0]=Integer.toString(input);
 		if(input==1){
 			plotFourierSeries();
@@ -17,6 +20,13 @@ public class FourierSeriesRunner {
 		else{
 			plotUserDefinedWaveform();
 		}
+		Application.launch(FourierSeries.class, variables);
+	}
+	public static void runner() {
+		// TODO Auto-generated m argethod stub
+		
+		
+		
 		Application.launch(FourierSeries.class, variables);
 	}
 private static void plotUserDefinedWaveform() {
@@ -73,5 +83,18 @@ public static void plotFourierSeries(){
 		variables[i+2]=temp[i];
 	}
 }
+public static int getInput() {
+	return input;
+}
+public static void setInput(int input) {
+	FourierSeriesRunner.input = input;
+}
+public static String[] getVariables() {
+	return variables;
+}
+public static void setVariables(String[] variables) {
+	FourierSeriesRunner.variables = variables;
+}
+
 
 }
