@@ -21,12 +21,12 @@ public class FourierSeriesRunner {
 	}
 private static void plotUserDefinedWaveform() {
 	
-	variables[1] = getWaveformType();
+	
 	String[] temp = new String[2];
-	temp = getFourierSeriesVariables();
+	temp = getUserDefinedWaveformVariables();
 	
 	for (int i = 0; i < temp.length; i++) {
-		variables[i+2]=temp[i];
+		variables[i+1]=temp[i];
 	}
 		
 	}
@@ -60,7 +60,7 @@ public static String[] getUserDefinedWaveformVariables(){
 	System.out.print("Please enter the period of the signal in seconds: ");
 	variables[1]=sc.next();
 	System.out.print("Please enter the phase of the signal in degrees: ");
-	variables[1]=sc.next();
+	variables[2]=sc.next();
 	return variables;
 }
 public static void plotFourierSeries(){

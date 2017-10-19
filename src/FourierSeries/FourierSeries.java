@@ -43,8 +43,52 @@ public class FourierSeries extends Application {
 		plotFourierSeriesofWaveform(values,stage);
 		}
 		else{
-			
+		plotUserDefinedWaveform(values, stage);	
 		}
+	}
+
+	private void plotUserDefinedWaveform(String values, Stage stage) {
+		// TODO Auto-generated method stub
+		values=values.substring(values.indexOf(",")+2);
+		System.out.println(values);
+		String amplitudeText = values.substring(0, values.indexOf(","));
+		values=values.substring(values.indexOf(",")+2);
+		System.out.println(values);
+		
+		String periodText = values.substring(0, values.indexOf(","));
+		values=values.substring(values.indexOf(",")+2);
+		System.out.println(values);
+		String phaseText = values.substring(0, values.indexOf("]"));
+		
+		double amplitude = Double.parseDouble(amplitudeText);
+		int phase = Integer.parseInt(phaseText);
+		double period = Double.parseDouble(periodText);
+
+		Axes axes = new Axes(
+				500, 350,
+				-(period+period*.5), (period+period*.5), period*0.2,
+				-(amplitude+amplitude*.25), (amplitude+amplitude*.25), 1
+				);
+
+
+
+		Plot plot = new Plot(
+				phase,period,amplitude,
+				-(period+period*.5), (period+period*.5), period*0.01,
+				axes
+				);
+
+		StackPane layout = new StackPane(
+				plot
+				);
+		layout.setPadding(new Insets(20));
+		layout.setStyle("-fx-background-color: rgb(35, 39, 50);");
+
+		stage.setTitle("Fourier Series");
+		this.setSceneEvents(plot);
+		stage.setScene(new Scene(layout, Color.rgb(35, 39, 50)));
+		stage.show();
+		
 	}
 
 	private void plotFourierSeriesofWaveform(String values, Stage stage) {
@@ -176,6 +220,60 @@ public class FourierSeries extends Application {
 			setMaxSize(Pane.USE_PREF_SIZE, Pane.USE_PREF_SIZE);
 
 			getChildren().setAll(axes, path);
+		}
+
+		public Plot(int phase, double period, double amplitude, double xMin, double xMax, double xInc, Axes axes) {
+			// TODO Auto-generated constructor stub
+			{
+				Path path = new Path();
+				path.setStroke(Color.ORANGE.deriveColor(0, 1, 1, 0.6));
+				path.setStrokeWidth(1.5);
+
+				path.setClip(
+						new Rectangle(
+								0, 0, 
+								axes.getPrefWidth(), 
+								axes.getPrefHeight()
+								)
+						);
+
+				double x = xMin;
+				double y = 0;
+
+				y=generateYCoordinates(phase,period,amplitude,x);
+				path.getElements().add(
+						new MoveTo(
+								mapX(x, axes), mapY(y, axes)
+								)
+						);
+				y=0;
+				x += xInc;
+				while (x < xMax) {
+
+					y=generateYCoordinates(phase,period,amplitude,x);
+					path.getElements().add(
+							new LineTo(
+									mapX(x, axes), mapY(y, axes)
+									)
+							);
+
+					x += xInc;
+					y=0;
+				}
+
+				setMinSize(Pane.USE_PREF_SIZE, Pane.USE_PREF_SIZE);
+				setPrefSize(axes.getPrefWidth(), axes.getPrefHeight());
+				setMaxSize(Pane.USE_PREF_SIZE, Pane.USE_PREF_SIZE);
+
+				getChildren().setAll(axes, path);
+			}
+		}
+
+		private double generateYCoordinates(int phase, double period, double amplitude, double x) {
+			// TODO Auto-generated method stub
+			double y=0;
+			y=amplitude*Math.sin(2*Math.PI*(1/period)*x+(phase*(Math.PI/180)));
+			return y;
 		}
 
 		private double generateYCoordinates(int harmonic, double period, String waveform, double x) {
