@@ -8,19 +8,39 @@ package integrals;
  */
 
 import java.util.Scanner;
-
+import java.util.ArrayList;
 import ReversePolishNotation.CalcInterface;
+import javafx.application.Application;
+
 
 public class SimpsonsRule {
+	private static ArrayList<Double> yValues = new ArrayList<Double>();
+	private static ArrayList<Double> xValues = new ArrayList<Double>();
+	
 	public static double f (double x, String function, boolean resInRadians) {
+		xValues.add(x);
 		function = function.replaceAll("x", Double.toString(x));
-		return Double.parseDouble(CalcInterface.run(function, resInRadians));
+		
+		double yValue =	Double.parseDouble(CalcInterface.run(function, resInRadians));
+		yValues.add(yValue);
+		return yValue;
+	}
+	
+	
+	
+	public static void main(String[] args){
+		double a = 3d;
+		double b = 5d;
+		String function = "-6*x";
+		
+		System.out.println(integrate(a,b,function,true));
+		
 	}
 
      static Scanner sc = new Scanner (System.in);
      public static double integrate(double a, double b, String function, boolean resInRadians) {
      
-    int N = 10000;
+    int N = 10;
 	// System.out.println("Enter precision parament : ");
 	// int N = sc.nextInt();
 	 
@@ -40,7 +60,12 @@ public class SimpsonsRule {
         double x = a + h * i;
         sum += 2.0 / 3.0 * f(x, function, resInRadians);
      }
-
+     System.out.println(sum*h);
+     
+     IntegralPlotter.setIntegralPointsX(xValues);
+     IntegralPlotter.setIntegralPointsY(yValues);
+     Application.launch(IntegralPlotter.class);
+     
      return sum * h;
   }
 

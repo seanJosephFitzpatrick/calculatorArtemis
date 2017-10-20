@@ -1,5 +1,8 @@
 package ReversePolishNotation;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.math.RoundingMode;
 import java.util.Stack;
 
 public class MathematicalEvaluator {
@@ -99,43 +102,48 @@ public class MathematicalEvaluator {
 			} else {						//IF we reach this branch then s1 is an operand - we now need to get the top
 				double a = Double.parseDouble(workingList.pop());	//two off the stack 
 				double b = Double.parseDouble(workingList.pop());
-				double result = 0;
+				BigDecimal aBD = new BigDecimal(a);
+				BigDecimal bBD = new BigDecimal(b);
+				BigDecimal result = new BigDecimal(0);
 				String resString = "";
 				switch(s1){
-				case "+" : result = b + a;			//Manipulate a + b based on s1s value
-				break;
-				case "-" : result = b - a;
-				break;
-				case "*" : result = b * a;
-				break;
-				case "/" : 
-					if(a == 0){
-						result = 0d;
-						System.out.println("Throw divide by zero exception here!");
-					} else {				//Remove divide by 0
-						result = b / a;
-					}
+				case "+" : 
+					result = result.add(aBD);
+					result = result.add(bBD);
 					break;
-				case "^" : result = Math.pow(b, a);
+				case "-" : 
+					result = result.add(bBD);
+					result = result.subtract(aBD);
+					break;
+				case "*" : 
+					result = result.add(bBD);
+					result = result.multiply(aBD);
+					break;
+				case "/" : 
+					result = result.add(bBD);
+					result = result.divide(aBD, 9, RoundingMode.HALF_UP);
+					break;
+				case "^" : 	
+					result = result.add(new BigDecimal(Math.pow(b, a)));
 				break;
 				default:
 					break;
 				}
 
-				if(result % 1.0000000000000000 == 0){
-					int iResult = (int)(result);
-					resString = Integer.toString(iResult);	//If a whole number - drop .0
+				if(result.doubleValue() % 1.0000000000000000 == 0){
+					BigInteger iRes = result.toBigInteger();
+					resString = iRes.toString();	//If a whole number - drop .0
 				} else {
-					resString = Double.toString(result);	//Restring the result value and add it back onto the working list
+					resString = result.toString();	//Restring the result value and add it back onto the working list
 				}
 				workingList.push(resString);
 			}
 		}
-		String result = workingList.pop();				//Result of any operation passed to evaluation! 
-		System.out.println("Result: " + result);	//At end this should be the only value on the stack
+		String output = workingList.pop();				//Result of any operation passed to evaluation! 
+		System.out.println("Result: " + output);	//At end this should be the only value on the stack
 		workingList.clear();
 		opList.clear();
-		return result;
+		return output;
 	} 
 
 	public String functionEvaluator(char function, String operand){
