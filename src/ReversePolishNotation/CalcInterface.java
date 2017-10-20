@@ -43,7 +43,7 @@ public class CalcInterface {
 		String result = "";
 		try {
 			storedInput = input;
-			input = formatInputString(input); // method to format input string to allow any number of spaces.
+			input = formatInputString(input); 										//method to format input string to allow any number of spaces.
 			MathematicalEvaluator ME = new MathematicalEvaluator(resInRadians);
 			System.out.println(input);
 			workingInput = input;
