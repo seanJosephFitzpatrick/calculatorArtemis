@@ -51,9 +51,9 @@
             <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Logical Functions" GridPane.columnSpan="3" GridPane.rowIndex="7" />
             <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Constant Values" GridPane.columnSpan="3" GridPane.rowIndex="8" />
             <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Conversions" GridPane.columnSpan="3" GridPane.rowIndex="9" />
-            <TextField fx:id="inputTextField" alignment="BASELINE_RIGHT" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.rowIndex="4" />
-            <TextField fx:id="inputTextField2" alignment="BASELINE_RIGHT" GridPane.columnIndex="10" GridPane.columnSpan="3" GridPane.rowIndex="4" />
-            <TextField fx:id="inputTextField3" alignment="BASELINE_RIGHT" GridPane.columnIndex="10" GridPane.columnSpan="3" GridPane.rowIndex="2" />
+            <TextField fx:id="inputTextFieldPhase" alignment="BASELINE_RIGHT" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.rowIndex="4" />
+            <TextField fx:id="inputTextFieldPeriod" alignment="BASELINE_RIGHT" GridPane.columnIndex="10" GridPane.columnSpan="3" GridPane.rowIndex="4" />
+            <TextField fx:id="inputTextFieldHarmonics" alignment="BASELINE_RIGHT" GridPane.columnIndex="10" GridPane.columnSpan="3" GridPane.rowIndex="2" />
             <Label alignment="CENTER" prefHeight="100.0" prefWidth="400.0" text="Mode" GridPane.columnSpan="2">
                <font>
                   <Font size="16.0" />
@@ -65,12 +65,12 @@
                </font>
             </Label>
             <Button id="pad1" fx:id="submit" mnemonicParsing="false" onAction="#OnActionSubmit" prefHeight="100.0" prefWidth="400.0" text="Submit" GridPane.columnIndex="8" GridPane.columnSpan="2" GridPane.rowIndex="9" />
-            <ComboBox fx:id="comboBox" onAction="#OnActionLabelComboBox" prefHeight="29.0" prefWidth="350.0" promptText="User Defined Waveform" GridPane.columnIndex="4" GridPane.columnSpan="5" GridPane.rowIndex="2" />
+            <ComboBox fx:id="comboBoxFourier" onAction="#OnActionLabelComboBox" prefHeight="29.0" prefWidth="350.0" promptText="User Defined Waveform" GridPane.columnIndex="4" GridPane.columnSpan="5" GridPane.rowIndex="2" />
             <Label fx:id="labelOneFourier" text="Harmonics" GridPane.columnIndex="10" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
             <Label fx:id="labelThreeFourier" text="Waveform" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="3" />
             <Label fx:id="labelFourFourier" text="Period" GridPane.columnIndex="10" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="3" />
             <Label fx:id="labelTwoFourier" text="Fourier Series" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
-            <ComboBox fx:id="comboBox1" layoutX="240.0" layoutY="221.0" prefHeight="29.0" prefWidth="350.0" promptText="User Defined Waveform" GridPane.columnIndex="4" GridPane.columnSpan="5" GridPane.rowIndex="4" />
+            <ComboBox fx:id="comboBoxWaveform" layoutX="240.0" layoutY="221.0" prefHeight="29.0" prefWidth="350.0" promptText="User Defined Waveform" GridPane.columnIndex="4" GridPane.columnSpan="5" GridPane.rowIndex="4" />
            
          </children>
       </GridPane>

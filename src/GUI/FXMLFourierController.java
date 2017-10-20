@@ -29,19 +29,17 @@ public class FXMLFourierController implements Initializable {
     @FXML
     private Button basicCalculator;
     @FXML
-    private TextField inputTextField;
+    private TextField inputTextFieldPhase;
     @FXML
-    private TextField inputTextField2;
+    private TextField inputTextFieldPeriod;
     @FXML
-    private TextField inputTextField3;
-    @FXML
-    private TextField inputTextField4;
+    private TextField inputTextFieldHarAmp;
     @FXML
     private Button submit;
     @FXML
-    private ComboBox<String> comboBox;
+    private ComboBox<String> comboBoxFourier;
     @FXML
-    private ComboBox<String> comboBox1;
+    private ComboBox<String> comboBoxWaveform;
     @FXML
     private Label labelOneFourier;
     @FXML
@@ -54,33 +52,33 @@ public class FXMLFourierController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-	    comboBox.getItems().removeAll(comboBox.getItems());
-	    comboBox.getItems().addAll("Fourier Series", "user Defined Waveform");
-	    comboBox.getSelectionModel().select("Fourier Series");
-	    comboBox1.getItems().removeAll(comboBox.getItems());
-	    comboBox1.getItems().addAll("Square", "Triangle", "Sawtooth");
-	    comboBox1.getSelectionModel().select("Square");
-    	inputTextField.setVisible(false);
-    	comboBox1.setVisible(true);
+		comboBoxFourier.getItems().removeAll(comboBoxFourier.getItems());
+		comboBoxFourier.getItems().addAll("Fourier Series", "user Defined Waveform");
+		comboBoxFourier.getSelectionModel().select("Fourier Series");
+		comboBoxWaveform.getItems().removeAll(comboBoxWaveform.getItems());
+		comboBoxWaveform.getItems().addAll("Square", "Triangle", "Sawtooth");
+		comboBoxWaveform.getSelectionModel().select("Square");
+		inputTextFieldPhase.setVisible(false);
+    	comboBoxWaveform.setVisible(true);
 	}
 	
     @FXML
     void OnActionLabelComboBox(ActionEvent event) {
-    	String output = comboBox.getSelectionModel().getSelectedItem().toString();
+    	String output = comboBoxFourier.getSelectionModel().getSelectedItem().toString();
 	    if(output.equalsIgnoreCase("Fourier Series")){
 	    	labelOneFourier.setText("Harmonics");
 	    	labelTwoFourier.setText("Fourier Series");
 	    	labelThreeFourier.setText("Waveform");
 	    	labelFourFourier.setText("Period");
-	    	inputTextField.setVisible(false);
-	    	comboBox1.setVisible(true);
+	    	inputTextFieldPhase.setVisible(false);
+	    	comboBoxWaveform.setVisible(true);
 	    }else if(output.equalsIgnoreCase("user Defined Waveform")){
 	    	labelOneFourier.setText("amplitude");
 	    	labelTwoFourier.setText("user Defined Waveform");
 	    	labelThreeFourier.setText("Phase");
 	    	labelFourFourier.setText("Period");
-	    	comboBox1.setVisible(false);
-	    	inputTextField.setVisible(true);
+	    	comboBoxWaveform.setVisible(false);
+	    	inputTextFieldPhase.setVisible(true);
 	    }
     }
 
@@ -128,14 +126,15 @@ public class FXMLFourierController implements Initializable {
     @FXML
     void OnActionSubmit(ActionEvent event) throws Exception {
     	
-    	String output = comboBox.getSelectionModel().getSelectedItem().toString();
+    	String output = comboBoxFourier.getSelectionModel().getSelectedItem().toString();
 	    if(output.equalsIgnoreCase("Fourier Series")){
-	    	
-	    	FourierSeries.setMode(inputTextField4.getText());
+	   
+	    	FourierSeries.setMode("1");
 
-	    	FourierSeries.setWaveform(inputTextField.getText());
-	    	FourierSeries.setHarmonic(Integer.parseInt(inputTextField3.getText()));
-	    	FourierSeries.setPeriod(Double.parseDouble(inputTextField2.getText()));
+	    	//FourierSeries.setWaveform(comboBoxWaveform.getSelectionModel().getSelectedItem().toString());
+	    	FourierSeries.setWaveform("square");
+	    	FourierSeries.setHarmonic(Integer.parseInt(inputTextFieldHarAmp.getText()));
+	    	FourierSeries.setPeriod(Double.parseDouble(inputTextFieldPeriod.getText()));
 	    	
 	    	Application app2 =  new FourierSeries(); 
 	        Stage anotherStage = new Stage();
