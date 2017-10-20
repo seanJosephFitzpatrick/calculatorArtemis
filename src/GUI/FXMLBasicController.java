@@ -15,6 +15,7 @@ public class FXMLBasicController {
 
 	String answer = "clear";
 	
+
     @FXML
     private Button scientificCalculator;
     @FXML
@@ -76,6 +77,20 @@ public class FXMLBasicController {
     void NavigateScientificCalculator(ActionEvent event) {
     	try {
 			Parent scientific_calculator_parent = FXMLLoader.load(getClass().getResource("FXMLScientific.fxml"));
+			Scene scientific_calculator_scene = new Scene(scientific_calculator_parent, 800, 400);
+			Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+			stage.hide();
+			stage.setScene(scientific_calculator_scene);
+			stage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+    @FXML
+    void NavigateFourierCalculator(ActionEvent event) {
+    	try {
+			Parent scientific_calculator_parent = FXMLLoader.load(getClass().getResource("FXMLFourier.fxml"));
 			Scene scientific_calculator_scene = new Scene(scientific_calculator_parent, 800, 400);
 			Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
 			stage.hide();
