@@ -48,6 +48,10 @@ public class FXMLFourierController implements Initializable {
     private Label labelFourFourier;
     @FXML
     private Label labelTwoFourier;
+    @FXML
+    private TextField inputTextFieldMode;
+    @FXML
+    private TextField inputTextFieldWaveform;
     
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -126,20 +130,26 @@ public class FXMLFourierController implements Initializable {
     @FXML
     void OnActionSubmit(ActionEvent event) throws Exception {
     	
-    	String output = comboBoxFourier.getSelectionModel().getSelectedItem().toString();
-	    if(output.equalsIgnoreCase("Fourier Series")){
-	   
-	    	FourierSeries.setMode("1");
+    	String outputFourier = comboBoxFourier.getSelectionModel().getSelectedItem().toString();
+    	String outputWaveform = comboBoxWaveform.getSelectionModel().getSelectedItem().toString();
+    	System.out.println(outputWaveform);
+	    if(outputFourier.equalsIgnoreCase("Fourier Series")){
+    	
+        	FourierSeries.setMode(outputFourier);
 
-	    	//FourierSeries.setWaveform(comboBoxWaveform.getSelectionModel().getSelectedItem().toString());
-	    	FourierSeries.setWaveform("square");
-	    	FourierSeries.setHarmonic(Integer.parseInt(inputTextFieldHarAmp.getText()));
-	    	FourierSeries.setPeriod(Double.parseDouble(inputTextFieldPeriod.getText()));
+    	
+        	FourierSeries.setWaveform(outputWaveform.toLowerCase());
+        	System.out.println(outputWaveform);
+
+    	   	FourierSeries.setHarmonic(Integer.parseInt(inputTextFieldHarAmp.getText()));
+
+    	   	FourierSeries.setPeriod(Double.parseDouble(inputTextFieldPeriod.getText()));
+
 	    	
 	    	Application app2 =  new FourierSeries(); 
 	        Stage anotherStage = new Stage();
 	        app2.start(anotherStage);
-	    }else if(output.equalsIgnoreCase("user Defined Waveform")){
+	   }else{
 
 	    }    	
     }
