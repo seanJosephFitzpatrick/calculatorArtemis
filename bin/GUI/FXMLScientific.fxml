@@ -149,7 +149,7 @@
             <RadioButton fx:id="degreesRadioBtn" mnemonicParsing="false" onAction="#OnActionDegreesRadioBtn" text="Degrees" GridPane.columnIndex="8" GridPane.columnSpan="2" GridPane.rowIndex="11" />
             <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.rowIndex="7">
                <image>
-                  <Image url="@../../../../powerOfN%20.png" />
+                  <Image url="@../../Images/powerOfN%20.png" />
                </image>
             </ImageView>
          </children>
