@@ -4,13 +4,12 @@ import java.util.Scanner;
 
 public class Integrals {
 	 public static double f (double x) {
-	    	return (-6*x*x+ x);
+	    	return (-6*x);
 	    	}
 		
 		 static Scanner sc = new Scanner (System.in);
 			public static void main(String[] args) {
-				
-				
+					
 				System.out.println("Enter a: ");
 				double a = sc.nextDouble();
 				

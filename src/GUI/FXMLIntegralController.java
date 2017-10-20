@@ -43,11 +43,13 @@ public class FXMLIntegralController {
     	outputTextField.appendText(inputTextField.getText());
     	SimpsonsRule rule = new SimpsonsRule();
 
-    	double valueA = Double.parseDouble(bottomValueTextField.getText());
+    	double valueA = Double.parseDouble(topValueTextField.getText());
     	System.out.println("value a : "+ valueA);
-       	double valueB = Double.parseDouble(topValueTextField.getText());
-    	double answer = rule.integrate(valueA, valueB );
-    	String str = Double.toString(answer);
+       	double valueB = Double.parseDouble(bottomValueTextField.getText());
+    	double answer = rule.integrate(valueA, valueB, inputTextField.getText(), true);	//boolean value needs to be assigned
+    	System.out.println(answer);
+    	String str = Double.toString(answer);											//from GUI
+    	outputTextField.clear();
     	outputTextField.appendText(str);
     }
     

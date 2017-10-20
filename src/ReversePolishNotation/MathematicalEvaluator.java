@@ -1,34 +1,36 @@
 package ReversePolishNotation;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Stack;
 
 public class MathematicalEvaluator {
-	
-	private boolean radians;
+
+	private boolean resInRadians;
 
 	private final static double PI = Math.PI;
 	private final static double E = Math.E;
-			
+
 	public Stack<Character> opCharList;
 	public Stack<String> opListRev;
 	public Stack<String> opList;
 	public Stack<String> workingList;
 
-	
-	public MathematicalEvaluator(){
+
+	public MathematicalEvaluator(boolean resInRadians){
 		opCharList = new Stack<Character>();
 		opListRev = new Stack<String>();
 		opList = new Stack<String>();
 		workingList = new Stack<String>();
-		this.setRadians(false);					//Input in degrees to start!
-	}
-	
-	public boolean isRadians() {
-		return radians;
+		this.setRadians(resInRadians);					//Input in degrees to start!
 	}
 
-	public void setRadians(boolean radians) {
-		this.radians = radians;
+	public boolean isRadians() {
+		return resInRadians;
+	}
+
+	public void setRadians(boolean resInRadians) {
+		this.resInRadians = resInRadians;
 	}
 
 	public void addRPNToStack(String postfix){
@@ -42,7 +44,7 @@ public class MathematicalEvaluator {
 		for(int i = 0; i < RPN.length; i++){
 			opCharList.push(RPN[i]);
 		}
-		
+
 		opListRev = new Stack<String>();
 		String s1 = "";
 		while(!opCharList.isEmpty()){
@@ -82,9 +84,9 @@ public class MathematicalEvaluator {
 	}
 
 	public String evaluateExpression(String postfix){
-		
+
 		addRPNToStack(postfix);
-		
+
 		workingList = new Stack<String>();
 		int opListSizeNow = opList.size();
 		for(int i = 0; i < opListSizeNow; i++){
@@ -99,51 +101,62 @@ public class MathematicalEvaluator {
 			} else {						//IF we reach this branch then s1 is an operand - we now need to get the top
 				double a = Double.parseDouble(workingList.pop());	//two off the stack 
 				double b = Double.parseDouble(workingList.pop());
-				double result = 0;
+				BigDecimal aBD = new BigDecimal(a);
+				BigDecimal bBD = new BigDecimal(b);
+				BigDecimal result = new BigDecimal(0);
 				String resString = "";
 				switch(s1){
-				case "+" : result = b + a;			//Manipulate a + b based on s1s value
-				break;
-				case "-" : result = b - a;
-				break;
-				case "*" : result = b * a;
-				break;
+				case "+" : 
+					result = result.add(aBD);
+					result = result.add(bBD);
+					break;
+				case "-" : 
+					result = result.add(bBD);
+					result = result.subtract(aBD);
+					break;
+				case "*" : 
+					result = result.add(bBD);
+					result = result.multiply(aBD);
+					break;
 				case "/" : 
-					if(a == 0){
-						result = 0d;
-						System.out.println("Throw divide by zero exception here!");
-					} else {				//Remove divide by 0
-						result = b / a;
-					}
-				break;
-				case "^" : result = Math.pow(b, a);
+					result = result.add(bBD);
+					result = result.divide(aBD);
+					break;
+				case "^" : 	
+					result = result.add(new BigDecimal(Math.pow(b, a)));
 				break;
 				default:
 					break;
 				}
-				resString = Double.toString(result);	//Restring the result value and add it back onto the working list
+
+				if(result.doubleValue() % 1.0000000000000000 == 0){
+					BigInteger iRes = result.toBigInteger();
+					resString = iRes.toString();	//If a whole number - drop .0
+				} else {
+					resString = result.toString();	//Restring the result value and add it back onto the working list
+				}
 				workingList.push(resString);
 			}
 		}
-		String result = workingList.pop();				//Result of any operation passed to evaluation! 
-		System.out.println("Result: " + result);	//At end this should be the only value on the stack
+		String output = workingList.pop();				//Result of any operation passed to evaluation! 
+		System.out.println("Result: " + output);	//At end this should be the only value on the stack
 		workingList.clear();
 		opList.clear();
-		return result;
+		return output;
 	} 
-	
+
 	public String functionEvaluator(char function, String operand){
-	
+
 		String result = "";
 		Double dResult = 0.0;
-		
+
 		Double dOperand = Double.parseDouble(operand);
-		
-		
-		
+
+
+
 		switch(function){
 		case 'c' : 	
-			if(!this.radians){
+			if(!this.resInRadians){
 				if(dOperand == 90d || dOperand == 270d){
 					dResult = 0d;
 				} else {
@@ -158,7 +171,7 @@ public class MathematicalEvaluator {
 			}
 			break;
 		case 's' :  
-			if(!this.radians){
+			if(!this.resInRadians){
 				if(dOperand % 180 == 0){
 					dResult = 0d;
 				} else {
@@ -171,10 +184,10 @@ public class MathematicalEvaluator {
 					dResult = Math.sin(dOperand);
 				}
 			}
-				
+
 			break;
 		case 't' : 	
-			if(!this.radians){
+			if(!this.resInRadians){
 				if(dOperand % 180 == 0){
 					dResult = 0d;
 				} else if(dOperand % 90 == 0){
@@ -191,7 +204,7 @@ public class MathematicalEvaluator {
 					dResult = Math.tan(dOperand);
 				}
 			}
-		break;
+			break;
 		case 'r' : dResult = Math.sqrt(dOperand);
 		break;
 		case 'e' : dResult = Math.log(dOperand);
@@ -199,12 +212,8 @@ public class MathematicalEvaluator {
 		case 'l' : dResult = Math.log10(dOperand);
 		break;
 		case 'b' : 					//What is acceptable for ACos input?
-			if(!this.radians){
-				if(dOperand <= -1 || dOperand >= 1){
-					throw new IllegalArgumentException();
-				} else {
-					dResult = Math.acos(Math.toRadians(dOperand));
-				}
+			if(!this.resInRadians){
+				dResult = Math.toDegrees(Math.acos(dOperand));
 			} else {	//What is a valid Radian input for acos?
 				if(dOperand == (PI / 2) || dOperand == ((PI * 2))){
 					dResult = 0d;
@@ -213,10 +222,32 @@ public class MathematicalEvaluator {
 				}
 			}
 			break;
+		case 'd' :
+			if(!this.resInRadians){
+				dResult = Math.toDegrees(Math.asin(dOperand));
+			} else {	//What is a valid Radian input for acos?
+				if(dOperand == (PI / 2) || dOperand == ((PI * 2))){
+					dResult = 0d;
+				} else {
+					dResult = Math.asin(dOperand);
+				}
+			}
+			break;
+		case 'a' :
+			if(!this.resInRadians){
+				dResult = Math.toDegrees(Math.atan(dOperand));
+			} else {	//What is a valid Radian input for acos?
+				if(dOperand == (PI / 2) || dOperand == ((PI * 2))){
+					dResult = 0d;
+				} else {
+					dResult = Math.atan(dOperand);
+				}
+			}
+			break;
 		default : 
 			break;
 		}
-		
+
 		result = dResult.toString();
 		return result;
 	}
