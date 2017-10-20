@@ -3,32 +3,32 @@ package ReversePolishNotation;
 import java.util.Stack;
 
 public class MathematicalEvaluator {
-	
-	private boolean radians;
+
+	private boolean resInRadians;
 
 	private final static double PI = Math.PI;
 	private final static double E = Math.E;
-			
+
 	public Stack<Character> opCharList;
 	public Stack<String> opListRev;
 	public Stack<String> opList;
 	public Stack<String> workingList;
 
-	
-	public MathematicalEvaluator(){
+
+	public MathematicalEvaluator(boolean resInRadians){
 		opCharList = new Stack<Character>();
 		opListRev = new Stack<String>();
 		opList = new Stack<String>();
 		workingList = new Stack<String>();
-		this.setRadians(false);					//Input in degrees to start!
-	}
-	
-	public boolean isRadians() {
-		return radians;
+		this.setRadians(resInRadians);					//Input in degrees to start!
 	}
 
-	public void setRadians(boolean radians) {
-		this.radians = radians;
+	public boolean isRadians() {
+		return resInRadians;
+	}
+
+	public void setRadians(boolean resInRadians) {
+		this.resInRadians = resInRadians;
 	}
 
 	public void addRPNToStack(String postfix){
@@ -42,7 +42,7 @@ public class MathematicalEvaluator {
 		for(int i = 0; i < RPN.length; i++){
 			opCharList.push(RPN[i]);
 		}
-		
+
 		opListRev = new Stack<String>();
 		String s1 = "";
 		while(!opCharList.isEmpty()){
@@ -82,9 +82,9 @@ public class MathematicalEvaluator {
 	}
 
 	public String evaluateExpression(String postfix){
-		
+
 		addRPNToStack(postfix);
-		
+
 		workingList = new Stack<String>();
 		int opListSizeNow = opList.size();
 		for(int i = 0; i < opListSizeNow; i++){
@@ -115,13 +115,19 @@ public class MathematicalEvaluator {
 					} else {				//Remove divide by 0
 						result = b / a;
 					}
-				break;
+					break;
 				case "^" : result = Math.pow(b, a);
 				break;
 				default:
 					break;
 				}
-				resString = Double.toString(result);	//Restring the result value and add it back onto the working list
+
+				if(result % 1.0000000000000000 == 0){
+					int iResult = (int)(result);
+					resString = Integer.toString(iResult);	//If a whole number - drop .0
+				} else {
+					resString = Double.toString(result);	//Restring the result value and add it back onto the working list
+				}
 				workingList.push(resString);
 			}
 		}
@@ -131,19 +137,19 @@ public class MathematicalEvaluator {
 		opList.clear();
 		return result;
 	} 
-	
+
 	public String functionEvaluator(char function, String operand){
-	
+
 		String result = "";
 		Double dResult = 0.0;
-		
+
 		Double dOperand = Double.parseDouble(operand);
-		
-		
-		
+
+
+
 		switch(function){
 		case 'c' : 	
-			if(!this.radians){
+			if(!this.resInRadians){
 				if(dOperand == 90d || dOperand == 270d){
 					dResult = 0d;
 				} else {
@@ -158,7 +164,7 @@ public class MathematicalEvaluator {
 			}
 			break;
 		case 's' :  
-			if(!this.radians){
+			if(!this.resInRadians){
 				if(dOperand % 180 == 0){
 					dResult = 0d;
 				} else {
@@ -171,10 +177,10 @@ public class MathematicalEvaluator {
 					dResult = Math.sin(dOperand);
 				}
 			}
-				
+
 			break;
 		case 't' : 	
-			if(!this.radians){
+			if(!this.resInRadians){
 				if(dOperand % 180 == 0){
 					dResult = 0d;
 				} else if(dOperand % 90 == 0){
@@ -191,7 +197,7 @@ public class MathematicalEvaluator {
 					dResult = Math.tan(dOperand);
 				}
 			}
-		break;
+			break;
 		case 'r' : dResult = Math.sqrt(dOperand);
 		break;
 		case 'e' : dResult = Math.log(dOperand);
@@ -199,12 +205,8 @@ public class MathematicalEvaluator {
 		case 'l' : dResult = Math.log10(dOperand);
 		break;
 		case 'b' : 					//What is acceptable for ACos input?
-			if(!this.radians){
-				if(dOperand <= -1 || dOperand >= 1){
-					throw new IllegalArgumentException();
-				} else {
-					dResult = Math.acos(Math.toRadians(dOperand));
-				}
+			if(!this.resInRadians){
+				dResult = Math.toDegrees(Math.acos(dOperand));
 			} else {	//What is a valid Radian input for acos?
 				if(dOperand == (PI / 2) || dOperand == ((PI * 2))){
 					dResult = 0d;
@@ -213,10 +215,32 @@ public class MathematicalEvaluator {
 				}
 			}
 			break;
+		case 'd' :
+			if(!this.resInRadians){
+				dResult = Math.toDegrees(Math.asin(dOperand));
+			} else {	//What is a valid Radian input for acos?
+				if(dOperand == (PI / 2) || dOperand == ((PI * 2))){
+					dResult = 0d;
+				} else {
+					dResult = Math.asin(dOperand);
+				}
+			}
+			break;
+		case 'a' :
+			if(!this.resInRadians){
+				dResult = Math.toDegrees(Math.atan(dOperand));
+			} else {	//What is a valid Radian input for acos?
+				if(dOperand == (PI / 2) || dOperand == ((PI * 2))){
+					dResult = 0d;
+				} else {
+					dResult = Math.atan(dOperand);
+				}
+			}
+			break;
 		default : 
 			break;
 		}
-		
+
 		result = dResult.toString();
 		return result;
 	}

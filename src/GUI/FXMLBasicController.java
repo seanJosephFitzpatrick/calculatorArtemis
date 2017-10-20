@@ -15,6 +15,7 @@ public class FXMLBasicController {
 
 	String answer = "clear";
 	
+
     @FXML
     private Button scientificCalculator;
     @FXML
@@ -86,6 +87,20 @@ public class FXMLBasicController {
 			e.printStackTrace();
 		}
     }
+    @FXML
+    void NavigateFourierCalculator(ActionEvent event) {
+    	try {
+			Parent scientific_calculator_parent = FXMLLoader.load(getClass().getResource("FXMLFourier.fxml"));
+			Scene scientific_calculator_scene = new Scene(scientific_calculator_parent, 800, 400);
+			Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+			stage.hide();
+			stage.setScene(scientific_calculator_scene);
+			stage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
     
     @FXML
     void OnActionBtnFour(ActionEvent event) {
@@ -94,11 +109,12 @@ public class FXMLBasicController {
     
     @FXML
     void OnActionBtnAddition(ActionEvent event) {
-    	if(answer.equals("clear") && !lastValueIsOperator()){
-    		inputTextField.appendText("+");
-    	} else if(!answer.equals("clear")){
+    	if(!answer.equals("clear") && (!answer.equals("Syntax Error"))){
     		inputTextField.appendText(answer + "+");
     		answer = "clear";
+    	} else {
+    		answer = "clear";
+    		inputTextField.appendText("+");
     	}
     }
 
@@ -115,18 +131,26 @@ public class FXMLBasicController {
 
     @FXML
     void OnActionBtnDivision(ActionEvent event) {
-    	if(answer.equals("clear") && !lastValueIsOperator()){
-    		inputTextField.appendText("/");
-    	} else if(!answer.equals("clear")){
+    	if(!answer.equals("clear") && (!answer.equals("Syntax Error"))){
     		inputTextField.appendText(answer + "/");
     		answer = "clear";
+    	} else {
+    		answer = "clear";
+    		inputTextField.appendText("/");
     	}
     }
 
     @FXML
     void OnActionBtnDot(ActionEvent event) {
     	answer = "clear";
-    	inputTextField.appendText(".");
+    	String curr = inputTextField.getText();
+    	if(curr.length() == 0){
+    		inputTextField.appendText("0.");
+    	} else if(!Character.isDigit(curr.charAt(curr.length() -1))){
+    		inputTextField.appendText("0.");
+    	} else {
+    		inputTextField.appendText(".");
+    	}
     }
 
     @FXML
@@ -138,8 +162,8 @@ public class FXMLBasicController {
     @FXML
     void OnActionBtnEquals(ActionEvent event) {
     	inputTextField2.clear();
-    	String result = CalcInterface.run(inputTextField.getText());
-    	answer = result;
+    	String result = CalcInterface.run(inputTextField.getText(), true);	//True here needs to be a boolean 
+    	answer = result;														//Set on the GUI
     	inputTextField2.appendText(result);
     	inputTextField.clear();
     }
@@ -158,11 +182,12 @@ public class FXMLBasicController {
 
     @FXML
     void OnActionBtnMultiplication(ActionEvent event) {
-    	if(answer.equals("clear") && !lastValueIsOperator()){
-    		inputTextField.appendText("*");
-    	} else if(!answer.equals("clear")){
+    	if(!answer.equals("clear") && (!answer.equals("Syntax Error"))){
     		inputTextField.appendText(answer + "*");
     		answer = "clear";
+    	} else {
+    		answer = "clear";
+    		inputTextField.appendText("*");
     	}
     }
 
@@ -198,11 +223,12 @@ public class FXMLBasicController {
 
     @FXML
     void OnActionBtnSubtraction(ActionEvent event) {
-    	if(answer.equals("clear") && !lastValueIsOperator()){
-    		inputTextField.appendText("-");
-    	} else if(!answer.equals("clear") && inputTextField.toString().length() == 0){
+    	if(!answer.equals("clear") && (!answer.equals("Syntax Error"))){
     		inputTextField.appendText(answer + "-");
     		answer = "clear";
+    	} else {
+    		answer = "clear";
+    		inputTextField.appendText("-");
     	}
     }
 

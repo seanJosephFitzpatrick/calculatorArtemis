@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import ReversePolishNotation.CalcInterface;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,6 +19,11 @@ import javafx.stage.Stage;
 
 public class FXMLScientificController implements Initializable {
 
+	String answer = "clear";
+	String memory = "0";
+	String userInput = "";
+	double PI = Math.PI;
+	
     @FXML
     private Button basicCalculator;
     @FXML
@@ -118,6 +124,21 @@ public class FXMLScientificController implements Initializable {
 		}
     	
     }
+    @FXML
+    void NavigateFourierCalculator(ActionEvent event) {
+    	try {
+			Parent basic_calculator_parent = FXMLLoader.load(getClass().getResource("FXMLFourier.fxml"));
+			Scene basic_calculator_scene = new Scene(basic_calculator_parent, 800, 400);
+			Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+			stage.hide();
+			stage.setScene(basic_calculator_scene);
+			stage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    }
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -137,110 +158,206 @@ public class FXMLScientificController implements Initializable {
 	
     @FXML
     void OnActionBtnAddition(ActionEvent event) {
-    	inputTextField3.appendText("+");
+    	if(!answer.equals("clear") && (!answer.equals("Syntax Error"))){
+    		inputTextField3.appendText(answer + "+");
+    		userInput += (answer + "+");
+    		answer = "clear";
+    	} else {
+    		answer = "clear";
+    		inputTextField3.appendText("+");
+    		userInput += "+";
+    	}
     }
 
     @FXML
     void OnActionBtnAllClear(ActionEvent event) {
     	inputTextField3.clear();
     	inputTextField4.clear();
+    	userInput = "";
     }
 
     @FXML
     void OnActionBtnArccos(ActionEvent event) {
-    	
+    	answer = "clear";
+    	inputTextField3.appendText("cos");
+    	userInput += "bac";
     }
 
     @FXML
     void OnActionBtnArcsin(ActionEvent event) {
-
+    	answer = "clear";
+    	inputTextField3.appendText("asin");
+    	userInput += "dsn";
     }
 
     @FXML
     void OnActionBtnArctan(ActionEvent event) {
-
+    	answer = "clear";
+    	inputTextField3.appendText("atan");
+    	userInput += "atn";
     }
 
     @FXML
     void OnActionBtnBack(ActionEvent event) {
-    	inputTextField3.setText(inputTextField3.getText().substring(0, inputTextField3.getText ().length() - 1));
+    	String curr = inputTextField3.getText();
+    	if(!Character.isLetter(curr.charAt(curr.length() - 1))){
+    		curr = curr.substring(0, curr.length() - 1);
+    		inputTextField3.setText(curr);
+    	} else {
+    		int i = 3;
+    		while(i > 0 && curr.length() != 0){
+    			curr = curr.substring(0, curr.length() - 1);
+    			i--;
+    		}
+    		if(curr.length() != 0 && curr.charAt(curr.length() - 1) == 'a'){
+    			curr = curr.substring(0, curr.length() - 1);	//Temporary fix allows acos, asin, atan! longer functions need 
+    		}													//something more robust!
+    		inputTextField3.setText(curr);
+    	}
+    	
+    	if(!Character.isLetter(userInput.charAt(userInput.length() - 1))){
+    		userInput = userInput.substring(0, userInput.length() - 1);
+    	} else {
+    		int i = 3;
+    		while(i > 0 && userInput.length() != 0){
+    			userInput = userInput.substring(0, userInput.length() - 1);
+    			i--;
+    		}
+    	}
+    	System.out.println("Front: " + inputTextField3.getText());
+    	System.out.println("Back: " + userInput);
     }
 
     @FXML
     void OnActionBtnCos(ActionEvent event) {
-    	inputTextField3.appendText("cos(");
+    	answer = "clear";
+    	inputTextField3.appendText("cos");
+    	userInput += "cos";
     }
 
     @FXML
     void OnActionBtnDivide(ActionEvent event) {
-    	inputTextField3.appendText("/");
+    	if(!answer.equals("clear") && (!answer.equals("Syntax Error"))){
+    		inputTextField3.appendText(answer + "/");
+    		userInput += (answer + "/");
+    		answer = "clear";
+    	} else {
+    		answer = "clear";
+    		inputTextField3.appendText("/");
+    		userInput += "/";
+    	}
     }
 
     @FXML
     void OnActionBtnDot(ActionEvent event) {
-    	inputTextField3.appendText(".");
+    	answer = "clear";
+    	String curr = inputTextField3.getText();
+    	if(curr.length() == 0){
+    		inputTextField3.appendText("0.");
+    		userInput += "0.";
+    	} else if(!Character.isDigit(curr.charAt(curr.length() -1))){
+    		inputTextField3.appendText("0.");
+    		userInput += "0.";
+    	} else {
+    		inputTextField3.appendText(".");
+    		userInput += ".";
+    	}
     }
 
     @FXML
     void OnActionBtnEight(ActionEvent event) {
+    	answer = "clear";
     	inputTextField3.appendText("8");
+    	userInput += "8";
     }
 
     @FXML
     void OnActionBtnEquals(ActionEvent event) {
+    	System.out.println(userInput);
     	inputTextField4.clear();
-    	inputTextField4.appendText(inputTextField3.getText());
+    	String result = CalcInterface.run(userInput, true);	//boolean value needs to be set from GUI button
+    	answer = result;
+    	inputTextField4.appendText(result);
     	inputTextField3.clear();
+    	userInput = "";
     }
 
     @FXML
     void OnActionBtnFive(ActionEvent event) {
+    	answer = "clear";
     	inputTextField3.appendText("5");
+    	userInput += "5";
     }
 
     @FXML
     void OnActionBtnFour(ActionEvent event) {
+    	answer = "clear";
     	inputTextField3.appendText("4");
+    	userInput += "4";
     }
 
     @FXML
     void OnActionBtnLeftBrace(ActionEvent event) {
+    	answer = "clear";
     	inputTextField3.appendText("(");
+    	userInput += "(";
     }
 
     @FXML
     void OnActionBtnLogTen(ActionEvent event) {
-    	inputTextField3.appendText("log(");
+    	answer = "clear";
+    	inputTextField3.appendText("log");
+    	userInput += "lgt";
     }
 
     @FXML
     void OnActionBtnMemoryAdd(ActionEvent event) {
-    	
+    	double inMem = Double.parseDouble(memory);
+    	double toAdd = Double.parseDouble(inputTextField4.getText());
+    	memory = "";
+    	memory += Double.toString(inMem + toAdd);
     }
 
     @FXML
     void OnActionBtnMemorySubtract(ActionEvent event) {
-
+    	double inMem = Double.parseDouble(memory);
+    	double toAdd = Double.parseDouble(inputTextField4.getText());
+    	memory = "";
+    	memory += Double.toString(inMem - toAdd);
     }
 
     @FXML
     void OnActionBtnMultiply(ActionEvent event) {
-    	inputTextField3.appendText("*");
+    	if(!answer.equals("clear") && (!answer.equals("Syntax Error"))){
+    		inputTextField3.appendText(answer + "*");
+    		userInput += (answer + "*");
+    		answer = "clear";
+    	} else {
+    		answer = "clear";
+    		inputTextField3.appendText("*");
+    		userInput += "*";
+    	}
     }
 
     @FXML
     void OnActionBtnNaturalLog(ActionEvent event) {
-    	inputTextField3.appendText("ln(");
+    	answer = "clear";
+    	inputTextField3.appendText("ln");
+    	userInput += "elg";
     }
 
     @FXML
     void OnActionBtnNine(ActionEvent event) {
+    	answer = "clear";
     	inputTextField3.appendText("9");
+    	userInput += "9";
     }
 
     @FXML
     void OnActionBtnOne(ActionEvent event) {
+    	answer = "clear";
     	inputTextField3.appendText("1");
+    	userInput += "1";
     }
 
     @FXML
@@ -250,78 +367,119 @@ public class FXMLScientificController implements Initializable {
 
     @FXML
     void OnActionBtnPi(ActionEvent event) {
-    	inputTextField3.appendText("3.141592654");
+    	answer = "clear";
+    	inputTextField3.appendText(Double.toString(PI));
+    	userInput += Double.toString(PI);
     }
 
     @FXML
     void OnActionBtnPowerOf(ActionEvent event) {
-
+    	if(!answer.equals("clear") && (!answer.equals("Syntax Error"))){
+    		inputTextField3.appendText(answer + "\u00B2");
+    		userInput += (answer + "^2");
+    		answer = "clear";
+    	} else {
+    		answer = "clear";
+    		inputTextField3.appendText("\u00B2");
+    		userInput += "^2";
+    	}
     }
 
     @FXML
     void OnActionBtnRecall(ActionEvent event) {
-
+    	if(!memory.equals("0")){
+    		inputTextField3.appendText(memory);
+    		userInput += memory;
+    	}
     }
 
     @FXML
     void OnActionBtnSeven(ActionEvent event) {
+    	answer = "clear";
     	inputTextField3.appendText("7");
+    	userInput += "7";
     }
 
     @FXML
     void OnActionBtnSin(ActionEvent event) {
-    	inputTextField3.appendText("sin(");
+    	answer = "clear";
+    	inputTextField3.appendText("sin");
+    	userInput += "sin";
     }
 
     @FXML
     void OnActionBtnSix(ActionEvent event) {
+    	answer = "clear";
     	inputTextField3.appendText("6");
+    	userInput += "6";
     }
 
     @FXML
     void OnActionBtnSquareRoot(ActionEvent event) {
-
+    	answer = "clear";
+    	inputTextField3.appendText("\u221A");
+    	userInput += "rts";
     }
 
     @FXML
     void OnActionBtnSubtract(ActionEvent event) {
-    	inputTextField3.appendText("-");
+    	if(!answer.equals("clear") && (!answer.equals("Syntax Error"))){
+    		inputTextField3.appendText(answer + "-");
+    		userInput += "-";
+    		answer = "clear";
+    	} else {
+    		answer = "clear";
+    		inputTextField3.appendText("-");
+    		userInput += "-";
+    	}
     }
 
     @FXML
     void OnActionBtnTan(ActionEvent event) {
-    	inputTextField3.appendText("tan(");
+    	answer = "clear";
+    	inputTextField3.appendText("tan");
+    	userInput += "tan";
     }
 
     @FXML
     void OnActionBtnThree(ActionEvent event) {
+    	answer = "clear";
     	inputTextField3.appendText("3");
+    	userInput += "3";
     }
 
     @FXML
     void OnActionBtnTwo(ActionEvent event) {
+    	answer = "clear";
     	inputTextField3.appendText("2");
+    	userInput += "2";
     }
 
     @FXML
     void OnActionBtnZero(ActionEvent event) {
+    	answer = "clear";
     	inputTextField3.appendText("0");
+    	userInput += "0";
     }
 
     @FXML
     void OnActionMemoryClear(ActionEvent event) {
-
+    	memory = "0";
     }
 
     @FXML
     void OnActionMemoryStore(ActionEvent event) {
-
+    	if(inputTextField4.getText().length() != 0){
+    		memory = "";
+    		memory += inputTextField4.getText();
+    	}
     }
 
     @FXML
     void OnActionRightBrace(ActionEvent event) {
+    	answer = "clear";
     	inputTextField3.appendText(")");
+    	userInput += ")";
     }
 
 }
-

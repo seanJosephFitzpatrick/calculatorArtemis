@@ -64,6 +64,7 @@ public class ShuntingYard {
 					
 						// left parenthesis
 					} else if (token.equals("(")) {
+						opLastEncountered = true;
 						stack.push(token);
 
 						// right parenthesis
@@ -90,15 +91,19 @@ public class ShuntingYard {
 		public static boolean checkForFunction(String input){
 			boolean containsFunction = false;;
 			for(int i = 0; i < input.length() && !containsFunction; i++){
-				if(input.charAt(i) == 'c' ||input.charAt(i) == 's' || input.charAt(i) == 't' || input.charAt(i) == 'e' || input.charAt(i) == 'l' || input.charAt(i)  == 'b'){
+				
+				if(input.charAt(i) == 'c' ||input.charAt(i) == 's' || input.charAt(i) == 't' ||
+						input.charAt(i) == 'e' || input.charAt(i) == 'l' || input.charAt(i)  == 'b' ||
+								input.charAt(i) == 'd') {
+					
 					containsFunction = true;
 				}
 			}
 			return containsFunction;
 		}
 		
-		public static String parseFunction(String input, boolean degrees){
-			MathematicalEvaluator ME = new MathematicalEvaluator();
+		public static String parseFunction(String input, boolean resInRadians){
+			MathematicalEvaluator ME = new MathematicalEvaluator(resInRadians);
 
 			
 			String theFunction = "";
@@ -141,7 +146,7 @@ public class ShuntingYard {
 				theFunction = theFunction.substring(4);
 				infixFunction = theFunction;
 					if(ShuntingYard.checkForFunction(theFunction)){	//RECURSION - DOES THE NEWLY MADE TRIG EXPRESSION CONTAIN ANOTHER FUNCTION?
-						theFunction = ShuntingYard.parseFunction(theFunction, degrees);	//ISSUE REMAINS - IF THAT FUNCTION CALLS ANOTHER FUNCTION
+						theFunction = ShuntingYard.parseFunction(theFunction, resInRadians);	//ISSUE REMAINS - IF THAT FUNCTION CALLS ANOTHER FUNCTION
 					}																			
 				theFunction = ShuntingYard.postfix(theFunction);
 				bracketResult = ME.evaluateExpression(theFunction);
@@ -156,7 +161,7 @@ public class ShuntingYard {
 				}												//will be added to working input string here!
 				//System.out.println("xx: " + aWorkingInput);
 				if(checkForFunction(aWorkingInput)){
-					aWorkingInput = parseFunction(aWorkingInput, degrees);
+					aWorkingInput = parseFunction(aWorkingInput, resInRadians);
 				} 
 			theFunction = "";
 			return aWorkingInput;
@@ -173,6 +178,7 @@ public class ShuntingYard {
 			// natural log = elg
 			// log ten = lgt
 			// arc cosine = bac
+			// arc sin = dsn
 			
 			int cosLoc = input.indexOf('c');
 			int sinLoc = input.indexOf('s');
@@ -181,6 +187,8 @@ public class ShuntingYard {
 			int nLogLoc = input.indexOf('e');
 			int tLogLoc = input.indexOf('l');
 			int aCosLoc = input.indexOf('b'); 
+			int aSinLoc = input.indexOf('d');
+			int aTanLoc = input.indexOf('a');
 			
 			int firstLoc = 0;
 			
@@ -212,6 +220,14 @@ public class ShuntingYard {
 				aCosLoc = 1000;
 			}
 			
+			if(aSinLoc == -1){
+				aSinLoc = 1000;
+			}
+			
+			if(aTanLoc == -1){
+				aTanLoc = 1000;
+			}
+			
 			if(cosLoc < sinLoc){
 				firstLoc = cosLoc;
 			} else {
@@ -239,6 +255,14 @@ public class ShuntingYard {
 				firstLoc = aCosLoc;
 			}
 			
+			if(aSinLoc < firstLoc){
+				firstLoc = aSinLoc;
+			}
+			
+			if(aTanLoc < firstLoc){
+				firstLoc = aTanLoc;
+			}
+			
 			cosLoc = input.indexOf('c');
 			sinLoc = input.indexOf('s');
 			tanLoc = input.indexOf('t');
@@ -246,6 +270,8 @@ public class ShuntingYard {
 			nLogLoc = input.indexOf('e');
 			tLogLoc = input.indexOf('l');
 			aCosLoc = input.indexOf('b');
+			aSinLoc = input.indexOf('d');
+			aTanLoc = input.indexOf('a');
 			
 			if(firstLoc == cosLoc){
 				function = 'c';
@@ -261,6 +287,10 @@ public class ShuntingYard {
 				function = 'l';
 			} else if(firstLoc == aCosLoc){
 				function = 'b';
+			} else if(firstLoc == aSinLoc){
+				function = 'd';
+			} else if(firstLoc == aTanLoc){
+				function = 'a';
 			}
 			return function;
 		}
