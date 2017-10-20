@@ -2,6 +2,7 @@ package ReversePolishNotation;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.math.RoundingMode;
 import java.util.Stack;
 
 public class MathematicalEvaluator {
@@ -120,7 +121,7 @@ public class MathematicalEvaluator {
 					break;
 				case "/" : 
 					result = result.add(bBD);
-					result = result.divide(aBD);
+					result = result.divide(aBD, 9, RoundingMode.HALF_UP);
 					break;
 				case "^" : 	
 					result = result.add(new BigDecimal(Math.pow(b, a)));
