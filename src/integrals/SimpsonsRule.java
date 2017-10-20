@@ -16,6 +16,17 @@ public class SimpsonsRule {
 		function = function.replaceAll("x", Double.toString(x));
 		return Double.parseDouble(CalcInterface.run(function, resInRadians));
 	}
+	
+	
+	
+//	public static void main(String[] args){
+//		double a = 3d;
+//		double b = 5d;
+//		String function = "-6*x";
+//		
+//		System.out.println(integrate(a,b,function,true));
+//		
+//	}
 
      static Scanner sc = new Scanner (System.in);
      public static double integrate(double a, double b, String function, boolean resInRadians) {
