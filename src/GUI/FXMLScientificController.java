@@ -12,6 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -97,6 +98,10 @@ public class FXMLScientificController implements Initializable {
     private TextField inputTextField3;
     @FXML
     private TextField inputTextField4;
+    @FXML
+    private RadioButton radiansRadioBtn;
+    @FXML
+    private RadioButton degreesRadioBtn;
 
     @FXML
     void NavigateBasicCalculator(ActionEvent event) {
@@ -119,6 +124,16 @@ public class FXMLScientificController implements Initializable {
 		// TODO Auto-generated method stub
 		
 	}
+	
+    @FXML
+    void OnActionRadiansRadioBtn(ActionEvent event) {
+
+    }
+    
+    @FXML
+    void OnActionDegreesRadioBtn(ActionEvent event) {
+
+    }
 	
     @FXML
     void OnActionBtnAddition(ActionEvent event) {
