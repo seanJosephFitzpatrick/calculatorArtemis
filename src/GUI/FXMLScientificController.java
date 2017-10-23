@@ -25,6 +25,12 @@ public class FXMLScientificController implements Initializable {
 	double PI = Math.PI;
 	
     @FXML
+    private Button scientificCalculator;
+    @FXML
+    private Button integralCalculator;
+    @FXML
+    private Button fourierCalculator;
+    @FXML
     private Button basicCalculator;
     @FXML
     private Button memoryClear;
@@ -125,6 +131,7 @@ public class FXMLScientificController implements Initializable {
 		}
     	
     }
+    
     @FXML
     void NavigateFourierCalculator(ActionEvent event) {
     	try {
@@ -139,6 +146,21 @@ public class FXMLScientificController implements Initializable {
 			e.printStackTrace();
 		}
     	
+    }
+    
+    @FXML
+    void NavigateIntegralCalculator(ActionEvent event) {
+    	try {
+			Parent integral_calculator_parent = FXMLLoader.load(getClass().getResource("FXMLIntegral.fxml"));
+			Scene integral_calculator_scene = new Scene(integral_calculator_parent, 800, 400);
+			Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+			stage.hide();
+			stage.setScene(integral_calculator_scene);
+			stage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
 	@Override
