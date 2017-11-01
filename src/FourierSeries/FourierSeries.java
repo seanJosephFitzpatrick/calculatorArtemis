@@ -43,7 +43,7 @@ public class FourierSeries extends Application {
 //		Parameters variables =getParameters();
 //		String values = variables.getRaw().toString();
 //		String mode = values.substring(1, values.indexOf(",", 1));
-		if(mode.equalsIgnoreCase("1")){
+		if(mode.equalsIgnoreCase("Fourier Series")){
 		plotFourierSeriesofWaveform(stage);
 		}
 		else{

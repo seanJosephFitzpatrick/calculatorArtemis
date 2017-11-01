@@ -13,7 +13,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 
 public class FXMLScientificController implements Initializable {
@@ -23,6 +25,12 @@ public class FXMLScientificController implements Initializable {
 	String userInput = "";
 	double PI = Math.PI;
 	
+    @FXML
+    private Button scientificCalculator;
+    @FXML
+    private Button integralCalculator;
+    @FXML
+    private Button fourierCalculator;
     @FXML
     private Button basicCalculator;
     @FXML
@@ -103,6 +111,12 @@ public class FXMLScientificController implements Initializable {
     private TextField inputTextField3;
     @FXML
     private TextField inputTextField4;
+    @FXML
+    private RadioButton radiansRadionBtn;
+    @FXML
+    private RadioButton degreesRadioBtn;
+  
+
 
     @FXML
     void NavigateBasicCalculator(ActionEvent event) {
@@ -119,6 +133,7 @@ public class FXMLScientificController implements Initializable {
 		}
     	
     }
+    
     @FXML
     void NavigateFourierCalculator(ActionEvent event) {
     	try {
@@ -133,6 +148,21 @@ public class FXMLScientificController implements Initializable {
 			e.printStackTrace();
 		}
     	
+    }
+    
+    @FXML
+    void NavigateIntegralCalculator(ActionEvent event) {
+    	try {
+			Parent integral_calculator_parent = FXMLLoader.load(getClass().getResource("FXMLIntegral.fxml"));
+			Scene integral_calculator_scene = new Scene(integral_calculator_parent, 800, 400);
+			Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+			stage.hide();
+			stage.setScene(integral_calculator_scene);
+			stage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
 	@Override
@@ -152,6 +182,16 @@ public class FXMLScientificController implements Initializable {
     		inputTextField3.appendText("+");
     		userInput += "+";
     	}
+    }
+    
+    @FXML
+    void OnActionDegreesRadioBtn(ActionEvent event) {
+      	radiansRadionBtn.setSelected(false);
+    }
+    
+    @FXML
+    void OnActionRadiansRadioBtn(ActionEvent event) {
+    	degreesRadioBtn.setSelected(false);
     }
 
     @FXML

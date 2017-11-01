@@ -1,9 +1,13 @@
 package GUI;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import ReversePolishNotation.CalcInterface;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -11,13 +15,19 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class FXMLBasicController {
+public class FXMLBasicController implements Initializable {
 
 	String answer = "clear";
 	
 
     @FXML
     private Button scientificCalculator;
+    @FXML
+    private Button integralCalculator;
+    @FXML
+    private Button fourierCalculator;
+    @FXML
+    private Button basicCalculator;
     @FXML
     private Button btnFour;
     @FXML
@@ -87,6 +97,7 @@ public class FXMLBasicController {
 			e.printStackTrace();
 		}
     }
+    
     @FXML
     void NavigateFourierCalculator(ActionEvent event) {
     	try {
@@ -95,6 +106,21 @@ public class FXMLBasicController {
 			Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
 			stage.hide();
 			stage.setScene(scientific_calculator_scene);
+			stage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+    
+    @FXML
+    void NavigateIntegralCalculator(ActionEvent event) {
+    	try {
+			Parent integral_calculator_parent = FXMLLoader.load(getClass().getResource("FXMLIntegral.fxml"));
+			Scene integral_calculator_scene = new Scene(integral_calculator_parent, 800, 400);
+			Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+			stage.hide();
+			stage.setScene(integral_calculator_scene);
 			stage.show();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -249,5 +275,11 @@ public class FXMLBasicController {
     	answer = "clear";
     	inputTextField.appendText("0");
     }
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
