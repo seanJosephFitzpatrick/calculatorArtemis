@@ -186,12 +186,12 @@ public class FXMLScientificController implements Initializable {
     
     @FXML
     void OnActionDegreesRadioBtn(ActionEvent event) {
-  
+      	radiansRadionBtn.setSelected(false);
     }
     
     @FXML
     void OnActionRadiansRadioBtn(ActionEvent event) {
-    	
+    	degreesRadioBtn.setSelected(false);
     }
 
     @FXML
