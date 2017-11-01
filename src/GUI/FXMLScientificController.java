@@ -15,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 
 public class FXMLScientificController implements Initializable {
@@ -114,6 +115,7 @@ public class FXMLScientificController implements Initializable {
     private RadioButton radiansRadionBtn;
     @FXML
     private RadioButton degreesRadioBtn;
+  
 
 
     @FXML
@@ -184,12 +186,12 @@ public class FXMLScientificController implements Initializable {
     
     @FXML
     void OnActionDegreesRadioBtn(ActionEvent event) {
-
+      	radiansRadionBtn.setSelected(false);
     }
     
     @FXML
     void OnActionRadiansRadioBtn(ActionEvent event) {
-
+    	degreesRadioBtn.setSelected(false);
     }
 
     @FXML
