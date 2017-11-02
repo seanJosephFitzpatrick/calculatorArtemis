@@ -39,6 +39,8 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Basic Calculator" GridPane.columnSpan="3" GridPane.rowIndex="1" />
@@ -71,6 +73,7 @@
             <Label text="Set A" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
             <Label text="Set B" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="3" />
             <Label text="Result" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="8" />
+            <Button fx:id="btnClear" mnemonicParsing="false" onAction="#OnActionBtnClear" text="Clear" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.rowIndex="11" />
          </children>
       </GridPane>
    </children>

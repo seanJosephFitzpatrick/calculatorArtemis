@@ -92,6 +92,14 @@ public class FXMLBitWiseController implements Initializable {
     @FXML
     private TextField inputTextFieldResultSet;
     @FXML
+    private Button btnClear;
+    
+    @FXML
+    void OnActionBtnClear(ActionEvent event) {
+
+    }
+    
+    @FXML
     void OnActionBtnComponentOfA(ActionEvent event) {
     	btnComponentOfA.setToggleGroup(group);
     }
