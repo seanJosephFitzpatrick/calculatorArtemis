@@ -2,8 +2,8 @@ package bitstringsets;
 
 public class SetTests {
 	public static void main(String[] args){
-		String S = "ABCD1aasf2GAGADGAe5e6";
-		String T = "BCD3KJAGFKJafasfdgsg63636SDGG";
+		String S = "ABCD1aasf23";
+		String T = "BCD3KJAGFKJafasf";
 		String intersection = "";
 		String union = "";
 		String sComplement = "";
