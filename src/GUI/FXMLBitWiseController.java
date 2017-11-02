@@ -99,6 +99,7 @@ public class FXMLBitWiseController implements Initializable {
 
     }
     
+    
     @FXML
     void OnActionBtnComponentOfA(ActionEvent event) {
     	btnComponentOfA.setToggleGroup(group);
