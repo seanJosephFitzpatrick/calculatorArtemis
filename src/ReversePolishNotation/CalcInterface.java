@@ -9,24 +9,35 @@ public class CalcInterface {
 	//Commented Main method to move to GUI input!
 	
 	public static void main(String[] args){
+		boolean radians = true;
 		String workingInput;
 		String storedInput;
 		String input = "";
+		System.out.print("1 - if input is DEGREES, 2 - if RADS: ");
+		int inputChoice = sc.nextInt();
+		if(inputChoice == 1){
+			radians = true;
+		} else if(inputChoice == 2){
+			radians = false;
+		} else {
+			throw new IllegalArgumentException();
+		}
 		System.out.println("Please input an expression to evaluate: ");
 		System.out.println("(Leave a space between each token)");
 		System.out.print("Input: ");
+		sc.nextLine();
 		input = sc.nextLine();
 		storedInput = input;
 		input = formatInputString(input); // method to format input string to allow any number of spaces.
 		workingInput = input;
 		if(ShuntingYard.checkForFunction(workingInput)){
-			workingInput = ShuntingYard.parseFunction(workingInput, true);	//true = result in rads!
+			workingInput = ShuntingYard.parseFunction(workingInput, radians);	//true = result in rads!
 			input = formatInputString(workingInput);
 		}
 		String postfix = "";
 		postfix = ShuntingYard.postfix(workingInput);
 		System.out.println(postfix);
-		MathematicalEvaluator ME = new MathematicalEvaluator(true);
+		MathematicalEvaluator ME = new MathematicalEvaluator(radians);
 		System.out.println("----------");
 		System.out.println("Input Expression: " + formatInputString(storedInput));
 		ME.evaluateExpression(postfix);
@@ -36,7 +47,7 @@ public class CalcInterface {
 		ME.workingList.clear();
 	}
 	
-	public static String run(String expression, boolean resInRadians){
+	public static String run(String expression, boolean radians){
 		String workingInput;
 		String storedInput;
 		String input = expression;
@@ -44,11 +55,11 @@ public class CalcInterface {
 		try {
 			storedInput = input;
 			input = formatInputString(input); 										//method to format input string to allow any number of spaces.
-			MathematicalEvaluator ME = new MathematicalEvaluator(resInRadians);
+			MathematicalEvaluator ME = new MathematicalEvaluator(radians);
 			System.out.println(input);
 			workingInput = input;
 			if(ShuntingYard.checkForFunction(workingInput)){
-				workingInput = ShuntingYard.parseFunction(workingInput, true);
+				workingInput = ShuntingYard.parseFunction(workingInput, radians);
 				input = formatInputString(workingInput);
 			}
 			String postfix = "";
