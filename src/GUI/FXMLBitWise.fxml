@@ -2,9 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
@@ -51,8 +50,7 @@
             <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Logical Functions" GridPane.columnSpan="3" GridPane.rowIndex="7" />
             <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Constant Values" GridPane.columnSpan="3" GridPane.rowIndex="8" />
             <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Conversions" GridPane.columnSpan="3" GridPane.rowIndex="9" />
-            <TextField fx:id="inputTextField" alignment="BASELINE_RIGHT" GridPane.columnIndex="4" GridPane.columnSpan="8" GridPane.rowIndex="4" />
-            <TextField fx:id="inputTextField2" prefHeight="83.0" prefWidth="120.0" GridPane.columnIndex="4" GridPane.columnSpan="8" GridPane.rowIndex="1" GridPane.rowSpan="3" />
+            <TextField fx:id="inputTextFieldSetB" alignment="BASELINE_RIGHT" GridPane.columnIndex="4" GridPane.columnSpan="8" GridPane.rowIndex="3" />
             <Label alignment="CENTER" prefHeight="100.0" prefWidth="400.0" text="Mode" GridPane.columnSpan="2">
                <font>
                   <Font size="16.0" />
@@ -63,51 +61,13 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <Button fx:id="btnleftBrace" mnemonicParsing="false" onAction="#OnActionBtnLeftBrace" prefHeight="100.0" prefWidth="400.0" text="(" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="5" />
-            <Button fx:id="btnSeven" mnemonicParsing="false" onAction="#OnActionBtnSeven" prefHeight="100.0" prefWidth="400.0" text="7" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="6" />
-            <Button fx:id="btnFour" mnemonicParsing="false" onAction="#OnActionBtnFour" prefHeight="100.0" prefWidth="400.0" text="4" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="7" />
-            <Button fx:id="btnOne" mnemonicParsing="false" onAction="#OnActionBtnOne" prefHeight="100.0" prefWidth="400.0" text="1" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="8" />
-            <Button fx:id="btnZero" mnemonicParsing="false" onAction="#OnActionBtnZero" prefHeight="100.0" prefWidth="400.0" text="0" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="9" />
-            <Button fx:id="btnRightBrace" mnemonicParsing="false" onAction="#OnActionBtnRightBrace" prefHeight="100.0" prefWidth="400.0" text=")" GridPane.columnIndex="6" GridPane.columnSpan="2" GridPane.rowIndex="5" />
-            <Button fx:id="btnDot" mnemonicParsing="false" onAction="#OnActionBtnDot" prefHeight="100.0" prefWidth="400.0" text="." GridPane.columnIndex="6" GridPane.columnSpan="2" GridPane.rowIndex="9" />
-            <Button fx:id="btnEight" mnemonicParsing="false" onAction="#OnActionBtnEight" prefHeight="100.0" prefWidth="400.0" text="8" GridPane.columnIndex="6" GridPane.columnSpan="2" GridPane.rowIndex="6" />
-            <Button fx:id="btnFive" mnemonicParsing="false" onAction="#OnActionBtnFive" prefHeight="100.0" prefWidth="400.0" text="5" GridPane.columnIndex="6" GridPane.columnSpan="2" GridPane.rowIndex="7" />
-            <Button fx:id="btnTwo" mnemonicParsing="false" onAction="#OnActionBtnTwo" prefHeight="100.0" prefWidth="400.0" text="2" GridPane.columnIndex="6" GridPane.columnSpan="2" GridPane.rowIndex="8" />
-            <Button id="pad1" fx:id="btnAllClear" mnemonicParsing="false" onAction="#OnActionBtnAllClear" prefHeight="100.0" prefWidth="400.0" text="AC" GridPane.columnIndex="8" GridPane.columnSpan="2" GridPane.rowIndex="5" />
-            <Button id="pad1" fx:id="btnNine" mnemonicParsing="false" onAction="#OnActionBtnNine" prefHeight="100.0" prefWidth="400.0" text="9" GridPane.columnIndex="8" GridPane.columnSpan="2" GridPane.rowIndex="6" />
-            <Button id="pad1" fx:id="btnSix" mnemonicParsing="false" onAction="#OnActionBtnSix" prefHeight="100.0" prefWidth="400.0" text="6" GridPane.columnIndex="8" GridPane.columnSpan="2" GridPane.rowIndex="7" />
-            <Button id="pad1" fx:id="btnThree" mnemonicParsing="false" onAction="#OnActionBtnThree" prefHeight="100.0" prefWidth="400.0" text="3" GridPane.columnIndex="8" GridPane.columnSpan="2" GridPane.rowIndex="8" />
-            <Button id="pad1" fx:id="btnBack" mnemonicParsing="false" onAction="#OnActionBtnBack" prefHeight="100.0" prefWidth="400.0" text="DEL" GridPane.columnIndex="10" GridPane.columnSpan="2" GridPane.rowIndex="5" />
-            <Button id="pad1" fx:id="btnDivision" mnemonicParsing="false" onAction="#OnActionBtnDivision" prefHeight="100.0" prefWidth="400.0" GridPane.columnIndex="10" GridPane.columnSpan="2" GridPane.rowIndex="6" />
-            <Button id="pad1" fx:id="btnMultiplication" mnemonicParsing="false" onAction="#OnActionBtnMultiplication" prefHeight="100.0" prefWidth="400.0" GridPane.columnIndex="10" GridPane.columnSpan="2" GridPane.rowIndex="7" />
-            <Button id="pad1" fx:id="btnSubtraction" mnemonicParsing="false" onAction="#OnActionBtnSubtraction" prefHeight="100.0" prefWidth="400.0" GridPane.columnIndex="10" GridPane.columnSpan="2" GridPane.rowIndex="8" />
-            <Button id="pad1" fx:id="btnEquals" mnemonicParsing="false" onAction="#OnActionBtnEquals" prefHeight="100.0" prefWidth="400.0" GridPane.columnIndex="8" GridPane.columnSpan="2" GridPane.rowIndex="9" />
-            <Button id="pad1" fx:id="btnAddition" mnemonicParsing="false" onAction="#OnActionBtnAddition" prefHeight="100.0" prefWidth="400.0" GridPane.columnIndex="10" GridPane.columnSpan="2" GridPane.rowIndex="9" />
-            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.columnSpan="2" GridPane.rowIndex="6">
-               <image>
-                  <Image url="@../../Images/divide.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.columnSpan="2" GridPane.rowIndex="7">
-               <image>
-                  <Image url="@../../Images/multiply.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.columnSpan="2" GridPane.rowIndex="8">
-               <image>
-                  <Image url="@../../Images/subtraction.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.columnSpan="2" GridPane.rowIndex="9">
-               <image>
-                  <Image url="@../../Images/addition.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.columnSpan="2" GridPane.rowIndex="9">
-               <image>
-                  <Image url="@../../Images/equal.png" />
-               </image>
-            </ImageView>
+            <TextField fx:id="inputTextFieldSetA" GridPane.columnIndex="4" GridPane.columnSpan="8" GridPane.rowIndex="1" />
+            <RadioButton fx:id="btnIntersectionA_B" mnemonicParsing="false" onAction="#OnActionBtnIntersectionA_B" text="Intersection A+B" GridPane.columnIndex="8" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="5" />
+            <RadioButton fx:id="btnUnionA_B" mnemonicParsing="false" onAction="#OnActionBtnUnionA_B" text="Union A+B" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="5" />
+            <RadioButton fx:id="btnDifferenceA_B" mnemonicParsing="false" onAction="#OnActionBtnDifferenceA_B" text="Difference A+B" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="6" />
+            <RadioButton fx:id="btnComponentOfA" mnemonicParsing="false" onAction="#OnActionBtnComponentOfA" text="Component of A" GridPane.columnIndex="8" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="6" />
+            <RadioButton fx:id="btnComponentOfB" mnemonicParsing="false" onAction="#OnActionBtnComponentOfB" text="Component of B" GridPane.columnIndex="8" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="7" />
+            <TextField fx:id="inputTextFieldResultSet" GridPane.columnIndex="4" GridPane.columnSpan="8" GridPane.rowIndex="9" />
          </children>
       </GridPane>
    </children>

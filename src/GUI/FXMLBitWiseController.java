@@ -12,6 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -72,6 +73,46 @@ public class FXMLBitWiseController implements Initializable {
     private Button btnAllClear;
     @FXML
     private Button btnBack;
+    @FXML
+    private TextField inputTextFieldSetB;
+    @FXML
+    private TextField inputTextFieldSetA;
+    @FXML
+    private RadioButton btnIntersectionA_B;
+    @FXML
+    private RadioButton btnUnionA_B;
+    @FXML
+    private RadioButton btnDifferenceA_B;
+    @FXML
+    private RadioButton btnComponentOfA;
+    @FXML
+    private RadioButton btnComponentOfB;
+    @FXML
+    private TextField inputTextFieldResultSet;
+    @FXML
+    void OnActionBtnComponentOfA(ActionEvent event) {
+
+    }
+
+    @FXML
+    void OnActionBtnComponentOfB(ActionEvent event) {
+
+    }
+
+    @FXML
+    void OnActionBtnDifferenceA_B(ActionEvent event) {
+
+    }
+
+    @FXML
+    void OnActionBtnIntersectionA_B(ActionEvent event) {
+
+    }
+
+    @FXML
+    void OnActionBtnUnionA_B(ActionEvent event) {
+
+    }
 
     boolean lastValueIsOperator(){
     	boolean recentOperator = false;
