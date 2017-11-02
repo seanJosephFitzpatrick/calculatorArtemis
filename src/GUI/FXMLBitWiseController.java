@@ -138,7 +138,6 @@ public class FXMLBitWiseController implements Initializable {
     	String sBits = AlphabeticalSets.generateBitString(inputTextFieldSetA.getText());
     	String tBits = AlphabeticalSets.generateBitString(inputTextFieldSetB.getText());
     	String intersection = AlphabeticalSets.getIntersection(sBits, tBits);
-    	intersection = AlphabeticalSets.generateElements(intersection);
     	inputTextFieldResultSet.setText(intersection);
     }
 

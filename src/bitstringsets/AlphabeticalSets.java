@@ -31,7 +31,7 @@ public class AlphabeticalSets {
 	}
 	
 	public static String getIntersection(String set1, String set2){
-		return BitString.bitWiseAnd(set1, set2);
+		return generateElements(BitString.bitWiseAnd(set1, set2));
 	}
 	
 	public static String getUnion(String set1, String set2){
