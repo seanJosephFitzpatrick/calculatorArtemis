@@ -12,6 +12,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+
+
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLScientificController">
    <children>
       <GridPane prefWidth="200.0">
@@ -49,7 +51,7 @@
             <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Scientific Calculator" GridPane.columnSpan="3" GridPane.rowIndex="2" />
             <Button fx:id="integralCalculator" mnemonicParsing="false" onAction="#NavigateIntegralCalculator" prefHeight="100.0" prefWidth="600.0" text="Integral Calculator" GridPane.columnSpan="3" GridPane.rowIndex="3" />
             <Button fx:id="fourierCalculator" mnemonicParsing="false" onAction="#NavigateFourierCalculator" prefHeight="100.0" prefWidth="600.0" text="Fourier Calculator" GridPane.columnSpan="3" GridPane.rowIndex="4" />
-            <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Memory Functions" GridPane.columnSpan="3" GridPane.rowIndex="5" />
+            <Button fx:id="bitWiseCalculator" mnemonicParsing="false" onAction="#NavigateBitWiseCalculator" prefHeight="100.0" prefWidth="600.0" text="BitWise Functions" GridPane.columnSpan="3" GridPane.rowIndex="5" />
             <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Power Functions" GridPane.columnSpan="3" GridPane.rowIndex="6" />
             <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Logical Functions" GridPane.columnSpan="3" GridPane.rowIndex="7" />
             <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Constant Values" GridPane.columnSpan="3" GridPane.rowIndex="8" />

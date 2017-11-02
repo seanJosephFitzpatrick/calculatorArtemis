@@ -20,22 +20,30 @@ public class QuadraticEquation {
 	}
 	
 	public static String caclQuadratic(double a, double b, double c) {
+		String x0 = "";
+		String y0 = "";
+		String x1 = "";
+		String x2 = "";
+		String x = "";
 		String result = "";
 		double D = Math.pow(b, 2) - 4*a*c;
 		if (D > 0) {
+					
+			x1 = CalcInterface.run("((-1 * " + b + ") + rts (" + D + "))/(2 * " + a + ")", true);	//x1 = (-b + Math.sqrt(D))/(2 * a)
+			x2 = CalcInterface.run("((-1 * " + b + ") - rts (" + D + "))/(2 * " + a + ")", true);	//x2 = (-b - Math.sqrt(D))/(2 * a)
 			
-			double x1 = (-b + Math.sqrt(D))/(2 * a);
-			double x2 = (-b - Math.sqrt(D))/(2 * a);
-			result = "x1 = " + Double.toString(x1) + "  x2 = " + Double.toString(x2);
+			y0 = CalcInterface.run("(-1 * (" + D + " / 4 * " + a + "))", true);						//y0 = -D / (4 * a)
+			x0 = CalcInterface.run("(-1 * (" + b + " / 2 * " + a + "))", true);						//x0 = -(b / 2 * a)
+			
 		}else if (D == 0) {
-			double x = -(b / 2 * a);
-			result = Double.toString(x);
+			
+			x = CalcInterface.run("(-1 * (" + b + " / 2 * " + a + "))", true);						//x = -(b / 2 * a)
+			
 		}
 		else {
 			System.out.println("Error!");
 		}
-		result = CalcInterface.run(result, true);
-		
+
 		return result ;
 		
 		
