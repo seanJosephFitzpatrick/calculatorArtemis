@@ -56,6 +56,23 @@ public class FXMLFourierController implements Initializable {
     private TextField inputTextFieldMode;
     @FXML
     private TextField inputTextFieldWaveform;
+    @FXML
+    private Button bitWiseCalculator;
+    
+    @FXML
+    void NavigateBitWiseCalculator(ActionEvent event) {
+    	try {
+			Parent scientific_calculator_parent = FXMLLoader.load(getClass().getResource("FXMLBitWise.fxml"));
+			Scene scientific_calculator_scene = new Scene(scientific_calculator_parent, 800, 400);
+			Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+			stage.hide();
+			stage.setScene(scientific_calculator_scene);
+			stage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
     
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
