@@ -52,7 +52,7 @@
             <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Logical Functions" GridPane.columnSpan="3" GridPane.rowIndex="7" />
             <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Constant Values" GridPane.columnSpan="3" GridPane.rowIndex="8" />
             <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Conversions" GridPane.columnSpan="3" GridPane.rowIndex="9" />
-            <TextField fx:id="inputTextFieldSetB" alignment="BASELINE_RIGHT" GridPane.columnIndex="4" GridPane.columnSpan="8" GridPane.rowIndex="4" />
+            <TextField fx:id="inputTextFieldSetB" GridPane.columnIndex="4" GridPane.columnSpan="8" GridPane.rowIndex="4" />
             <Label alignment="CENTER" prefHeight="100.0" prefWidth="400.0" text="Mode" GridPane.columnSpan="2">
                <font>
                   <Font size="16.0" />
