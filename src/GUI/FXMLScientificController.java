@@ -115,9 +115,24 @@ public class FXMLScientificController implements Initializable {
     private RadioButton radiansRadionBtn;
     @FXML
     private RadioButton degreesRadioBtn;
+    @FXML
+    private Button bitWiseCalculator;
+    
+    @FXML
+    void NavigateBitWiseCalculator(ActionEvent event) {
+    	try {
+			Parent scientific_calculator_parent = FXMLLoader.load(getClass().getResource("FXMLBitWise.fxml"));
+			Scene scientific_calculator_scene = new Scene(scientific_calculator_parent, 800, 400);
+			Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+			stage.hide();
+			stage.setScene(scientific_calculator_scene);
+			stage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
   
-
-
     @FXML
     void NavigateBasicCalculator(ActionEvent event) {
     	try {
