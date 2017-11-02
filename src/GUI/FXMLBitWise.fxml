@@ -50,7 +50,7 @@
             <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Logical Functions" GridPane.columnSpan="3" GridPane.rowIndex="7" />
             <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Constant Values" GridPane.columnSpan="3" GridPane.rowIndex="8" />
             <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Conversions" GridPane.columnSpan="3" GridPane.rowIndex="9" />
-            <TextField fx:id="inputTextFieldSetB" alignment="BASELINE_RIGHT" GridPane.columnIndex="4" GridPane.columnSpan="8" GridPane.rowIndex="3" />
+            <TextField fx:id="inputTextFieldSetB" alignment="BASELINE_RIGHT" GridPane.columnIndex="4" GridPane.columnSpan="8" GridPane.rowIndex="4" />
             <Label alignment="CENTER" prefHeight="100.0" prefWidth="400.0" text="Mode" GridPane.columnSpan="2">
                <font>
                   <Font size="16.0" />
@@ -61,13 +61,16 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="inputTextFieldSetA" GridPane.columnIndex="4" GridPane.columnSpan="8" GridPane.rowIndex="1" />
+            <TextField fx:id="inputTextFieldSetA" GridPane.columnIndex="4" GridPane.columnSpan="8" GridPane.rowIndex="2" />
             <RadioButton fx:id="btnIntersectionA_B" mnemonicParsing="false" onAction="#OnActionBtnIntersectionA_B" text="Intersection A+B" GridPane.columnIndex="8" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="5" />
             <RadioButton fx:id="btnUnionA_B" mnemonicParsing="false" onAction="#OnActionBtnUnionA_B" text="Union A+B" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="5" />
             <RadioButton fx:id="btnDifferenceA_B" mnemonicParsing="false" onAction="#OnActionBtnDifferenceA_B" text="Difference A+B" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="6" />
             <RadioButton fx:id="btnComponentOfA" mnemonicParsing="false" onAction="#OnActionBtnComponentOfA" text="Component of A" GridPane.columnIndex="8" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="6" />
             <RadioButton fx:id="btnComponentOfB" mnemonicParsing="false" onAction="#OnActionBtnComponentOfB" text="Component of B" GridPane.columnIndex="8" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="7" />
             <TextField fx:id="inputTextFieldResultSet" GridPane.columnIndex="4" GridPane.columnSpan="8" GridPane.rowIndex="9" />
+            <Label text="Set A" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
+            <Label text="Set B" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="3" />
+            <Label text="Result" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="8" />
          </children>
       </GridPane>
    </children>

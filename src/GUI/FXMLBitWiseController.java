@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 
 public class FXMLBitWiseController implements Initializable {
@@ -77,6 +78,7 @@ public class FXMLBitWiseController implements Initializable {
     private TextField inputTextFieldSetB;
     @FXML
     private TextField inputTextFieldSetA;
+    final ToggleGroup group = new ToggleGroup();
     @FXML
     private RadioButton btnIntersectionA_B;
     @FXML
@@ -91,27 +93,27 @@ public class FXMLBitWiseController implements Initializable {
     private TextField inputTextFieldResultSet;
     @FXML
     void OnActionBtnComponentOfA(ActionEvent event) {
-
+    	btnComponentOfA.setToggleGroup(group);
     }
 
     @FXML
     void OnActionBtnComponentOfB(ActionEvent event) {
-
+    	btnComponentOfB.setToggleGroup(group);
     }
 
     @FXML
     void OnActionBtnDifferenceA_B(ActionEvent event) {
-
+    	btnDifferenceA_B.setToggleGroup(group);
     }
 
     @FXML
     void OnActionBtnIntersectionA_B(ActionEvent event) {
-
+    	btnIntersectionA_B.setToggleGroup(group);
     }
 
     @FXML
     void OnActionBtnUnionA_B(ActionEvent event) {
-
+    	btnUnionA_B.setToggleGroup(group);
     }
 
     boolean lastValueIsOperator(){
