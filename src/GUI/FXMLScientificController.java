@@ -117,6 +117,7 @@ public class FXMLScientificController implements Initializable {
     private RadioButton degreesRadioBtn;
     @FXML
     private Button bitWiseCalculator;
+    final ToggleGroup group = new ToggleGroup();
     
     @FXML
     void NavigateBitWiseCalculator(ActionEvent event) {
@@ -201,12 +202,12 @@ public class FXMLScientificController implements Initializable {
     
     @FXML
     void OnActionDegreesRadioBtn(ActionEvent event) {
-      	radiansRadionBtn.setSelected(false);
+    	degreesRadioBtn.setToggleGroup(group);
     }
     
     @FXML
     void OnActionRadiansRadioBtn(ActionEvent event) {
-    	degreesRadioBtn.setSelected(false);
+    	radiansRadionBtn.setToggleGroup(group);
     }
 
     @FXML
