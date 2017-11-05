@@ -1,9 +1,10 @@
-/GUI/
-<<<<<<< HEAD
 /CombinationsAndProbability/
-/ReversePolishNotation/
-/bitstringsets/
+/DCT/
 /Equations/
-=======
+/FourierSeries/
+/GUI/
+/InfixToPostfixDG/
 /ReversePolishNotation/
->>>>>>> refs/heads/SeanFitz
+/ReversePolishNotationTest/
+/bitstringsets/
+/integrals/
