@@ -215,7 +215,7 @@ public class MathematicalEvaluator {
 		case 'l' : dResult = Math.log10(dOperand);
 		break;
 		case 'b' : 					//What is acceptable for ACos input?
-			if(this.radians){
+			if(!this.radians){
 				dResult = Math.acos(dOperand);
 			} else {	//What is a valid Radian input for acos?
 				if(dOperand == (PI / 2) || dOperand == ((PI * 2))){
@@ -226,7 +226,7 @@ public class MathematicalEvaluator {
 			}
 			break;
 		case 'd' :
-			if(!this.radians){
+			if(this.radians){
 				dResult = Math.toDegrees(Math.asin(dOperand));
 			} else {	//What is a valid Radian input for acos?
 				if(dOperand == (PI / 2) || dOperand == ((PI * 2))){
@@ -237,7 +237,7 @@ public class MathematicalEvaluator {
 			}
 			break;
 		case 'a' :
-			if(this.radians){
+			if(!this.radians){
 				dResult = Math.atan(dOperand);
 			} else {	
 				if(dOperand == (PI / 2) || dOperand == ((PI * 2))){

@@ -221,7 +221,7 @@ public class FXMLScientificController implements Initializable {
     @FXML
     void OnActionBtnArccos(ActionEvent event) {
     	answer = "clear";
-    	inputTextField3.appendText("cos");
+    	inputTextField3.appendText("acos");
     }
 
     @FXML
@@ -306,6 +306,7 @@ public class FXMLScientificController implements Initializable {
     @FXML
     void OnActionBtnEquals(ActionEvent event) {
     	userInput = EquationGenerator.formatEquation(inputTextField3.getText());
+    	System.out.println(userInput);
     	inputTextField4.clear();
     	String result = CalcInterface.run(userInput, radians);	//boolean value needs to be set from GUI button
     	answer = result;
