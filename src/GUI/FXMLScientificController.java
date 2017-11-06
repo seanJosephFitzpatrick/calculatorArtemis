@@ -239,19 +239,21 @@ public class FXMLScientificController implements Initializable {
     @FXML
     void OnActionBtnBack(ActionEvent event) {
     	String curr = inputTextField3.getText();
-    	if(!Character.isLetter(curr.charAt(curr.length() - 1))){
-    		curr = curr.substring(0, curr.length() - 1);
-    		inputTextField3.setText(curr);
-    	} else {
-    		int i = 3;
-    		while(i > 0 && curr.length() != 0){
+    	if(inputTextField3.getText().toString().length() > 0){
+    		if(!Character.isLetter(curr.charAt(curr.length() - 1))){
     			curr = curr.substring(0, curr.length() - 1);
-    			i--;
+    			inputTextField3.setText(curr);
+    		} else {
+    			int i = 3;
+    			while(i > 0 && curr.length() != 0){
+    				curr = curr.substring(0, curr.length() - 1);
+    				i--;
+    			}
+    			if(curr.length() != 0 && curr.charAt(curr.length() - 1) == 'a'){
+    				curr = curr.substring(0, curr.length() - 1);	//Temporary fix allows acos, asin, atan! longer functions need 
+    			}													//something more robust!
+    			inputTextField3.setText(curr);
     		}
-    		if(curr.length() != 0 && curr.charAt(curr.length() - 1) == 'a'){
-    			curr = curr.substring(0, curr.length() - 1);	//Temporary fix allows acos, asin, atan! longer functions need 
-    		}													//something more robust!
-    		inputTextField3.setText(curr);
     	}
     	
 //    	if(!Character.isLetter(userInput.charAt(userInput.length() - 1))){
@@ -305,14 +307,16 @@ public class FXMLScientificController implements Initializable {
 
     @FXML
     void OnActionBtnEquals(ActionEvent event) {
-    	userInput = EquationGenerator.formatEquation(inputTextField3.getText());
-    	System.out.println(userInput);
-    	inputTextField4.clear();
-    	String result = CalcInterface.run(userInput, radians);	//boolean value needs to be set from GUI button
-    	answer = result;
-    	inputTextField4.appendText(result);
-    	inputTextField3.clear();
-    	userInput = "";
+    	if(inputTextField3.getText().toString().length() > 0){
+    		userInput = EquationGenerator.formatEquation(inputTextField3.getText());
+    		System.out.println(userInput);
+    		inputTextField4.clear();
+    		String result = CalcInterface.run(userInput, radians);	//boolean value needs to be set from GUI button
+    		answer = result;
+    		inputTextField4.appendText(result);
+    		inputTextField3.clear();
+    		userInput = "";
+    	}
     }
 
     @FXML
