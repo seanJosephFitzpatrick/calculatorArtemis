@@ -216,12 +216,12 @@ public class MathematicalEvaluator {
 		break;
 		case 'b' : 					//What is acceptable for ACos input?
 			if(this.radians){
-				dResult = Math.toDegrees(Math.acos(dOperand));
+				dResult = Math.acos(dOperand);
 			} else {	//What is a valid Radian input for acos?
 				if(dOperand == (PI / 2) || dOperand == ((PI * 2))){
 					dResult = 0d;
 				} else {
-					dResult = Math.acos(dOperand);
+					dResult = Math.toDegrees(Math.acos(dOperand));
 				}
 			}
 			break;
