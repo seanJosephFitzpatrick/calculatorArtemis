@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /GUI/
 <<<<<<< HEAD
 /CombinationsAndProbability/
@@ -8,4 +9,15 @@
 /ReversePolishNotation/
 >>>>>>> refs/heads/SeanFitz
 /FourierSeries/
+=======
+/CombinationsAndProbability/
+/DCT/
+/Equations/
+/FourierSeries/
+/GUI/
+/InfixToPostfixDG/
+/ReversePolishNotation/
+/ReversePolishNotationTest/
+/bitstringsets/
+>>>>>>> refs/heads/master
 /integrals/

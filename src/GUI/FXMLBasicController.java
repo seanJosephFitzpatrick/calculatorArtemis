@@ -168,7 +168,9 @@ public class FXMLBasicController implements Initializable {
     
     @FXML
     void OnActionBtnBack(ActionEvent event) {
-    	inputTextField.setText(inputTextField.getText().substring(0, inputTextField.getText ().length() - 1));
+    	if(inputTextField.getText().toString().length() > 0){
+    		inputTextField.setText(inputTextField.getText().substring(0, inputTextField.getText ().length() - 1));
+    	}
     }
 
     @FXML
@@ -203,11 +205,13 @@ public class FXMLBasicController implements Initializable {
 
     @FXML
     void OnActionBtnEquals(ActionEvent event) {
-    	inputTextField2.clear();
-    	String result = CalcInterface.run(inputTextField.getText(), true);	//True here needs to be a boolean 
-    	answer = result;														//Set on the GUI
-    	inputTextField2.appendText(result);
-    	inputTextField.clear();
+    	if(inputTextField.getText().toString().length() > 0){
+    		inputTextField2.clear();
+    		String result = CalcInterface.run(inputTextField.getText(), true);	//True here needs to be a boolean 
+    		answer = result;														//Set on the GUI
+    		inputTextField2.appendText(result);
+    		inputTextField.clear();
+    	}
     }
 
     @FXML

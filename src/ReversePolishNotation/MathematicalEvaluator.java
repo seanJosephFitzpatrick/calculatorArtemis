@@ -144,6 +144,9 @@ public class MathematicalEvaluator {
 			}
 		}
 		String output = workingList.pop();				//Result of any operation passed to evaluation! 
+		if(output.length() > 12){
+			output = output.substring(0, 12);
+		}
 		System.out.println("Result: " + output);	//At end this should be the only value on the stack
 		workingList.clear();
 		opList.clear();
@@ -215,18 +218,18 @@ public class MathematicalEvaluator {
 		case 'l' : dResult = Math.log10(dOperand);
 		break;
 		case 'b' : 					//What is acceptable for ACos input?
-			if(this.radians){
-				dResult = Math.toDegrees(Math.acos(dOperand));
+			if(!this.radians){
+				dResult = Math.acos(dOperand);
 			} else {	//What is a valid Radian input for acos?
 				if(dOperand == (PI / 2) || dOperand == ((PI * 2))){
 					dResult = 0d;
 				} else {
-					dResult = Math.acos(dOperand);
+					dResult = Math.toDegrees(Math.acos(dOperand));
 				}
 			}
 			break;
 		case 'd' :
-			if(!this.radians){
+			if(this.radians){
 				dResult = Math.toDegrees(Math.asin(dOperand));
 			} else {	//What is a valid Radian input for acos?
 				if(dOperand == (PI / 2) || dOperand == ((PI * 2))){
@@ -237,7 +240,7 @@ public class MathematicalEvaluator {
 			}
 			break;
 		case 'a' :
-			if(this.radians){
+			if(!this.radians){
 				dResult = Math.atan(dOperand);
 			} else {	
 				if(dOperand == (PI / 2) || dOperand == ((PI * 2))){

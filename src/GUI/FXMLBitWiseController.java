@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import ReversePolishNotation.CalcInterface;
+import bitstringsets.AlphabeticalSets;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -96,32 +97,59 @@ public class FXMLBitWiseController implements Initializable {
     
     @FXML
     void OnActionBtnClear(ActionEvent event) {
-
+    	inputTextFieldSetA.clear();
+    	inputTextFieldSetA.clear();
+    	inputTextFieldResultSet.clear();
     }
      
     @FXML
     void OnActionBtnComponentOfA(ActionEvent event) {
     	btnComponentOfA.setToggleGroup(group);
+    	inputTextFieldResultSet.clear();
+    	String sBits = AlphabeticalSets.generateBitString(inputTextFieldSetA.getText());
+    	String complement = AlphabeticalSets.getComplement(sBits);
+    	complement = AlphabeticalSets.generateElements(complement);
+    	inputTextFieldResultSet.setText(complement);
     }
 
     @FXML
     void OnActionBtnComponentOfB(ActionEvent event) {
     	btnComponentOfB.setToggleGroup(group);
+    	inputTextFieldResultSet.clear();
+    	String tBits = AlphabeticalSets.generateBitString(inputTextFieldSetB.getText());
+    	String complement = AlphabeticalSets.getComplement(tBits);
+    	complement = AlphabeticalSets.generateElements(complement);
+    	inputTextFieldResultSet.setText(complement);
     }
 
     @FXML
     void OnActionBtnDifferenceA_B(ActionEvent event) {
     	btnDifferenceA_B.setToggleGroup(group);
+    	String S = inputTextFieldSetA.getText();
+    	String T = inputTextFieldSetB.getText();
+    	String difference = AlphabeticalSets.getDifference(S, T);
+    	inputTextFieldResultSet.setText(difference);
     }
 
     @FXML
     void OnActionBtnIntersectionA_B(ActionEvent event) {
     	btnIntersectionA_B.setToggleGroup(group);
+    	inputTextFieldResultSet.clear();
+    	String sBits = AlphabeticalSets.generateBitString(inputTextFieldSetA.getText());
+    	String tBits = AlphabeticalSets.generateBitString(inputTextFieldSetB.getText());
+    	String intersection = AlphabeticalSets.getIntersection(sBits, tBits);
+    	inputTextFieldResultSet.setText(intersection);
     }
 
     @FXML
     void OnActionBtnUnionA_B(ActionEvent event) {
     	btnUnionA_B.setToggleGroup(group);
+    	inputTextFieldResultSet.clear();
+    	String sBits = AlphabeticalSets.generateBitString(inputTextFieldSetA.getText());
+    	String tBits = AlphabeticalSets.generateBitString(inputTextFieldSetB.getText());
+    	String union = AlphabeticalSets.getUnion(sBits, tBits);
+    	union = AlphabeticalSets.generateElements(union);
+    	inputTextFieldResultSet.setText(union);
     }
 
     boolean lastValueIsOperator(){

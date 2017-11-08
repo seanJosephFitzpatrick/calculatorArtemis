@@ -1,11 +1,7 @@
 package integrals;
 
-/**
- * 
- * 
- * https://www.princeton.edu/
- * 
- */
+
+
 
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -60,7 +56,7 @@ public class SimpsonsRule {
         double x = a + h * i;
         sum += 2.0 / 3.0 * f(x, function, resInRadians);
      }
-     System.out.println(sum*h);
+     
      
      IntegralPlotter.setIntegralPointsX(xValues);
      IntegralPlotter.setIntegralPointsY(yValues);

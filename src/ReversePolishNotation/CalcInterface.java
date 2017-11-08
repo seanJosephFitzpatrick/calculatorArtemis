@@ -104,17 +104,6 @@ public class CalcInterface {
 		return input;//return formatted string of tokens
 	}
 	
-//	public static boolean resultInRadsDegs(){
-//		System.out.print("Input in Radians or Degrees? r/d: ");
-//		String radsDegs = sc.next();
-//		boolean degrees = false;
-//		if(radsDegs.equalsIgnoreCase("R")){
-//			degrees = false;
-//		} else if(radsDegs.equalsIgnoreCase("D")){
-//			degrees = true;
-//		}
-//		return degrees;
-//	}
 	
 }
 

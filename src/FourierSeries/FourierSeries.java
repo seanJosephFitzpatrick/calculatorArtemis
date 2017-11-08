@@ -324,6 +324,7 @@ public class FourierSeries extends Application {
 					(axes.getXAxis().getUpperBound() - 
 							axes.getXAxis().getLowerBound());
 
+		
 			return x * sx + tx;
 		}
 
@@ -332,7 +333,6 @@ public class FourierSeries extends Application {
 			double sy = axes.getPrefHeight() / 
 					(axes.getYAxis().getUpperBound() - 
 							axes.getYAxis().getLowerBound());
-
 			return -y * sy + ty;
 		}
 
