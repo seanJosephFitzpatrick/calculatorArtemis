@@ -264,9 +264,12 @@ public class FourierSeries extends Application {
 		private double generateYCoordinates(double phase, double period, double amplitude, double x) {
 			// TODO Auto-generated method stub
 			double y=0;
-			String y1=CalcInterface.run(amplitude+"*sin(2*3.14"+"*(1/"+period+")*"+x+"+("+phase+"*(3.14/180)))", false);
+			String x1=String.format("%f", x);
+			String y1=CalcInterface.run(amplitude+"*sin(2*"+Math.PI+"*(1/"+period+")*("+x1+")+("+phase+"*("+Math.PI+"/180)))", false);
 			//y=amplitude*Math.sin(2*Math.PI*(1/period)*x+(phase*(Math.PI/180)));
-			return Double.parseDouble(y1);
+			double result=Double.parseDouble(y1);
+			
+			return result;
 			
 		}
 
