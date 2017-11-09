@@ -197,7 +197,7 @@ public class FXMLFourierController implements Initializable {
    	   	FourierSeries.setAmplitude(Integer.parseInt(inputTextFieldHarAmp.getText()));
 
    	   	FourierSeries.setPeriod(Double.parseDouble(inputTextFieldPeriod.getText()));
-   	   	FourierSeries.setPhase(Double.parseDouble(inputTextFieldPeriod.getText()));
+   	   	FourierSeries.setPhase(Double.parseDouble(inputTextFieldPhase.getText()));
 
 	    	
 	    	Application app2 =  new FourierSeries(); 

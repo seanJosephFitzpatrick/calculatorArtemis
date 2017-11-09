@@ -25,7 +25,7 @@ import java.util.Scanner;
 import java.util.function.Function;
 
 
-// Java 8 code
+
 
 public class FourierSeries extends Application {
 	private static String waveform;
@@ -42,10 +42,7 @@ public class FourierSeries extends Application {
 
 	@Override
 	public void start(final Stage stage) {
-		
-//		Parameters variables =getParameters();
-//		String values = variables.getRaw().toString();
-//		String mode = values.substring(1, values.indexOf(",", 1));
+	
 		if(mode.equalsIgnoreCase("Fourier Series")){
 		plotFourierSeriesofWaveform(stage);
 		}
@@ -56,25 +53,12 @@ public class FourierSeries extends Application {
 
 	private void plotUserDefinedWaveform( Stage stage) {
 		// TODO Auto-generated method stub
-//		values=values.substring(values.indexOf(",")+2);
-//		System.out.println(values);
-//		String amplitudeText = values.substring(0, values.indexOf(","));
-//		values=values.substring(values.indexOf(",")+2);
-//		System.out.println(values);
-//		
-//		String periodText = values.substring(0, values.indexOf(","));
-//		values=values.substring(values.indexOf(",")+2);
-//		System.out.println(values);
-//		String phaseText = values.substring(0, values.indexOf("]"));
-		
-//		double amplitude = Double.parseDouble(amplitudeText);
-//		int phase = Integer.parseInt(phaseText);
-//		double period = Double.parseDouble(periodText);
+
 
 		Axes axes = new Axes(
 				500, 350,
 				-(period+period*.5), (period+period*.5), period*0.2,
-				-(amplitude+amplitude*.25), (amplitude+amplitude*.25), 1
+				-(10), (10), 1
 				);
 
 
@@ -100,18 +84,7 @@ public class FourierSeries extends Application {
 		}
 
 	private void plotFourierSeriesofWaveform( Stage stage) {
-		// TODO Auto-generated method stub
-//		values=values.substring(values.indexOf(",")+2);
-//		
-//		String waveform = values.substring(0, values.indexOf(","));
-//		values=values.substring(values.indexOf(",")+2);
-//		
-//		String harmonicString = values.substring(0, values.indexOf(","));
-//		values=values.substring(values.indexOf(",")+2);
-//		String periodText = values.substring(0, values.indexOf("]"));
-//		
-//		int harmonic = Integer.parseInt(harmonicString);
-//		double period = Double.parseDouble(periodText);
+
 
 		Axes axes = new Axes(
 				500, 350,
