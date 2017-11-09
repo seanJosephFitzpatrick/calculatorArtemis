@@ -77,7 +77,7 @@ public class FXMLIntegralController implements Initializable {
     @FXML
     void OnActionCalculate(ActionEvent event) throws Exception {
     	//inputTextField.clear();
-    	outputTextField.appendText(inputTextField.getText().toString());
+    	
     	SimpsonsRule rule = new SimpsonsRule();
 
     	double valueA = Double.parseDouble(topValueTextField.getText().toString());

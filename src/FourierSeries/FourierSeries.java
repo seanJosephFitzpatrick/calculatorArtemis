@@ -268,7 +268,7 @@ public class FourierSeries extends Application {
 			String y1=CalcInterface.run(amplitude+"*sin(2*"+Math.PI+"*(1/"+period+")*("+x1+")+("+phase+"*("+Math.PI+"/180)))", false);
 			//y=amplitude*Math.sin(2*Math.PI*(1/period)*x+(phase*(Math.PI/180)));
 			double result=Double.parseDouble(y1);
-			
+			//double result=y;
 			return result;
 			
 		}
