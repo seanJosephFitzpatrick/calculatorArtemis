@@ -87,6 +87,8 @@ public class MathematicalEvaluator {
 
 	public String evaluateExpression(String postfix){
 
+		MathContext mc = new MathContext(9, RoundingMode.HALF_UP);
+		
 		addRPNToStack(postfix);
 
 		workingList = new Stack<String>();
@@ -131,7 +133,6 @@ public class MathematicalEvaluator {
 					break;
 				}
 				
-				MathContext mc = new MathContext(9, RoundingMode.HALF_UP);
 				result.round(mc);
 				
 				if(result.doubleValue() % 1.0000000000000000 == 0){
