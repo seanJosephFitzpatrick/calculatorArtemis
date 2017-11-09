@@ -168,13 +168,13 @@ public class MathematicalEvaluator {
 		switch(function){
 		case 'c' : 	
 			if(this.radians){
-				if(dOperand == 90d || dOperand == 270d){
-					dResult = 0d;
-					bdResult = new BigDecimal((dResult), mc);
-				} else {
+				//if(dOperand == 90d || dOperand == 270d){
+					//dResult = 0d;
+					//bdResult = new BigDecimal((dResult), mc);
+				//} else //{
 					dResult = Math.cos(Math.toRadians(dOperand));
 					bdResult = new BigDecimal((dResult), mc);
-				}
+				//}
 			} else {
 				if(dOperand == (PI / 2) || dOperand == ((PI * 2))){
 					dResult = 0d;

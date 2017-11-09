@@ -75,7 +75,7 @@ public class SimpsonsRule {
     	IntegralPlotter.getIntegralPointsX().clear();
     	IntegralPlotter.getIntegralPointsY().clear();
 
-    	 for(;a<=b;a+=0.1){
+    	 for(;a<=b;a+=0.2){
     		 xValues.add(a);
     		String a1=String.format("%f", a);
     		 String function1 = function.replaceAll("x", a1);
