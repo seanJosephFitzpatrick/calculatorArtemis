@@ -24,6 +24,8 @@ import javafx.scene.input.MouseEvent;
 import java.util.Scanner;
 import java.util.function.Function;
 
+import ReversePolishNotation.CalcInterface;
+
 
 
 
@@ -34,6 +36,7 @@ public class FourierSeries extends Application {
 	private static String mode;
 	private static double amplitude;
 	private static double phase;
+	private static double xAxis=1.0;
 	
 
 	public static void main(String[] args) {
@@ -57,7 +60,7 @@ public class FourierSeries extends Application {
 
 		Axes axes = new Axes(
 				500, 350,
-				-(period+period*.5), (period+period*.5), period*0.2,
+				-(xAxis), (xAxis), (xAxis*0.2),
 				-(10), (10), 1
 				);
 
@@ -65,7 +68,7 @@ public class FourierSeries extends Application {
 
 		Plot plot = new Plot(
 				phase,period,amplitude,
-				-(period+period*.5), (period+period*.5), period*0.01,
+				-(xAxis), (xAxis), period*0.01,
 				axes
 				);
 
@@ -261,8 +264,9 @@ public class FourierSeries extends Application {
 		private double generateYCoordinates(double phase, double period, double amplitude, double x) {
 			// TODO Auto-generated method stub
 			double y=0;
-			y=amplitude*Math.sin(2*Math.PI*(1/period)*x+(phase*(Math.PI/180)));
-			return y;
+			String y1=CalcInterface.run(amplitude+"*sin(2*3.14"+"*(1/"+period+")*"+x+"+("+phase+"*(3.14/180)))", false);
+			//y=amplitude*Math.sin(2*Math.PI*(1/period)*x+(phase*(Math.PI/180)));
+			return Double.parseDouble(y1);
 			
 		}
 
