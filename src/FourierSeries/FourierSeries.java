@@ -275,11 +275,14 @@ public class FourierSeries extends Application {
 
 		private double generateYCoordinates(int harmonic, double period, String waveform, double x) {
 			double y=0;
-			
+			String y1;
+			String x1=String.format("%f", x);
+
 			if(waveform.equalsIgnoreCase("square")){
 				for(int har=1;har<=harmonic;har+=2)
 					{
-						y=y+(6/(Math.PI*har))*(Math.sin(x*(1/period)*2*Math.PI*har));
+					//y1=CalcInterface.run(y, false);
+					y=y+(6/(Math.PI*har))*(Math.sin(x*(1/period)*2*Math.PI*har));
 
 					}
 			}

@@ -74,15 +74,16 @@ public class FXMLIntegralController implements Initializable {
     }
 
     @FXML
-    void OnActionCalculate(ActionEvent event) {
+    void OnActionCalculate(ActionEvent event) throws Exception {
     	//inputTextField.clear();
-    	outputTextField.appendText(inputTextField.getText());
+    	//outputTextField.appendText(inputTextField.getText());
     	SimpsonsRule rule = new SimpsonsRule();
 
     	double valueA = Double.parseDouble(topValueTextField.getText());
     	System.out.println("value a : "+ valueA);
        	double valueB = Double.parseDouble(bottomValueTextField.getText());
-    	double answer = rule.integrate(valueA, valueB, inputTextField.getText(), true);	//boolean value needs to be assigned
+
+    	double answer = SimpsonsRule.integrate(valueA, valueB, inputTextField.getText(), true);	//boolean value needs to be assigned
     	System.out.println(answer);
     	String str = Double.toString(answer);											//from GUI
     	outputTextField.clear();

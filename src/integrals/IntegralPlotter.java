@@ -19,6 +19,7 @@ public class IntegralPlotter extends Application {
 
 	@Override public void start(Stage stage) {
         stage.setTitle("Simpsons Rule");
+        
        
         NumberAxis xAxis = new NumberAxis("x values",Collections.min(integralPointsX), Collections.max(integralPointsX), (Collections.max(integralPointsX)-Collections.min(integralPointsX))*.1);
         NumberAxis yAxis = new NumberAxis("y values",Collections.min(integralPointsY), Collections.max(integralPointsY), (Collections.max(integralPointsY)-Collections.min(integralPointsY))*.1);
