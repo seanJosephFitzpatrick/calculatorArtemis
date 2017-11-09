@@ -187,6 +187,22 @@ public class FXMLFourierController implements Initializable {
 	        Stage anotherStage = new Stage();
 	        app2.start(anotherStage);
 	   }else{
+		   
+		 FourierSeries.setMode(outputFourier);
+
+	    	
+       	
+       	
+
+   	   	FourierSeries.setAmplitude(Integer.parseInt(inputTextFieldHarAmp.getText()));
+
+   	   	FourierSeries.setPeriod(Double.parseDouble(inputTextFieldPeriod.getText()));
+   	   	FourierSeries.setPhase(Double.parseDouble(inputTextFieldPeriod.getText()));
+
+	    	
+	    	Application app2 =  new FourierSeries(); 
+	        Stage anotherStage = new Stage();
+	        app2.start(anotherStage);
 
 	    }    	
     }
