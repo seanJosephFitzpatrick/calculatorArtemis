@@ -4,6 +4,8 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import MatrixCalculations.MatrixCalculator;
+
 public class DCT {
 
 	static Scanner sc = new Scanner(System.in);
@@ -50,9 +52,9 @@ public class DCT {
 
 			System.out.println("Matrix M: ");
 			printArray(grids.get(i));
-
-			loadT();
 			System.out.println();
+
+			Generate_T();
 			System.out.println("Matrix T: ");
 			printArray(T);
 			System.out.println();
@@ -96,16 +98,15 @@ public class DCT {
 		}
 	}
 
-	public static void loadT(){
-		for(int i = 0; i < N; i++){
-			for(int j = 0; j < N; j++){
-				if(i == 0){
-					T[i][j] = (int) (1 / (Math.sqrt(n)));
-					Tt[j][i] = T[i][j];
+	public static void Generate_T() {
+		for (int r = 0; r < N; r++) {
+			for (int c = 0; c < N; c++) {
+				if (r == 0) {
+					T[r][c] = 1 / Math.sqrt(n);
 				} else {
-					T[i][j] = (int) (Math.sqrt(2 / n) * Math.cos(((2 * j + 1) * i * Math.PI) / (2 * n)));
-					Tt[j][i] = T[i][j];
+					T[r][c] = Math.sqrt((2.0/n)) * Math.cos((r*Math.PI * (2*c+1)) / (2 * n));
 				}
+				Tt[c][r] = T[r][c];
 			}
 		}
 	}
@@ -127,8 +128,6 @@ public class DCT {
 				qx2[i][j] = Math.round(qx2[i][j]);
 				if(qx2[i][j] > 255){
 					qx2[i][j] = 255;
-				} else if(qx2[i][j] < 1){
-					qx2[i][j] = 1;
 				}
 			}
 		}
@@ -198,6 +197,3 @@ public class DCT {
 		run(grid);
 	}
 }
-
-
-

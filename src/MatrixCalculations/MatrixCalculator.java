@@ -17,7 +17,7 @@ public class MatrixCalculator {
 		{1, 6, 6, 7}};
 
 	//MULTIPLICATION - DOUBLE
-	public double[][] multiplyMatrix(double[][] A, double[][] B) {
+	public static double[][] multiplyMatrix(double[][] A, double[][] B) {
 		int aRows = A.length;
 		int aColumns = A[0].length;
 		int bRows = B.length;
@@ -46,7 +46,7 @@ public class MatrixCalculator {
 	}
 
 	//MULTIPLICATION - INT
-	public int[][] multiplyMatrix(int[][] A, int[][] B) {
+	public static int[][] multiplyMatrix(int[][] A, int[][] B) {
 		int aRows = A.length;
 		int aColumns = A[0].length;
 		int bRows = B.length;
@@ -75,7 +75,7 @@ public class MatrixCalculator {
 	}
 
 	//ADDITION - DOUBLE
-	public double[][] addMatrix(double[][] A, double[][] B) {
+	public static double[][] addMatrix(double[][] A, double[][] B) {
 		int aRows = A.length;
 		int aColumns = A[0].length;
 		int bRows = B.length;
@@ -105,7 +105,7 @@ public class MatrixCalculator {
 	}
 
 	//ADDITION - INT
-	public int[][] addMatrix(int[][] A, int[][] B) {
+	public static int[][] addMatrix(int[][] A, int[][] B) {
 		int aRows = A.length;
 		int aColumns = A[0].length;
 		int bRows = B.length;
@@ -135,7 +135,7 @@ public class MatrixCalculator {
 	}
 
 	//SUBTRACTION - DOUBLE
-	public double[][] subtractMatrix(double[][] A, double[][] B) {
+	public static double[][] subtractMatrix(double[][] A, double[][] B) {
 		int aRows = A.length;
 		int aColumns = A[0].length;
 		int bRows = B.length;
@@ -166,7 +166,7 @@ public class MatrixCalculator {
 	}
 
 	//SUBTRACTION - INT
-	public int[][] subtractMatrix(int[][] A, int[][] B) {
+	public static int[][] subtractMatrix(int[][] A, int[][] B) {
 		int aRows = A.length;
 		int aColumns = A[0].length;
 		int bRows = B.length;
