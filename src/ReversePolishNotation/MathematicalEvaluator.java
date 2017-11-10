@@ -2,11 +2,13 @@ package ReversePolishNotation;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.math.MathContext;
+import java.math.RoundingMode;
 import java.util.Stack;
 
 public class MathematicalEvaluator {
 
-	private boolean resInRadians;
+	private boolean radians;
 
 	private final static double PI = Math.PI;
 	private final static double E = Math.E;
@@ -17,20 +19,20 @@ public class MathematicalEvaluator {
 	public Stack<String> workingList;
 
 
-	public MathematicalEvaluator(boolean resInRadians){
+	public MathematicalEvaluator(boolean radians){
 		opCharList = new Stack<Character>();
 		opListRev = new Stack<String>();
 		opList = new Stack<String>();
 		workingList = new Stack<String>();
-		this.setRadians(resInRadians);					//Input in degrees to start!
+		this.setRadians(radians);					//Input in degrees to start!
 	}
 
 	public boolean isRadians() {
-		return resInRadians;
+		return radians;
 	}
 
 	public void setRadians(boolean resInRadians) {
-		this.resInRadians = resInRadians;
+		this.radians = resInRadians;
 	}
 
 	public void addRPNToStack(String postfix){
@@ -85,6 +87,8 @@ public class MathematicalEvaluator {
 
 	public String evaluateExpression(String postfix){
 
+		MathContext mc = new MathContext(9, RoundingMode.HALF_UP);
+		
 		addRPNToStack(postfix);
 
 		workingList = new Stack<String>();
@@ -120,7 +124,7 @@ public class MathematicalEvaluator {
 					break;
 				case "/" : 
 					result = result.add(bBD);
-					result = result.divide(aBD);
+					result = result.divide(aBD, 9, RoundingMode.HALF_UP);
 					break;
 				case "^" : 	
 					result = result.add(new BigDecimal(Math.pow(b, a)));
@@ -128,7 +132,9 @@ public class MathematicalEvaluator {
 				default:
 					break;
 				}
-
+				
+				result.round(mc);
+				
 				if(result.doubleValue() % 1.0000000000000000 == 0){
 					BigInteger iRes = result.toBigInteger();
 					resString = iRes.toString();	//If a whole number - drop .0
@@ -139,6 +145,11 @@ public class MathematicalEvaluator {
 			}
 		}
 		String output = workingList.pop();				//Result of any operation passed to evaluation! 
+
+		//		if(output.length() > 12){
+//			output = output.substring(0, 12);
+//		}
+		
 		System.out.println("Result: " + output);	//At end this should be the only value on the stack
 		workingList.clear();
 		opList.clear();
@@ -147,108 +158,138 @@ public class MathematicalEvaluator {
 
 	public String functionEvaluator(char function, String operand){
 
+		MathContext mc = new MathContext(12, RoundingMode.HALF_UP);
+		
 		String result = "";
 		Double dResult = 0.0;
 
+		BigDecimal bdResult;
+		
 		Double dOperand = Double.parseDouble(operand);
-
-
 
 		switch(function){
 		case 'c' : 	
-			if(!this.resInRadians){
-				if(dOperand == 90d || dOperand == 270d){
-					dResult = 0d;
-				} else {
+			if(this.radians){
+				//if(dOperand == 90d || dOperand == 270d){
+					//dResult = 0d;
+					//bdResult = new BigDecimal((dResult), mc);
+				//} else //{
 					dResult = Math.cos(Math.toRadians(dOperand));
-				}
+					bdResult = new BigDecimal((dResult), mc);
+				//}
 			} else {
 				if(dOperand == (PI / 2) || dOperand == ((PI * 2))){
 					dResult = 0d;
+					bdResult = new BigDecimal((dResult), mc);
 				} else {
 					dResult = Math.cos(dOperand);
+					bdResult = new BigDecimal((dResult), mc);
 				}
 			}
 			break;
 		case 's' :  
-			if(!this.resInRadians){
+			if(this.radians){
 				if(dOperand % 180 == 0){
 					dResult = 0d;
+					bdResult = new BigDecimal((dResult), mc);
 				} else {
 					dResult = Math.sin(Math.toRadians(dOperand));
+					bdResult = new BigDecimal((dResult), mc);
 				}
 			} else {
 				if(dOperand % PI == 0){
 					dResult = 0d;
+					bdResult = new BigDecimal((dResult), mc);
 				} else {
 					dResult = Math.sin(dOperand);
+					bdResult = new BigDecimal((dResult), mc);
 				}
 			}
 
 			break;
 		case 't' : 	
-			if(!this.resInRadians){
+			if(this.radians){
 				if(dOperand % 180 == 0){
 					dResult = 0d;
+					bdResult = new BigDecimal((dResult), mc);
 				} else if(dOperand % 90 == 0){
 					throw new IllegalArgumentException();
 				} else {
 					dResult = Math.tan(Math.toRadians(dOperand));
+					bdResult = new BigDecimal((dResult), mc);
 				}
 			} else {
 				if(dOperand % PI == 0){
 					dResult = 0d;
+					bdResult = new BigDecimal((dResult), mc);
 				} else if(dOperand % ((PI) / 2) == 0) {
 					dResult = 0d;
+					bdResult = new BigDecimal((dResult), mc);
 				} else {
 					dResult = Math.tan(dOperand);
+					bdResult = new BigDecimal((dResult), mc);
 				}
 			}
 			break;
-		case 'r' : dResult = Math.sqrt(dOperand);
+		case 'r' : 	dResult = Math.sqrt(dOperand);
+					bdResult = new BigDecimal((dResult), mc);
 		break;
-		case 'e' : dResult = Math.log(dOperand);
+		case 'e' : 	dResult = Math.log(dOperand);
+					bdResult = new BigDecimal((dResult), mc);
 		break;
-		case 'l' : dResult = Math.log10(dOperand);
+		case 'l' : 	dResult = Math.log10(dOperand);
+					bdResult = new BigDecimal((dResult), mc);
 		break;
 		case 'b' : 					//What is acceptable for ACos input?
-			if(!this.resInRadians){
-				dResult = Math.toDegrees(Math.acos(dOperand));
+			if(!this.radians){
+				dResult = Math.acos(dOperand);
+				bdResult = new BigDecimal((dResult), mc);
 			} else {	//What is a valid Radian input for acos?
 				if(dOperand == (PI / 2) || dOperand == ((PI * 2))){
 					dResult = 0d;
+					bdResult = new BigDecimal((dResult), mc);
 				} else {
-					dResult = Math.acos(dOperand);
+					dResult = Math.toDegrees(Math.acos(dOperand));
+					bdResult = new BigDecimal((dResult), mc);
 				}
 			}
 			break;
 		case 'd' :
-			if(!this.resInRadians){
+			if(this.radians){
 				dResult = Math.toDegrees(Math.asin(dOperand));
+				bdResult = new BigDecimal((dResult), mc);
 			} else {	//What is a valid Radian input for acos?
 				if(dOperand == (PI / 2) || dOperand == ((PI * 2))){
 					dResult = 0d;
+					bdResult = new BigDecimal((dResult), mc);
 				} else {
 					dResult = Math.asin(dOperand);
+					bdResult = new BigDecimal((dResult), mc);
 				}
 			}
 			break;
 		case 'a' :
-			if(!this.resInRadians){
-				dResult = Math.toDegrees(Math.atan(dOperand));
-			} else {	//What is a valid Radian input for acos?
+			if(!this.radians){
+				dResult = Math.atan(dOperand);
+				bdResult = new BigDecimal((dResult), mc);
+			} else {	
 				if(dOperand == (PI / 2) || dOperand == ((PI * 2))){
 					dResult = 0d;
+					bdResult = new BigDecimal((dResult), mc);
 				} else {
-					dResult = Math.atan(dOperand);
+					dResult = Math.toDegrees(Math.atan(dOperand));
+					bdResult = new BigDecimal((dResult), mc);
 				}
 			}
 			break;
-		default : 
+		default : bdResult = new BigDecimal(0);
 			break;
 		}
+		
+		bdResult.stripTrailingZeros();
 
-		result = dResult.toString();
+		
+		result = bdResult.toString();
 		return result;
 	}
 

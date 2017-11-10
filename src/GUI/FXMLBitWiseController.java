@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import ReversePolishNotation.CalcInterface;
+import bitstringsets.AlphabeticalSets;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,15 +13,16 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 
-public class FXMLBasicController implements Initializable {
+public class FXMLBitWiseController implements Initializable {
 
 	String answer = "clear";
 	
-    @FXML
-    private Button bitWiseCalculator;
+
     @FXML
     private Button scientificCalculator;
     @FXML
@@ -73,20 +75,81 @@ public class FXMLBasicController implements Initializable {
     private Button btnAllClear;
     @FXML
     private Button btnBack;
+    @FXML
+    private TextField inputTextFieldSetB;
+    @FXML
+    private TextField inputTextFieldSetA;
+    final ToggleGroup group = new ToggleGroup();
+    @FXML
+    private RadioButton btnIntersectionA_B;
+    @FXML
+    private RadioButton btnUnionA_B;
+    @FXML
+    private RadioButton btnDifferenceA_B;
+    @FXML
+    private RadioButton btnComponentOfA;
+    @FXML
+    private RadioButton btnComponentOfB;
+    @FXML
+    private TextField inputTextFieldResultSet;
+    @FXML
+    private Button btnClear;
     
     @FXML
-    void NavigateBitWiseCalculator(ActionEvent event) {
-    	try {
-			Parent scientific_calculator_parent = FXMLLoader.load(getClass().getResource("FXMLBitWise.fxml"));
-			Scene scientific_calculator_scene = new Scene(scientific_calculator_parent, 800, 400);
-			Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
-			stage.hide();
-			stage.setScene(scientific_calculator_scene);
-			stage.show();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+    void OnActionBtnClear(ActionEvent event) {
+    	inputTextFieldSetA.clear();
+    	inputTextFieldSetA.clear();
+    	inputTextFieldResultSet.clear();
+    }
+     
+    @FXML
+    void OnActionBtnComponentOfA(ActionEvent event) {
+    	btnComponentOfA.setToggleGroup(group);
+    	inputTextFieldResultSet.clear();
+    	String sBits = AlphabeticalSets.generateBitString(inputTextFieldSetA.getText());
+    	String complement = AlphabeticalSets.getComplement(sBits);
+    	complement = AlphabeticalSets.generateElements(complement);
+    	inputTextFieldResultSet.setText(complement);
+    }
+
+    @FXML
+    void OnActionBtnComponentOfB(ActionEvent event) {
+    	btnComponentOfB.setToggleGroup(group);
+    	inputTextFieldResultSet.clear();
+    	String tBits = AlphabeticalSets.generateBitString(inputTextFieldSetB.getText());
+    	String complement = AlphabeticalSets.getComplement(tBits);
+    	complement = AlphabeticalSets.generateElements(complement);
+    	inputTextFieldResultSet.setText(complement);
+    }
+
+    @FXML
+    void OnActionBtnDifferenceA_B(ActionEvent event) {
+    	btnDifferenceA_B.setToggleGroup(group);
+    	String S = inputTextFieldSetA.getText();
+    	String T = inputTextFieldSetB.getText();
+    	String difference = AlphabeticalSets.getDifference(S, T);
+    	inputTextFieldResultSet.setText(difference);
+    }
+
+    @FXML
+    void OnActionBtnIntersectionA_B(ActionEvent event) {
+    	btnIntersectionA_B.setToggleGroup(group);
+    	inputTextFieldResultSet.clear();
+    	String sBits = AlphabeticalSets.generateBitString(inputTextFieldSetA.getText());
+    	String tBits = AlphabeticalSets.generateBitString(inputTextFieldSetB.getText());
+    	String intersection = AlphabeticalSets.getIntersection(sBits, tBits);
+    	inputTextFieldResultSet.setText(intersection);
+    }
+
+    @FXML
+    void OnActionBtnUnionA_B(ActionEvent event) {
+    	btnUnionA_B.setToggleGroup(group);
+    	inputTextFieldResultSet.clear();
+    	String sBits = AlphabeticalSets.generateBitString(inputTextFieldSetA.getText());
+    	String tBits = AlphabeticalSets.generateBitString(inputTextFieldSetB.getText());
+    	String union = AlphabeticalSets.getUnion(sBits, tBits);
+    	union = AlphabeticalSets.generateElements(union);
+    	inputTextFieldResultSet.setText(union);
     }
 
     boolean lastValueIsOperator(){
@@ -145,6 +208,21 @@ public class FXMLBasicController implements Initializable {
     }
     
     @FXML
+    void NavigateBasicCalculator(ActionEvent event) {
+    	try {
+			Parent integral_calculator_parent = FXMLLoader.load(getClass().getResource("FXMLBasic.fxml"));
+			Scene integral_calculator_scene = new Scene(integral_calculator_parent, 800, 400);
+			Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+			stage.hide();
+			stage.setScene(integral_calculator_scene);
+			stage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+    
+    @FXML
     void OnActionBtnFour(ActionEvent event) {
     	inputTextField.appendText("4");
     }
@@ -168,9 +246,7 @@ public class FXMLBasicController implements Initializable {
     
     @FXML
     void OnActionBtnBack(ActionEvent event) {
-    	if(inputTextField.getText().toString().length() > 0){
-    		inputTextField.setText(inputTextField.getText().substring(0, inputTextField.getText ().length() - 1));
-    	}
+    	inputTextField.setText(inputTextField.getText().substring(0, inputTextField.getText ().length() - 1));
     }
 
     @FXML
@@ -205,13 +281,11 @@ public class FXMLBasicController implements Initializable {
 
     @FXML
     void OnActionBtnEquals(ActionEvent event) {
-    	if(inputTextField.getText().toString().length() > 0){
-    		inputTextField2.clear();
-    		String result = CalcInterface.run(inputTextField.getText(), true);	//True here needs to be a boolean 
-    		answer = result;														//Set on the GUI
-    		inputTextField2.appendText(result);
-    		inputTextField.clear();
-    	}
+    	inputTextField2.clear();
+    	String result = CalcInterface.run(inputTextField.getText(), true);	//True here needs to be a boolean 
+    	answer = result;														//Set on the GUI
+    	inputTextField2.appendText(result);
+    	inputTextField.clear();
     }
 
     @FXML

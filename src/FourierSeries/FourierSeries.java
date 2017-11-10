@@ -24,14 +24,20 @@ import javafx.scene.input.MouseEvent;
 import java.util.Scanner;
 import java.util.function.Function;
 
+import ReversePolishNotation.CalcInterface;
 
-// Java 8 code
+
+
 
 public class FourierSeries extends Application {
 	private static String waveform;
 	private static double period;
 	private static int harmonic;
 	private static String mode;
+	private static double amplitude;
+	private static double phase;
+	private static double xAxis=1.0;
+	
 
 	public static void main(String[] args) {
 		launch(args);
@@ -39,11 +45,8 @@ public class FourierSeries extends Application {
 
 	@Override
 	public void start(final Stage stage) {
-		
-//		Parameters variables =getParameters();
-//		String values = variables.getRaw().toString();
-//		String mode = values.substring(1, values.indexOf(",", 1));
-		if(mode.equalsIgnoreCase("1")){
+	
+		if(mode.equalsIgnoreCase("Fourier Series")){
 		plotFourierSeriesofWaveform(stage);
 		}
 		else{
@@ -53,62 +56,38 @@ public class FourierSeries extends Application {
 
 	private void plotUserDefinedWaveform( Stage stage) {
 		// TODO Auto-generated method stub
-//		values=values.substring(values.indexOf(",")+2);
-//		System.out.println(values);
-//		String amplitudeText = values.substring(0, values.indexOf(","));
-//		values=values.substring(values.indexOf(",")+2);
-//		System.out.println(values);
-//		
-//		String periodText = values.substring(0, values.indexOf(","));
-//		values=values.substring(values.indexOf(",")+2);
-//		System.out.println(values);
-//		String phaseText = values.substring(0, values.indexOf("]"));
-//		
-//		double amplitude = Double.parseDouble(amplitudeText);
-//		int phase = Integer.parseInt(phaseText);
-//		double period = Double.parseDouble(periodText);
-//
-//		Axes axes = new Axes(
-//				500, 350,
-//				-(period+period*.5), (period+period*.5), period*0.2,
-//				-(amplitude+amplitude*.25), (amplitude+amplitude*.25), 1
-//				);
-//
-//
-//
-//		Plot plot = new Plot(
-//				phase,period,amplitude,
-//				-(period+period*.5), (period+period*.5), period*0.01,
-//				axes
-//				);
-//
-//		StackPane layout = new StackPane(
-//				plot
-//				);
-//		layout.setPadding(new Insets(20));
-//		layout.setStyle("-fx-background-color: rgb(35, 39, 50);");
-//
-//		stage.setTitle("Fourier Series");
-//		this.setSceneEvents(plot);
-//		stage.setScene(new Scene(layout, Color.rgb(35, 39, 50)));
-//		stage.show();
-//		
-//	
+
+
+		Axes axes = new Axes(
+				500, 350,
+				-(xAxis), (xAxis), (xAxis*0.2),
+				-(10), (10), 1
+				);
+
+
+
+		Plot plot = new Plot(
+				phase,period,amplitude,
+				-(xAxis), (xAxis), period*0.01,
+				axes
+				);
+
+		StackPane layout = new StackPane(
+				plot
+				);
+		layout.setPadding(new Insets(20));
+		layout.setStyle("-fx-background-color: rgb(35, 39, 50);");
+
+		stage.setTitle("Fourier Series");
+		this.setSceneEvents(plot);
+		stage.setScene(new Scene(layout, Color.rgb(35, 39, 50)));
+		stage.show();
+		
+	
 		}
 
 	private void plotFourierSeriesofWaveform( Stage stage) {
-		// TODO Auto-generated method stub
-//		values=values.substring(values.indexOf(",")+2);
-//		
-//		String waveform = values.substring(0, values.indexOf(","));
-//		values=values.substring(values.indexOf(",")+2);
-//		
-//		String harmonicString = values.substring(0, values.indexOf(","));
-//		values=values.substring(values.indexOf(",")+2);
-//		String periodText = values.substring(0, values.indexOf("]"));
-//		
-//		int harmonic = Integer.parseInt(harmonicString);
-//		double period = Double.parseDouble(periodText);
+
 
 		Axes axes = new Axes(
 				500, 350,
@@ -235,7 +214,7 @@ public class FourierSeries extends Application {
 			getChildren().setAll(axes, path);
 		}
 
-		public Plot(int phase, double period, double amplitude, double xMin, double xMax, double xInc, Axes axes) {
+		public Plot(double phase, double period, double amplitude, double xMin, double xMax, double xInc, Axes axes) {
 			// TODO Auto-generated constructor stub
 			{
 				Path path = new Path();
@@ -282,20 +261,28 @@ public class FourierSeries extends Application {
 			}
 		}
 
-		private double generateYCoordinates(int phase, double period, double amplitude, double x) {
+		private double generateYCoordinates(double phase, double period, double amplitude, double x) {
 			// TODO Auto-generated method stub
 			double y=0;
-			y=amplitude*Math.sin(2*Math.PI*(1/period)*x+(phase*(Math.PI/180)));
-			return y;
+			String x1=String.format("%f", x);
+			String y1=CalcInterface.run(amplitude+"*sin(2*"+Math.PI+"*(1/"+period+")*("+x1+")+("+phase+"*("+Math.PI+"/180)))", false);
+			//y=amplitude*Math.sin(2*Math.PI*(1/period)*x+(phase*(Math.PI/180)));
+			double result=Double.parseDouble(y1);
+			//double result=y;
+			return result;
+			
 		}
 
 		private double generateYCoordinates(int harmonic, double period, String waveform, double x) {
 			double y=0;
-			
+			String y1;
+			String x1=String.format("%f", x);
+
 			if(waveform.equalsIgnoreCase("square")){
 				for(int har=1;har<=harmonic;har+=2)
 					{
-						y=y+(6/(Math.PI*har))*(Math.sin(x*(1/period)*2*Math.PI*har));
+					//y1=CalcInterface.run(y, false);
+					y=y+(6/(Math.PI*har))*(Math.sin(x*(1/period)*2*Math.PI*har));
 
 					}
 			}
@@ -324,6 +311,7 @@ public class FourierSeries extends Application {
 					(axes.getXAxis().getUpperBound() - 
 							axes.getXAxis().getLowerBound());
 
+		
 			return x * sx + tx;
 		}
 
@@ -332,7 +320,6 @@ public class FourierSeries extends Application {
 			double sy = axes.getPrefHeight() / 
 					(axes.getYAxis().getUpperBound() - 
 							axes.getYAxis().getLowerBound());
-
 			return -y * sy + ty;
 		}
 
@@ -485,6 +472,23 @@ public class FourierSeries extends Application {
 	public static void setHarmonic(int harmonic) {
 		FourierSeries.harmonic = harmonic;
 	}
+
+	public static double getAmplitude() {
+		return amplitude;
+	}
+
+	public static void setAmplitude(double amplitude) {
+		FourierSeries.amplitude = amplitude;
+	}
+
+	public static double getPhase() {
+		return phase;
+	}
+
+	public static void setPhase(double phase) {
+		FourierSeries.phase = phase;
+	}
+	
 	
 	
 }

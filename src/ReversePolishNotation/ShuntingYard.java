@@ -102,8 +102,8 @@ public class ShuntingYard {
 			return containsFunction;
 		}
 		
-		public static String parseFunction(String input, boolean resInRadians){
-			MathematicalEvaluator ME = new MathematicalEvaluator(resInRadians);
+		public static String parseFunction(String input, boolean radians){
+			MathematicalEvaluator ME = new MathematicalEvaluator(radians);
 
 			
 			String theFunction = "";
@@ -146,7 +146,7 @@ public class ShuntingYard {
 				theFunction = theFunction.substring(4);
 				infixFunction = theFunction;
 					if(ShuntingYard.checkForFunction(theFunction)){	//RECURSION - DOES THE NEWLY MADE TRIG EXPRESSION CONTAIN ANOTHER FUNCTION?
-						theFunction = ShuntingYard.parseFunction(theFunction, resInRadians);	//ISSUE REMAINS - IF THAT FUNCTION CALLS ANOTHER FUNCTION
+						theFunction = ShuntingYard.parseFunction(theFunction, radians);	//ISSUE REMAINS - IF THAT FUNCTION CALLS ANOTHER FUNCTION
 					}																			
 				theFunction = ShuntingYard.postfix(theFunction);
 				bracketResult = ME.evaluateExpression(theFunction);
@@ -161,7 +161,7 @@ public class ShuntingYard {
 				}												//will be added to working input string here!
 				//System.out.println("xx: " + aWorkingInput);
 				if(checkForFunction(aWorkingInput)){
-					aWorkingInput = parseFunction(aWorkingInput, resInRadians);
+					aWorkingInput = parseFunction(aWorkingInput, radians);
 				} 
 			theFunction = "";
 			return aWorkingInput;
