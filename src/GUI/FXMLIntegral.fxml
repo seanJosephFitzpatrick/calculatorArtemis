@@ -63,7 +63,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="100.0" prefWidth="1600.0" text="Calculator" GridPane.columnIndex="4" GridPane.columnSpan="8">
+            <Label alignment="CENTER" prefHeight="100.0" prefWidth="1600.0" text="Simpson's Rule Calculator " GridPane.columnIndex="4" GridPane.columnSpan="8">
                <font>
                   <Font size="16.0" />
                </font>
@@ -78,6 +78,8 @@
                   <Image url="@../../Images/integral-mathematical-sign.png" />
                </image>
             </ImageView>
+            <TextField GridPane.columnIndex="5" GridPane.rowIndex="5" />
+            <Label text="n = " GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
       
          </children>
       </GridPane>

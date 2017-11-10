@@ -32,6 +32,23 @@ public class FMXLGaborWaveletController {
     private TextField bandw;
     @FXML
     private Button btnGenerate;
+    @FXML
+    private Button equationCalculator;
+    
+    @FXML
+    void NavigateEquationCalculator(ActionEvent event) {
+      	try {
+			Parent scientific_calculator_parent = FXMLLoader.load(getClass().getResource("FXMLEquationCalc.fxml"));
+			Scene scientific_calculator_scene = new Scene(scientific_calculator_parent, 800, 400);
+			Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+			stage.hide();
+			stage.setScene(scientific_calculator_scene);
+			stage.show();
+    		} catch (IOException e) {
+    			// TODO Auto-generated catch block
+    			e.printStackTrace();
+    		}
+    }
     
     @FXML
     void onActionBtnGenerate(ActionEvent event) {
