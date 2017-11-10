@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /GUI/
 <<<<<<< HEAD
 /CombinationsAndProbability/
@@ -9,3 +10,22 @@
 >>>>>>> refs/heads/SeanFitz
 /FourierSeries/
 /integrals/
+=======
+<<<<<<< HEAD
+/CombinationsAndProbability/
+/DCT/
+/Equations/
+/FourierSeries/
+/GUI/
+/InfixToPostfixDG/
+/ReversePolishNotation/
+/ReversePolishNotationTest/
+/bitstringsets/
+/integrals/
+=======
+/ReversePolishNotationTest/
+/gabor/
+/integrals/
+/conversions/
+>>>>>>> branch 'master' of https://bitbucket.org/artemisait/calculatorartemis.git
+>>>>>>> refs/heads/master

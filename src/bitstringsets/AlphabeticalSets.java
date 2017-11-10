@@ -4,10 +4,10 @@ import java.util.BitSet;
 
 public class AlphabeticalSets {
 	
-	
+	private static String nullSet = "00000000000000000000000000000000000000000000000000000000000000";
+	private static String alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";
 	
 	public static String generateBitString(String elements){
-		String alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";
 		String bitString = "";
 		for(int i = 0; i < alpha.length(); i++){
 			if(elements.indexOf(alpha.charAt(i)) != -1){
@@ -20,7 +20,6 @@ public class AlphabeticalSets {
 	}
 	
 	public static String generateElements(String bitString){
-		String alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";
 		String elements = "";
 		for(int i = 0; i < bitString.length(); i++){
 			if(bitString.charAt(i) == '1'){
@@ -31,7 +30,13 @@ public class AlphabeticalSets {
 	}
 	
 	public static String getIntersection(String set1, String set2){
-		return BitString.bitWiseAnd(set1, set2);
+		String result = BitString.bitWiseAnd(set1, set2);
+		if(result.equals(nullSet)){
+			return "Sets are mutually exclusive";
+		} else {
+			return generateElements(result);
+		}
+		
 	}
 	
 	public static String getUnion(String set1, String set2){
@@ -44,7 +49,7 @@ public class AlphabeticalSets {
 			if(set2.indexOf(set1.charAt(i)) == -1){
 				result += set1.charAt(i);
 			}
-		}
+		}		
 		return result;
 	}
 	

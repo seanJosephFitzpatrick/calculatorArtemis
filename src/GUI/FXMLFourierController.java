@@ -58,6 +58,40 @@ public class FXMLFourierController implements Initializable {
     private TextField inputTextFieldWaveform;
     @FXML
     private Button bitWiseCalculator;
+    @FXML
+    private Button gaborCalculator;
+    @FXML
+    private Button equationCalculator;
+    
+    @FXML
+    void NavigateEquationCalculator(ActionEvent event) {
+      	try {
+			Parent scientific_calculator_parent = FXMLLoader.load(getClass().getResource("FXMLEquationCalc.fxml"));
+			Scene scientific_calculator_scene = new Scene(scientific_calculator_parent, 800, 400);
+			Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+			stage.hide();
+			stage.setScene(scientific_calculator_scene);
+			stage.show();
+    		} catch (IOException e) {
+    			// TODO Auto-generated catch block
+    			e.printStackTrace();
+    		}
+    }
+	
+    @FXML
+    void NavigateGaborCalculator(ActionEvent event) {
+    	try {
+			Parent scientific_calculator_parent = FXMLLoader.load(getClass().getResource("FXMLGaborWavelet.fxml"));
+			Scene scientific_calculator_scene = new Scene(scientific_calculator_parent, 800, 400);
+			Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+			stage.hide();
+			stage.setScene(scientific_calculator_scene);
+			stage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
     
     @FXML
     void NavigateBitWiseCalculator(ActionEvent event) {
@@ -187,6 +221,22 @@ public class FXMLFourierController implements Initializable {
 	        Stage anotherStage = new Stage();
 	        app2.start(anotherStage);
 	   }else{
+		   
+		 FourierSeries.setMode(outputFourier);
+
+	    	
+       	
+       	
+
+   	   	FourierSeries.setAmplitude(Integer.parseInt(inputTextFieldHarAmp.getText()));
+
+   	   	FourierSeries.setPeriod(Double.parseDouble(inputTextFieldPeriod.getText()));
+   	   	FourierSeries.setPhase(Double.parseDouble(inputTextFieldPhase.getText()));
+
+	    	
+	    	Application app2 =  new FourierSeries(); 
+	        Stage anotherStage = new Stage();
+	        app2.start(anotherStage);
 
 	    }    	
     }

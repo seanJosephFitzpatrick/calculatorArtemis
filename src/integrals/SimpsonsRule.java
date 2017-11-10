@@ -1,46 +1,57 @@
 package integrals;
 
-/**
- * 
- * 
- * https://www.princeton.edu/
- * 
- */
+
+
 
 import java.util.Scanner;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import ReversePolishNotation.CalcInterface;
 import javafx.application.Application;
+import javafx.stage.Stage;
 
 
 public class SimpsonsRule {
 	private static ArrayList<Double> yValues = new ArrayList<Double>();
 	private static ArrayList<Double> xValues = new ArrayList<Double>();
+	private static String functionText;
 	
+	public static String getFunctionText() {
+		return functionText;
+	}
+
+
+
+	public static void setFunctionText(String functionText) {
+		SimpsonsRule.functionText = functionText;
+	}
+
+
+
 	public static double f (double x, String function, boolean resInRadians) {
-		xValues.add(x);
+		
 		function = function.replaceAll("x", Double.toString(x));
 		
 		double yValue =	Double.parseDouble(CalcInterface.run(function, resInRadians));
-		yValues.add(yValue);
+		
 		return yValue;
 	}
 	
 	
 	
 	public static void main(String[] args){
-		double a = 3d;
-		double b = 5d;
-		String function = "-6*x";
 		
-		System.out.println(integrate(a,b,function,true));
 		
 	}
 
      static Scanner sc = new Scanner (System.in);
-     public static double integrate(double a, double b, String function, boolean resInRadians) {
+     public static double integrate(double a, double b, String function, boolean resInRadians) throws Exception {
      
-    int N = 10;
+   
+    	 SimpsonsRule.addPlotPoints(function,b, a);
+    	 
+    	 
+    	 int N = 10;
 	// System.out.println("Enter precision parament : ");
 	// int N = sc.nextInt();
 	 
@@ -60,14 +71,38 @@ public class SimpsonsRule {
         double x = a + h * i;
         sum += 2.0 / 3.0 * f(x, function, resInRadians);
      }
-     System.out.println(sum*h);
+     
      
      IntegralPlotter.setIntegralPointsX(xValues);
      IntegralPlotter.setIntegralPointsY(yValues);
-     Application.launch(IntegralPlotter.class);
+     Application app2 =  new IntegralPlotter(); 
+     Stage anotherStage = new Stage();
+     app2.start(anotherStage);
+     
+     System.out.println(xValues);
+     System.out.println(yValues);
+
      
      return sum * h;
   }
+     public static void addPlotPoints(String function,double a,double b){
+    	IntegralPlotter.getIntegralPointsX().clear();
+    	IntegralPlotter.getIntegralPointsY().clear();
+    	 BigDecimal aBig = new BigDecimal(a);
+    	 BigDecimal bBig = new BigDecimal(b);
+    	 BigDecimal diff = new BigDecimal(b-a);
+    	 
+    	 for(;(aBig.compareTo(bBig)!=1);aBig=aBig.add(diff.multiply(new BigDecimal(0.005)))){
+    		
+    		
+    		 String a1=String.format("%f", aBig.doubleValue());
+    		 String function1 = function.replaceAll("x", a1);
+    		 String result=CalcInterface.run(function1, false);
+    		 result= String.format("%f", Double.parseDouble(result));
+    		 xValues.add(aBig.doubleValue());
+    		 yValues.add(Double.parseDouble(result));
+    	 }
+     }
 
 //  // sample client program
 //  public static void main(String[] args) { 

@@ -4,6 +4,7 @@ import java.math.BigInteger;
 import java.util.Scanner;
 
 public class Factorial {
+	
     public static String factorial(int n) {
     	BigInteger result = new BigInteger("1");
     	for ( int i = 1; i <= n; i++)
