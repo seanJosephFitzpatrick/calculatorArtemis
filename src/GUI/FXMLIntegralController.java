@@ -43,6 +43,8 @@ public class FXMLIntegralController implements Initializable {
 
     @FXML
     private Button calculate;
+    @FXML
+    private TextField inputTextFieldN;
     
     @FXML
     private TextField outputTextField;
