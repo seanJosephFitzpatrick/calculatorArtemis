@@ -206,12 +206,18 @@ public class FXMLScientificController implements Initializable {
     
     @FXML
     void onActionLogBaseN(ActionEvent event) {
-
+   
     }
 
     @FXML
     void onActionPowerOfN(ActionEvent event) {
-
+    	if(!answer.equals("clear") && (!answer.equals("Syntax Error"))){
+    		inputTextField3.appendText(answer + "^");
+    		answer = "clear";
+    	} else {
+    		answer = "clear";
+    		inputTextField3.appendText("^");
+    	}
     }
     
     @FXML
