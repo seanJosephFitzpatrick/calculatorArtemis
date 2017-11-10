@@ -15,6 +15,8 @@ import java.util.ArrayList;
 public class Gabor
 {
     CreateImage ci;
+    final double NEXT_ORIENTATION = 12.38571429;
+    private double t = 180;
     private double lamda=200;
     private double theta=90;
     private double varphi=0;
@@ -38,7 +40,8 @@ public class Gabor
     {
         lamda = 100;
         
-        theta= 0/toRadians;
+        
+        theta= t/toRadians;
         varphi=v/toRadians;
         upsi=u;
         bandW=b;
@@ -57,12 +60,10 @@ public class Gabor
     	int row = 5;
     	int col = 8;
     	while(lamda >= 40){
-    		theta = 6;
     		col = 8;
-    		while(theta <= 47){
-    			if(theta == 88){
-    				theta = 90;
-    			}
+    		t = 180;
+    		while(t > 0){
+    			theta = t/toRadians;
     			GaborGrid = new double[size][size];
     			double x = 0;
     			double y = 0;
@@ -97,10 +98,10 @@ public class Gabor
     				grids.add(GaborGrid);
     			}
     			mean = total / count;
-    			System.out.println(theta + "\t : " + lamda);
-    			NormaliseImage(lamda, theta);
+    			System.out.println(t + "\t : " + lamda);
+    			NormaliseImage(lamda, t);
     			imageCount++;
-    			theta += 5.625;
+    			t -= NEXT_ORIENTATION * 2;
     			col--;
     		}
     		lamda -= 15;
