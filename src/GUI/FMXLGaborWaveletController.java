@@ -36,6 +36,7 @@ public class FMXLGaborWaveletController implements Initializable {
     @FXML
     private Button btnGenerate;
     
+    
     @FXML
     void onActionBtnGenerate(ActionEvent event) {
     	
