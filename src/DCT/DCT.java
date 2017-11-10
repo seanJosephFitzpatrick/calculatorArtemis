@@ -11,7 +11,18 @@ public class DCT {
 	static int N = 8;
 	static double n = 8d;
 
-	static int[][] Q50 = {{16, 11, 10, 16, 24, 40, 51, 61},
+	static double[][] MTest = new double[][] {
+		{16, 8, 23, 16, 5, 14, 7, 22 },
+		{20, 14, 22, 7, 14, 22, 24, 6},
+		{15, 23, 24, 23, 9, 6, 6, 20},
+		{14, 8, 11, 14, 12, 12, 25, 12},
+		{10, 9, 11, 9, 13, 19, 5, 17},
+		{8, 22, 20, 15, 12, 8, 22, 17},
+		{24, 22, 17, 12, 18, 11, 23, 14},
+		{21, 25, 15, 16, 23, 14, 22, 22}
+	};
+
+	static double[][] Q50 = {{16, 11, 10, 16, 24, 40, 51, 61},
 			{12, 12, 14, 19, 26, 58, 60, 55},
 			{14, 13, 16, 24, 40, 57, 69, 56},
 			{14, 17, 22, 29, 51, 87, 80, 62},
@@ -20,15 +31,15 @@ public class DCT {
 			{49, 64, 78, 87, 103, 121, 120, 101},
 			{72, 92, 95, 98, 112, 100, 103, 99}};
 
-	static int[][] Qx = new int[N][N];
-	static int[][] T = new int[N][N];
-	static int[][] Tt = new int[N][N];
-	static int[][] TM = new int[N][N];
-	static int[][] TMTt = new int[N][N];
-	static int[][] DCTResult = new int[N][N];
+	static double[][] Qx = new double[N][N];
+	static double[][] T = new double[N][N];
+	static double[][] Tt = new double[N][N];
+	static double[][] TM = new double[N][N];
+	static double[][] TMTt = new double[N][N];
+	static double[][] DCTResult = new double[N][N];
 
-	public static ArrayList<int[][]> run(ArrayList<int[][]> grids){
-		ArrayList<int[][]> results = new ArrayList<int[][]>();
+	public static ArrayList<double[][]> run(ArrayList<double[][]> grids){
+		ArrayList<double[][]> results = new ArrayList<double[][]>();
 		int i = 0;
 		System.out.print("Please enter a value for Q: ");
 		double q = sc.nextDouble();
@@ -39,9 +50,9 @@ public class DCT {
 
 			System.out.println("Matrix M: ");
 			printArray(grids.get(i));
+
 			loadT();
 			System.out.println();
-
 			System.out.println("Matrix T: ");
 			printArray(T);
 			System.out.println();
@@ -74,12 +85,12 @@ public class DCT {
 		return results;
 	}
 
-	public static void printArray(int[][] toPrint){
+	public static void printArray(double[][] qx2){
 		NumberFormat nf = NumberFormat.getInstance();
 		nf.setMaximumFractionDigits(3);
 		for(int i = 0; i < N; i++){
 			for(int j = 0; j < N; j++){
-				System.out.print(nf.format(toPrint[i][j]) + "\t");
+				System.out.print(nf.format(qx2[i][j]) + "\t");
 			}
 			System.out.println();
 		}
@@ -99,25 +110,25 @@ public class DCT {
 		}
 	}
 
-	public static void multiply(int[][] x, int[][] y, int[][] r){	//R Serves as result
+	public static void multiply(double[][] t2, double[][] ds, double[][] tM2){	//R Serves as result
 		for(int i = 0; i < N; i++){
 			for(int j = 0; j < N; j++){
-				r[i][j] = 0;
+				tM2[i][j] = 0;
 				for(int q = 0; q < N; q++){
-					r[i][j] = r[i][j] + (x[i][q] * y[q][j]);
+					tM2[i][j] = tM2[i][j] + (t2[i][q] * ds[q][j]);
 				}
 			}
 		}
 	}
 
-	public static void roundArray(int[][] x){
-		for(int i = 0; i < x.length; i++){
-			for(int j = 0; j < x[0].length; j++){
-				x[i][j] = Math.round(x[i][j]);
-				if(x[i][j] > 255){
-					x[i][j] = 255;
-				} else if(x[i][j] < 1){
-					x[i][j] = 1;
+	public static void roundArray(double[][] qx2){
+		for(int i = 0; i < qx2.length; i++){
+			for(int j = 0; j < qx2[0].length; j++){
+				qx2[i][j] = Math.round(qx2[i][j]);
+				if(qx2[i][j] > 255){
+					qx2[i][j] = 255;
+				} else if(qx2[i][j] < 1){
+					qx2[i][j] = 1;
 				}
 			}
 		}
@@ -145,10 +156,10 @@ public class DCT {
 		}
 	}
 
-	public static void quantization(int[][] x, int[][] y, int[][] q){
+	public static void quantization(double[][] tMTt2, double[][] qx2, double[][] dCTResult2){
 		for(int i = 0; i < N; i++){
 			for(int j = 0; j < N; j++){
-				q[i][j] = (x[i][j] / y[i][j]);
+				dCTResult2[i][j] = (tMTt2[i][j] / qx2[i][j]);
 			}
 		}
 	}
@@ -179,6 +190,12 @@ public class DCT {
 			System.out.println();
 		}
 		return subArrays;
+	}
+
+	public static void main(String[] args) {
+		ArrayList<double[][]> grid = new ArrayList<double[][]>();
+		grid.add(MTest);
+		run(grid);
 	}
 }
 
