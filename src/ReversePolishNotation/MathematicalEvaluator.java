@@ -145,9 +145,10 @@ public class MathematicalEvaluator {
 			}
 		}
 		String output = workingList.pop();				//Result of any operation passed to evaluation! 
-		if(output.length() > 12){
-			output = output.substring(0, 12);
-		}
+
+		//		if(output.length() > 12){
+//			output = output.substring(0, 12);
+//		}
 		
 		System.out.println("Result: " + output);	//At end this should be the only value on the stack
 		workingList.clear();
