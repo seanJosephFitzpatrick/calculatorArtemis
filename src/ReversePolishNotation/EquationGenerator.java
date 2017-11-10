@@ -4,19 +4,6 @@ import CombinationsAndProbability.Factorial;
 
 public class EquationGenerator {
 	
-	public static void main(String[] args){
-		
-		String t = "3!";
-		
-		evaluateFactorial(t);
-		
-		
-		
-		
-	}
-	
-	
-	
 	
 	public static String formatEquation(String userInput){
 		String equation = "";
