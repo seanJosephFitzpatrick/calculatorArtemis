@@ -17,5 +17,12 @@ public class Gabor_Driver
         double bandW=1;
         int size=301;
         Gabor gabor = new Gabor(varphi, upsi, bandW, size);
+        
+        
+    }
+    
+    public static void runGabor(double v, double u, double b){
+    	int size = 301;											//Ideal Values
+    	Gabor gabor = new Gabor(v, u, b, size);					// v = 90, u = 1, b = 1
     }
 }

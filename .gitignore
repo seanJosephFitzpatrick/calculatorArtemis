@@ -1,3 +1,5 @@
+/bin/
+
 # Compiled class file
 *.class
 
@@ -16,6 +18,16 @@
 *.zip
 *.tar.gz
 *.rar
+
+# Eclipse project files
+# =====================
+.project
+.settings/
+.*.md.html
+.metadata
+.classpath
+*~.nib
+local.properties
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*

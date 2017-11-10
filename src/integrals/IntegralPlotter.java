@@ -19,10 +19,13 @@ public class IntegralPlotter extends Application {
 
 	@Override public void start(Stage stage) {
         stage.setTitle("Simpsons Rule");
-        
+        double yAxismin = Collections.min(integralPointsY);
+        double yAxismax = Collections.max(integralPointsY);
+        double xAxismin = Collections.min(integralPointsX);
+        double xAxismax = Collections.max(integralPointsX);
        
-        NumberAxis xAxis = new NumberAxis("x values",Collections.min(integralPointsX), Collections.max(integralPointsX), (Collections.max(integralPointsX)-Collections.min(integralPointsX))*.1);
-        NumberAxis yAxis = new NumberAxis("y values",Collections.min(integralPointsY), Collections.max(integralPointsY), (Collections.max(integralPointsY)-Collections.min(integralPointsY))*.1);
+        NumberAxis xAxis = new NumberAxis("x values",xAxismin, xAxismax, (xAxismax-xAxismin)*.1);
+        NumberAxis yAxis = new NumberAxis("y values",yAxismin+yAxismin*0.2, yAxismax+yAxismax*0.2, (yAxismax-yAxismin)*.1);
      
 
         
@@ -30,10 +33,11 @@ public class IntegralPlotter extends Application {
         final LineChart<Number,Number> lineChart = 
                 new LineChart<Number,Number>(xAxis,yAxis);
                 
-        lineChart.setTitle("Simpsons Rule");
+        lineChart.setTitle("Function Plotter");
        
         XYChart.Series series = new XYChart.Series();
-        series.setName("-6*x");
+        
+        series.setName(SimpsonsRule.getFunctionText());
        
         for(int x=0;x<integralPointsY.size();x++){
         	series.getData().add(new XYChart.Data(integralPointsX.get(x), integralPointsY.get(x)));	

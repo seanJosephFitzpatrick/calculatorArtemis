@@ -87,7 +87,7 @@ public class MathematicalEvaluator {
 
 	public String evaluateExpression(String postfix){
 
-		MathContext mc = new MathContext(9, RoundingMode.HALF_UP);
+		MathContext mc = new MathContext(6, RoundingMode.HALF_UP);
 		
 		addRPNToStack(postfix);
 
@@ -124,7 +124,7 @@ public class MathematicalEvaluator {
 					break;
 				case "/" : 
 					result = result.add(bBD);
-					result = result.divide(aBD, 9, RoundingMode.HALF_UP);
+					result = result.divide(aBD, 6, RoundingMode.HALF_UP);
 					break;
 				case "^" : 	
 					result = result.add(new BigDecimal(Math.pow(b, a)));
@@ -133,7 +133,7 @@ public class MathematicalEvaluator {
 					break;
 				}
 				
-				result.round(mc);
+				result = result.round(mc);
 				
 				if(result.doubleValue() % 1.0000000000000000 == 0){
 					BigInteger iRes = result.toBigInteger();

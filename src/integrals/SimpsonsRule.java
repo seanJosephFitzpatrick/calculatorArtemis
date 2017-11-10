@@ -4,6 +4,7 @@ package integrals;
 
 
 import java.util.Scanner;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import ReversePolishNotation.CalcInterface;
 import javafx.application.Application;
@@ -13,7 +14,20 @@ import javafx.stage.Stage;
 public class SimpsonsRule {
 	private static ArrayList<Double> yValues = new ArrayList<Double>();
 	private static ArrayList<Double> xValues = new ArrayList<Double>();
+	private static String functionText;
 	
+	public static String getFunctionText() {
+		return functionText;
+	}
+
+
+
+	public static void setFunctionText(String functionText) {
+		SimpsonsRule.functionText = functionText;
+	}
+
+
+
 	public static double f (double x, String function, boolean resInRadians) {
 		
 		function = function.replaceAll("x", Double.toString(x));
@@ -34,7 +48,7 @@ public class SimpsonsRule {
      public static double integrate(double a, double b, String function, boolean resInRadians) throws Exception {
      
    
-    	 SimpsonsRule.addPlotPoints(function,a, b);
+    	 SimpsonsRule.addPlotPoints(function,b, a);
     	 
     	 
     	 int N = 10;
@@ -74,14 +88,18 @@ public class SimpsonsRule {
      public static void addPlotPoints(String function,double a,double b){
     	IntegralPlotter.getIntegralPointsX().clear();
     	IntegralPlotter.getIntegralPointsY().clear();
-
-    	 for(;a<=b;a+=0.2){
-    		 xValues.add(a);
-    		String a1=String.format("%f", a);
+    	 BigDecimal aBig = new BigDecimal(a);
+    	 BigDecimal bBig = new BigDecimal(b);
+    	 BigDecimal diff = new BigDecimal(b-a);
+    	 
+    	 for(;(aBig.compareTo(bBig)!=1);aBig=aBig.add(diff.multiply(new BigDecimal(0.005)))){
+    		
+    		
+    		 String a1=String.format("%f", aBig.doubleValue());
     		 String function1 = function.replaceAll("x", a1);
     		 String result=CalcInterface.run(function1, false);
     		 result= String.format("%f", Double.parseDouble(result));
-    		 
+    		 xValues.add(aBig.doubleValue());
     		 yValues.add(Double.parseDouble(result));
     	 }
      }

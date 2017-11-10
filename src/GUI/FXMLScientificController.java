@@ -119,7 +119,28 @@ public class FXMLScientificController implements Initializable {
     private RadioButton degreesRadioBtn;
     @FXML
     private Button bitWiseCalculator;
+    @FXML
+    private Button powerOfN;
+    @FXML
+    private Button logBaseN;
     final ToggleGroup group = new ToggleGroup();
+    @FXML
+    private Button gaborCalculator;
+	
+    @FXML
+    void NavigateGaborCalculator(ActionEvent event) {
+    	try {
+			Parent scientific_calculator_parent = FXMLLoader.load(getClass().getResource("FXMLGaborWavelet.fxml"));
+			Scene scientific_calculator_scene = new Scene(scientific_calculator_parent, 800, 400);
+			Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+			stage.hide();
+			stage.setScene(scientific_calculator_scene);
+			stage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
     
     @FXML
     void NavigateBitWiseCalculator(ActionEvent event) {
@@ -185,8 +206,8 @@ public class FXMLScientificController implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
-		
+		degreesRadioBtn.setSelected(true);
+		degreesRadioBtn.setToggleGroup(group);
 	}
 	
     @FXML
@@ -197,6 +218,22 @@ public class FXMLScientificController implements Initializable {
     	} else {
     		answer = "clear";
     		inputTextField3.appendText("+");
+    	}
+    }
+    
+    @FXML
+    void onActionLogBaseN(ActionEvent event) {
+   
+    }
+
+    @FXML
+    void onActionPowerOfN(ActionEvent event) {
+    	if(!answer.equals("clear") && (!answer.equals("Syntax Error"))){
+    		inputTextField3.appendText(answer + "^");
+    		answer = "clear";
+    	} else {
+    		answer = "clear";
+    		inputTextField3.appendText("^");
     	}
     }
     
@@ -306,17 +343,24 @@ public class FXMLScientificController implements Initializable {
     }
 
     @FXML
-    void OnActionBtnEquals(ActionEvent event) {
-    	if(inputTextField3.getText().toString().length() > 0){
-    		userInput = EquationGenerator.formatEquation(inputTextField3.getText());
-    		System.out.println(userInput);
-    		inputTextField4.clear();
-    		String result = CalcInterface.run(userInput, radians);	//boolean value needs to be set from GUI button
-    		answer = result;
-    		inputTextField4.appendText(result);
-    		inputTextField3.clear();
-    		userInput = "";
-    	}
+    void OnActionBtnEquals(ActionEvent event) throws Exception{
+    	try {
+    		if(inputTextField3.getText().toString().length() > 0){
+    			userInput = EquationGenerator.formatEquation(inputTextField3.getText());
+    			System.out.println(userInput);
+    			inputTextField4.clear();
+    			String result = CalcInterface.run(userInput, radians);	//boolean value needs to be set from GUI button
+    			answer = result;
+    			inputTextField4.appendText(result);
+    			inputTextField3.clear();
+    			userInput = "";
+    		} 
+
+    	} catch (IllegalArgumentException e){
+    		if(!inputTextField4.getText().equals("Syntax Error")){
+    			inputTextField4.appendText("Syntax Error");
+    		}
+    	} 
     }
 
     @FXML
@@ -390,7 +434,13 @@ public class FXMLScientificController implements Initializable {
 
     @FXML
     void OnActionBtnPercentage(ActionEvent event) {
-    	
+    	if(!answer.equals("clear") && (!answer.equals("Syntax Error"))){
+    		inputTextField3.appendText(answer + "\u00B2");
+    		answer = "clear";
+    	} else {
+    		answer = "clear";
+    		inputTextField3.appendText("!");
+    	}
     }
 
     @FXML

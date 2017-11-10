@@ -60,7 +60,7 @@ public class CreateImage
         g2D.drawImage(img2, 0, 0, Width, Height, null);
         try
         {
-            ImageIO.write(bfi, "png", new File(n+".png"));
+            ImageIO.write(bfi, "png", new File("GaborImages/"+n+".png"));
         }
         catch(Exception e){}
     }

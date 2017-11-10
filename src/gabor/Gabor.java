@@ -15,8 +15,10 @@ import java.util.ArrayList;
 public class Gabor
 {
     CreateImage ci;
+    final double NEXT_ORIENTATION = 23;
+    private double t = 180;
     private double lamda=200;
-    private double theta=90;
+    private double theta=0;
     private double varphi=0;
     private double upsi=0;
     private double bandW=0;
@@ -27,6 +29,7 @@ public class Gabor
     private double[][] GaborNorm;
     private static double[][] AverageVals;
     public static ArrayList<double[][]> grids = new ArrayList<double[][]>();
+    boolean twentyThree = true;
 
     int size=0;
     double toRadians=180/Math.PI, min=500, max=-500, mean=0;;
@@ -38,7 +41,8 @@ public class Gabor
     {
         lamda = 100;
         
-        theta= 0/toRadians;
+        
+        theta= t/toRadians;
         varphi=v/toRadians;
         upsi=u;
         bandW=b;
@@ -56,13 +60,13 @@ public class Gabor
     	int imageCount = 0;
     	int row = 5;
     	int col = 8;
+    	grids.clear();
     	while(lamda >= 40){
-    		theta = 6;
+    		twentyThree = true;
     		col = 8;
-    		while(theta <= 47){
-    			if(theta == 88){
-    				theta = 90;
-    			}
+    		t = 0;
+    		while(t <= 158){
+    			theta = t/toRadians;
     			GaborGrid = new double[size][size];
     			double x = 0;
     			double y = 0;
@@ -97,19 +101,23 @@ public class Gabor
     				grids.add(GaborGrid);
     			}
     			mean = total / count;
-    			System.out.println(theta + "\t : " + lamda);
-    			NormaliseImage(lamda, theta);
+    			NormaliseImage((int)lamda, (int)t);
     			imageCount++;
-    			theta += 5.625;
+    			if(twentyThree){
+    				t += NEXT_ORIENTATION;
+    				twentyThree = false;
+    			} else {
+    				t += (NEXT_ORIENTATION - 1);
+    				twentyThree = true;
+    			}
     			col--;
     		}
     		lamda -= 15;
-    		System.out.println("Lamda: " + lamda);
     		row--;
     	}
-    	System.out.println(imageCount);
+//    	System.out.println(imageCount);
     }
-    public void NormaliseImage(double row, double col)
+    public void NormaliseImage(int row, int col)
     {	
 		GaborNorm = new double[size][size];
     	double temp;
