@@ -14,8 +14,10 @@ public class Converter {
 	final private double GALLON_TO_LITER = 3.78541178;
 	final private double PINT_TO_LITER = 0.473176473;
 	final private double MILLILITER_TO_LITER = 0.001;
-	final private double CUBIC_METER_TO_METER = 1000.000;
-	
+	final private double CUBIC_METER_TO_LITER = 1000.000;
+	final private double POUND_TO_KG = 0.45359237;
+	final private double OUNCE_TO_KG = 0.0283495231;
+	final private double STONE_TO_KG = 6.35029318;
 	
 	
 	static Scanner sc = new Scanner(System.in);
@@ -23,7 +25,7 @@ public class Converter {
 	private double factor;
 	
 	public Converter(String type){
-		if(type.equalsIgnoreCase("length")){
+		if(type.equalsIgnoreCase("meters")){
 			System.out.println("What unit convert to (in/ft/mi/mm/cm/km/yd)");
 			String unit = sc.nextLine();
 			lengths(unit);
@@ -31,6 +33,13 @@ public class Converter {
 			System.out.println("What unit convert to (gallons/pints/milliliters/cubic meters)");
 			String unit = sc.nextLine();
 			volumes(unit);
+		}else if(type.equalsIgnoreCase("kgs")){
+			System.out.println("What unit convert to (pounds/ounces/stones)");
+			String unit = sc.nextLine();
+			weight(unit);
+		}else{
+			System.out.println("Wrong choice");
+			
 		}
 		
 		
@@ -50,13 +59,31 @@ public class Converter {
 	}
 	
 	
-	
 	public double fromMeters(double measurment){
 		return(measurment / factor);
 	}
 	
-	public void volumes (String unit){
-		
+
+	public void weight(String unit){
+		if(unit.equalsIgnoreCase("pounds")){
+			factor= POUND_TO_KG;
+		}else if(unit.equalsIgnoreCase("ounces")){
+			factor = OUNCE_TO_KG;
+		}else if(unit.equalsIgnoreCase("stones")){
+			factor = STONE_TO_KG;
+		}
+	}
+	
+	public void volumes(String unit){
+		if(unit.equalsIgnoreCase("gallons")){
+			factor= GALLON_TO_LITER;
+		}else if(unit.equalsIgnoreCase("pints")){
+			factor = PINT_TO_LITER;
+		}else if(unit.equalsIgnoreCase("milliliters")){
+			factor = MILLILITER_TO_LITER;
+		}else if(unit.equalsIgnoreCase("cubic meters")){
+			factor = CUBIC_METER_TO_LITER;
+		}
 	}
 	
 	public void lengths(String unit){
@@ -79,7 +106,7 @@ public class Converter {
 	}
 	public static void main(String[] args) {
 		
-		System.out.println("Convert (meters/liters..)");
+		System.out.println("Convert (meters/liters/kgs..)");
 		String fromUnit = sc.nextLine();
 		
 		/*System.out.println("Convert From");
