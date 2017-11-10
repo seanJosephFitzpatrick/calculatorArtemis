@@ -90,10 +90,11 @@ public class SimpsonsRule {
     	IntegralPlotter.getIntegralPointsY().clear();
     	 BigDecimal aBig = new BigDecimal(a);
     	 BigDecimal bBig = new BigDecimal(b);
+    	 BigDecimal diff = new BigDecimal(b-a);
     	 
-    	 for(;(aBig.compareTo(bBig)!=1);aBig=aBig.add(new BigDecimal(0.2))){
+    	 for(;(aBig.compareTo(bBig)!=1);aBig=aBig.add(diff.multiply(new BigDecimal(0.005)))){
     		
-    		 
+    		
     		 String a1=String.format("%f", aBig.doubleValue());
     		 String function1 = function.replaceAll("x", a1);
     		 String result=CalcInterface.run(function1, false);

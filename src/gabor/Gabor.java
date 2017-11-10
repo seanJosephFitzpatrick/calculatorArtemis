@@ -60,6 +60,7 @@ public class Gabor
     	int imageCount = 0;
     	int row = 5;
     	int col = 8;
+    	grids.clear();
     	while(lamda >= 40){
     		twentyThree = true;
     		col = 8;

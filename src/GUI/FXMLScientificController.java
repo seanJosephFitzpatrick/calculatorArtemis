@@ -360,17 +360,24 @@ public class FXMLScientificController implements Initializable {
     }
 
     @FXML
-    void OnActionBtnEquals(ActionEvent event) {
-    	if(inputTextField3.getText().toString().length() > 0){
-    		userInput = EquationGenerator.formatEquation(inputTextField3.getText());
-    		System.out.println(userInput);
-    		inputTextField4.clear();
-    		String result = CalcInterface.run(userInput, radians);	//boolean value needs to be set from GUI button
-    		answer = result;
-    		inputTextField4.appendText(result);
-    		inputTextField3.clear();
-    		userInput = "";
-    	}
+    void OnActionBtnEquals(ActionEvent event) throws Exception{
+    	try {
+    		if(inputTextField3.getText().toString().length() > 0){
+    			userInput = EquationGenerator.formatEquation(inputTextField3.getText());
+    			System.out.println(userInput);
+    			inputTextField4.clear();
+    			String result = CalcInterface.run(userInput, radians);	//boolean value needs to be set from GUI button
+    			answer = result;
+    			inputTextField4.appendText(result);
+    			inputTextField3.clear();
+    			userInput = "";
+    		} 
+
+    	} catch (IllegalArgumentException e){
+    		if(!inputTextField4.getText().equals("Syntax Error")){
+    			inputTextField4.appendText("Syntax Error");
+    		}
+    	} 
     }
 
     @FXML
@@ -444,7 +451,13 @@ public class FXMLScientificController implements Initializable {
 
     @FXML
     void OnActionBtnPercentage(ActionEvent event) {
-    	
+    	if(!answer.equals("clear") && (!answer.equals("Syntax Error"))){
+    		inputTextField3.appendText(answer + "\u00B2");
+    		answer = "clear";
+    	} else {
+    		answer = "clear";
+    		inputTextField3.appendText("!");
+    	}
     }
 
     @FXML

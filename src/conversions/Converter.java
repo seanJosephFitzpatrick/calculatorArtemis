@@ -25,15 +25,15 @@ public class Converter {
 	private double factor;
 	
 	public Converter(String type){
-		if(type.equalsIgnoreCase("meters")){
+		if(type.equalsIgnoreCase("Meters")){
 			System.out.println("What unit convert to (in/ft/mi/mm/cm/km/yd)");
 			String unit = sc.nextLine();
 			lengths(unit);
-		}else if(type.equalsIgnoreCase("liters")){
+		}else if(type.equalsIgnoreCase("Liters")){
 			System.out.println("What unit convert to (gallons/pints/milliliters/cubic meters)");
 			String unit = sc.nextLine();
 			volumes(unit);
-		}else if(type.equalsIgnoreCase("kgs")){
+		}else if(type.equalsIgnoreCase("Kgs")){
 			System.out.println("What unit convert to (pounds/ounces/stones)");
 			String unit = sc.nextLine();
 			weight(unit);
@@ -54,15 +54,7 @@ public class Converter {
 		}
 	}
 	
-	public double toMeters(double measurment){
-		return (measurment*factor);
-	}
-	
-	
-	public double fromMeters(double measurment){
-		return(measurment / factor);
-	}
-	
+
 
 	public void weight(String unit){
 		if(unit.equalsIgnoreCase("pounds")){
@@ -109,9 +101,6 @@ public class Converter {
 		System.out.println("Convert (meters/liters/kgs..)");
 		String fromUnit = sc.nextLine();
 		
-		/*System.out.println("Convert From");
-		String toUnit = sc.nextLine();
-		*/
 		Converter conv = new Converter(fromUnit);
 		System.out.println("To or From?");
 		String choice = sc.nextLine();
