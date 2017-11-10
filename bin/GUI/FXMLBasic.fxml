@@ -48,7 +48,7 @@
             <Button fx:id="fourierCalculator" mnemonicParsing="false" onAction="#NavigateFourierCalculator" prefHeight="100.0" prefWidth="600.0" text="Fourier Calculator" GridPane.columnSpan="3" GridPane.rowIndex="4" />
             <Button fx:id="bitWiseCalculator" mnemonicParsing="false" onAction="#NavigateBitWiseCalculator" prefHeight="100.0" prefWidth="600.0" text="Sets" GridPane.columnSpan="3" GridPane.rowIndex="5" />
             <Button fx:id="gaborCalculator" mnemonicParsing="false" onAction="#NavigateGaborCalculator" prefHeight="100.0" prefWidth="600.0" text="Gabor Wavelet" GridPane.columnSpan="3" GridPane.rowIndex="6" />
-            <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Logical Functions" GridPane.columnSpan="3" GridPane.rowIndex="7" />
+            <Button fx:id="equationCalculator" mnemonicParsing="false" onAction="#NavigateEquationCalculator" prefHeight="100.0" prefWidth="600.0" text="Equations Calculator" GridPane.columnSpan="3" GridPane.rowIndex="7" />
             <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Constant Values" GridPane.columnSpan="3" GridPane.rowIndex="8" />
             <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Conversions" GridPane.columnSpan="3" GridPane.rowIndex="9" />
             <TextField fx:id="inputTextField" alignment="BASELINE_RIGHT" GridPane.columnIndex="4" GridPane.columnSpan="8" GridPane.rowIndex="4" />

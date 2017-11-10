@@ -30,6 +30,10 @@ public class FXMLIntegralController implements Initializable {
     private Button fourierCalculator;
     @FXML
     private Button basicCalculator;
+    @FXML
+    private Button bitWiseCalculator;
+    @FXML
+    private Button gaborCalculator;
     
     @FXML
     private TextField topValueTextField;
@@ -43,9 +47,23 @@ public class FXMLIntegralController implements Initializable {
     @FXML
     private TextField outputTextField;
     @FXML
-    private Button bitWiseCalculator;
+    private Button equationCalculator;
+    
     @FXML
-    private Button gaborCalculator;
+    void NavigateEquationCalculator(ActionEvent event) {
+      	try {
+			Parent scientific_calculator_parent = FXMLLoader.load(getClass().getResource("FXMLEquationCalc.fxml"));
+			Scene scientific_calculator_scene = new Scene(scientific_calculator_parent, 800, 400);
+			Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+			stage.hide();
+			stage.setScene(scientific_calculator_scene);
+			stage.show();
+    		} catch (IOException e) {
+    			// TODO Auto-generated catch block
+    			e.printStackTrace();
+    		}
+    }
+
 	
     @FXML
     void NavigateGaborCalculator(ActionEvent event) {
