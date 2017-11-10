@@ -1,6 +1,5 @@
 package MatrixCalculations;
 
-import java.security.InvalidParameterException;
 import java.text.NumberFormat;
 
 public class MatrixCalculator {
@@ -43,7 +42,6 @@ public class MatrixCalculator {
 				}
 			}
 		}
-
 		return C;
 	}
 
@@ -73,7 +71,6 @@ public class MatrixCalculator {
 				}
 			}
 		}
-
 		return C;
 	}
 
@@ -104,7 +101,6 @@ public class MatrixCalculator {
 				C[r][c] = A[r][c] + B[r][c];
 			}
 		}
-
 		return C;
 	}
 
@@ -135,7 +131,6 @@ public class MatrixCalculator {
 				C[r][c] = A[r][c] + B[r][c];
 			}
 		}
-
 		return C;
 	}
 
@@ -171,35 +166,34 @@ public class MatrixCalculator {
 	}
 
 	//SUBTRACTION - INT
-		public int[][] subtractMatrix(int[][] A, int[][] B) {
-			int aRows = A.length;
-			int aColumns = A[0].length;
-			int bRows = B.length;
-			int bColumns = B[0].length;
+	public int[][] subtractMatrix(int[][] A, int[][] B) {
+		int aRows = A.length;
+		int aColumns = A[0].length;
+		int bRows = B.length;
+		int bColumns = B[0].length;
 
-			int[][] C = new int[aRows][bColumns];
+		int[][] C = new int[aRows][bColumns];
 
-			if (aRows != bRows) {
-				throw new IllegalArgumentException("Rows not equal size");
-			}
-			if (aColumns != bColumns) {
-				throw new IllegalArgumentException("Columns not equal size");
-			}
-
-			for (int r = 0; r < aRows; r++) {
-				for (int c = 0; c < bColumns; c++) {
-					C[r][c] = 0;
-				}
-			}
-
-			for (int r = 0; r < aRows; r++) {
-				for (int c = 0; c < bColumns; c++) {
-					C[r][c] = A[r][c] - B[r][c];
-				}
-			}
-
-			return C;
+		if (aRows != bRows) {
+			throw new IllegalArgumentException("Rows not equal size");
 		}
+		if (aColumns != bColumns) {
+			throw new IllegalArgumentException("Columns not equal size");
+		}
+
+		for (int r = 0; r < aRows; r++) {
+			for (int c = 0; c < bColumns; c++) {
+				C[r][c] = 0;
+			}
+		}
+
+		for (int r = 0; r < aRows; r++) {
+			for (int c = 0; c < bColumns; c++) {
+				C[r][c] = A[r][c] - B[r][c];
+			}
+		}
+		return C;
+	}
 
 	public static void printArray(int[][] toPrint){
 		NumberFormat nf = NumberFormat.getInstance();
@@ -210,10 +204,5 @@ public class MatrixCalculator {
 			}
 			System.out.println();
 		}
-	}
-
-	public static void main(String[] args) {
-		MatrixCalculator m = new MatrixCalculator();
-		printArray(m.addMatrix(testA, testB));
 	}
 }
