@@ -45,15 +45,14 @@ public class SimpsonsRule {
 	}
 
      static Scanner sc = new Scanner (System.in);
-     public static double integrate(double a, double b, String function, boolean resInRadians) throws Exception {
+     public static double integrate(double a, double b, int valueN, String function, boolean resInRadians) throws Exception {
      
    
     	 SimpsonsRule.addPlotPoints(function,b, a);
     	 
+    	
     	 
-    	 int N = 10;
-	// System.out.println("Enter precision parament : ");
-	// int N = sc.nextInt();
+    	 int N = valueN;
 	 
 	 double h = (b - a)/ N;
 	 

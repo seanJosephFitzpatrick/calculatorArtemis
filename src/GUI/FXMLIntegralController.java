@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import ReversePolishNotation.EquationGenerator;
 import integrals.SimpsonsRule;
 
 public class FXMLIntegralController implements Initializable {
@@ -122,11 +123,19 @@ public class FXMLIntegralController implements Initializable {
        	double valueB = Double.parseDouble(bottomValueTextField.getText().toString());
        	System.out.println("1");
        	SimpsonsRule.setFunctionText(inputTextField.getText());
+       	int valueN =10;
+       	if(!inputTextFieldN.getText().equals("")){
+       		valueN=Integer.parseInt(inputTextFieldN.getText());
+       	}
        	
-    	double answer = rule.integrate(valueA, valueB, inputTextField.getText().toString(), true);	//boolean value needs to be assigned
-    	System.out.println("2");
-    	System.out.println(answer);
+       	String input = EquationGenerator.formatEquation(inputTextField.getText().toString());
+       	
+    	double answer = SimpsonsRule.integrate(valueA, valueB,valueN, input, true);	//boolean value needs to be assigned
     	String str = Double.toString(answer);											//from GUI
+    	if(str.contains("E-")){
+    		str = "0";
+    	}
+    	
     	outputTextField.clear();
     	outputTextField.appendText(str);
     }
