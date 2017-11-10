@@ -100,7 +100,6 @@ public class Gabor
     				grids.add(GaborGrid);
     			}
     			mean = total / count;
-    			System.out.println(t + "\t : " + lamda);
     			NormaliseImage((int)lamda, (int)t);
     			imageCount++;
     			if(twentyThree){
@@ -113,10 +112,9 @@ public class Gabor
     			col--;
     		}
     		lamda -= 15;
-    		System.out.println("Lamda: " + lamda);
     		row--;
     	}
-    	System.out.println(imageCount);
+//    	System.out.println(imageCount);
     }
     public void NormaliseImage(int row, int col)
     {	
