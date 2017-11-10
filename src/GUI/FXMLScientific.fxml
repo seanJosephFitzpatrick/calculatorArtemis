@@ -51,7 +51,7 @@
             <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Scientific Calculator" GridPane.columnSpan="3" GridPane.rowIndex="2" />
             <Button fx:id="integralCalculator" mnemonicParsing="false" onAction="#NavigateIntegralCalculator" prefHeight="100.0" prefWidth="600.0" text="Integral Calculator" GridPane.columnSpan="3" GridPane.rowIndex="3" />
             <Button fx:id="fourierCalculator" mnemonicParsing="false" onAction="#NavigateFourierCalculator" prefHeight="100.0" prefWidth="600.0" text="Fourier Calculator" GridPane.columnSpan="3" GridPane.rowIndex="4" />
-            <Button fx:id="bitWiseCalculator" mnemonicParsing="false" onAction="#NavigateBitWiseCalculator" prefHeight="100.0" prefWidth="600.0" text="BitWise Functions" GridPane.columnSpan="3" GridPane.rowIndex="5" />
+            <Button fx:id="bitWiseCalculator" mnemonicParsing="false" onAction="#NavigateBitWiseCalculator" prefHeight="100.0" prefWidth="600.0" text="Sets" GridPane.columnSpan="3" GridPane.rowIndex="5" />
             <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Power Functions" GridPane.columnSpan="3" GridPane.rowIndex="6" />
             <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Logical Functions" GridPane.columnSpan="3" GridPane.rowIndex="7" />
             <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Constant Values" GridPane.columnSpan="3" GridPane.rowIndex="8" />
@@ -87,6 +87,8 @@
             <Button fx:id="btnPercentage" mnemonicParsing="false" onAction="#OnActionBtnPercentage" prefHeight="100.0" prefWidth="200.0" text="\%" GridPane.columnIndex="7" GridPane.rowIndex="6" />
             <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="7" />
             <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="8" />
+            <Button fx:id="powerOfN" mnemonicParsing="false" onAction="#onActionPowerOfN" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="7" />
+            <Button fx:id="logBaseN" mnemonicParsing="false" onAction="#onActionLogBaseN" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="8" />
             <Button fx:id="lgt" mnemonicParsing="false" onAction="#OnActionBtnLogTen" prefHeight="100.0" prefWidth="200.0" text="log" GridPane.columnIndex="7" GridPane.rowIndex="9" />
             <Button id="pad1" fx:id="memorySubtract" mnemonicParsing="false" onAction="#OnActionBtnMemorySubtract" prefHeight="100.0" prefWidth="200.0" text="M-" GridPane.columnIndex="8" GridPane.rowIndex="5" />
             <Button id="pad1" fx:id="btnSeven" mnemonicParsing="false" onAction="#OnActionBtnSeven" prefHeight="100.0" prefWidth="200.0" text="7" GridPane.columnIndex="8" GridPane.rowIndex="6" />
