@@ -27,7 +27,8 @@ public class DCT {
 	static int[][] TMTt = new int[N][N];
 	static int[][] DCTResult = new int[N][N];
 
-	public static void run(ArrayList<int[][]> grids){
+	public static ArrayList<int[][]> run(ArrayList<int[][]> grids){
+		ArrayList<int[][]> results = new ArrayList<int[][]>();
 		int i = 0;
 		System.out.print("Please enter a value for Q: ");
 		double q = sc.nextDouble();
@@ -35,32 +36,42 @@ public class DCT {
 		while(i < grids.size()){
 			roundArray(Qx);
 			printArray(Qx);
+
 			System.out.println("Matrix M: ");
 			printArray(grids.get(i));
 			loadT();
 			System.out.println();
+
 			System.out.println("Matrix T: ");
 			printArray(T);
 			System.out.println();
+
 			System.out.println("Matrix Tt: ");
 			printArray(Tt);
 			System.out.println();
+
 			multiply(T, grids.get(i), TM);
 			System.out.println("Intermediary Matrix TM: ");
 			printArray(TM);
 			System.out.println();
+
 			multiply(TM, Tt, TMTt);
 			roundArray(TMTt);
 			System.out.println("Intermediary Matrix TMTt (Rounded): ");
 			printArray(TMTt);
+
 			System.out.println();
 			quantization(TMTt, Qx, DCTResult);
 			roundArray(DCTResult);
 			System.out.println();
+
 			System.out.println("Resulting Matrix: ");
 			printArray(DCTResult);
+			results.add(DCTResult);
 			i++;
 		}
+		System.out.println(results.size());
+		return results;
 	}
 
 	public static void printArray(int[][] toPrint){
@@ -81,7 +92,7 @@ public class DCT {
 					T[i][j] = (int) (1 / (Math.sqrt(n)));
 					Tt[j][i] = T[i][j];
 				} else {
-					T[i][j] = (int) (Math.sqrt(2 / n) * Math.cos(((2 * j + 1) * i * Math.PI) / (2 * n))); 
+					T[i][j] = (int) (Math.sqrt(2 / n) * Math.cos(((2 * j + 1) * i * Math.PI) / (2 * n)));
 					Tt[j][i] = T[i][j];
 				}
 			}
@@ -123,13 +134,13 @@ public class DCT {
 			for(int i = 0; i < N; i++){
 				for(int j = 0; j < N; j++){
 					Qx[i][j] = (int) (Q50[i][j] * ((100d - q) / 50d));
-				}	
+				}
 			}
 		} else if(q < 50){
 			for(int i = 0; i < N; i++){
 				for(int j = 0; j < N; j++){
 					Qx[i][j] = (int) (Q50[i][j] * (50d / q));
-				}	
+				}
 			}
 		}
 	}
@@ -166,7 +177,6 @@ public class DCT {
 			DCTDriver.printArray(sub);
 			System.out.println("--------------");
 			System.out.println();
-
 		}
 		return subArrays;
 	}
