@@ -1,10 +1,13 @@
 package GUI;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -12,7 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class FMXLGaborWaveletController {
+public class FMXLGaborWaveletController implements Initializable {
 	
     @FXML
     private Button basicCalculator;
@@ -35,6 +38,18 @@ public class FMXLGaborWaveletController {
     @FXML
     private Button equationCalculator;
     
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		varphi.setText("90");
+		upsi.setText("1");
+		bandw.setText("1");
+	}
+	
+    @FXML
+    void onActionBtnGenerate(ActionEvent event) {
+
+    }
+    
     @FXML
     void NavigateEquationCalculator(ActionEvent event) {
       	try {
@@ -49,12 +64,6 @@ public class FMXLGaborWaveletController {
     			e.printStackTrace();
     		}
     }
-    
-    @FXML
-    void onActionBtnGenerate(ActionEvent event) {
-
-    }
-    
 
     @FXML
     void NavigateBasicCalculator(ActionEvent event) {
