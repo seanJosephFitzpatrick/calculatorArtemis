@@ -15,10 +15,10 @@ import java.util.ArrayList;
 public class Gabor
 {
     CreateImage ci;
-    final double NEXT_ORIENTATION = 12.38571429;
+    final double NEXT_ORIENTATION = 23;
     private double t = 180;
     private double lamda=200;
-    private double theta=90;
+    private double theta=0;
     private double varphi=0;
     private double upsi=0;
     private double bandW=0;
@@ -29,6 +29,7 @@ public class Gabor
     private double[][] GaborNorm;
     private static double[][] AverageVals;
     public static ArrayList<double[][]> grids = new ArrayList<double[][]>();
+    boolean twentyThree = true;
 
     int size=0;
     double toRadians=180/Math.PI, min=500, max=-500, mean=0;;
@@ -60,9 +61,10 @@ public class Gabor
     	int row = 5;
     	int col = 8;
     	while(lamda >= 40){
+    		twentyThree = true;
     		col = 8;
-    		t = 180;
-    		while(t > 0){
+    		t = 0;
+    		while(t <= 158){
     			theta = t/toRadians;
     			GaborGrid = new double[size][size];
     			double x = 0;
@@ -99,9 +101,15 @@ public class Gabor
     			}
     			mean = total / count;
     			System.out.println(t + "\t : " + lamda);
-    			NormaliseImage(lamda, t);
+    			NormaliseImage((int)lamda, (int)t);
     			imageCount++;
-    			t -= NEXT_ORIENTATION * 2;
+    			if(twentyThree){
+    				t += NEXT_ORIENTATION;
+    				twentyThree = false;
+    			} else {
+    				t += (NEXT_ORIENTATION - 1);
+    				twentyThree = true;
+    			}
     			col--;
     		}
     		lamda -= 15;
@@ -110,7 +118,7 @@ public class Gabor
     	}
     	System.out.println(imageCount);
     }
-    public void NormaliseImage(double row, double col)
+    public void NormaliseImage(int row, int col)
     {	
 		GaborNorm = new double[size][size];
     	double temp;

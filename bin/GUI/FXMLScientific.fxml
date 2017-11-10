@@ -82,7 +82,7 @@
             <Button fx:id="pi" mnemonicParsing="false" onAction="#OnActionBtnPi" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="8" />
             <Button fx:id="elg" mnemonicParsing="false" onAction="#OnActionBtnNaturalLog" prefHeight="100.0" prefWidth="200.0" text="ln" GridPane.columnIndex="6" GridPane.rowIndex="9" />
             <Button fx:id="memoryAdd" mnemonicParsing="false" onAction="#OnActionBtnMemoryAdd" prefHeight="100.0" prefWidth="200.0" text="M+" GridPane.columnIndex="7" GridPane.rowIndex="5" />
-            <Button fx:id="btnPercentage" mnemonicParsing="false" onAction="#OnActionBtnPercentage" prefHeight="100.0" prefWidth="200.0" text="\%" GridPane.columnIndex="7" GridPane.rowIndex="6" />
+            <Button fx:id="btnPercentage" mnemonicParsing="false" onAction="#OnActionBtnPercentage" prefHeight="100.0" prefWidth="200.0" text="!" GridPane.columnIndex="7" GridPane.rowIndex="6" />
             <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="7" />
             <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="8" />
             <Button fx:id="powerOfN" mnemonicParsing="false" onAction="#onActionPowerOfN" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="7" />
