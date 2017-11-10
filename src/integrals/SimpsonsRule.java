@@ -51,7 +51,7 @@ public class SimpsonsRule {
     	 SimpsonsRule.addPlotPoints(function,b, a);
     	 
     	 
-    	 int N = 10;
+    	 int N = 100;
 	// System.out.println("Enter precision parament : ");
 	// int N = sc.nextInt();
 	 
