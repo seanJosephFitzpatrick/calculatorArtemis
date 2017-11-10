@@ -119,6 +119,10 @@ public class FXMLScientificController implements Initializable {
     private RadioButton degreesRadioBtn;
     @FXML
     private Button bitWiseCalculator;
+    @FXML
+    private Button powerOfN;
+    @FXML
+    private Button logBaseN;
     final ToggleGroup group = new ToggleGroup();
     
     @FXML
@@ -198,6 +202,16 @@ public class FXMLScientificController implements Initializable {
     		answer = "clear";
     		inputTextField3.appendText("+");
     	}
+    }
+    
+    @FXML
+    void onActionLogBaseN(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onActionPowerOfN(ActionEvent event) {
+
     }
     
     @FXML
