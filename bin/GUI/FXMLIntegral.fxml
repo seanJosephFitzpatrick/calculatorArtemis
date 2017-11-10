@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLFourierController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLIntegralController">
    <children>
       <GridPane prefWidth="200.0">
         <columnConstraints>
@@ -27,7 +29,6 @@
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -42,36 +43,42 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="basicCalculator" mnemonicParsing="false" onAction="#NavigateBasicCalculator" prefHeight="100.0" prefWidth="600.0" text="Basic Calculator" GridPane.columnSpan="3" GridPane.rowIndex="1" />
+            <TextField fx:id="inputTextField" onAction="#OnActionInput" prefHeight="90.0" prefWidth="315.0" GridPane.columnIndex="4" GridPane.columnSpan="8" GridPane.rowIndex="1" GridPane.rowSpan="3">
+               <padding>
+                  <Insets left="100.0" />
+               </padding>
+            </TextField>
+           	<Button fx:id="basicCalculator" mnemonicParsing="false" onAction="#NavigateBasicCalculator" prefHeight="100.0" prefWidth="600.0" text="Basic Calculator" GridPane.columnSpan="3" GridPane.rowIndex="1" />
             <Button fx:id="scientificCalculator" mnemonicParsing="false" onAction="#NavigateScientificCalculator" prefHeight="100.0" prefWidth="600.0" text="Scientific Calculator" GridPane.columnSpan="3" GridPane.rowIndex="2" />
-           	<Button fx:id="integralCalculator" mnemonicParsing="false" onAction="#NavigateIntegralCalculator" prefHeight="100.0" prefWidth="600.0" text="Integral Calculator" GridPane.columnSpan="3" GridPane.rowIndex="3" />
-            <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Fourier Calculator" GridPane.columnSpan="3" GridPane.rowIndex="4" />
+           	<Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Integral Calculator" GridPane.columnSpan="3" GridPane.rowIndex="3" />
+            <Button fx:id="fourierCalculator" mnemonicParsing="false" onAction="#NavigateFourierCalculator" prefHeight="100.0" prefWidth="600.0" text="Fourier Calculator" GridPane.columnSpan="3" GridPane.rowIndex="4" />
             <Button fx:id="bitWiseCalculator" mnemonicParsing="false" onAction="#NavigateBitWiseCalculator" prefHeight="100.0" prefWidth="600.0" text="Sets" GridPane.columnSpan="3" GridPane.rowIndex="5" />
             <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Power Functions" GridPane.columnSpan="3" GridPane.rowIndex="6" />
             <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Logical Functions" GridPane.columnSpan="3" GridPane.rowIndex="7" />
             <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Constant Values" GridPane.columnSpan="3" GridPane.rowIndex="8" />
             <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Conversions" GridPane.columnSpan="3" GridPane.rowIndex="9" />
-            <TextField fx:id="inputTextFieldPhase" alignment="BASELINE_RIGHT" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.rowIndex="4" />
-            <TextField fx:id="inputTextFieldPeriod" alignment="BASELINE_RIGHT" GridPane.columnIndex="10" GridPane.columnSpan="3" GridPane.rowIndex="4" />
-            <TextField fx:id="inputTextFieldHarAmp" alignment="BASELINE_RIGHT" GridPane.columnIndex="10" GridPane.columnSpan="3" GridPane.rowIndex="2" />
+
             <Label alignment="CENTER" prefHeight="100.0" prefWidth="400.0" text="Mode" GridPane.columnSpan="2">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="100.0" prefWidth="1600.0" text="Fourier Series" GridPane.columnIndex="4" GridPane.columnSpan="8">
+            <Label alignment="CENTER" prefHeight="100.0" prefWidth="1600.0" text="Calculator" GridPane.columnIndex="4" GridPane.columnSpan="8">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Button id="pad1" fx:id="submit" mnemonicParsing="false" onAction="#OnActionSubmit" prefHeight="100.0" prefWidth="400.0" text="Submit" GridPane.columnIndex="8" GridPane.columnSpan="2" GridPane.rowIndex="9" />
-            <ComboBox fx:id="comboBoxFourier" onAction="#OnActionLabelComboBox" prefHeight="29.0" prefWidth="350.0" promptText="User Defined Waveform" GridPane.columnIndex="4" GridPane.columnSpan="5" GridPane.rowIndex="2" />
-            <Label fx:id="labelOneFourier" text="Harmonics" GridPane.columnIndex="10" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
-            <Label fx:id="labelThreeFourier" text="Waveform" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="3" />
-            <Label fx:id="labelFourFourier" text="Period" GridPane.columnIndex="10" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="3" />
-            <Label fx:id="labelTwoFourier" text="Fourier Series" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
-            <ComboBox fx:id="comboBoxWaveform" layoutX="240.0" layoutY="221.0" prefHeight="29.0" prefWidth="350.0" promptText="User Defined Waveform" GridPane.columnIndex="4" GridPane.columnSpan="5" GridPane.rowIndex="4" />
-           
+            
+            <TextField fx:id="topValueTextField" onAction="#OnActionTopValue" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+            <TextField fx:id="bottomValueTextField" onAction="#OnActionBottomValue" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+            <Button fx:id="calculate" mnemonicParsing="false" onAction="#OnActionCalculate" prefWidth="400.0" text="Calculate" GridPane.columnIndex="8" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+            <TextField fx:id="outputTextField" onAction="#OnActionOutput" prefHeight="35.0" prefWidth="1400.0" GridPane.columnIndex="5" GridPane.columnSpan="7" GridPane.rowIndex="7" />
+            <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+               <image>
+                  <Image url="@../../Images/integral-mathematical-sign.png" />
+               </image>
+            </ImageView>
+      
          </children>
       </GridPane>
    </children>
