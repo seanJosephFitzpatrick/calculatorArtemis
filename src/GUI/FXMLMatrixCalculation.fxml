@@ -50,7 +50,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="192.0" text="Generate Numbers" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="6" />
+            <Button fx:id="buttonGenerateMatrix1" mnemonicParsing="false" prefHeight="25.0" prefWidth="192.0" text="Generate Numbers" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="6" />
             <TextField fx:id="textFieldMatrix101" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField fx:id="textFieldMatrix102" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <TextField fx:id="textFieldMatrix103" GridPane.columnIndex="3" GridPane.rowIndex="2" />
@@ -83,7 +83,7 @@
             <TextField fx:id="textFieldMatrix214" GridPane.columnIndex="7" GridPane.rowIndex="5" />
             <TextField fx:id="textFieldMatrix215" GridPane.columnIndex="8" GridPane.rowIndex="5" />
             <TextField fx:id="textFieldMatrix216" GridPane.columnIndex="9" GridPane.rowIndex="5" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="130.0" text="Generate Numbers" GridPane.columnIndex="6" GridPane.columnSpan="4" GridPane.rowIndex="6" />
+            <Button fx:id="buttonGenerateMatrix2" mnemonicParsing="false" prefHeight="25.0" prefWidth="130.0" text="Generate Numbers" GridPane.columnIndex="6" GridPane.columnSpan="4" GridPane.rowIndex="6" />
             <TextField fx:id="textFieldMatrix301" GridPane.columnIndex="12" GridPane.rowIndex="2" />
             <TextField fx:id="textFieldMatrix302" GridPane.columnIndex="13" GridPane.rowIndex="2" />
             <TextField fx:id="textFieldMatrix303" GridPane.columnIndex="14" GridPane.rowIndex="2" />
@@ -100,15 +100,15 @@
             <TextField fx:id="textFieldMatrix314" GridPane.columnIndex="13" GridPane.rowIndex="5" />
             <TextField fx:id="textFieldMatrix315" GridPane.columnIndex="14" GridPane.rowIndex="5" />
             <TextField fx:id="textFieldMatrix316" GridPane.columnIndex="15" GridPane.rowIndex="5" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Add" GridPane.columnIndex="12" GridPane.columnSpan="4" GridPane.rowIndex="6" />
+            <Button fx:id="buttonAddMatrix" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Add" GridPane.columnIndex="12" GridPane.columnSpan="4" GridPane.rowIndex="6" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="=" wrappingWidth="52.04736328125" GridPane.columnIndex="10" GridPane.rowIndex="3">
                <font>
                   <Font size="87.0" />
                </font>
             </Text>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Subtract" GridPane.columnIndex="14" GridPane.columnSpan="3" GridPane.rowIndex="6" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Divide" GridPane.columnIndex="12" GridPane.columnSpan="4" GridPane.rowIndex="7" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Multiply" GridPane.columnIndex="14" GridPane.columnSpan="3" GridPane.rowIndex="7" />
+            <Button fx:id="buttonSubtractMatrix" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Subtract" GridPane.columnIndex="14" GridPane.columnSpan="3" GridPane.rowIndex="6" />
+            <Button fx:id="buttonDivideMatrix" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Divide" GridPane.columnIndex="12" GridPane.columnSpan="4" GridPane.rowIndex="7" />
+            <Button fx:id="buttonMultiplyMatrix" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Multiply" GridPane.columnIndex="14" GridPane.columnSpan="3" GridPane.rowIndex="7" />
            
          </children>
       </GridPane>
