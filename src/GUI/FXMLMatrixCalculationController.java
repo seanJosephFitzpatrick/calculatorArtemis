@@ -182,4 +182,35 @@ public class FXMLMatrixCalculationController {
 	    @FXML
 	    private Button buttonMultiplyMatrix;
 
+	    
+	    
+	    @FXML
+	    void onActionBtnAddMatrix(ActionEvent event) {
+
+	    }
+
+	    @FXML
+	    void onActionBtnDivideMatrix(ActionEvent event) {
+
+	    }
+
+	    @FXML
+	    void onActionBtnGenerateMatrix1(ActionEvent event) {
+
+	    }
+
+	    @FXML
+	    void onActionBtnGenerateMatrix2(ActionEvent event) {
+
+	    }
+
+	    @FXML
+	    void onActionBtnMultiplyMatrix(ActionEvent event) {
+
+	    }
+
+	    @FXML
+	    void onActionBtnSubtractMatrix(ActionEvent event) {
+
+	    }
 }
