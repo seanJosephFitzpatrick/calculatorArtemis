@@ -88,16 +88,13 @@ public class FXMLFourierController implements Initializable {
     	String outputWaveform = comboBoxWaveform.getSelectionModel().getSelectedItem().toString();
     	System.out.println(outputWaveform);
 	    if(outputFourier.equalsIgnoreCase("Fourier Series")){
+	    	
+	    	int harmonic = Integer.parseInt(inputTextFieldHarAmp.getText());
+	    	double period = Double.parseDouble(inputTextFieldPeriod.getText());
+	    	
     	
-        	FourierSeries.setMode(outputFourier);
-
-    	
-        	FourierSeries.setWaveform(outputWaveform.toLowerCase());
-        	System.out.println(outputWaveform);
-
-    	   	FourierSeries.setHarmonic(Integer.parseInt(inputTextFieldHarAmp.getText()));
-
-    	   	FourierSeries.setPeriod(Double.parseDouble(inputTextFieldPeriod.getText()));
+	    	FourierSeries.generatePlotPointsFourier(harmonic, period, outputWaveform, -(period+period*.5));
+        
 
 	    	
 	    	Application app2 =  new FourierSeries(); 
@@ -105,15 +102,19 @@ public class FXMLFourierController implements Initializable {
 	        app2.start(anotherStage);
 	   }else{
 		   
-		 FourierSeries.setMode(outputFourier);
+		// FourierSeries.setMode(outputFourier);
 
 	    	
-   	   	FourierSeries.setAmplitude(Integer.parseInt(inputTextFieldHarAmp.getText()));
+   	   	//FourierSeries.setAmplitude(Integer.parseInt(inputTextFieldHarAmp.getText()));
 
-   	   	FourierSeries.setPeriod(Double.parseDouble(inputTextFieldPeriod.getText()));
-   	   	FourierSeries.setPhase(Double.parseDouble(inputTextFieldPhase.getText()));
+   	   	//FourierSeries.setPeriod(Double.parseDouble(inputTextFieldPeriod.getText()));
+   	   //	FourierSeries.setPhase(Double.parseDouble(inputTextFieldPhase.getText()));
+		   double amplitude=Double.parseDouble(inputTextFieldHarAmp.getText());
+		   double period = Double.parseDouble(inputTextFieldPeriod.getText());
+		   double phase = Double.parseDouble(inputTextFieldPhase.getText());
 
-	    	
+	    	FourierSeries.generatePlotPointsFourier(amplitude, period, phase, -1.0,1.0,period*0.5);
+
 	    	Application app2 =  new FourierSeries(); 
 	        Stage anotherStage = new Stage();
 	        app2.start(anotherStage);
