@@ -25,14 +25,6 @@ public class FXMLFourierController implements Initializable {
 	String answer = "clear";
 	
     @FXML
-    private Button scientificCalculator;
-    @FXML
-    private Button integralCalculator;
-    @FXML
-    private Button fourierCalculator;
-    @FXML
-    private Button basicCalculator;
-    @FXML
     private TextField inputTextFieldPhase;
     @FXML
     private TextField inputTextFieldPeriod;
@@ -56,61 +48,9 @@ public class FXMLFourierController implements Initializable {
     private TextField inputTextFieldMode;
     @FXML
     private TextField inputTextFieldWaveform;
-    @FXML
-    private Button bitWiseCalculator;
-    @FXML
-    private Button gaborCalculator;
-    @FXML
-    private Button equationCalculator;
-    
-    @FXML
-    void NavigateEquationCalculator(ActionEvent event) {
-      	try {
-			Parent scientific_calculator_parent = FXMLLoader.load(getClass().getResource("FXMLEquationCalc.fxml"));
-			Scene scientific_calculator_scene = new Scene(scientific_calculator_parent, 800, 400);
-			Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
-			stage.hide();
-			stage.setScene(scientific_calculator_scene);
-			stage.show();
-    		} catch (IOException e) {
-    			// TODO Auto-generated catch block
-    			e.printStackTrace();
-    		}
-    }
-	
-    @FXML
-    void NavigateGaborCalculator(ActionEvent event) {
-    	try {
-			Parent scientific_calculator_parent = FXMLLoader.load(getClass().getResource("FXMLGaborWavelet.fxml"));
-			Scene scientific_calculator_scene = new Scene(scientific_calculator_parent, 800, 400);
-			Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
-			stage.hide();
-			stage.setScene(scientific_calculator_scene);
-			stage.show();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    }
-    
-    @FXML
-    void NavigateBitWiseCalculator(ActionEvent event) {
-    	try {
-			Parent scientific_calculator_parent = FXMLLoader.load(getClass().getResource("FXMLBitWise.fxml"));
-			Scene scientific_calculator_scene = new Scene(scientific_calculator_parent, 800, 400);
-			Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
-			stage.hide();
-			stage.setScene(scientific_calculator_scene);
-			stage.show();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    }
-    
+       
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
 		comboBoxFourier.getItems().removeAll(comboBoxFourier.getItems());
 		comboBoxFourier.getItems().addAll("Fourier Series", "user Defined Waveform");
 		comboBoxFourier.getSelectionModel().select("Fourier Series");
@@ -141,63 +81,6 @@ public class FXMLFourierController implements Initializable {
 	    }
     }
 
-//    @FXML
-//    void OnActionLabelOneFourier(MouseEvent event) {
-//	    String output = comboBox.getSelectionModel().getSelectedItem().toString();
-//	    
-//	    String output1 = "Fourier Series";
-//	    if(output1.equalsIgnoreCase("Fourier Series")){
-//	    	labelTwoFourier.setText("Fourier Series");
-//	    }else{
-//	    	labelTwoFourier.setText("user Defined Waveform");
-//	    }
-//    }
-
-    @FXML
-    void NavigateScientificCalculator(ActionEvent event) {
-    	try {
-			Parent scientific_calculator_parent = FXMLLoader.load(getClass().getResource("FXMLScientific.fxml"));
-			Scene scientific_calculator_scene = new Scene(scientific_calculator_parent, 800, 400);
-			Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
-			stage.hide();
-			stage.setScene(scientific_calculator_scene);
-			stage.show();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    }
-    
-    @FXML
-    void NavigateBasicCalculator(ActionEvent event) {
-    	try {
-			Parent scientific_calculator_parent = FXMLLoader.load(getClass().getResource("FXMLBasic.fxml"));
-			Scene scientific_calculator_scene = new Scene(scientific_calculator_parent, 800, 400);
-			Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
-			stage.hide();
-			stage.setScene(scientific_calculator_scene);
-			stage.show();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    }
-    
-    @FXML
-    void NavigateIntegralCalculator(ActionEvent event) {
-    	try {
-			Parent integral_calculator_parent = FXMLLoader.load(getClass().getResource("FXMLIntegral.fxml"));
-			Scene integral_calculator_scene = new Scene(integral_calculator_parent, 800, 400);
-			Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
-			stage.hide();
-			stage.setScene(integral_calculator_scene);
-			stage.show();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    }
-
     @FXML
     void OnActionSubmit(ActionEvent event) throws Exception {
     	
@@ -225,9 +108,6 @@ public class FXMLFourierController implements Initializable {
 		 FourierSeries.setMode(outputFourier);
 
 	    	
-       	
-       	
-
    	   	FourierSeries.setAmplitude(Integer.parseInt(inputTextFieldHarAmp.getText()));
 
    	   	FourierSeries.setPeriod(Double.parseDouble(inputTextFieldPeriod.getText()));

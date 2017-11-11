@@ -22,15 +22,6 @@ public class FXMLBitWiseController implements Initializable {
 
 	String answer = "clear";
 	
-
-    @FXML
-    private Button scientificCalculator;
-    @FXML
-    private Button integralCalculator;
-    @FXML
-    private Button fourierCalculator;
-    @FXML
-    private Button basicCalculator;
     @FXML
     private Button btnFour;
     @FXML
@@ -94,41 +85,12 @@ public class FXMLBitWiseController implements Initializable {
     private TextField inputTextFieldResultSet;
     @FXML
     private Button btnClear;
-    @FXML
-    private Button gaborCalculator;
-    @FXML
-    private Button equationCalculator;
     
-    @FXML
-    void NavigateEquationCalculator(ActionEvent event) {
-      	try {
-			Parent scientific_calculator_parent = FXMLLoader.load(getClass().getResource("FXMLEquationCalc.fxml"));
-			Scene scientific_calculator_scene = new Scene(scientific_calculator_parent, 800, 400);
-			Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
-			stage.hide();
-			stage.setScene(scientific_calculator_scene);
-			stage.show();
-    		} catch (IOException e) {
-    			// TODO Auto-generated catch block
-    			e.printStackTrace();
-    		}
-    }
-	
-    @FXML
-    void NavigateGaborCalculator(ActionEvent event) {
-    	try {
-			Parent scientific_calculator_parent = FXMLLoader.load(getClass().getResource("FXMLGaborWavelet.fxml"));
-			Scene scientific_calculator_scene = new Scene(scientific_calculator_parent, 800, 400);
-			Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
-			stage.hide();
-			stage.setScene(scientific_calculator_scene);
-			stage.show();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    }
-    
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		
+	}
+      
     @FXML
     void OnActionBtnClear(ActionEvent event) {
     	inputTextFieldSetA.clear();
@@ -194,66 +156,6 @@ public class FXMLBitWiseController implements Initializable {
     		recentOperator = true;
     	}
     	return recentOperator;
-    }
-    
-    @FXML
-    void NavigateScientificCalculator(ActionEvent event) {
-    	try {
-			Parent scientific_calculator_parent = FXMLLoader.load(getClass().getResource("FXMLScientific.fxml"));
-			Scene scientific_calculator_scene = new Scene(scientific_calculator_parent, 800, 400);
-			Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
-			stage.hide();
-			stage.setScene(scientific_calculator_scene);
-			stage.show();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    }
-    
-    @FXML
-    void NavigateFourierCalculator(ActionEvent event) {
-    	try {
-			Parent scientific_calculator_parent = FXMLLoader.load(getClass().getResource("FXMLFourier.fxml"));
-			Scene scientific_calculator_scene = new Scene(scientific_calculator_parent, 800, 400);
-			Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
-			stage.hide();
-			stage.setScene(scientific_calculator_scene);
-			stage.show();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    }
-    
-    @FXML
-    void NavigateIntegralCalculator(ActionEvent event) {
-    	try {
-			Parent integral_calculator_parent = FXMLLoader.load(getClass().getResource("FXMLIntegral.fxml"));
-			Scene integral_calculator_scene = new Scene(integral_calculator_parent, 800, 400);
-			Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
-			stage.hide();
-			stage.setScene(integral_calculator_scene);
-			stage.show();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    }
-    
-    @FXML
-    void NavigateBasicCalculator(ActionEvent event) {
-    	try {
-			Parent integral_calculator_parent = FXMLLoader.load(getClass().getResource("FXMLBasic.fxml"));
-			Scene integral_calculator_scene = new Scene(integral_calculator_parent, 800, 400);
-			Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
-			stage.hide();
-			stage.setScene(integral_calculator_scene);
-			stage.show();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
     }
     
     @FXML
@@ -403,11 +305,5 @@ public class FXMLBitWiseController implements Initializable {
     	answer = "clear";
     	inputTextField.appendText("0");
     }
-
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }
