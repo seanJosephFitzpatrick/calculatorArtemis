@@ -2,6 +2,8 @@ package GUI;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import gabor.Gabor_Driver;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -28,6 +30,13 @@ public class FMXLGaborWaveletController implements Initializable {
 	
     @FXML
     void onActionBtnGenerate(ActionEvent event) {
-
+    	try {
+    		double v = Double.parseDouble(varphi.getText());
+    		double u = Double.parseDouble(upsi.getText());
+    		double b = Double.parseDouble(bandw.getText());
+    		Gabor_Driver.runGabor(v, u, b);
+    	} catch (Exception e){
+    		
+    	}
     }
 }
