@@ -41,7 +41,7 @@
         </rowConstraints>
          <children>
             <TextField fx:id="inputTextFieldSetB" GridPane.columnIndex="1" GridPane.columnSpan="8" GridPane.rowIndex="4" />
-            <Label alignment="CENTER" prefHeight="100.0" prefWidth="1600.0" text="Calculator" GridPane.columnIndex="1" GridPane.columnSpan="8">
+            <Label alignment="CENTER" prefHeight="100.0" prefWidth="1600.0" text="Sets Calculator" GridPane.columnIndex="1" GridPane.columnSpan="8">
                <font>
                   <Font size="16.0" />
                </font>

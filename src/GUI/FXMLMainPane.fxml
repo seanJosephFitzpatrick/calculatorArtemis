@@ -27,7 +27,7 @@
           </Menu>
         </menus>
       </MenuBar>
-    <Label fx:id="headerLabel" maxWidth="1.7976931348623157E308" text="Artemis Calculator" VBox.vgrow="NEVER" />
+    <Label fx:id="headerLabel" maxWidth="1.7976931348623157E308" VBox.vgrow="NEVER" />
     <StackPane fx:id="stackPane" VBox.vgrow="ALWAYS" />
   </children>
 </VBox>
