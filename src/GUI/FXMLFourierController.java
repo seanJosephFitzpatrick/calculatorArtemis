@@ -17,6 +17,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import FourierSeries.*;
 
@@ -48,17 +49,44 @@ public class FXMLFourierController implements Initializable {
     private TextField inputTextFieldMode;
     @FXML
     private TextField inputTextFieldWaveform;
+    @FXML
+    private TextField inputTextFieldXMin;
+    @FXML
+    private TextField inputTextFieldXMax;
+    @FXML
+    private TextField inputTextFieldSamFreq;
+    @FXML
+    private Label labelSamFreq;
+    @FXML
+    private Label labelXAxis;
+    @FXML
+    private Text  textDash;
+    @FXML
+    private ComboBox<String>  comboBoxHar;
+    
+    
+   
        
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		comboBoxFourier.getItems().removeAll(comboBoxFourier.getItems());
-		comboBoxFourier.getItems().addAll("Fourier Series", "user Defined Waveform");
+		comboBoxFourier.getItems().addAll("Fourier Series", "Signal Sampling");
 		comboBoxFourier.getSelectionModel().select("Fourier Series");
 		comboBoxWaveform.getItems().removeAll(comboBoxWaveform.getItems());
 		comboBoxWaveform.getItems().addAll("Square", "Triangle", "Sawtooth");
 		comboBoxWaveform.getSelectionModel().select("Square");
+		comboBoxHar.getItems().removeAll(comboBoxHar.getItems());
+		comboBoxHar.getItems().addAll( "Odd","Even", "Odd & Even");
+		comboBoxHar.getSelectionModel().select("Odd");
 		inputTextFieldPhase.setVisible(false);
     	comboBoxWaveform.setVisible(true);
+    	textDash.setVisible(false);
+    	labelXAxis.setVisible(false);
+    	inputTextFieldXMin.setVisible(false);
+    	inputTextFieldXMax.setVisible(false);
+    	comboBoxHar.setVisible(true);
+    	inputTextFieldSamFreq.setVisible(false);
+    	labelSamFreq.setText("Harmonic Type");
 	}
 	
     @FXML
@@ -68,16 +96,32 @@ public class FXMLFourierController implements Initializable {
 	    	labelOneFourier.setText("Harmonics");
 	    	labelTwoFourier.setText("Fourier Series");
 	    	labelThreeFourier.setText("Waveform");
-	    	labelFourFourier.setText("Period");
+	    	labelFourFourier.setText("Frequency");
 	    	inputTextFieldPhase.setVisible(false);
 	    	comboBoxWaveform.setVisible(true);
+	    	textDash.setVisible(false);
+	    	labelXAxis.setVisible(false);
+	    	inputTextFieldXMin.setVisible(false);
+	    	inputTextFieldXMax.setVisible(false);
+	    	comboBoxHar.setVisible(true);
+	    	inputTextFieldSamFreq.setVisible(false);
+	    	labelSamFreq.setText("Harmonic Type");
+	    	
 	    }else if(output.equalsIgnoreCase("user Defined Waveform")){
 	    	labelOneFourier.setText("amplitude");
 	    	labelTwoFourier.setText("user Defined Waveform");
 	    	labelThreeFourier.setText("Phase");
-	    	labelFourFourier.setText("Period");
+	    	labelFourFourier.setText("Frequency");
 	    	comboBoxWaveform.setVisible(false);
 	    	inputTextFieldPhase.setVisible(true);
+	    	textDash.setVisible(true);
+	    	labelXAxis.setVisible(true);
+	    	inputTextFieldXMin.setVisible(true);
+	    	inputTextFieldXMax.setVisible(true);
+	    	inputTextFieldSamFreq.setVisible(true);
+	    	labelSamFreq.setText("Sampling Frequency");
+	    	comboBoxHar.setVisible(false);
+	    	
 	    }
     }
 
@@ -90,10 +134,11 @@ public class FXMLFourierController implements Initializable {
 	    if(outputFourier.equalsIgnoreCase("Fourier Series")){
 	    	
 	    	int harmonic = Integer.parseInt(inputTextFieldHarAmp.getText());
-	    	double period = Double.parseDouble(inputTextFieldPeriod.getText());
+	    	double period = 1/Double.parseDouble(inputTextFieldPeriod.getText());
+	    	String harmonicType = comboBoxHar.getSelectionModel().getSelectedItem().toString();
 	    	
     	
-	    	FourierSeries.generatePlotPointsFourier(harmonic, period, outputWaveform, -(period+period*.5));
+	    	FourierSeries.generatePlotPointsFourier(harmonic, period, outputWaveform,harmonicType, -(period+period*.5));
         
 
 	    	
@@ -110,10 +155,12 @@ public class FXMLFourierController implements Initializable {
    	   	//FourierSeries.setPeriod(Double.parseDouble(inputTextFieldPeriod.getText()));
    	   //	FourierSeries.setPhase(Double.parseDouble(inputTextFieldPhase.getText()));
 		   double amplitude=Double.parseDouble(inputTextFieldHarAmp.getText());
-		   double period = Double.parseDouble(inputTextFieldPeriod.getText());
+		   double period = 1/Double.parseDouble(inputTextFieldPeriod.getText());
 		   double phase = Double.parseDouble(inputTextFieldPhase.getText());
-
-	    	FourierSeries.generatePlotPointsFourier(amplitude, period, phase, -1.0,1.0,period*0.5);
+		   double samplingPeriod = 1/Double.parseDouble(inputTextFieldSamFreq.getText());
+		   double xAxisMin = Double.parseDouble(inputTextFieldXMin.getText());
+		   double xAxisMax = Double.parseDouble(inputTextFieldXMax.getText());
+	    	FourierSeries.generatePlotPointsFourier(amplitude, period, phase, xAxisMin,xAxisMax,samplingPeriod);
 
 	    	Application app2 =  new FourierSeries(); 
 	        Stage anotherStage = new Stage();

@@ -71,34 +71,41 @@ public class FourierSeries extends Application {
 	public static void setIntegralPointsX(ArrayList<Double> integralPointsX) {
 		FourierSeries.plotPointsX = integralPointsX;
 	}
-	public static void generatePlotPointsFourier(int harmonic,double period,String waveform,double x){
+	public static void generatePlotPointsFourier(int harmonic,double period,String waveform,String harmonicType, double x){
     	double y=0;
     	double xMax=-x;
     	double xInc = period*0.01;
+    	int har=1,harInc=1;
     	plotPointsX.clear();
 		plotPointsY.clear();
+		if(harmonicType.equalsIgnoreCase("odd")){
+			harInc=2;
+		}else if(harmonicType.equalsIgnoreCase("even")){
+			har=2;
+			harInc=2;
+		}
    
     	for(;x<=xMax;x+=xInc){
     		
 		if(waveform.equalsIgnoreCase("square")){
-			for(int har=1;har<=harmonic;har+=2)
+			for(int harLoop=har;harLoop<=harmonic;harLoop+=harInc)
 			{
 			//y1=CalcInterface.run(y, false);
 		    	
 
-			y=y+(6/(Math.PI*har))*(Math.sin(x*(1/period)*2*Math.PI*har));
+			y=y+(6/(Math.PI*harLoop))*(Math.sin(x*(1/period)*2*Math.PI*harLoop));
 
 			}
     	 
 		}else if(waveform.equalsIgnoreCase("triangle")){
-			for(int har=1;har<=harmonic;har+=2)
+			for(int harLoop=har;harLoop<=harmonic;harLoop+=harInc)
 			{
-				y=y+(8/(Math.pow(Math.PI, 2)))*(Math.cos(x*(1/period)*2*Math.PI*har)/(Math.pow(har, 2)));
+				y=y+(8/(Math.pow(Math.PI, 2)))*(Math.cos(x*(1/period)*2*Math.PI*harLoop)/(Math.pow(harLoop, 2)));
 
 			}
 		}else{
-			for(int har=1;har<=harmonic;har++){
-				y=y+(Math.pow(1, har+1)*2)*(Math.sin(x*(1/period)*2*Math.PI*har)/(har));
+			for(int harLoop=har;harLoop<=harmonic;harLoop+=harInc){
+				y=y+(Math.pow(1, harLoop+1)*2)*(Math.sin(x*(1/period)*2*Math.PI*harLoop)/(harLoop));
 
 			}
 		}
