@@ -18,7 +18,7 @@ public class MatrixCalculator {
 		{1, 6, 6, 7}};
 
 	
-	public static int[][]GenerateNumbers1() {
+	public static int[][] GenerateNumbers() {
 		int[][] temp = new int[4][4];
 		Random randomGenerator = new Random();
 	    for (int r = 0; r < 4; r++)
@@ -30,19 +30,6 @@ public class MatrixCalculator {
 	  }
 
 	
-	public static int[][] GenerateNumbers()
-    {
-		int[][] matrixA = null;
-        Random randomGenerator = new Random();
-        for(int r=0; r<matrixA.length; r++)
-        {
-           for(int c=0; c<matrixA[0].length; c++)
-           {
-               matrixA[r][c] = randomGenerator.nextInt(100);
-           }
-        }
-        return matrixA;
-    }
 	
 	//MULTIPLICATION - DOUBLE
 	public static double[][] multiplyMatrix(double[][] A, double[][] B) {
