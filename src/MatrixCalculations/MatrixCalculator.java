@@ -1,6 +1,7 @@
 package MatrixCalculations;
 
 import java.text.NumberFormat;
+import java.util.Random;
 
 public class MatrixCalculator {
 
@@ -16,6 +17,33 @@ public class MatrixCalculator {
 		{5, 9, 3, 1},
 		{1, 6, 6, 7}};
 
+	
+	public static int[][]GenerateNumbers1() {
+		int[][] temp = new int[4][4];
+		Random randomGenerator = new Random();
+	    for (int r = 0; r < 4; r++)
+	      for (int c = 0; c < 4; c++)
+	      {
+	        temp[r][c] = randomGenerator.nextInt(100);
+	      }
+	    return temp;
+	  }
+
+	
+	public static int[][] GenerateNumbers()
+    {
+		int[][] matrixA = null;
+        Random randomGenerator = new Random();
+        for(int r=0; r<matrixA.length; r++)
+        {
+           for(int c=0; c<matrixA[0].length; c++)
+           {
+               matrixA[r][c] = randomGenerator.nextInt(100);
+           }
+        }
+        return matrixA;
+    }
+	
 	//MULTIPLICATION - DOUBLE
 	public static double[][] multiplyMatrix(double[][] A, double[][] B) {
 		int aRows = A.length;
