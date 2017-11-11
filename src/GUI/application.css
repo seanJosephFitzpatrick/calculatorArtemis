@@ -6,32 +6,38 @@
     -fx-padding: 5px;
 }
 #basic {
-    -fx-background-color: aliceblue;
+    -fx-background-color: whitesmoke;
 }
 #bitwise {
-    -fx-background-color: aliceblue;
+    -fx-background-color: whitesmoke;
 }
 #conversion {
-    -fx-background-color: aliceblue;
+    -fx-background-color: whitesmoke;
 }
 #datacomp {
-    -fx-background-color: aliceblue;
+    -fx-background-color: whitesmoke;
 }
 #equation {
-    -fx-background-color: aliceblue;
+    -fx-background-color: whitesmoke;
 }
 #fourier {
-    -fx-background-color: aliceblue;
+    -fx-background-color: whitesmoke;
 }
 #gabor {
-    -fx-background-color: aliceblue;
+    -fx-background-color: whitesmoke;
 }
 #integral {
-    -fx-background-color: aliceblue;
+    -fx-background-color: whitesmoke;
 }
 #matrices {
-    -fx-background-color: aliceblue;
+    -fx-background-color: whitesmoke;
 }
 #scientific {
-    -fx-background-color: aliceblue;
+   -fx-background-color: whitesmoke;
+}
+.button {
+    -fx-base: lightgrey;
+}
+.root { 
+	-fx-focus-color: transparent;
 }
