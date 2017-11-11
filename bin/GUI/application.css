@@ -5,3 +5,33 @@
     -fx-alignment: center ;
     -fx-padding: 5px;
 }
+#basic {
+    -fx-background-color: aliceblue;
+}
+#bitwise {
+    -fx-background-color: aliceblue;
+}
+#conversion {
+    -fx-background-color: aliceblue;
+}
+#datacomp {
+    -fx-background-color: aliceblue;
+}
+#equation {
+    -fx-background-color: aliceblue;
+}
+#fourier {
+    -fx-background-color: aliceblue;
+}
+#gabor {
+    -fx-background-color: aliceblue;
+}
+#integral {
+    -fx-background-color: aliceblue;
+}
+#matrices {
+    -fx-background-color: aliceblue;
+}
+#scientific {
+    -fx-background-color: aliceblue;
+}
