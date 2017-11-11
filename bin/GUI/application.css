@@ -38,6 +38,3 @@
 .button {
     -fx-base: lightgrey;
 }
-.root { 
-	-fx-focus-color: transparent;
-}
