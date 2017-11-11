@@ -21,6 +21,9 @@ import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 
 public class FXMLMatrixCalculationController implements Initializable {
+	private int[][] matrix1;
+	private int[][] matrix2;
+	
 	@FXML
     private Button buttonGenerateMatrix1;
 
@@ -189,11 +192,14 @@ public class FXMLMatrixCalculationController implements Initializable {
     @FXML
     private TextField[] textFieldsMatrix2 ;
     
+    @FXML
+    private TextField[] textFieldsMatrixResult;
+    
 	    
 	    
 	    @FXML
 	    void onActionBtnAddMatrix(ActionEvent event) {
-
+	    	int[][] temp = MatrixCalculations.MatrixCalculator.addMatrix(matrix1, matrix2);
 	    }
 
 	    @FXML
@@ -205,37 +211,27 @@ public class FXMLMatrixCalculationController implements Initializable {
 	    void onActionBtnGenerateMatrix1(ActionEvent event) {
 	    	NumberFormat nf = NumberFormat.getInstance();
 			nf.setMaximumFractionDigits(3);
-			String test = "textfield";
+			matrix1 = MatrixCalculations.MatrixCalculator.GenerateNumbers1();
+			int loop = 0;
 			
-			int step1 = 0;
-			int step2 = 0;
-			
-	    	for(int i = 0; i < MatrixCalculations.MatrixCalculator.testA.length; i++){
-				for(int j = 0; j < MatrixCalculations.MatrixCalculator.testA[0].length; j++){
-					//System.out.print(nf.format(MatrixCalculations.MatrixCalculator.testA[i][j]) + "\t");
-					//System.out.println(test+i+j);
-					//System.out.println(textFieldsMatrix11[step1].getId());
-					//textFieldsMatrix11[step1].setText(""+MatrixCalculations.MatrixCalculator.testA[i][j]);
-					//textFieldMatrix100.setText(""+MatrixCalculations.MatrixCalculator.testA[i][j]);
-					textFieldsMatrix1[step1].setText(""+MatrixCalculations.MatrixCalculator.testA[i][j]);
-					step1++;
+	    	for(int i = 0; i < matrix1.length; i++){
+				for(int j = 0; j < matrix1[0].length; j++){
+					textFieldsMatrix1[loop].setText(""+matrix1[i][j]);
+					loop++;
 				}
-				//System.out.println();
-				//System.out.println(test+i);
-				//step2++;
 			}
 	    }
 
 	    @FXML
 	    void onActionBtnGenerateMatrix2(ActionEvent event) {
-	    	int step1 = 0;
-	    	for(int i = 0; i < MatrixCalculations.MatrixCalculator.testB.length; i++){
-				for(int j = 0; j < MatrixCalculations.MatrixCalculator.testB[0].length; j++){
-					
-					textFieldsMatrix2[step1].setText(""+MatrixCalculations.MatrixCalculator.testB[i][j]);
-					step1++;
+	    	matrix2 = MatrixCalculations.MatrixCalculator.GenerateNumbers1();
+			int loop = 0;
+			
+	    	for(int i = 0; i < matrix2.length; i++){
+				for(int j = 0; j < matrix2[0].length; j++){
+					textFieldsMatrix2[loop].setText(""+matrix2[i][j]);
+					loop++;
 				}
-				
 			}
 	    }
 
@@ -264,6 +260,15 @@ public class FXMLMatrixCalculationController implements Initializable {
 					  textFieldMatrix213, textFieldMatrix214, textFieldMatrix215, textFieldMatrix216
 					  
 			  };
+			  
+			  matrix1 = new int[4][4];
+			  matrix2 = new int[4][4];
 			
+			  textFieldsMatrixResult = new TextField[] {
+					  textFieldMatrix301, textFieldMatrix302, textFieldMatrix303,textFieldMatrix304,
+					  textFieldMatrix305, textFieldMatrix306, textFieldMatrix307, textFieldMatrix308, 
+					  textFieldMatrix309, textFieldMatrix310, textFieldMatrix311,textFieldMatrix312,
+					  textFieldMatrix313, textFieldMatrix314, textFieldMatrix315, textFieldMatrix316
+			  };
 		}
 }
