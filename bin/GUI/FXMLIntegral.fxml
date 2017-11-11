@@ -51,8 +51,8 @@
                </font>
             </Label>
             
-            <TextField fx:id="topValueTextField" onAction="#OnActionTopValue" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="bottomValueTextField" onAction="#OnActionBottomValue" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="topValueTextField" maxWidth="40.0" onAction="#OnActionTopValue" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+            <TextField fx:id="bottomValueTextField" maxWidth="40.0" onAction="#OnActionBottomValue" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
             <Button fx:id="calculate" mnemonicParsing="false" onAction="#OnActionCalculate" prefWidth="400.0" text="Calculate" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.rowIndex="5" />
             <TextField fx:id="outputTextField" onAction="#OnActionOutput" prefHeight="35.0" prefWidth="1400.0" GridPane.columnIndex="2" GridPane.columnSpan="7" GridPane.rowIndex="7" />
             <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
@@ -62,6 +62,7 @@
             </ImageView>
             <TextField fx:id="inputTextFieldN" GridPane.columnIndex="2" GridPane.rowIndex="5" />
             <Label text="n = " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
+            <Label text="Result" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7" />
       
          </children>
       </GridPane>
