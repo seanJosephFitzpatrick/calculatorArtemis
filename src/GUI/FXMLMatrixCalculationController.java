@@ -19,7 +19,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 
-public class FXMLMatrixCalculationController {
+public class FXMLMatrixCalculationController implements Initializable {
 	   @FXML
 	    private Button buttonGenerateMatrix1;
 
@@ -213,4 +213,10 @@ public class FXMLMatrixCalculationController {
 	    void onActionBtnSubtractMatrix(ActionEvent event) {
 
 	    }
+
+		@Override
+		public void initialize(URL arg0, ResourceBundle arg1) {
+			// TODO Auto-generated method stub
+			
+		}
 }
