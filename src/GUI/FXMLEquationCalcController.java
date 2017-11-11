@@ -46,32 +46,14 @@ public class FXMLEquationCalcController implements Initializable {
     @FXML
     private Label labelD;
     @FXML
-    private Button scientificCalculator;
-    @FXML
-    private Button integralCalculator;
-    @FXML
-    private Button equationCalculator;
-    @FXML
-    private Button fourierCalculator;
-    @FXML
-    private Button basicCalculator;
-    @FXML
-    private Button bitWiseCalculator;
-    @FXML
-    private Button gaborCalculator;
-    @FXML
     private Button btnCalculate;
     
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
 		comboBoxEquation.getItems().removeAll(comboBoxEquation.getItems());
 		comboBoxEquation.getItems().addAll("Cubic", "Quadratic", "Linear");
 		comboBoxEquation.getSelectionModel().select("Cubic");
-
-    	//comboBoxWaveform.setVisible(true);
-		
 	}
 	
     @FXML
@@ -112,94 +94,4 @@ public class FXMLEquationCalcController implements Initializable {
 	    }
     }
     
-    @FXML
-    void NavigateBasicCalculator(ActionEvent event) {
-    	try {
-			Parent scientific_calculator_parent = FXMLLoader.load(getClass().getResource("FXMLBasic.fxml"));
-			Scene scientific_calculator_scene = new Scene(scientific_calculator_parent, 800, 400);
-			Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
-			stage.hide();
-			stage.setScene(scientific_calculator_scene);
-			stage.show();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    }
-
-    @FXML
-    void NavigateBitWiseCalculator(ActionEvent event) {
-    	try {
-			Parent scientific_calculator_parent = FXMLLoader.load(getClass().getResource("FXMLBitWise.fxml"));
-			Scene scientific_calculator_scene = new Scene(scientific_calculator_parent, 800, 400);
-			Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
-			stage.hide();
-			stage.setScene(scientific_calculator_scene);
-			stage.show();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    }
-
-    @FXML
-    void NavigateFourierCalculator(ActionEvent event) {
-    	try {
-			Parent scientific_calculator_parent = FXMLLoader.load(getClass().getResource("FXMLFourier.fxml"));
-			Scene scientific_calculator_scene = new Scene(scientific_calculator_parent, 800, 400);
-			Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
-			stage.hide();
-			stage.setScene(scientific_calculator_scene);
-			stage.show();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    }
-
-    @FXML
-    void NavigateGaborCalculator(ActionEvent event) {
-    	try {
-			Parent scientific_calculator_parent = FXMLLoader.load(getClass().getResource("FXMLGaborWavelet.fxml"));
-			Scene scientific_calculator_scene = new Scene(scientific_calculator_parent, 800, 400);
-			Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
-			stage.hide();
-			stage.setScene(scientific_calculator_scene);
-			stage.show();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    }
-    
-    @FXML
-    void NavigateIntegralCalculator(ActionEvent event) {
-    	try {
-			Parent integral_calculator_parent = FXMLLoader.load(getClass().getResource("FXMLIntegral.fxml"));
-			Scene integral_calculator_scene = new Scene(integral_calculator_parent, 800, 400);
-			Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
-			stage.hide();
-			stage.setScene(integral_calculator_scene);
-			stage.show();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    }
-
-    @FXML
-    void NavigateScientificCalculator(ActionEvent event) {
-    	try {
-			Parent scientific_calculator_parent = FXMLLoader.load(getClass().getResource("FXMLScientific.fxml"));
-			Scene scientific_calculator_scene = new Scene(scientific_calculator_parent, 800, 400);
-			Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
-			stage.hide();
-			stage.setScene(scientific_calculator_scene);
-			stage.show();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    }
-
 }

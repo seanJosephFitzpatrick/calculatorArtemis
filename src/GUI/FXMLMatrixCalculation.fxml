@@ -17,9 +17,6 @@
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -48,84 +45,70 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="basicCalculator" mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Basic Calculator" GridPane.columnSpan="3" GridPane.rowIndex="1" />
-            <Button fx:id="scientificCalculator" mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Scientific Calculator" GridPane.columnSpan="3" GridPane.rowIndex="2" />
-           	<Button fx:id="integralCalculator" mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Integral Calculator" GridPane.columnSpan="3" GridPane.rowIndex="3" />
-            <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Fourier Calculator" GridPane.columnSpan="3" GridPane.rowIndex="4" />
-            <Button fx:id="bitWiseCalculator" mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Sets" GridPane.columnSpan="3" GridPane.rowIndex="5" />
-            <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Power Functions" GridPane.columnSpan="3" GridPane.rowIndex="6" />
-            <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Logical Functions" GridPane.columnSpan="3" GridPane.rowIndex="7" />
-            <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Constant Values" GridPane.columnSpan="3" GridPane.rowIndex="8" />
-            <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Conversions" GridPane.columnSpan="3" GridPane.rowIndex="9" />
-            <Label alignment="CENTER" prefHeight="100.0" prefWidth="400.0" text="Mode" GridPane.columnSpan="2">
+            <Label alignment="CENTER" prefHeight="100.0" prefWidth="1600.0" text="Matrices Calculator" GridPane.columnIndex="4" GridPane.columnSpan="8">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="100.0" prefWidth="1600.0" text="Matrix Calculations" GridPane.columnIndex="7" GridPane.columnSpan="8">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="192.0" text="Generate Numbers" GridPane.columnIndex="4" GridPane.columnSpan="4" GridPane.rowIndex="6" />
+            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="192.0" text="Generate Numbers" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="6" />
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <TextField GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <TextField GridPane.columnIndex="3" GridPane.rowIndex="3" />
             <TextField GridPane.columnIndex="4" GridPane.rowIndex="2" />
-            <TextField GridPane.columnIndex="5" GridPane.rowIndex="2" />
-            <TextField GridPane.columnIndex="6" GridPane.rowIndex="2" />
             <TextField GridPane.columnIndex="4" GridPane.rowIndex="3" />
-            <TextField GridPane.columnIndex="5" GridPane.rowIndex="3" />
-            <TextField GridPane.columnIndex="6" GridPane.rowIndex="3" />
-            <TextField GridPane.columnIndex="7" GridPane.rowIndex="2" />
-            <TextField GridPane.columnIndex="7" GridPane.rowIndex="3" />
-            <TextField GridPane.columnIndex="7" GridPane.rowIndex="4" />
-            <TextField GridPane.columnIndex="7" GridPane.rowIndex="5" />
-            <TextField GridPane.columnIndex="6" GridPane.rowIndex="5" />
-            <TextField GridPane.columnIndex="6" GridPane.rowIndex="4" />
-            <TextField GridPane.columnIndex="5" GridPane.rowIndex="4" />
             <TextField GridPane.columnIndex="4" GridPane.rowIndex="4" />
-            <TextField GridPane.columnIndex="5" GridPane.rowIndex="5" />
             <TextField GridPane.columnIndex="4" GridPane.rowIndex="5" />
+            <TextField GridPane.columnIndex="3" GridPane.rowIndex="5" />
+            <TextField GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <TextField GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextField GridPane.columnIndex="6" GridPane.rowIndex="2" />
+            <TextField GridPane.columnIndex="7" GridPane.rowIndex="2" />
+            <TextField GridPane.columnIndex="8" GridPane.rowIndex="2" />
             <TextField GridPane.columnIndex="9" GridPane.rowIndex="2" />
-            <TextField GridPane.columnIndex="10" GridPane.rowIndex="2" />
-            <TextField GridPane.columnIndex="11" GridPane.rowIndex="2" />
-            <TextField GridPane.columnIndex="12" GridPane.rowIndex="2" />
+            <TextField GridPane.columnIndex="6" GridPane.rowIndex="3" />
+            <TextField GridPane.columnIndex="7" GridPane.rowIndex="3" />
+            <TextField GridPane.columnIndex="8" GridPane.rowIndex="3" />
             <TextField GridPane.columnIndex="9" GridPane.rowIndex="3" />
-            <TextField GridPane.columnIndex="10" GridPane.rowIndex="3" />
-            <TextField GridPane.columnIndex="11" GridPane.rowIndex="3" />
-            <TextField GridPane.columnIndex="12" GridPane.rowIndex="3" />
+            <TextField GridPane.columnIndex="6" GridPane.rowIndex="4" />
+            <TextField GridPane.columnIndex="7" GridPane.rowIndex="4" />
+            <TextField GridPane.columnIndex="8" GridPane.rowIndex="4" />
             <TextField GridPane.columnIndex="9" GridPane.rowIndex="4" />
-            <TextField GridPane.columnIndex="10" GridPane.rowIndex="4" />
-            <TextField GridPane.columnIndex="11" GridPane.rowIndex="4" />
-            <TextField GridPane.columnIndex="12" GridPane.rowIndex="4" />
+            <TextField GridPane.columnIndex="6" GridPane.rowIndex="5" />
+            <TextField GridPane.columnIndex="7" GridPane.rowIndex="5" />
+            <TextField GridPane.columnIndex="8" GridPane.rowIndex="5" />
             <TextField GridPane.columnIndex="9" GridPane.rowIndex="5" />
-            <TextField GridPane.columnIndex="10" GridPane.rowIndex="5" />
-            <TextField GridPane.columnIndex="11" GridPane.rowIndex="5" />
-            <TextField GridPane.columnIndex="12" GridPane.rowIndex="5" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="130.0" text="Generate Numbers" GridPane.columnIndex="9" GridPane.columnSpan="4" GridPane.rowIndex="6" />
+            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="130.0" text="Generate Numbers" GridPane.columnIndex="6" GridPane.columnSpan="4" GridPane.rowIndex="6" />
+            <TextField GridPane.columnIndex="12" GridPane.rowIndex="2" />
+            <TextField GridPane.columnIndex="13" GridPane.rowIndex="2" />
+            <TextField GridPane.columnIndex="14" GridPane.rowIndex="2" />
             <TextField GridPane.columnIndex="15" GridPane.rowIndex="2" />
-            <TextField GridPane.columnIndex="16" GridPane.rowIndex="2" />
-            <TextField GridPane.columnIndex="17" GridPane.rowIndex="2" />
-            <TextField GridPane.columnIndex="18" GridPane.rowIndex="2" />
+            <TextField GridPane.columnIndex="12" GridPane.rowIndex="3" />
+            <TextField GridPane.columnIndex="13" GridPane.rowIndex="3" />
+            <TextField GridPane.columnIndex="14" GridPane.rowIndex="3" />
             <TextField GridPane.columnIndex="15" GridPane.rowIndex="3" />
-            <TextField GridPane.columnIndex="16" GridPane.rowIndex="3" />
-            <TextField GridPane.columnIndex="17" GridPane.rowIndex="3" />
-            <TextField GridPane.columnIndex="18" GridPane.rowIndex="3" />
+            <TextField GridPane.columnIndex="12" GridPane.rowIndex="4" />
+            <TextField GridPane.columnIndex="13" GridPane.rowIndex="4" />
+            <TextField GridPane.columnIndex="14" GridPane.rowIndex="4" />
             <TextField GridPane.columnIndex="15" GridPane.rowIndex="4" />
-            <TextField GridPane.columnIndex="16" GridPane.rowIndex="4" />
-            <TextField GridPane.columnIndex="17" GridPane.rowIndex="4" />
-            <TextField GridPane.columnIndex="18" GridPane.rowIndex="4" />
+            <TextField GridPane.columnIndex="12" GridPane.rowIndex="5" />
+            <TextField GridPane.columnIndex="13" GridPane.rowIndex="5" />
+            <TextField GridPane.columnIndex="14" GridPane.rowIndex="5" />
             <TextField GridPane.columnIndex="15" GridPane.rowIndex="5" />
-            <TextField GridPane.columnIndex="16" GridPane.rowIndex="5" />
-            <TextField GridPane.columnIndex="17" GridPane.rowIndex="5" />
-            <TextField GridPane.columnIndex="18" GridPane.rowIndex="5" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Add" GridPane.columnIndex="15" GridPane.columnSpan="4" GridPane.rowIndex="6" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="=" wrappingWidth="52.04736328125" GridPane.columnIndex="13" GridPane.rowIndex="3">
+            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Add" GridPane.columnIndex="12" GridPane.columnSpan="4" GridPane.rowIndex="6" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="=" wrappingWidth="52.04736328125" GridPane.columnIndex="10" GridPane.rowIndex="3">
                <font>
                   <Font size="87.0" />
                </font>
             </Text>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Subtract" GridPane.columnIndex="17" GridPane.columnSpan="3" GridPane.rowIndex="6" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Divide" GridPane.columnIndex="15" GridPane.columnSpan="4" GridPane.rowIndex="7" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Multiply" GridPane.columnIndex="17" GridPane.columnSpan="3" GridPane.rowIndex="7" />
+            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Subtract" GridPane.columnIndex="14" GridPane.columnSpan="3" GridPane.rowIndex="6" />
+            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Divide" GridPane.columnIndex="12" GridPane.columnSpan="4" GridPane.rowIndex="7" />
+            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Multiply" GridPane.columnIndex="14" GridPane.columnSpan="3" GridPane.rowIndex="7" />
            
          </children>
       </GridPane>

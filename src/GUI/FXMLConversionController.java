@@ -42,16 +42,6 @@ public class FXMLConversionController implements Initializable {
 	private String choice = "from";
 	
 	String answer = "clear";
-
-	
-    @FXML
-    private Button scientificCalculator;
-    @FXML
-    private Button integralCalculator;
-    @FXML
-    private Button fourierCalculator;
-    @FXML
-    private Button basicCalculator;
     
     @FXML
     private TextField textFieldConvResult;
@@ -66,52 +56,12 @@ public class FXMLConversionController implements Initializable {
     @FXML
     private ComboBox<String> comboBoxUnitsMeters;
     @FXML
-    private ComboBox<String> comboBoxUnitsKgs;
-    
-    
+    private ComboBox<String> comboBoxUnitsKgs; 
     @FXML
     private RadioButton radioButtonFrom;
     @FXML
     private RadioButton radioButtonTo;
- 
-    private Button bitWiseCalculator;
-    @FXML
-    private Button gaborCalculator;
-    
-    
-    
-    
-	
-    @FXML
-    void NavigateGaborCalculator(ActionEvent event) {
-    	try {
-			Parent scientific_calculator_parent = FXMLLoader.load(getClass().getResource("FXMLGaborWavelet.fxml"));
-			Scene scientific_calculator_scene = new Scene(scientific_calculator_parent, 800, 400);
-			Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
-			stage.hide();
-			stage.setScene(scientific_calculator_scene);
-			stage.show();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    }
-    
-    @FXML
-    void NavigateBitWiseCalculator(ActionEvent event) {
-    	try {
-			Parent scientific_calculator_parent = FXMLLoader.load(getClass().getResource("FXMLBitWise.fxml"));
-			Scene scientific_calculator_scene = new Scene(scientific_calculator_parent, 800, 400);
-			Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
-			stage.hide();
-			stage.setScene(scientific_calculator_scene);
-			stage.show();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    }
-    
+ 	    
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
@@ -235,48 +185,4 @@ public class FXMLConversionController implements Initializable {
 
     }
 
-    @FXML
-    void NavigateScientificCalculator(ActionEvent event) {
-    	try {
-			Parent scientific_calculator_parent = FXMLLoader.load(getClass().getResource("FXMLScientific.fxml"));
-			Scene scientific_calculator_scene = new Scene(scientific_calculator_parent, 800, 400);
-			Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
-			stage.hide();
-			stage.setScene(scientific_calculator_scene);
-			stage.show();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    }
-    
-    @FXML
-    void NavigateBasicCalculator(ActionEvent event) {
-    	try {
-			Parent scientific_calculator_parent = FXMLLoader.load(getClass().getResource("FXMLBasic.fxml"));
-			Scene scientific_calculator_scene = new Scene(scientific_calculator_parent, 800, 400);
-			Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
-			stage.hide();
-			stage.setScene(scientific_calculator_scene);
-			stage.show();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    }
-    
-    @FXML
-    void NavigateIntegralCalculator(ActionEvent event) {
-    	try {
-			Parent integral_calculator_parent = FXMLLoader.load(getClass().getResource("FXMLIntegral.fxml"));
-			Scene integral_calculator_scene = new Scene(integral_calculator_parent, 800, 400);
-			Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
-			stage.hide();
-			stage.setScene(integral_calculator_scene);
-			stage.show();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    }
 }
