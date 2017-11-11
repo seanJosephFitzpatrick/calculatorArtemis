@@ -199,7 +199,16 @@ public class FXMLMatrixCalculationController implements Initializable {
 	    
 	    @FXML
 	    void onActionBtnAddMatrix(ActionEvent event) {
-	    	int[][] temp = MatrixCalculations.MatrixCalculator.addMatrix(matrix1, matrix2);
+	    	int[][] resultMatrix = MatrixCalculations.MatrixCalculator.addMatrix(matrix1, matrix2);
+	    	
+			int loop = 0;
+			
+	    	for(int i = 0; i < resultMatrix.length; i++){
+				for(int j = 0; j < resultMatrix[0].length; j++){
+					textFieldsMatrixResult[loop].setText(""+resultMatrix[i][j]);
+					loop++;
+				}
+			}
 	    }
 
 	    @FXML
@@ -242,7 +251,15 @@ public class FXMLMatrixCalculationController implements Initializable {
 
 	    @FXML
 	    void onActionBtnSubtractMatrix(ActionEvent event) {
-
+	    	int[][] resultMatrix = MatrixCalculations.MatrixCalculator.subtractMatrix(matrix1, matrix2);
+	    	int loop = 0;
+			
+	    	for(int i = 0; i < resultMatrix.length; i++){
+				for(int j = 0; j < resultMatrix[0].length; j++){
+					textFieldsMatrixResult[loop].setText(""+resultMatrix[i][j]);
+					loop++;
+				}
+			}
 	    }
 
 		@Override
@@ -270,5 +287,6 @@ public class FXMLMatrixCalculationController implements Initializable {
 					  textFieldMatrix309, textFieldMatrix310, textFieldMatrix311,textFieldMatrix312,
 					  textFieldMatrix313, textFieldMatrix314, textFieldMatrix315, textFieldMatrix316
 			  };
+			  
 		}
 }
