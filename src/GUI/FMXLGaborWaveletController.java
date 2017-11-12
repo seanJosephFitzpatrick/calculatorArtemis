@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 import javax.imageio.ImageIO;
@@ -31,23 +33,65 @@ public class FMXLGaborWaveletController implements Initializable {
     private TextField bandw;
     @FXML
     private Button btnGenerate;
-    
+    @FXML
+    private Button buttonPrevious;
+    @FXML
+    private Button buttonNext;
+    @FXML
+    private ImageView imageViewWindow;
+    private static ArrayList<String> names;
+    private static int count=0;
+    private static String filePath="file:///C:\\Users\\Marti\\git\\calculatorartemis\\GaborImages\\";
+    //file path has to be changed on different machines.
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		varphi.setText("90");
 		upsi.setText("1");
 		bandw.setText("1");
+		buttonNext.setVisible(false);
+		buttonPrevious.setVisible(false);	
+		
 	}
 	
     @FXML
-    void onActionBtnGenerate(ActionEvent event) throws IOException, URISyntaxException {
+    void onActionBtnGenerate(ActionEvent event) throws IllegalArgumentException,IOException, URISyntaxException {
     	try {
     		double v = Double.parseDouble(varphi.getText());
     		double u = Double.parseDouble(upsi.getText());
     		double b = Double.parseDouble(bandw.getText());
     		Gabor_Driver.runGabor(v, u, b);
+    		File f = new File("GaborImages\\");
+    		names = new ArrayList<String>(Arrays.asList(f.list()));
+    		System.out.println(names);
+    		buttonNext.setVisible(true);
+    		buttonPrevious.setVisible(true);
+        	imageViewWindow.setImage(new Image(filePath+names.get(count)));
+        	
+    		
+    		
+    		
+    		
     	} catch (Exception e){
     		
     	}
+    }
+    @FXML
+    void onActionButtonNext(ActionEvent event){
+    	if(count==names.size()-1){
+    		count=0;
+    	}else{
+    		count++;
+    	}
+    	imageViewWindow.setImage(new Image(filePath+names.get(count)));
+    	
+    }	
+    @FXML
+    void onActionButtonPrevious(ActionEvent event){
+    	if(count==0){
+    		count=names.size()-1;
+    	}else{
+    		count--;
+    	}
+    	imageViewWindow.setImage(new Image(filePath+names.get(count)));
     }
 }
