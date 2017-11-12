@@ -46,10 +46,8 @@ public class DCT {
 		System.out.print("Please enter a value for Q: ");
 		double q = sc.nextDouble();
 		getQMatrix(q);
+		roundArray(Qx);
 		while(i < grids.size()){
-			roundArray(Qx);
-			printArray(Qx);
-
 			System.out.println("Matrix M: ");
 			printArray(grids.get(i));
 			System.out.println();
@@ -75,7 +73,7 @@ public class DCT {
 
 			System.out.println();
 			quantization(TMTt, Qx, DCTResult);
-			roundArray(DCTResult);
+			roundArrayForImage(DCTResult);
 			System.out.println();
 
 			System.out.println("Resulting Matrix: ");
@@ -132,6 +130,19 @@ public class DCT {
 			}
 		}
 	}
+	
+	public static void roundArrayForImage(double[][] chunk) {
+		for(int i = 0; i < chunk.length; i++){
+			for(int j = 0; j < chunk[0].length; j++){
+				chunk[i][j] = Math.round(chunk[i][j]);
+				if(chunk[i][j] > 255){
+					chunk[i][j] = 255;
+				} else if (chunk[i][j] < 0) {
+					chunk[i][j] = 0;
+				}
+			}
+		}
+	}
 
 	public static void getQMatrix(double q){
 		if(q == 50){
@@ -163,14 +174,14 @@ public class DCT {
 		}
 	}
 
-	public static ArrayList<int[][]> create8x8s(int[][] source, int N) throws ArrayIndexOutOfBoundsException, NullPointerException  {
+	public static ArrayList<double[][]> create8x8s(int[][] source, int N) throws ArrayIndexOutOfBoundsException, NullPointerException  {
 		if (N <= 0)
 			throw new ArrayIndexOutOfBoundsException("Chunks must be atleast 1x1");
 		int size = source.length / N * (source[0].length / N);
-		ArrayList<int [][]> subArrays = new ArrayList<>();
+		ArrayList<double [][]> subArrays = new ArrayList<>();
 
 		for (int c = 0; c < size; c++) {
-			int[][] sub = new int[N][N];
+			double[][] sub = new double[N][N];
 			int startx = (N * (c / N)) % source.length;
 			int starty = (N * c) % source[0].length;
 
@@ -191,9 +202,9 @@ public class DCT {
 		return subArrays;
 	}
 
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		ArrayList<double[][]> grid = new ArrayList<double[][]>();
 		grid.add(MTest);
 		run(grid);
-	}
+	}*/
 }
