@@ -290,16 +290,17 @@ public class FXMLScientificController implements Initializable {
     void OnActionBtnMemoryAdd(ActionEvent event) {
     	double inMem = Double.parseDouble(memory);
     	double toAdd = Double.parseDouble(inputTextField4.getText());
-    	memory = "";
-    	memory += Double.toString(inMem + toAdd);
+    	double result = inMem + toAdd;
+    	memory += Double.toString(result);
     }
 
     @FXML
     void OnActionBtnMemorySubtract(ActionEvent event) {
     	double inMem = Double.parseDouble(memory);
     	double toAdd = Double.parseDouble(inputTextField4.getText());
+    	double result = inMem - toAdd;
     	memory = "";
-    	memory += Double.toString(inMem - toAdd);
+    	memory += Double.toString(result);
     }
 
     @FXML
@@ -434,7 +435,7 @@ public class FXMLScientificController implements Initializable {
     void OnActionMemoryStore(ActionEvent event) {
     	if(inputTextField4.getText().length() != 0){
     		memory = "";
-    		memory += inputTextField4.getText();
+    		memory += inputTextField4.getText().toString();
     	}
     }
 
