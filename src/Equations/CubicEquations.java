@@ -62,10 +62,6 @@ public class CubicEquations {
 		if (a == 0) {
 			throw new Exception();
 		}
-		// BigDecimal aBig = new BigDecimal(a);
-		// BigDecimal bBig = new BigDecimal(b);
-		// BigDecimal cBig = new BigDecimal(c);
-		// BigDecimal dBig = new BigDecimal(d);
 
 		String result = "";
 
