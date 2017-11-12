@@ -8,7 +8,7 @@ public class QuadraticEquation {
 
 	static Scanner sc;
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		sc = new Scanner(System.in);
 		System.out.println("Please enter a: ");
 		double a = sc.nextInt();
@@ -19,7 +19,10 @@ public class QuadraticEquation {
 		caclQuadratic(a, b, c);
 	}
 	
-	public static String caclQuadratic(double a, double b, double c) {
+	public static String caclQuadratic(double a, double b, double c) throws Exception {
+			if (a == 0) {
+				throw new Exception();
+			}
 		String x0 = "";
 		String y0 = "";
 		String x1 = "";
