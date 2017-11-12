@@ -9,10 +9,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox id="gabor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FMXLGaborWaveletController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FMXLGaborWaveletController">
    <children>
       <GridPane prefWidth="200.0">
         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -37,18 +40,33 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label alignment="CENTER" prefHeight="100.0" prefWidth="1600.0" text="Gabor Wavelets" GridPane.columnIndex="1" GridPane.columnSpan="8">
+           	<Button fx:id="basicCalculator" mnemonicParsing="false" onAction="#NavigateBasicCalculator" prefHeight="100.0" prefWidth="600.0" text="Basic Calculator" GridPane.columnSpan="3" GridPane.rowIndex="1" />
+            <Button fx:id="scientificCalculator" mnemonicParsing="false" onAction="#NavigateScientificCalculator" prefHeight="100.0" prefWidth="600.0" text="Scientific Calculator" GridPane.columnSpan="3" GridPane.rowIndex="2" />
+           	<Button fx:id="integralCalculator" mnemonicParsing="false" onAction="#NavigateIntegralCalculator" prefHeight="100.0" prefWidth="600.0" text="Integral Calculator" GridPane.columnSpan="3" GridPane.rowIndex="3" />
+            <Button fx:id="fourierCalculator" mnemonicParsing="false" onAction="#NavigateFourierCalculator" prefHeight="100.0" prefWidth="600.0" text="Fourier Calculator" GridPane.columnSpan="3" GridPane.rowIndex="4" />
+            <Button fx:id="bitWiseCalculator" mnemonicParsing="false" onAction="#NavigateBitWiseCalculator" prefHeight="100.0" prefWidth="600.0" text="Sets" GridPane.columnSpan="3" GridPane.rowIndex="5" />
+            <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Gabor Wavelet" GridPane.columnSpan="3" GridPane.rowIndex="6" />
+            <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Logical Functions" GridPane.columnSpan="3" GridPane.rowIndex="7" />
+            <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Constant Values" GridPane.columnSpan="3" GridPane.rowIndex="8" />
+            <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Conversions" GridPane.columnSpan="3" GridPane.rowIndex="9" />
+
+            <Label alignment="CENTER" prefHeight="100.0" prefWidth="400.0" text="Mode" GridPane.columnSpan="2">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="varphi" GridPane.columnIndex="1" GridPane.columnSpan="5" GridPane.rowIndex="2" />
-            <TextField fx:id="upsi" GridPane.columnIndex="1" GridPane.columnSpan="5" GridPane.rowIndex="4" />
-            <TextField fx:id="bandw" GridPane.columnIndex="1" GridPane.columnSpan="5" GridPane.rowIndex="6" />
-            <Button fx:id="btnGenerate" mnemonicParsing="false" onAction="#onActionBtnGenerate" text="Generate" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="8" />
-            <Label text="Varphi" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="1" />
-            <Label text="Upsi" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="3" />
-            <Label text="Bandwidth" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="5" />
+            <Label alignment="CENTER" prefHeight="100.0" prefWidth="1600.0" text="Calculator" GridPane.columnIndex="4" GridPane.columnSpan="8">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="varphi" GridPane.columnIndex="4" GridPane.columnSpan="5" GridPane.rowIndex="2" />
+            <TextField fx:id="upsi" GridPane.columnIndex="4" GridPane.columnSpan="5" GridPane.rowIndex="4" />
+            <TextField fx:id="bandw" GridPane.columnIndex="4" GridPane.columnSpan="5" GridPane.rowIndex="6" />
+            <Button fx:id="btnGenerate" mnemonicParsing="false" onAction="#onActionBtnGenerate" text="Generate" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.rowIndex="8" />
+            <Label text="Varphi" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.rowIndex="1" />
+            <Label text="Upsi" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.rowIndex="3" />
+            <Label text="Bandwidth" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.rowIndex="5" />
       
          </children>
       </GridPane>

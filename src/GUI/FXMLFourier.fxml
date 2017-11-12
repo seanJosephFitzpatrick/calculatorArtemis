@@ -9,12 +9,14 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<VBox id="fourier" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLFourierController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLFourierController">
    <children>
       <GridPane prefWidth="200.0">
         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -40,32 +42,35 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField fx:id="inputTextFieldPhase" alignment="BASELINE_RIGHT" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="4" />
-            <TextField fx:id="inputTextFieldPeriod" alignment="BASELINE_RIGHT" GridPane.columnIndex="7" GridPane.columnSpan="3" GridPane.rowIndex="4" />
-            <TextField fx:id="inputTextFieldHarAmp" alignment="BASELINE_RIGHT" GridPane.columnIndex="7" GridPane.columnSpan="3" GridPane.rowIndex="2" />
-            <Label alignment="CENTER" prefHeight="100.0" prefWidth="1600.0" text="Fourier Series" GridPane.columnIndex="1" GridPane.columnSpan="8">
+            <Button fx:id="basicCalculator" mnemonicParsing="false" onAction="#NavigateBasicCalculator" prefHeight="100.0" prefWidth="600.0" text="Basic Calculator" GridPane.columnSpan="3" GridPane.rowIndex="1" />
+            <Button fx:id="scientificCalculator" mnemonicParsing="false" onAction="#NavigateScientificCalculator" prefHeight="100.0" prefWidth="600.0" text="Scientific Calculator" GridPane.columnSpan="3" GridPane.rowIndex="2" />
+           	<Button fx:id="integralCalculator" mnemonicParsing="false" onAction="#NavigateIntegralCalculator" prefHeight="100.0" prefWidth="600.0" text="Integral Calculator" GridPane.columnSpan="3" GridPane.rowIndex="3" />
+            <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Fourier Calculator" GridPane.columnSpan="3" GridPane.rowIndex="4" />
+            <Button fx:id="bitWiseCalculator" mnemonicParsing="false" onAction="#NavigateBitWiseCalculator" prefHeight="100.0" prefWidth="600.0" text="Sets" GridPane.columnSpan="3" GridPane.rowIndex="5" />
+            <Button fx:id="gaborCalculator" mnemonicParsing="false" onAction="#NavigateGaborCalculator" prefHeight="100.0" prefWidth="600.0" text="Gabor Wavelet" GridPane.columnSpan="3" GridPane.rowIndex="6" />
+            <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Logical Functions" GridPane.columnSpan="3" GridPane.rowIndex="7" />
+            <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Constant Values" GridPane.columnSpan="3" GridPane.rowIndex="8" />
+            <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Conversions" GridPane.columnSpan="3" GridPane.rowIndex="9" />
+            <TextField fx:id="inputTextFieldPhase" alignment="BASELINE_RIGHT" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.rowIndex="4" />
+            <TextField fx:id="inputTextFieldPeriod" alignment="BASELINE_RIGHT" GridPane.columnIndex="10" GridPane.columnSpan="3" GridPane.rowIndex="4" />
+            <TextField fx:id="inputTextFieldHarAmp" alignment="BASELINE_RIGHT" GridPane.columnIndex="10" GridPane.columnSpan="3" GridPane.rowIndex="2" />
+            <Label alignment="CENTER" prefHeight="100.0" prefWidth="400.0" text="Mode" GridPane.columnSpan="2">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Button id="pad1" fx:id="submit" mnemonicParsing="false" onAction="#OnActionSubmit" prefHeight="100.0" prefWidth="400.0" text="Submit" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.rowIndex="9" />
-            <ComboBox fx:id="comboBoxFourier" onAction="#OnActionLabelComboBox" prefHeight="29.0" prefWidth="350.0" promptText="User Defined Waveform" GridPane.columnIndex="1" GridPane.columnSpan="5" GridPane.rowIndex="2" />
-            <Label fx:id="labelOneFourier" text="Harmonics" GridPane.columnIndex="7" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
-            <Label fx:id="labelThreeFourier" text="Waveform" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="3" />
-            <Label fx:id="labelFourFourier" text="Signal Frequency" GridPane.columnIndex="7" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="3" />
-            <Label fx:id="labelTwoFourier" text="Fourier Series" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
-            <ComboBox fx:id="comboBoxWaveform" layoutX="240.0" layoutY="221.0" prefHeight="29.0" prefWidth="350.0" promptText="User Defined Waveform" GridPane.columnIndex="1" GridPane.columnSpan="5" GridPane.rowIndex="4" />
-            <TextField fx:id="inputTextFieldXMin" GridPane.columnIndex="7" GridPane.rowIndex="6" />
-            <Text fx:id="textDash" strokeType="OUTSIDE" strokeWidth="0.0" text="-" textAlignment="CENTER" GridPane.columnIndex="8" GridPane.rowIndex="6">
+            <Label alignment="CENTER" prefHeight="100.0" prefWidth="1600.0" text="Fourier Series" GridPane.columnIndex="4" GridPane.columnSpan="8">
                <font>
-                  <Font size="36.0" />
+                  <Font size="16.0" />
                </font>
-            </Text>
-            <TextField fx:id="inputTextFieldXMax" GridPane.columnIndex="9" GridPane.rowIndex="6" />
-            <Label fx:id="labelSamFreq" prefHeight="17.0" prefWidth="256.0" text="Sampling Frequency" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5" />
-            <TextField fx:id="inputTextFieldSamFreq" prefHeight="25.0" prefWidth="111.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="6" />
-            <Label fx:id="labelXAxis" prefHeight="17.0" prefWidth="119.0" text="X Axis Range" textAlignment="JUSTIFY" GridPane.columnIndex="7" GridPane.columnSpan="2" GridPane.rowIndex="5" />
-            <ComboBox fx:id="comboBoxHar" prefWidth="150.0" promptText="Harmonics Type" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="6" />
+            </Label>
+            <Button id="pad1" fx:id="submit" mnemonicParsing="false" onAction="#OnActionSubmit" prefHeight="100.0" prefWidth="400.0" text="Submit" GridPane.columnIndex="8" GridPane.columnSpan="2" GridPane.rowIndex="9" />
+            <ComboBox fx:id="comboBoxFourier" onAction="#OnActionLabelComboBox" prefHeight="29.0" prefWidth="350.0" promptText="User Defined Waveform" GridPane.columnIndex="4" GridPane.columnSpan="5" GridPane.rowIndex="2" />
+            <Label fx:id="labelOneFourier" text="Harmonics" GridPane.columnIndex="10" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
+            <Label fx:id="labelThreeFourier" text="Waveform" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="3" />
+            <Label fx:id="labelFourFourier" text="Period" GridPane.columnIndex="10" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="3" />
+            <Label fx:id="labelTwoFourier" text="Fourier Series" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
+            <ComboBox fx:id="comboBoxWaveform" layoutX="240.0" layoutY="221.0" prefHeight="29.0" prefWidth="350.0" promptText="User Defined Waveform" GridPane.columnIndex="4" GridPane.columnSpan="5" GridPane.rowIndex="4" />
            
          </children>
       </GridPane>

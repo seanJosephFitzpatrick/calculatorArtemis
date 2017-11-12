@@ -17,7 +17,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import FourierSeries.*;
 
@@ -25,6 +24,14 @@ public class FXMLFourierController implements Initializable {
 
 	String answer = "clear";
 	
+    @FXML
+    private Button scientificCalculator;
+    @FXML
+    private Button integralCalculator;
+    @FXML
+    private Button fourierCalculator;
+    @FXML
+    private Button basicCalculator;
     @FXML
     private TextField inputTextFieldPhase;
     @FXML
@@ -50,43 +57,51 @@ public class FXMLFourierController implements Initializable {
     @FXML
     private TextField inputTextFieldWaveform;
     @FXML
-    private TextField inputTextFieldXMin;
+    private Button bitWiseCalculator;
     @FXML
-    private TextField inputTextFieldXMax;
+    private Button gaborCalculator;
+	
     @FXML
-    private TextField inputTextFieldSamFreq;
-    @FXML
-    private Label labelSamFreq;
-    @FXML
-    private Label labelXAxis;
-    @FXML
-    private Text  textDash;
-    @FXML
-    private ComboBox<String>  comboBoxHar;
+    void NavigateGaborCalculator(ActionEvent event) {
+    	try {
+			Parent scientific_calculator_parent = FXMLLoader.load(getClass().getResource("FXMLGaborWavelet.fxml"));
+			Scene scientific_calculator_scene = new Scene(scientific_calculator_parent, 800, 400);
+			Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+			stage.hide();
+			stage.setScene(scientific_calculator_scene);
+			stage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
     
+    @FXML
+    void NavigateBitWiseCalculator(ActionEvent event) {
+    	try {
+			Parent scientific_calculator_parent = FXMLLoader.load(getClass().getResource("FXMLBitWise.fxml"));
+			Scene scientific_calculator_scene = new Scene(scientific_calculator_parent, 800, 400);
+			Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+			stage.hide();
+			stage.setScene(scientific_calculator_scene);
+			stage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
     
-   
-       
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
 		comboBoxFourier.getItems().removeAll(comboBoxFourier.getItems());
-		comboBoxFourier.getItems().addAll("Fourier Series", "Signal Sampling");
+		comboBoxFourier.getItems().addAll("Fourier Series", "user Defined Waveform");
 		comboBoxFourier.getSelectionModel().select("Fourier Series");
 		comboBoxWaveform.getItems().removeAll(comboBoxWaveform.getItems());
 		comboBoxWaveform.getItems().addAll("Square", "Triangle", "Sawtooth");
 		comboBoxWaveform.getSelectionModel().select("Square");
-		comboBoxHar.getItems().removeAll(comboBoxHar.getItems());
-		comboBoxHar.getItems().addAll( "Odd","Even", "Odd & Even");
-		comboBoxHar.getSelectionModel().select("Odd");
 		inputTextFieldPhase.setVisible(false);
     	comboBoxWaveform.setVisible(true);
-    	textDash.setVisible(false);
-    	labelXAxis.setVisible(false);
-    	inputTextFieldXMin.setVisible(false);
-    	inputTextFieldXMax.setVisible(false);
-    	comboBoxHar.setVisible(true);
-    	inputTextFieldSamFreq.setVisible(false);
-    	labelSamFreq.setText("Harmonic Type");
 	}
 	
     @FXML
@@ -96,33 +111,74 @@ public class FXMLFourierController implements Initializable {
 	    	labelOneFourier.setText("Harmonics");
 	    	labelTwoFourier.setText("Fourier Series");
 	    	labelThreeFourier.setText("Waveform");
-	    	labelFourFourier.setText("Frequency");
+	    	labelFourFourier.setText("Period");
 	    	inputTextFieldPhase.setVisible(false);
 	    	comboBoxWaveform.setVisible(true);
-	    	textDash.setVisible(false);
-	    	labelXAxis.setVisible(false);
-	    	inputTextFieldXMin.setVisible(false);
-	    	inputTextFieldXMax.setVisible(false);
-	    	comboBoxHar.setVisible(true);
-	    	inputTextFieldSamFreq.setVisible(false);
-	    	labelSamFreq.setText("Harmonic Type");
-	    	
-	    }else if(output.equalsIgnoreCase("Signal Sampling")){
+	    }else if(output.equalsIgnoreCase("user Defined Waveform")){
 	    	labelOneFourier.setText("amplitude");
 	    	labelTwoFourier.setText("user Defined Waveform");
 	    	labelThreeFourier.setText("Phase");
-	    	labelFourFourier.setText("Frequency");
+	    	labelFourFourier.setText("Period");
 	    	comboBoxWaveform.setVisible(false);
 	    	inputTextFieldPhase.setVisible(true);
-	    	textDash.setVisible(true);
-	    	labelXAxis.setVisible(true);
-	    	inputTextFieldXMin.setVisible(true);
-	    	inputTextFieldXMax.setVisible(true);
-	    	inputTextFieldSamFreq.setVisible(true);
-	    	labelSamFreq.setText("Sampling Frequency");
-	    	comboBoxHar.setVisible(false);
-	    	
 	    }
+    }
+
+//    @FXML
+//    void OnActionLabelOneFourier(MouseEvent event) {
+//	    String output = comboBox.getSelectionModel().getSelectedItem().toString();
+//	    
+//	    String output1 = "Fourier Series";
+//	    if(output1.equalsIgnoreCase("Fourier Series")){
+//	    	labelTwoFourier.setText("Fourier Series");
+//	    }else{
+//	    	labelTwoFourier.setText("user Defined Waveform");
+//	    }
+//    }
+
+    @FXML
+    void NavigateScientificCalculator(ActionEvent event) {
+    	try {
+			Parent scientific_calculator_parent = FXMLLoader.load(getClass().getResource("FXMLScientific.fxml"));
+			Scene scientific_calculator_scene = new Scene(scientific_calculator_parent, 800, 400);
+			Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+			stage.hide();
+			stage.setScene(scientific_calculator_scene);
+			stage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+    
+    @FXML
+    void NavigateBasicCalculator(ActionEvent event) {
+    	try {
+			Parent scientific_calculator_parent = FXMLLoader.load(getClass().getResource("FXMLBasic.fxml"));
+			Scene scientific_calculator_scene = new Scene(scientific_calculator_parent, 800, 400);
+			Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+			stage.hide();
+			stage.setScene(scientific_calculator_scene);
+			stage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+    
+    @FXML
+    void NavigateIntegralCalculator(ActionEvent event) {
+    	try {
+			Parent integral_calculator_parent = FXMLLoader.load(getClass().getResource("FXMLIntegral.fxml"));
+			Scene integral_calculator_scene = new Scene(integral_calculator_parent, 800, 400);
+			Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+			stage.hide();
+			stage.setScene(integral_calculator_scene);
+			stage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
     @FXML
@@ -132,45 +188,38 @@ public class FXMLFourierController implements Initializable {
     	String outputWaveform = comboBoxWaveform.getSelectionModel().getSelectedItem().toString();
     	System.out.println(outputWaveform);
 	    if(outputFourier.equalsIgnoreCase("Fourier Series")){
-	    	
-	    	int harmonic = Integer.parseInt(inputTextFieldHarAmp.getText());
-	    	double period = 1/Double.parseDouble(inputTextFieldPeriod.getText());
-	    	String harmonicType = comboBoxHar.getSelectionModel().getSelectedItem().toString();
-	    	
     	
-	    	FourierSeries.generatePlotPointsFourier(harmonic, period, outputWaveform,harmonicType, -(period+period*.5));
-        
+        	FourierSeries.setMode(outputFourier);
+
+    	
+        	FourierSeries.setWaveform(outputWaveform.toLowerCase());
+        	System.out.println(outputWaveform);
+
+    	   	FourierSeries.setHarmonic(Integer.parseInt(inputTextFieldHarAmp.getText()));
+
+    	   	FourierSeries.setPeriod(Double.parseDouble(inputTextFieldPeriod.getText()));
 
 	    	
 	    	Application app2 =  new FourierSeries(); 
 	        Stage anotherStage = new Stage();
 	        app2.start(anotherStage);
-	        FourierSeries.generatePlotPointsDFT(period); 
-	       Stage anotherStage1 = new Stage();
-	       app2.start(anotherStage1);
 	   }else{
 		   
-		// FourierSeries.setMode(outputFourier);
+		 FourierSeries.setMode(outputFourier);
 
 	    	
-   	   	//FourierSeries.setAmplitude(Integer.parseInt(inputTextFieldHarAmp.getText()));
+       	
+       	
 
-   	   	//FourierSeries.setPeriod(Double.parseDouble(inputTextFieldPeriod.getText()));
-   	   //	FourierSeries.setPhase(Double.parseDouble(inputTextFieldPhase.getText()));
-		   double amplitude=Double.parseDouble(inputTextFieldHarAmp.getText());
-		   double period = 1/Double.parseDouble(inputTextFieldPeriod.getText());
-		   double phase = Double.parseDouble(inputTextFieldPhase.getText());
-		   double samplingPeriod = 1/Double.parseDouble(inputTextFieldSamFreq.getText());
-		   double xAxisMin = Double.parseDouble(inputTextFieldXMin.getText());
-		   double xAxisMax = Double.parseDouble(inputTextFieldXMax.getText());
-	    	FourierSeries.generatePlotPointsFourier(amplitude, period, phase, xAxisMin,xAxisMax,samplingPeriod);
+   	   	FourierSeries.setAmplitude(Integer.parseInt(inputTextFieldHarAmp.getText()));
 
-	        Application app2 =  new FourierSeries(); 
+   	   	FourierSeries.setPeriod(Double.parseDouble(inputTextFieldPeriod.getText()));
+   	   	FourierSeries.setPhase(Double.parseDouble(inputTextFieldPhase.getText()));
+
+	    	
+	    	Application app2 =  new FourierSeries(); 
 	        Stage anotherStage = new Stage();
 	        app2.start(anotherStage);
-	        FourierSeries.generatePlotPointsDFT(samplingPeriod); 
-	        Stage anotherStage1 = new Stage();
-	        app2.start(anotherStage1);
 
 	    }    	
     }

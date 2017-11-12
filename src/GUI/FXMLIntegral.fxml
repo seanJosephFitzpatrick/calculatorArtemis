@@ -12,10 +12,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox id="integral" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLIntegralController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLIntegralController">
    <children>
       <GridPane prefWidth="200.0">
         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -40,29 +43,41 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField fx:id="inputTextField" onAction="#OnActionInput" prefHeight="90.0" prefWidth="315.0" GridPane.columnIndex="1" GridPane.columnSpan="8" GridPane.rowIndex="1" GridPane.rowSpan="3">
+            <TextField fx:id="inputTextField" onAction="#OnActionInput" prefHeight="90.0" prefWidth="315.0" GridPane.columnIndex="4" GridPane.columnSpan="8" GridPane.rowIndex="1" GridPane.rowSpan="3">
                <padding>
                   <Insets left="100.0" />
                </padding>
             </TextField>
-            <Label alignment="CENTER" prefHeight="100.0" prefWidth="1600.0" text="Simpson's Rule Calculator " GridPane.columnIndex="1" GridPane.columnSpan="8">
+           	<Button fx:id="basicCalculator" mnemonicParsing="false" onAction="#NavigateBasicCalculator" prefHeight="100.0" prefWidth="600.0" text="Basic Calculator" GridPane.columnSpan="3" GridPane.rowIndex="1" />
+            <Button fx:id="scientificCalculator" mnemonicParsing="false" onAction="#NavigateScientificCalculator" prefHeight="100.0" prefWidth="600.0" text="Scientific Calculator" GridPane.columnSpan="3" GridPane.rowIndex="2" />
+           	<Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Integral Calculator" GridPane.columnSpan="3" GridPane.rowIndex="3" />
+            <Button fx:id="fourierCalculator" mnemonicParsing="false" onAction="#NavigateFourierCalculator" prefHeight="100.0" prefWidth="600.0" text="Fourier Calculator" GridPane.columnSpan="3" GridPane.rowIndex="4" />
+            <Button fx:id="bitWiseCalculator" mnemonicParsing="false" onAction="#NavigateBitWiseCalculator" prefHeight="100.0" prefWidth="600.0" text="Sets" GridPane.columnSpan="3" GridPane.rowIndex="5" />
+            <Button fx:id="gaborCalculator" mnemonicParsing="false" onAction="#NavigateGaborCalculator" prefHeight="100.0" prefWidth="600.0" text="Gabor Wavelet" GridPane.columnSpan="3" GridPane.rowIndex="6" />
+            <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Logical Functions" GridPane.columnSpan="3" GridPane.rowIndex="7" />
+            <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Constant Values" GridPane.columnSpan="3" GridPane.rowIndex="8" />
+            <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Conversions" GridPane.columnSpan="3" GridPane.rowIndex="9" />
+
+            <Label alignment="CENTER" prefHeight="100.0" prefWidth="400.0" text="Mode" GridPane.columnSpan="2">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" prefHeight="100.0" prefWidth="1600.0" text="Calculator" GridPane.columnIndex="4" GridPane.columnSpan="8">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
             
-            <TextField fx:id="topValueTextField" alignment="CENTER" maxWidth="40.0" onAction="#OnActionTopValue" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-            <TextField fx:id="bottomValueTextField" alignment="CENTER" maxWidth="40.0" onAction="#OnActionBottomValue" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-            <Button fx:id="calculate" mnemonicParsing="false" onAction="#OnActionCalculate" prefWidth="400.0" text="Calculate" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.rowIndex="5" />
-            <TextField fx:id="outputTextField" onAction="#OnActionOutput" prefHeight="35.0" prefWidth="1400.0" GridPane.columnIndex="2" GridPane.columnSpan="7" GridPane.rowIndex="7" />
-            <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+            <TextField fx:id="topValueTextField" onAction="#OnActionTopValue" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+            <TextField fx:id="bottomValueTextField" onAction="#OnActionBottomValue" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+            <Button fx:id="calculate" mnemonicParsing="false" onAction="#OnActionCalculate" prefWidth="400.0" text="Calculate" GridPane.columnIndex="8" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+            <TextField fx:id="outputTextField" onAction="#OnActionOutput" prefHeight="35.0" prefWidth="1400.0" GridPane.columnIndex="5" GridPane.columnSpan="7" GridPane.rowIndex="7" />
+            <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                <image>
                   <Image url="@../../Images/integral-mathematical-sign.png" />
                </image>
             </ImageView>
-            <TextField fx:id="inputTextFieldN" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-            <Label text="n = " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
-            <Label text="Result" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7" />
       
          </children>
       </GridPane>
