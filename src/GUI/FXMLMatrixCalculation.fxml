@@ -51,55 +51,55 @@
                </font>
             </Label>
             <Button fx:id="buttonGenerateMatrix1" mnemonicParsing="false" onAction="#onActionBtnGenerateMatrix1" prefHeight="25.0" prefWidth="192.0" text="Generate Numbers" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="6" />
-            <TextField fx:id="textFieldMatrix100" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField fx:id="textFieldMatrix101" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <TextField fx:id="textFieldMatrix102" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-            <TextField fx:id="textFieldMatrix110" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField fx:id="textFieldMatrix111" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <TextField fx:id="textFieldMatrix112" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-            <TextField fx:id="textFieldMatrix103" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-            <TextField fx:id="textFieldMatrix113" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-            <TextField fx:id="textFieldMatrix123" GridPane.columnIndex="4" GridPane.rowIndex="4" />
-            <TextField fx:id="textFieldMatrix133" GridPane.columnIndex="4" GridPane.rowIndex="5" />
-            <TextField fx:id="textFieldMatrix132" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-            <TextField fx:id="textFieldMatrix122" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-            <TextField fx:id="textFieldMatrix121" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <TextField fx:id="textFieldMatrix120" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <TextField fx:id="textFieldMatrix131" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-            <TextField fx:id="textFieldMatrix130" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <TextField fx:id="textFieldMatrix201" GridPane.columnIndex="6" GridPane.rowIndex="2" />
-            <TextField fx:id="textFieldMatrix202" GridPane.columnIndex="7" GridPane.rowIndex="2" />
-            <TextField fx:id="textFieldMatrix203" GridPane.columnIndex="8" GridPane.rowIndex="2" />
-            <TextField fx:id="textFieldMatrix204" GridPane.columnIndex="9" GridPane.rowIndex="2" />
-            <TextField fx:id="textFieldMatrix205" GridPane.columnIndex="6" GridPane.rowIndex="3" />
-            <TextField fx:id="textFieldMatrix206" GridPane.columnIndex="7" GridPane.rowIndex="3" />
-            <TextField fx:id="textFieldMatrix207" GridPane.columnIndex="8" GridPane.rowIndex="3" />
-            <TextField fx:id="textFieldMatrix208" GridPane.columnIndex="9" GridPane.rowIndex="3" />
-            <TextField fx:id="textFieldMatrix209" GridPane.columnIndex="6" GridPane.rowIndex="4" />
-            <TextField fx:id="textFieldMatrix210" GridPane.columnIndex="7" GridPane.rowIndex="4" />
-            <TextField fx:id="textFieldMatrix211" GridPane.columnIndex="8" GridPane.rowIndex="4" />
-            <TextField fx:id="textFieldMatrix212" GridPane.columnIndex="9" GridPane.rowIndex="4" />
-            <TextField fx:id="textFieldMatrix213" GridPane.columnIndex="6" GridPane.rowIndex="5" />
-            <TextField fx:id="textFieldMatrix214" GridPane.columnIndex="7" GridPane.rowIndex="5" />
-            <TextField fx:id="textFieldMatrix215" GridPane.columnIndex="8" GridPane.rowIndex="5" />
-            <TextField fx:id="textFieldMatrix216" GridPane.columnIndex="9" GridPane.rowIndex="5" />
+            <TextField fx:id="textFieldMatrix100" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="textFieldMatrix101" editable="false" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <TextField fx:id="textFieldMatrix102" editable="false" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <TextField fx:id="textFieldMatrix110" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="textFieldMatrix111" editable="false" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <TextField fx:id="textFieldMatrix112" editable="false" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <TextField fx:id="textFieldMatrix103" editable="false" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+            <TextField fx:id="textFieldMatrix113" editable="false" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+            <TextField fx:id="textFieldMatrix123" editable="false" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+            <TextField fx:id="textFieldMatrix133" editable="false" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+            <TextField fx:id="textFieldMatrix132" editable="false" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+            <TextField fx:id="textFieldMatrix122" editable="false" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <TextField fx:id="textFieldMatrix121" editable="false" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <TextField fx:id="textFieldMatrix120" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="textFieldMatrix131" editable="false" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <TextField fx:id="textFieldMatrix130" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextField fx:id="textFieldMatrix201" editable="false" GridPane.columnIndex="6" GridPane.rowIndex="2" />
+            <TextField fx:id="textFieldMatrix202" editable="false" GridPane.columnIndex="7" GridPane.rowIndex="2" />
+            <TextField fx:id="textFieldMatrix203" editable="false" GridPane.columnIndex="8" GridPane.rowIndex="2" />
+            <TextField fx:id="textFieldMatrix204" editable="false" GridPane.columnIndex="9" GridPane.rowIndex="2" />
+            <TextField fx:id="textFieldMatrix205" editable="false" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+            <TextField fx:id="textFieldMatrix206" editable="false" GridPane.columnIndex="7" GridPane.rowIndex="3" />
+            <TextField fx:id="textFieldMatrix207" editable="false" GridPane.columnIndex="8" GridPane.rowIndex="3" />
+            <TextField fx:id="textFieldMatrix208" editable="false" GridPane.columnIndex="9" GridPane.rowIndex="3" />
+            <TextField fx:id="textFieldMatrix209" editable="false" GridPane.columnIndex="6" GridPane.rowIndex="4" />
+            <TextField fx:id="textFieldMatrix210" editable="false" GridPane.columnIndex="7" GridPane.rowIndex="4" />
+            <TextField fx:id="textFieldMatrix211" editable="false" GridPane.columnIndex="8" GridPane.rowIndex="4" />
+            <TextField fx:id="textFieldMatrix212" editable="false" GridPane.columnIndex="9" GridPane.rowIndex="4" />
+            <TextField fx:id="textFieldMatrix213" editable="false" GridPane.columnIndex="6" GridPane.rowIndex="5" />
+            <TextField fx:id="textFieldMatrix214" editable="false" GridPane.columnIndex="7" GridPane.rowIndex="5" />
+            <TextField fx:id="textFieldMatrix215" editable="false" GridPane.columnIndex="8" GridPane.rowIndex="5" />
+            <TextField fx:id="textFieldMatrix216" editable="false" GridPane.columnIndex="9" GridPane.rowIndex="5" />
             <Button fx:id="buttonGenerateMatrix2" mnemonicParsing="false" onAction="#onActionBtnGenerateMatrix2" prefHeight="25.0" prefWidth="130.0" text="Generate Numbers" GridPane.columnIndex="6" GridPane.columnSpan="4" GridPane.rowIndex="6" />
-            <TextField fx:id="textFieldMatrix301" GridPane.columnIndex="12" GridPane.rowIndex="2" />
-            <TextField fx:id="textFieldMatrix302" GridPane.columnIndex="13" GridPane.rowIndex="2" />
-            <TextField fx:id="textFieldMatrix303" GridPane.columnIndex="14" GridPane.rowIndex="2" />
-            <TextField fx:id="textFieldMatrix304" GridPane.columnIndex="15" GridPane.rowIndex="2" />
-            <TextField fx:id="textFieldMatrix305" GridPane.columnIndex="12" GridPane.rowIndex="3" />
-            <TextField fx:id="textFieldMatrix306" GridPane.columnIndex="13" GridPane.rowIndex="3" />
-            <TextField fx:id="textFieldMatrix307" GridPane.columnIndex="14" GridPane.rowIndex="3" />
-            <TextField fx:id="textFieldMatrix308" GridPane.columnIndex="15" GridPane.rowIndex="3" />
-            <TextField fx:id="textFieldMatrix309" GridPane.columnIndex="12" GridPane.rowIndex="4" />
-            <TextField fx:id="textFieldMatrix310" GridPane.columnIndex="13" GridPane.rowIndex="4" />
-            <TextField fx:id="textFieldMatrix311" GridPane.columnIndex="14" GridPane.rowIndex="4" />
-            <TextField fx:id="textFieldMatrix312" GridPane.columnIndex="15" GridPane.rowIndex="4" />
-            <TextField fx:id="textFieldMatrix313" GridPane.columnIndex="12" GridPane.rowIndex="5" />
-            <TextField fx:id="textFieldMatrix314" GridPane.columnIndex="13" GridPane.rowIndex="5" />
-            <TextField fx:id="textFieldMatrix315" GridPane.columnIndex="14" GridPane.rowIndex="5" />
-            <TextField fx:id="textFieldMatrix316" GridPane.columnIndex="15" GridPane.rowIndex="5" />
+            <TextField fx:id="textFieldMatrix301" editable="false" GridPane.columnIndex="12" GridPane.rowIndex="2" />
+            <TextField fx:id="textFieldMatrix302" editable="false" GridPane.columnIndex="13" GridPane.rowIndex="2" />
+            <TextField fx:id="textFieldMatrix303" editable="false" GridPane.columnIndex="14" GridPane.rowIndex="2" />
+            <TextField fx:id="textFieldMatrix304" editable="false" GridPane.columnIndex="15" GridPane.rowIndex="2" />
+            <TextField fx:id="textFieldMatrix305" editable="false" GridPane.columnIndex="12" GridPane.rowIndex="3" />
+            <TextField fx:id="textFieldMatrix306" editable="false" GridPane.columnIndex="13" GridPane.rowIndex="3" />
+            <TextField fx:id="textFieldMatrix307" editable="false" GridPane.columnIndex="14" GridPane.rowIndex="3" />
+            <TextField fx:id="textFieldMatrix308" editable="false" GridPane.columnIndex="15" GridPane.rowIndex="3" />
+            <TextField fx:id="textFieldMatrix309" editable="false" GridPane.columnIndex="12" GridPane.rowIndex="4" />
+            <TextField fx:id="textFieldMatrix310" editable="false" GridPane.columnIndex="13" GridPane.rowIndex="4" />
+            <TextField fx:id="textFieldMatrix311" editable="false" GridPane.columnIndex="14" GridPane.rowIndex="4" />
+            <TextField fx:id="textFieldMatrix312" editable="false" GridPane.columnIndex="15" GridPane.rowIndex="4" />
+            <TextField fx:id="textFieldMatrix313" editable="false" GridPane.columnIndex="12" GridPane.rowIndex="5" />
+            <TextField fx:id="textFieldMatrix314" editable="false" GridPane.columnIndex="13" GridPane.rowIndex="5" />
+            <TextField fx:id="textFieldMatrix315" editable="false" GridPane.columnIndex="14" GridPane.rowIndex="5" />
+            <TextField fx:id="textFieldMatrix316" editable="false" GridPane.columnIndex="15" GridPane.rowIndex="5" />
             <Button fx:id="buttonAddMatrix" mnemonicParsing="false" onAction="#onActionBtnAddMatrix" prefHeight="25.0" prefWidth="61.0" text="Add" GridPane.columnIndex="12" GridPane.columnSpan="4" GridPane.rowIndex="6" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="=" wrappingWidth="52.04736328125" GridPane.columnIndex="10" GridPane.rowIndex="3">
                <font>
