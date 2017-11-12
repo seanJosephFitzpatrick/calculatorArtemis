@@ -11,13 +11,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLBasicController">
+<VBox id="basic" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLBasicController">
    <children>
       <GridPane prefWidth="200.0">
         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -42,68 +39,54 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Basic Calculator" GridPane.columnSpan="3" GridPane.rowIndex="1" />
-            <Button fx:id="scientificCalculator" mnemonicParsing="false" onAction="#NavigateScientificCalculator" prefHeight="100.0" prefWidth="600.0" text="Scientific Calculator" GridPane.columnSpan="3" GridPane.rowIndex="2" />
-           	<Button fx:id="integralCalculator" mnemonicParsing="false" onAction="#NavigateIntegralCalculator" prefHeight="100.0" prefWidth="600.0" text="Integral Calculator" GridPane.columnSpan="3" GridPane.rowIndex="3" />
-            <Button fx:id="fourierCalculator" mnemonicParsing="false" onAction="#NavigateFourierCalculator" prefHeight="100.0" prefWidth="600.0" text="Fourier Calculator" GridPane.columnSpan="3" GridPane.rowIndex="4" />
-            <Button fx:id="bitWiseCalculator" mnemonicParsing="false" onAction="#NavigateBitWiseCalculator" prefHeight="100.0" prefWidth="600.0" text="Sets" GridPane.columnSpan="3" GridPane.rowIndex="5" />
-            <Button fx:id="gaborCalculator" mnemonicParsing="false" onAction="#NavigateGaborCalculator" prefHeight="100.0" prefWidth="600.0" text="Gabor Wavelet" GridPane.columnSpan="3" GridPane.rowIndex="6" />
-            <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Logical Functions" GridPane.columnSpan="3" GridPane.rowIndex="7" />
-            <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Constant Values" GridPane.columnSpan="3" GridPane.rowIndex="8" />
-            <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="600.0" text="Conversions" GridPane.columnSpan="3" GridPane.rowIndex="9" />
-            <TextField fx:id="inputTextField" alignment="BASELINE_RIGHT" GridPane.columnIndex="4" GridPane.columnSpan="8" GridPane.rowIndex="4" />
-            <TextField fx:id="inputTextField2" prefHeight="83.0" prefWidth="120.0" GridPane.columnIndex="4" GridPane.columnSpan="8" GridPane.rowIndex="1" GridPane.rowSpan="3" />
-            <Label alignment="CENTER" prefHeight="100.0" prefWidth="400.0" text="Mode" GridPane.columnSpan="2">
+            <TextField fx:id="inputTextField" alignment="BASELINE_RIGHT" GridPane.columnIndex="1" GridPane.columnSpan="8" GridPane.rowIndex="4" />
+            <TextField fx:id="inputTextField2" prefHeight="83.0" prefWidth="120.0" GridPane.columnIndex="1" GridPane.columnSpan="8" GridPane.rowIndex="1" GridPane.rowSpan="3" />
+            <Label alignment="CENTER" prefHeight="100.0" prefWidth="1600.0" text="Basic Calculator" GridPane.columnIndex="1" GridPane.columnSpan="8">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="100.0" prefWidth="1600.0" text="Calculator" GridPane.columnIndex="4" GridPane.columnSpan="8">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Button fx:id="btnleftBrace" mnemonicParsing="false" onAction="#OnActionBtnLeftBrace" prefHeight="100.0" prefWidth="400.0" text="(" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="5" />
-            <Button fx:id="btnSeven" mnemonicParsing="false" onAction="#OnActionBtnSeven" prefHeight="100.0" prefWidth="400.0" text="7" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="6" />
-            <Button fx:id="btnFour" mnemonicParsing="false" onAction="#OnActionBtnFour" prefHeight="100.0" prefWidth="400.0" text="4" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="7" />
-            <Button fx:id="btnOne" mnemonicParsing="false" onAction="#OnActionBtnOne" prefHeight="100.0" prefWidth="400.0" text="1" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="8" />
-            <Button fx:id="btnZero" mnemonicParsing="false" onAction="#OnActionBtnZero" prefHeight="100.0" prefWidth="400.0" text="0" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="9" />
-            <Button fx:id="btnRightBrace" mnemonicParsing="false" onAction="#OnActionBtnRightBrace" prefHeight="100.0" prefWidth="400.0" text=")" GridPane.columnIndex="6" GridPane.columnSpan="2" GridPane.rowIndex="5" />
-            <Button fx:id="btnDot" mnemonicParsing="false" onAction="#OnActionBtnDot" prefHeight="100.0" prefWidth="400.0" text="." GridPane.columnIndex="6" GridPane.columnSpan="2" GridPane.rowIndex="9" />
-            <Button fx:id="btnEight" mnemonicParsing="false" onAction="#OnActionBtnEight" prefHeight="100.0" prefWidth="400.0" text="8" GridPane.columnIndex="6" GridPane.columnSpan="2" GridPane.rowIndex="6" />
-            <Button fx:id="btnFive" mnemonicParsing="false" onAction="#OnActionBtnFive" prefHeight="100.0" prefWidth="400.0" text="5" GridPane.columnIndex="6" GridPane.columnSpan="2" GridPane.rowIndex="7" />
-            <Button fx:id="btnTwo" mnemonicParsing="false" onAction="#OnActionBtnTwo" prefHeight="100.0" prefWidth="400.0" text="2" GridPane.columnIndex="6" GridPane.columnSpan="2" GridPane.rowIndex="8" />
-            <Button id="pad1" fx:id="btnAllClear" mnemonicParsing="false" onAction="#OnActionBtnAllClear" prefHeight="100.0" prefWidth="400.0" text="AC" GridPane.columnIndex="8" GridPane.columnSpan="2" GridPane.rowIndex="5" />
-            <Button id="pad1" fx:id="btnNine" mnemonicParsing="false" onAction="#OnActionBtnNine" prefHeight="100.0" prefWidth="400.0" text="9" GridPane.columnIndex="8" GridPane.columnSpan="2" GridPane.rowIndex="6" />
-            <Button id="pad1" fx:id="btnSix" mnemonicParsing="false" onAction="#OnActionBtnSix" prefHeight="100.0" prefWidth="400.0" text="6" GridPane.columnIndex="8" GridPane.columnSpan="2" GridPane.rowIndex="7" />
-            <Button id="pad1" fx:id="btnThree" mnemonicParsing="false" onAction="#OnActionBtnThree" prefHeight="100.0" prefWidth="400.0" text="3" GridPane.columnIndex="8" GridPane.columnSpan="2" GridPane.rowIndex="8" />
-            <Button id="pad1" fx:id="btnBack" mnemonicParsing="false" onAction="#OnActionBtnBack" prefHeight="100.0" prefWidth="400.0" text="DEL" GridPane.columnIndex="10" GridPane.columnSpan="2" GridPane.rowIndex="5" />
-            <Button id="pad1" fx:id="btnDivision" mnemonicParsing="false" onAction="#OnActionBtnDivision" prefHeight="100.0" prefWidth="400.0" GridPane.columnIndex="10" GridPane.columnSpan="2" GridPane.rowIndex="6" />
-            <Button id="pad1" fx:id="btnMultiplication" mnemonicParsing="false" onAction="#OnActionBtnMultiplication" prefHeight="100.0" prefWidth="400.0" GridPane.columnIndex="10" GridPane.columnSpan="2" GridPane.rowIndex="7" />
-            <Button id="pad1" fx:id="btnSubtraction" mnemonicParsing="false" onAction="#OnActionBtnSubtraction" prefHeight="100.0" prefWidth="400.0" GridPane.columnIndex="10" GridPane.columnSpan="2" GridPane.rowIndex="8" />
-            <Button id="pad1" fx:id="btnEquals" mnemonicParsing="false" onAction="#OnActionBtnEquals" prefHeight="100.0" prefWidth="400.0" GridPane.columnIndex="8" GridPane.columnSpan="2" GridPane.rowIndex="9" />
-            <Button id="pad1" fx:id="btnAddition" mnemonicParsing="false" onAction="#OnActionBtnAddition" prefHeight="100.0" prefWidth="400.0" GridPane.columnIndex="10" GridPane.columnSpan="2" GridPane.rowIndex="9" />
-            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.columnSpan="2" GridPane.rowIndex="6">
+            <Button fx:id="btnleftBrace" mnemonicParsing="false" onAction="#OnActionBtnLeftBrace" prefHeight="100.0" prefWidth="400.0" text="(" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+            <Button fx:id="btnSeven" mnemonicParsing="false" onAction="#OnActionBtnSeven" prefHeight="100.0" prefWidth="400.0" text="7" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6" />
+            <Button fx:id="btnFour" mnemonicParsing="false" onAction="#OnActionBtnFour" prefHeight="100.0" prefWidth="400.0" text="4" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="7" />
+            <Button fx:id="btnOne" mnemonicParsing="false" onAction="#OnActionBtnOne" prefHeight="100.0" prefWidth="400.0" text="1" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="8" />
+            <Button fx:id="btnZero" mnemonicParsing="false" onAction="#OnActionBtnZero" prefHeight="100.0" prefWidth="400.0" text="0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="9" />
+            <Button fx:id="btnRightBrace" mnemonicParsing="false" onAction="#OnActionBtnRightBrace" prefHeight="100.0" prefWidth="400.0" text=")" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+            <Button fx:id="btnDot" mnemonicParsing="false" onAction="#OnActionBtnDot" prefHeight="100.0" prefWidth="400.0" text="." GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="9" />
+            <Button fx:id="btnEight" mnemonicParsing="false" onAction="#OnActionBtnEight" prefHeight="100.0" prefWidth="400.0" text="8" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="6" />
+            <Button fx:id="btnFive" mnemonicParsing="false" onAction="#OnActionBtnFive" prefHeight="100.0" prefWidth="400.0" text="5" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="7" />
+            <Button fx:id="btnTwo" mnemonicParsing="false" onAction="#OnActionBtnTwo" prefHeight="100.0" prefWidth="400.0" text="2" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="8" />
+            <Button id="pad1" fx:id="btnAllClear" mnemonicParsing="false" onAction="#OnActionBtnAllClear" prefHeight="100.0" prefWidth="400.0" text="AC" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+            <Button id="pad1" fx:id="btnNine" mnemonicParsing="false" onAction="#OnActionBtnNine" prefHeight="100.0" prefWidth="400.0" text="9" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.rowIndex="6" />
+            <Button id="pad1" fx:id="btnSix" mnemonicParsing="false" onAction="#OnActionBtnSix" prefHeight="100.0" prefWidth="400.0" text="6" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.rowIndex="7" />
+            <Button id="pad1" fx:id="btnThree" mnemonicParsing="false" onAction="#OnActionBtnThree" prefHeight="100.0" prefWidth="400.0" text="3" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.rowIndex="8" />
+            <Button id="pad1" fx:id="btnBack" mnemonicParsing="false" onAction="#OnActionBtnBack" prefHeight="100.0" prefWidth="400.0" text="DEL" GridPane.columnIndex="7" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+            <Button id="pad1" fx:id="btnDivision" mnemonicParsing="false" onAction="#OnActionBtnDivision" prefHeight="100.0" prefWidth="400.0" GridPane.columnIndex="7" GridPane.columnSpan="2" GridPane.rowIndex="6" />
+            <Button id="pad1" fx:id="btnMultiplication" mnemonicParsing="false" onAction="#OnActionBtnMultiplication" prefHeight="100.0" prefWidth="400.0" GridPane.columnIndex="7" GridPane.columnSpan="2" GridPane.rowIndex="7" />
+            <Button id="pad1" fx:id="btnSubtraction" mnemonicParsing="false" onAction="#OnActionBtnSubtraction" prefHeight="100.0" prefWidth="400.0" GridPane.columnIndex="7" GridPane.columnSpan="2" GridPane.rowIndex="8" />
+            <Button id="pad1" fx:id="btnEquals" mnemonicParsing="false" onAction="#OnActionBtnEquals" prefHeight="100.0" prefWidth="400.0" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.rowIndex="9" />
+            <Button id="pad1" fx:id="btnAddition" mnemonicParsing="false" onAction="#OnActionBtnAddition" prefHeight="100.0" prefWidth="400.0" GridPane.columnIndex="7" GridPane.columnSpan="2" GridPane.rowIndex="9" />
+            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.columnSpan="2" GridPane.rowIndex="6">
                <image>
                   <Image url="@../../Images/divide.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.columnSpan="2" GridPane.rowIndex="7">
+            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.columnSpan="2" GridPane.rowIndex="7">
                <image>
                   <Image url="@../../Images/multiply.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.columnSpan="2" GridPane.rowIndex="8">
+            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.columnSpan="2" GridPane.rowIndex="8">
                <image>
                   <Image url="@../../Images/subtraction.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.columnSpan="2" GridPane.rowIndex="9">
+            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.columnSpan="2" GridPane.rowIndex="9">
                <image>
                   <Image url="@../../Images/addition.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.columnSpan="2" GridPane.rowIndex="9">
+            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.rowIndex="9">
                <image>
                   <Image url="@../../Images/equal.png" />
                </image>

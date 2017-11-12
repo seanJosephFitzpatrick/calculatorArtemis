@@ -1,4 +1,6 @@
-/bin/
+bin/
+Images/
+GaborImages/
 
 # Compiled class file
 *.class
