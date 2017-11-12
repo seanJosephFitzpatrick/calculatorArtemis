@@ -107,7 +107,7 @@ public class FXMLFourierController implements Initializable {
 	    	inputTextFieldSamFreq.setVisible(false);
 	    	labelSamFreq.setText("Harmonic Type");
 	    	
-	    }else if(output.equalsIgnoreCase("user Defined Waveform")){
+	    }else if(output.equalsIgnoreCase("Signal Sampling")){
 	    	labelOneFourier.setText("amplitude");
 	    	labelTwoFourier.setText("user Defined Waveform");
 	    	labelThreeFourier.setText("Phase");
@@ -145,6 +145,9 @@ public class FXMLFourierController implements Initializable {
 	    	Application app2 =  new FourierSeries(); 
 	        Stage anotherStage = new Stage();
 	        app2.start(anotherStage);
+	        FourierSeries.generatePlotPointsDFT(period); 
+	       Stage anotherStage1 = new Stage();
+	       app2.start(anotherStage1);
 	   }else{
 		   
 		// FourierSeries.setMode(outputFourier);
@@ -162,9 +165,12 @@ public class FXMLFourierController implements Initializable {
 		   double xAxisMax = Double.parseDouble(inputTextFieldXMax.getText());
 	    	FourierSeries.generatePlotPointsFourier(amplitude, period, phase, xAxisMin,xAxisMax,samplingPeriod);
 
-	    	Application app2 =  new FourierSeries(); 
+	        Application app2 =  new FourierSeries(); 
 	        Stage anotherStage = new Stage();
 	        app2.start(anotherStage);
+	        FourierSeries.generatePlotPointsDFT(samplingPeriod); 
+	        Stage anotherStage1 = new Stage();
+	        app2.start(anotherStage1);
 
 	    }    	
     }
