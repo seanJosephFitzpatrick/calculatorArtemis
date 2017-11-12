@@ -1,4 +1,4 @@
-package GUI;
+ package GUI;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -25,8 +26,11 @@ public class FXMLDataCompressionController implements Initializable {
     private ComboBox<String> dropdownSelectImage;
     @FXML
     private TextArea outputTextArea;
+    @FXML
+    private TextField qValue;
     private String savePath;
-    String img;
+    
+    
     
     
 	@Override

@@ -2,7 +2,9 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
@@ -37,12 +39,16 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Button fx:id="btnImportImage" mnemonicParsing="false" onAction="#onActionBtnImportImage" text="Import Images" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="1" />
             <Button fx:id="btnCompress" mnemonicParsing="false" onAction="#onActionBtnCompress" text="Compress" GridPane.columnIndex="5" GridPane.columnSpan="3" GridPane.rowIndex="1" />
             <ComboBox fx:id="dropdownSelectImage" onAction="#onActionDropdownSelectImage" prefWidth="150.0" GridPane.columnIndex="8" GridPane.columnSpan="4" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
             <TextArea fx:id="outputTextArea" editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="11" GridPane.rowIndex="3" GridPane.rowSpan="7" />
+            <TextField fx:id="qValue" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="11" />
+            <Label text="Quantization Value " GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="RIGHT" GridPane.rowIndex="11" />
          </children>
 
       </GridPane>
