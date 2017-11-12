@@ -7,30 +7,49 @@ public class MatrixCalculator {
 
 	public static int[][] testA =
 		{{5, 2, 3, 1},
-		{8, 2, 9, 3},
-		{2, 4, 6, 8},
-		{3, 5, 7, 9}};
+				{8, 2, 9, 3},
+				{2, 4, 6, 8},
+				{3, 5, 7, 9}};
 
 	public static int[][] testB =
 		{{7, 4, 6, 2},
-		{1, 5, 4, 8},
-		{5, 9, 3, 1},
-		{1, 6, 6, 7}};
+				{1, 5, 4, 8},
+				{5, 9, 3, 1},
+				{1, 6, 6, 7}};
 
-	
+
+	//GENERATE MATRIX NUMBERS 
 	public static int[][] GenerateNumbers() {
 		int[][] temp = new int[4][4];
 		Random randomGenerator = new Random();
-	    for (int r = 0; r < 4; r++)
-	      for (int c = 0; c < 4; c++)
-	      {
-	        temp[r][c] = randomGenerator.nextInt(100);
-	      }
-	    return temp;
-	  }
+		for (int r = 0; r < 4; r++)
+			for (int c = 0; c < 4; c++)
+			{
+				temp[r][c] = randomGenerator.nextInt(100);
+			}
+		return temp;
+	}
 
-	
-	
+
+	//DIVISION - INT
+	public static int[][] divideMatrix(int[][] A, int[][] B) {
+		int aRows = A.length;
+		int aColumns = A[0].length;
+		int bRows = B.length;
+		int bColumns = B[0].length;
+
+		int[][] C = new int[aRows][bColumns];
+
+		if (aColumns != bRows) {
+			throw new IllegalArgumentException("A:Rows: " + aColumns + " did not match B:Columns " + bRows + ".");
+		}
+
+		// NEEDS CODE HERE
+
+
+		return C;
+	}
+
 	//MULTIPLICATION - DOUBLE
 	public static double[][] multiplyMatrix(double[][] A, double[][] B) {
 		int aRows = A.length;

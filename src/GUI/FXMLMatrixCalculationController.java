@@ -203,7 +203,15 @@ public class FXMLMatrixCalculationController implements Initializable {
 
 	@FXML
 	void onActionBtnDivideMatrix(ActionEvent event) {
+		int[][] resultMatrix = MatrixCalculations.MatrixCalculator.divideMatrix(matrix1, matrix2);
+		int loop = 0;
 
+		for(int i = 0; i < resultMatrix.length; i++){
+			for(int j = 0; j < resultMatrix[0].length; j++){
+				textFieldsMatrixResult[loop].setText(""+resultMatrix[i][j]);
+				loop++;
+			}
+		}
 	}
 
 	@FXML

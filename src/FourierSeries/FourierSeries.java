@@ -19,24 +19,39 @@ public class FourierSeries extends Application {
  
 	private static ArrayList<Double> plotPointsY = new ArrayList<Double>();
 	private static ArrayList<Double> plotPointsX = new ArrayList<Double>();
-
+	private static int count=0;
 	@Override public void start(Stage stage) {
-        stage.setTitle("Simpsons Rule");
+        stage.setTitle("Signal Analysis");
         double yAxismin = Collections.min(plotPointsY);
         double yAxismax = Collections.max(plotPointsY);
         double xAxismin = Collections.min(plotPointsX);
         double xAxismax = Collections.max(plotPointsX);
+        String xAxisLabel="";
+        String yAxisLabel="";
+        if(count==0){
+        	xAxisLabel="Time(s)";
+        	yAxisLabel="Amplitude(V)";
+        }
+        else{
+        	xAxisLabel="Frequency(Hz)";
+        	yAxisLabel="Magnitude";
+        }
        
-        NumberAxis xAxis = new NumberAxis("x values",xAxismin, xAxismax, (xAxismax-xAxismin)*.1);
-        NumberAxis yAxis = new NumberAxis("y values",yAxismin+yAxismin*0.2, yAxismax+yAxismax*0.2, (yAxismax-yAxismin)*.1);
-     
+        NumberAxis xAxis = new NumberAxis(xAxisLabel,xAxismin, xAxismax, (xAxismax-xAxismin)*.1);
+        NumberAxis yAxis = new NumberAxis(yAxisLabel,yAxismin+yAxismin*0.2, yAxismax+yAxismax*0.2, (yAxismax-yAxismin)*.1);
+      
 
         
        
         final LineChart<Number,Number> lineChart = 
                 new LineChart<Number,Number>(xAxis,yAxis);
-                
-        lineChart.setTitle("Function Plotter");
+        if(count==0){       
+        	lineChart.setTitle("Time Domain");
+        	count++;
+        }else{
+        	lineChart.setTitle("Frequency Domain");
+        	count--;
+        }
        
         XYChart.Series series = new XYChart.Series();
         
@@ -123,16 +138,47 @@ public class FourierSeries extends Application {
 		plotPointsX.clear();
 		plotPointsY.clear();
 		double y=0;
+		
+		
 		//String x1=String.format("%f", x);
 		for(;xMin<=xMax;xMin+=samplingPeriod){
 		//String y1=CalcInterface.run(amplitude+"*sin(2*"+Math.PI+"*(1/"+period+")*("+x1+")+("+phase+"*("+Math.PI+"/180)))", false);
-		y=amplitude*Math.sin(2*Math.PI*(1/period)*xMin+(phase*(Math.PI/180)));
+		y=amplitude*Math.sin(2*Math.PI*(1/period)*xMin+(phase*(Math.PI/180)));;
 		plotPointsX.add(xMin);
 		plotPointsY.add(y);
 		y=0;
 		}
-		//double result=Double.parseDouble(y1);
-		//double result=y;
+			
+	}
+	
+	public static void generatePlotPointsDFT(double period){
+		ArrayList<Double> dftReal =new ArrayList<Double>();
+		ArrayList<Double> dftImag =new ArrayList<Double>();
+		for(int n=0;n<plotPointsY.size();n++){
+			dftReal.add(plotPointsY.get(n));
+			dftImag.add(0.0);
+		}
+		Complex[] results = new Complex[plotPointsY.size()];
+		DFT.computeDft(dftReal, dftImag, results);
+		plotPointsX.clear();
+		plotPointsY.clear();
+		
+		
+		
+		
+		for(int n=1;n<results.length;n++){
+			plotPointsX.add((double) -n/2);
+			plotPointsY.add(results[n].abs());
+		}
+		for(int n=0;n<results.length;n++){
+			plotPointsX.add((double) n/2);
+			plotPointsY.add(results[n].abs());
+		}
+		
+			System.out.println(plotPointsX);	
+		
+		
 		
 	}
+	
 }
