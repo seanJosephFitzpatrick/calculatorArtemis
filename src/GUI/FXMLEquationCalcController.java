@@ -2,6 +2,9 @@ package GUI;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import Equations.CubicEquations;
+import Equations.LinearEquations;
+import Equations.QuadraticEquation;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -50,8 +53,40 @@ public class FXMLEquationCalcController implements Initializable {
 	}
 	
     @FXML
-    void onActionCalculate(ActionEvent event) {
+    void onActionCalculate(ActionEvent event) throws Exception {
+    	if (comboBoxEquation.getSelectionModel().getSelectedItem().toString().equals("Cubic")) {
 
+			CubicEquations cubicEquations = new CubicEquations();
+
+			double valueA = Double.parseDouble(inputTextFieldA.getText().toString());
+			double valueB = Double.parseDouble(inputTextFieldB.getText().toString());
+			double valueC = Double.parseDouble(inputTextFieldC.getText().toString());
+			double valueD = Double.parseDouble(inputTextFieldD.getText().toString());
+			String root = CubicEquations.caclCubicEquation(valueA, valueB, valueC, valueD);
+
+			outputTextFieldX1.appendText(CubicEquations.getX1());
+			outputTextFieldX2.appendText(CubicEquations.getX2());
+			outputTextFieldX3.appendText(CubicEquations.getX3());
+
+		} else if (comboBoxEquation.getSelectionModel().getSelectedItem().toString().equals("Quadratic")) {
+
+			QuadraticEquation quadraticEquation = new QuadraticEquation();
+			double valueA = Double.parseDouble(inputTextFieldA.getText().toString());
+			double valueB = Double.parseDouble(inputTextFieldB.getText().toString());
+			double valueC = Double.parseDouble(inputTextFieldC.getText().toString());
+
+			String root = QuadraticEquation.caclQuadratic(valueA, valueB, valueC);
+			outputTextFieldX1.appendText(QuadraticEquation.getX1());
+			outputTextFieldX2.appendText(QuadraticEquation.getX2());
+		} else {
+
+			LinearEquations linearEquations = new LinearEquations();
+			double valueA = Double.parseDouble(inputTextFieldA.getText().toString());
+			double valueB = Double.parseDouble(inputTextFieldB.getText().toString());
+			String root = LinearEquations.caclLinear(valueA, valueA);
+
+			outputTextFieldX1.appendText(root);
+		}
     }
 	
     @FXML
