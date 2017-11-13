@@ -41,6 +41,8 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Button fx:id="btnImportImage" mnemonicParsing="false" onAction="#onActionBtnImportImage" text="Import Images" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="1" />
@@ -49,6 +51,15 @@
             <TextArea fx:id="outputTextArea" editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="11" GridPane.rowIndex="3" GridPane.rowSpan="7" />
             <TextField fx:id="qValue" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="11" />
             <Label text="Quantization Value " GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="RIGHT" GridPane.rowIndex="11" />
+            <Button fx:id="btnCompare" mnemonicParsing="false" onAction="#onActionBtnCompare" text="compare" GridPane.columnIndex="7" GridPane.columnSpan="2" GridPane.rowIndex="11" />
+            <TextField fx:id="indexTextField" GridPane.columnIndex="10" GridPane.columnSpan="2" GridPane.rowIndex="11" />
+            <Label text="Old file size: " GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="13" />
+            <Label GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="13" />
+            <Label text="New file size: " GridPane.columnIndex="7" GridPane.columnSpan="2" GridPane.rowIndex="13" />
+            <Label GridPane.columnIndex="9" GridPane.columnSpan="2" GridPane.rowIndex="13" />
+            <TextField fx:id="oldFileSizeTextField" editable="false" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="13" />
+            <Label fx:id="fsdfasd" GridPane.columnIndex="9" GridPane.rowIndex="13" />
+            <TextField fx:id="newFileSizeTextField" editable="false" GridPane.columnIndex="9" GridPane.columnSpan="2" GridPane.rowIndex="13" />
          </children>
 
       </GridPane>

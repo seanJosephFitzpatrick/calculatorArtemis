@@ -7,6 +7,8 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.ResourceBundle;
 
 import javax.imageio.ImageIO;
@@ -73,16 +75,13 @@ public class FMXLGaborWaveletController implements Initializable {
     		double b = Double.parseDouble(bandw.getText());
     		Gabor_Driver.runGabor(v, u, b);
     		File f = new File("GaborImages\\");
-    		names = new ArrayList<String>(Arrays.asList(f.list()));
+    		names = new ArrayList<String>(Arrays.asList(f.list()));    		
     		System.out.println(names);
     		buttonNext.setVisible(true);
     		buttonPrevious.setVisible(true);
         	imageViewWindow.setImage(new Image(filePath+names.get(count)));
         	
-    		
-    		
-    		
-    		
+   
     	} catch (Exception e){
     		
     	}

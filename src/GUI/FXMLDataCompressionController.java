@@ -35,6 +35,14 @@ public class FXMLDataCompressionController implements Initializable {
     private String savePath;
     private String chosenImage;
     private double quantizationValue;
+    @FXML
+    private Button btnCompare;
+    @FXML
+    private TextField newFileSizeTextField;
+    @FXML
+    private TextField oldFileSizeTextField;
+    @FXML
+    private TextField indexTextField;
     
     private DCTDriver driver;
     
@@ -54,6 +62,11 @@ public class FXMLDataCompressionController implements Initializable {
     void onActionBtnCompress(ActionEvent event) {
     	driver.loadImage(chosenImage);
     	driver.compressImage(quantizationValue);
+    }
+    
+    @FXML
+    void onActionBtnCompare(ActionEvent event) {
+
     }
 
     @FXML
