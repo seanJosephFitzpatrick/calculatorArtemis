@@ -56,7 +56,7 @@ public class CalcInterface {
 			storedInput = input;
 			input = formatInputString(input); 										//method to format input string to allow any number of spaces.
 			MathematicalEvaluator ME = new MathematicalEvaluator(radians);
-			System.out.println(input);
+//			System.out.println(input);
 			workingInput = input;
 			if(ShuntingYard.checkForFunction(workingInput)){
 				workingInput = ShuntingYard.parseFunction(workingInput, radians);
@@ -64,9 +64,9 @@ public class CalcInterface {
 			}
 			String postfix = "";
 			postfix = ShuntingYard.postfix(workingInput);
-			System.out.println(postfix);
-			System.out.println("----------");
-			System.out.println("Input Expression: " + formatInputString(storedInput));
+//			System.out.println(postfix);
+//			System.out.println("----------");
+//			System.out.println("Input Expression: " + formatInputString(storedInput));
 			result = ME.evaluateExpression(postfix);
 			ME.opCharList.clear();
 			ME.opList.clear();

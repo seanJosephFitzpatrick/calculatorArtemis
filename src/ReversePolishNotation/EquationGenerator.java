@@ -27,14 +27,14 @@ public class EquationGenerator {
 		equation = equation.replace("\u00B2", " ^ 2");
 		
 		
-		System.out.println("sfa" + userInput);
+//		System.out.println("sfa" + userInput);
 		
 		if(equation.contains("nlg")){
 			equation = evaluateLogBaseX(equation);
 		}
 		
 		
-		System.out.println(equation);
+//		System.out.println(equation);
 		
 		return equation;
 	}
@@ -58,7 +58,7 @@ public class EquationGenerator {
 		if(!append.equals("")){
 			result += append;
 		}
-		System.out.println(result);
+//		System.out.println(result);
 		
 		return result;
 	}

@@ -64,7 +64,7 @@ public class CreateImage
         try
         {
             ImageIO.write(bfi, "png", new File("GaborImages/"+n+".png"));
-            System.out.println(n);
+//            System.out.println(n);
             fileNames.add(n+".png");
         }
         catch(Exception e){}
@@ -75,5 +75,6 @@ public class CreateImage
 	public static void setFileNames(ArrayList<String> fileNames) {
 		CreateImage.fileNames = fileNames;
 	}
+	
 
 }

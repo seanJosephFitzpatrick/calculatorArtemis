@@ -74,14 +74,14 @@ public class MathematicalEvaluator {
 	}
 
 	public void showList(){
-		System.out.println("Character List: ");
+//		System.out.println("Character List: ");
 		for(int i = 0; i < opCharList.size(); i++){
-			System.out.println(opCharList.get(i));
+//			System.out.println(opCharList.get(i));
 		}
 		System.out.println();
 		System.out.println("Operation List: ");
 		for(int i = 0; i < opList.size(); i++){
-			System.out.println(opList.get(i));
+//			System.out.println(opList.get(i));
 		}
 	}
 
@@ -150,7 +150,7 @@ public class MathematicalEvaluator {
 //			output = output.substring(0, 12);
 //		}
 		
-		System.out.println("Result: " + output);	//At end this should be the only value on the stack
+//		System.out.println("Result: " + output);	//At end this should be the only value on the stack
 		workingList.clear();
 		opList.clear();
 		return output;

@@ -180,7 +180,7 @@ public class Gabor
     
     private void aggregatePixelValues(){
         AverageVals = new double[size][size];
-        System.out.println("Total for AVG: " + grids.size());
+//        System.out.println("Total for AVG: " + grids.size());
     	double sum = 0;
     	for(int i = 0; i < AverageVals.length; i++){
     		for(int j = 0; j < AverageVals.length; j++){
@@ -194,3 +194,4 @@ public class Gabor
     }
 
 }
+
