@@ -50,8 +50,8 @@
             <TextField fx:id="upsi" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="4" />
             <TextField fx:id="bandw" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="7" />
             <Button fx:id="btnGenerate" mnemonicParsing="false" onAction="#onActionBtnGenerate" text="Generate" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="9" />
-            <Label text="Varphi" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="1" />
-            <Label text="Upsi" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="3" />
+            <Label text="Phase Offset" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="1" />
+            <Label text="Aspect Ratio" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="3" />
             <Label text="Bandwidth" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="6" />
             <ImageView fx:id="imageViewWindow" fitHeight="215.0" fitWidth="221.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="4" />
             <Button fx:id="buttonNext" mnemonicParsing="false" onAction="#onActionButtonNext" prefHeight="25.0" prefWidth="61.0" text="Next" GridPane.columnIndex="9" GridPane.columnSpan="2" GridPane.rowIndex="9" />
