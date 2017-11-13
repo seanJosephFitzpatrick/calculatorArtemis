@@ -43,7 +43,7 @@ public class DCTDriver {
 		imageFactory = new ImageFactory();
 		adct = new DCT();
 	}
-	
+
 	public void loadImage(String fileName) {
 		img = imageFactory.loadImage(fileName);
 		imgHeight = img.getHeight();
@@ -51,7 +51,7 @@ public class DCTDriver {
 		instantiateArrays();
 		loadPreCompressionPixelValues();
 	}
-	
+
 	private void instantiateArrays(){
 		preCompressionPixelValues = new int[imgWidth][imgHeight];
 		postCompressionPixelValues = new int[imgWidth][imgHeight];
@@ -63,7 +63,7 @@ public class DCTDriver {
 		blueChunks = new ArrayList<double[][]>();
 		alphaValues = new int[imgWidth][imgHeight];
 	}
-	
+
 	//Load the pixel values from the image and separate them into their individual color arrays
 	private void loadPreCompressionPixelValues(){
 		for(int i = 0; i < imgWidth; i++) {
@@ -75,12 +75,12 @@ public class DCTDriver {
 		    	blueValues[i][j] = preCompressionPixelValues[i][j] & 0xFF;
 		    }
 		}
-		
+
 		redChunks = adct.create8x8s(redValues, 8);
 		greenChunks = adct.create8x8s(greenValues, 8);
 		blueChunks = adct.create8x8s(blueValues, 8);
 	}
-	
+
 	public void compressImage(double qValue) {
 		compressChunks(qValue);
 		try {
@@ -89,33 +89,33 @@ public class DCTDriver {
 			e.printStackTrace();
 		}
 	}
-	
+
 	private void compressChunks(double qValue) {
 		quantizedRedChunks = adct.run(redChunks, qValue);
 		quantizedGreenChunks = adct.run(greenChunks, qValue);
 		quantizedBlueChunks = adct.run(blueChunks, qValue);
 	}
-	
+
 	private void recombineImage(ArrayList<double[][]> finalRedChunks, ArrayList<double[][]> finalGreenChunks, ArrayList<double[][]> finalBlueChunks) throws IOException {
 		int[][] combinedReds = adct.recombine8x8s(finalRedChunks, 256, 256, 8);
 		int[][] combinedGreens = adct.recombine8x8s(finalGreenChunks, 256, 256, 8);
 		int[][] combinedBlues = adct.recombine8x8s(finalBlueChunks, 256, 256, 8);
-		
+
 		rebuiltImg = new BufferedImage(imgWidth, imgHeight, BufferedImage.TYPE_INT_ARGB);
 		File f = null;
-		
+
 		for (int i = 0; i < imgHeight; i++) {
 			for (int j = 0; j < imgWidth; j++) {
 				postCompressionPixelValues[i][j] = recombinePixel(combinedReds[i][j], combinedGreens[i][j], combinedBlues[i][j], 1);
 				rebuiltImg.setRGB(i, j, postCompressionPixelValues[i][j]);
 			}
 		}
-		
+
 		//f = new File("Images/compressedImage.jpg");
 		//ImageIO.write(rebuiltImg, "jpg", f);
 		CreateImage c = new CreateImage(postCompressionPixelValues, "compressedImage");
 	}
-	
+
 	private int recombinePixel(int r, int g, int b, int a) {
 		int p = (a << 24) | (r << 16) | (g << 8) | b;
 		return p;
@@ -130,7 +130,7 @@ public class DCTDriver {
 			System.out.println();
 		}
 	}
-	
+
 	public static void printArray(double[][] print){
 		for(int i = 0; i < print.length; i++){
 			for(int j = 0; j < print.length; j++){
@@ -139,7 +139,7 @@ public class DCTDriver {
 			System.out.println();
 		}
 	}
-	
+
 	public static void main(String[] args) {
 		DCTDriver d = new DCTDriver();
 		d.loadImage("lena.jpg");

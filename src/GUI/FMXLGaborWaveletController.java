@@ -11,6 +11,7 @@ import java.util.ResourceBundle;
 
 import javax.imageio.ImageIO;
 
+import gabor.CreateImage;
 import gabor.Gabor_Driver;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -73,10 +74,8 @@ public class FMXLGaborWaveletController implements Initializable {
     		double b = Double.parseDouble(bandw.getText());
     		Gabor_Driver.runGabor(v, u, b);
     		File f = new File("GaborImages\\");
-    		names = new ArrayList<String>(Arrays.asList(f.list()));
-    		names.sort(null);
-    		
-    		
+    		//names = new ArrayList<String>(Arrays.asList(f.list()));
+    		names = CreateImage.getFileNames();
     		System.out.println(names);
     		buttonNext.setVisible(true);
     		buttonPrevious.setVisible(true);

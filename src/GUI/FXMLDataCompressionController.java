@@ -35,25 +35,35 @@ public class FXMLDataCompressionController implements Initializable {
     private String savePath;
     private String chosenImage;
     private double quantizationValue;
-    
+    @FXML
+    private Button btnCompare;
+    @FXML
+    private TextField newFileSizeTextField;
+    @FXML
+    private TextField oldFileSizeTextField;
+    @FXML
+    private TextField indexTextField;
     private DCTDriver driver;
-    
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		//Sets drop down on initialization
 		dropdownSelectImage.getItems().removeAll(dropdownSelectImage.getItems());
-		dropdownSelectImage.getItems().addAll("Lena", "Baboon", "Barbara", "Moon");
-		dropdownSelectImage.getSelectionModel().select("Lena");
+		dropdownSelectImage.getItems().addAll("lena.jpg", "baboon.png", "moon.png");
+		dropdownSelectImage.getSelectionModel().select("lena");
 		driver = new DCTDriver();
-		//placeholder
-		chosenImage = "lena.jpg";
-		quantizationValue = 50;
 	}
 
     @FXML
     void onActionBtnCompress(ActionEvent event) {
-    	driver.loadImage(chosenImage);
+    	quantizationValue = Double.parseDouble(qValue.getText());
+    	driver.loadImage(dropdownSelectImage.getSelectionModel().getSelectedItem().toString());
     	driver.compressImage(quantizationValue);
+    }
+    
+    @FXML
+    void onActionBtnCompare(ActionEvent event) {
+
     }
 
     @FXML
@@ -74,10 +84,10 @@ public class FXMLDataCompressionController implements Initializable {
     String onActionDropdownSelectImage(ActionEvent event) {
     	//This returns the selected string from drop down and stores in output
     	String output = dropdownSelectImage.getSelectionModel().getSelectedItem().toString();
-    	
+
     	//This is just if of what to do based on selected drop down
     	if(output.equalsIgnoreCase("Lena")){
-    		return "lena.jpg";
+    		return  "lena.jpg";
     	}else if(output.equalsIgnoreCase("Baboon")){
     		return "laboon.png";
     	}else if(output.equalsIgnoreCase("Barbara")){
