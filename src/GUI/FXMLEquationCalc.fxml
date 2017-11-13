@@ -24,6 +24,7 @@
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -50,9 +51,9 @@
             <TextField fx:id="inputTextFieldB" GridPane.columnIndex="4" GridPane.rowIndex="7" />
             <TextField fx:id="inputTextFieldC" GridPane.columnIndex="6" GridPane.rowIndex="7" />
             <TextField fx:id="inputTextFieldD" GridPane.columnIndex="8" GridPane.rowIndex="7" />
-            <TextField fx:id="outputTextFieldX1" GridPane.columnIndex="2" GridPane.rowIndex="11" />
-            <TextField fx:id="outputTextFieldX2" GridPane.columnIndex="5" GridPane.rowIndex="11" />
-            <TextField fx:id="outputTextFieldX3" GridPane.columnIndex="8" GridPane.rowIndex="11" />
+            <TextField fx:id="outputTextFieldX1" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="11" />
+            <TextField fx:id="outputTextFieldX2" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.rowIndex="11" />
+            <TextField fx:id="outputTextFieldX3" GridPane.columnIndex="8" GridPane.columnSpan="2" GridPane.rowIndex="11" />
             <Label text="Result : " GridPane.columnIndex="1" GridPane.rowIndex="10" />
             <Label fx:id="labelA" text="A = " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="7" />
             <Label fx:id="labelB" text="B = " GridPane.columnIndex="3" GridPane.rowIndex="7" />
