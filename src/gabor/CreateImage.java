@@ -10,12 +10,15 @@ package gabor;
  * @author kfitzgerald
  */
 import java.io.*;
+import java.util.ArrayList;
 import java.awt.*;
 import java.awt.image.*;
 import javax.imageio.*;
 
+
 public class CreateImage
 {
+	private static ArrayList<String> fileNames= new ArrayList<String>();
     int[] pixels;
     int width=0, height=0;
     String  name;
@@ -61,8 +64,16 @@ public class CreateImage
         try
         {
             ImageIO.write(bfi, "png", new File("GaborImages/"+n+".png"));
+            System.out.println(n);
+            fileNames.add(n+".png");
         }
         catch(Exception e){}
     }
+    public static ArrayList<String> getFileNames() {
+		return fileNames;
+	}
+	public static void setFileNames(ArrayList<String> fileNames) {
+		CreateImage.fileNames = fileNames;
+	}
 
 }
