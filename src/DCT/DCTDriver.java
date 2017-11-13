@@ -1,6 +1,5 @@
 package DCT;
 
-import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -9,63 +8,95 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 
 public class DCTDriver {
+	BufferedImage img;
+	BufferedImage rebuiltImg;
+	ImageFactory imageFactory;
+	DCT adct;
 
-	static BufferedImage img;
-	static BufferedImage rebuiltImg;
-	static ImageFactory dct;
-	static DCT adct;
-
-	static final int N = 8;
-
-	static int row = 0;
-	static int col = 0;
+	final int N = 8;
+	int row = 0;
+	int col = 0;
 
 	//Full RGBA pixel values (BufferedImage.getRGB())
-	static int[][] preCompressionPixelValues;
-	static int[][] postCompressionPixelValues;
+	int[][] preCompressionPixelValues;
+	int[][] postCompressionPixelValues;
 	//Red Values
-	static int[][] redValues;
-	static ArrayList<double[][]> redChunks;
+	int[][] redValues;
+	ArrayList<double[][]> redChunks;
+	ArrayList<double[][]> quantizedRedChunks;
 	//Green
-	static int[][] greenValues;
-	static ArrayList<double[][]> greenChunks;
+	int[][] greenValues;
+	ArrayList<double[][]> greenChunks;
+	ArrayList<double[][]> quantizedGreenChunks;
 	//Blue
-	static int[][] blueValues;
-	static ArrayList<double[][]> blueChunks;
+	int[][] blueValues;
+	ArrayList<double[][]> blueChunks;
+	ArrayList<double[][]> quantizedBlueChunks;
 	//Alpha
-	static int[][] alphaValues;
+	int[][] alphaValues;
 
 	//Width and Height of image
-	static int imgHeight;
-	static int imgWidth;
+	int imgHeight;
+	int imgWidth;
 
 	public DCTDriver() {
-		dct = new ImageFactory();
+		imageFactory = new ImageFactory();
 		adct = new DCT();
 	}
 	
-	public static void main(String[] args) throws IOException{
-		dct = new ImageFactory();
-		adct = new DCT();
-		loadImage();
-
+	public void loadImage() {
+		img = imageFactory.allocateImage();
+		imgHeight = img.getHeight();
+		imgWidth = img.getWidth();
+		instantiateArrays();
+		loadPreCompressionPixelValues();
+	}
+	
+	private void instantiateArrays(){
+		preCompressionPixelValues = new int[imgWidth][imgHeight];
+		postCompressionPixelValues = new int[imgWidth][imgHeight];
+		redValues = new int[imgWidth][imgHeight];
+		redChunks = new ArrayList<double[][]>();
+		greenValues = new int[imgWidth][imgHeight];
+		greenChunks = new ArrayList<double[][]>();
+		blueValues = new int[imgWidth][imgHeight];
+		blueChunks = new ArrayList<double[][]>();
+		alphaValues = new int[imgWidth][imgHeight];
+	}
+	
+	//Load the pixel values from the image and separate them into their individual color arrays
+	private void loadPreCompressionPixelValues(){
+		for(int i = 0; i < imgWidth; i++) {
+		    for(int j = 0; j < imgHeight; j++){
+		    	preCompressionPixelValues[i][j] = img.getRGB(i, j);
+		    	alphaValues[i][j] = (preCompressionPixelValues[i][j] >> 24) & 0xFF;
+		    	redValues[i][j] = (preCompressionPixelValues[i][j] >> 16) & 0xFF;
+		    	greenValues[i][j] = (preCompressionPixelValues[i][j] >> 8) & 0xFF;
+		    	blueValues[i][j] = preCompressionPixelValues[i][j] & 0xFF;
+		    }
+		}
+		
 		redChunks = adct.create8x8s(redValues, 8);
 		greenChunks = adct.create8x8s(greenValues, 8);
 		blueChunks = adct.create8x8s(blueValues, 8);
-		
-		ArrayList<double[][]> resultRedChunks = adct.run(redChunks);
-		ArrayList<double[][]> resultGreenChunks = adct.run(greenChunks);
-		ArrayList<double[][]> resultBlueChunks = adct.run(blueChunks);
-		
-		recombineImage(resultRedChunks, resultGreenChunks, resultBlueChunks);
 	}
 	
-	public static int recombinePixel(int r, int g, int b, int a) {
-		int p = (a << 24) | (r << 16) | (g << 8) | b;
-		return p;
+	public void compressImage() {
+		compressChunks();
+		try {
+			recombineImage(quantizedRedChunks, quantizedGreenChunks, quantizedBlueChunks);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
-	public static void recombineImage(ArrayList<double[][]> finalRedChunks, ArrayList<double[][]> finalGreenChunks, ArrayList<double[][]> finalBlueChunks) throws IOException {
+	public void compressChunks() {
+		quantizedRedChunks = adct.run(redChunks);
+		quantizedGreenChunks = adct.run(greenChunks);
+		quantizedBlueChunks = adct.run(blueChunks);
+	}
+	
+	public void recombineImage(ArrayList<double[][]> finalRedChunks, ArrayList<double[][]> finalGreenChunks, ArrayList<double[][]> finalBlueChunks) throws IOException {
 		int[][] combinedReds = adct.recombine8x8s(finalRedChunks, 256, 256, 8);
 		int[][] combinedGreens = adct.recombine8x8s(finalGreenChunks, 256, 256, 8);
 		int[][] combinedBlues = adct.recombine8x8s(finalBlueChunks, 256, 256, 8);
@@ -84,37 +115,9 @@ public class DCTDriver {
 		ImageIO.write(rebuiltImg, "jpg", f);
 	}
 	
-	public static void loadImage() {
-		img = dct.allocateImage();
-		imgHeight = img.getHeight();
-		imgWidth = img.getWidth();
-		instantiateArrays();
-		loadPreCompressionPixelValues();
-	}
-
-	private static void instantiateArrays(){
-		preCompressionPixelValues = new int[imgWidth][imgHeight];
-		postCompressionPixelValues = new int[imgWidth][imgHeight];
-		redValues = new int[imgWidth][imgHeight];
-		redChunks = new ArrayList<double[][]>();
-		greenValues = new int[imgWidth][imgHeight];
-		greenChunks = new ArrayList<double[][]>();
-		blueValues = new int[imgWidth][imgHeight];
-		blueChunks = new ArrayList<double[][]>();
-		alphaValues = new int[imgWidth][imgHeight];
-	}
-
-	//Load the pixel values from the image and separate them into their individual color arrays
-	private static void loadPreCompressionPixelValues(){
-		for(int i = 0; i < imgWidth; i++) {
-		    for(int j = 0; j < imgHeight; j++){
-		    	preCompressionPixelValues[i][j] = img.getRGB(i, j);
-		    	alphaValues[i][j] = (preCompressionPixelValues[i][j] >> 24) & 0xFF;
-		    	redValues[i][j] = (preCompressionPixelValues[i][j] >> 16) & 0xFF;
-		    	greenValues[i][j] = (preCompressionPixelValues[i][j] >> 8) & 0xFF;
-		    	blueValues[i][j] = preCompressionPixelValues[i][j] & 0xFF;
-		    }
-		}
+	public int recombinePixel(int r, int g, int b, int a) {
+		int p = (a << 24) | (r << 16) | (g << 8) | b;
+		return p;
 	}
 
 	//Utility print methods
@@ -135,5 +138,10 @@ public class DCTDriver {
 			System.out.println();
 		}
 	}
+	
+	/*public static void main(String[] args) {
+		DCTDriver d = new DCTDriver();
+		d.loadImage();
+		d.compressImage();
+	}*/
 }
-
