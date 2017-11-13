@@ -38,7 +38,10 @@ public class QuadraticEquation {
 //	 caclQuadratic(a, b, c);
 //	 }
 	
-	public static String caclQuadratic(double a, double b, double c) {
+	public static String caclQuadratic(double a, double b, double c) throws Exception {
+		if (a == 0) {
+			throw new Exception();
+		}
 		String x0 = "";
 		String y0 = "";
 

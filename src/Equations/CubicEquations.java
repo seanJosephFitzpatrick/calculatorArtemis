@@ -62,10 +62,6 @@ public class CubicEquations {
 		if (a == 0) {
 			throw new Exception();
 		}
-		// BigDecimal aBig = new BigDecimal(a);
-		// BigDecimal bBig = new BigDecimal(b);
-		// BigDecimal cBig = new BigDecimal(c);
-		// BigDecimal dBig = new BigDecimal(d);
 
 		String result = "";
 
@@ -80,12 +76,6 @@ public class CubicEquations {
 		System.out.println(D);
 
 		if (D < 0) {
-			// double u = (-q / 2) + Math.sqrt(D);
-			// double v = (-q / 2) - Math.sqrt(D);
-			//
-			// // double uv = Math.cbrt(u) * Math.cbrt(v);
-			// double l = ((-q / 2) + D);
-			// if (l == (-p / 3)) {
 			double alpha;
 
 			double x1Real;
@@ -100,16 +90,16 @@ public class CubicEquations {
 
 			} else if (q > 0) {
 				alpha = Math.atan(Math.sqrt(-D) / (-q) * 2) + Math.PI;
-				x1Real = Math.sqrt(-p / 3) * (Math.cos(alpha / 3)) - (b / 3 * a);
-				x2Real = Math.sqrt(-p / 3) * (Math.cos((alpha + 2 * Math.PI) / 3)) - (b / 3 * a);
-				x3Real = Math.sqrt(-p / 3) * (Math.cos((alpha + 4 * Math.PI) / 3)) - (b / 3 * a);
+				x1Real = 2 * Math.sqrt(-p / 3) * (Math.cos(alpha / 3)) - (b / 3 * a);
+				x2Real = 2 * Math.sqrt(-p / 3) * (Math.cos((alpha + 2 * Math.PI) / 3)) - (b / 3 * a);
+				x3Real = 2 * Math.sqrt(-p / 3) * (Math.cos((alpha + 4 * Math.PI) / 3)) - (b / 3 * a);
 
 			} else {
 				alpha = Math.PI / 2;
 
-				x1Real = Math.sqrt(-p / 3) * (Math.cos(alpha / 3)) - (b / 3 * a);
-				x2Real = Math.sqrt(-p / 3) * (Math.cos((alpha + 2 * Math.PI) / 3)) - (b / 3 * a);
-				x3Real = Math.sqrt(-p / 3) * (Math.cos((alpha + 4 * Math.PI) / 3)) - (b / 3 * a);
+				x1Real = 2 * Math.sqrt(-p / 3) * (Math.cos(alpha / 3)) - (b / 3 * a);
+				x2Real = 2 * Math.sqrt(-p / 3) * (Math.cos((alpha + 2 * Math.PI) / 3)) - (b / 3 * a);
+				x3Real = 2 * Math.sqrt(-p / 3) * (Math.cos((alpha + 4 * Math.PI) / 3)) - (b / 3 * a);
 			}
 
 			x1Real = Math.round(x1Real);

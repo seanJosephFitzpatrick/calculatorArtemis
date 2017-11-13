@@ -1,14 +1,5 @@
 package gabor;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author kfitzgerald
- */
 public class Gabor_Driver
 {
     public static void main(String[]args){

@@ -38,7 +38,7 @@ public class Main extends Application {
 
         return mainPane;
     }
-    
+
     private Scene createScene(Pane mainPane) {
         Scene scene = new Scene(
             mainPane

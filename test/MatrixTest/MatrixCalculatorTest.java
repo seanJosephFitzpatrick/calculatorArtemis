@@ -2,6 +2,8 @@ package MatrixTest;
 
 import static org.junit.Assert.*;
 
+import java.lang.reflect.Array;
+
 import org.junit.Test;
 
 public class MatrixCalculatorTest {
@@ -89,5 +91,11 @@ public class MatrixCalculatorTest {
 				{4,	11,	13,	16}};
 		MatrixCalculations.MatrixCalculator.multiplyMatrix(array, testB);
 	}
+	
+	@Test
+	public void testGenerateMatrixReturnsArray() {
+		int[][] resultArray = MatrixCalculations.MatrixCalculator.GenerateNumbers();
+		assertNotNull(resultArray);
+	}	
 
 }
