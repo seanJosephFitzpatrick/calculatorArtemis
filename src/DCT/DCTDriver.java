@@ -44,8 +44,8 @@ public class DCTDriver {
 		adct = new DCT();
 	}
 	
-	public void loadImage() {
-		img = imageFactory.allocateImage();
+	public void loadImage(String fileName) {
+		img = imageFactory.loadImage(fileName);
 		imgHeight = img.getHeight();
 		imgWidth = img.getWidth();
 		instantiateArrays();
@@ -81,8 +81,8 @@ public class DCTDriver {
 		blueChunks = adct.create8x8s(blueValues, 8);
 	}
 	
-	public void compressImage() {
-		compressChunks();
+	public void compressImage(double qValue) {
+		compressChunks(qValue);
 		try {
 			recombineImage(quantizedRedChunks, quantizedGreenChunks, quantizedBlueChunks);
 		} catch (IOException e) {
@@ -90,13 +90,13 @@ public class DCTDriver {
 		}
 	}
 	
-	public void compressChunks() {
-		quantizedRedChunks = adct.run(redChunks);
-		quantizedGreenChunks = adct.run(greenChunks);
-		quantizedBlueChunks = adct.run(blueChunks);
+	private void compressChunks(double qValue) {
+		quantizedRedChunks = adct.run(redChunks, qValue);
+		quantizedGreenChunks = adct.run(greenChunks, qValue);
+		quantizedBlueChunks = adct.run(blueChunks, qValue);
 	}
 	
-	public void recombineImage(ArrayList<double[][]> finalRedChunks, ArrayList<double[][]> finalGreenChunks, ArrayList<double[][]> finalBlueChunks) throws IOException {
+	private void recombineImage(ArrayList<double[][]> finalRedChunks, ArrayList<double[][]> finalGreenChunks, ArrayList<double[][]> finalBlueChunks) throws IOException {
 		int[][] combinedReds = adct.recombine8x8s(finalRedChunks, 256, 256, 8);
 		int[][] combinedGreens = adct.recombine8x8s(finalGreenChunks, 256, 256, 8);
 		int[][] combinedBlues = adct.recombine8x8s(finalBlueChunks, 256, 256, 8);
@@ -115,7 +115,7 @@ public class DCTDriver {
 		ImageIO.write(rebuiltImg, "jpg", f);
 	}
 	
-	public int recombinePixel(int r, int g, int b, int a) {
+	private int recombinePixel(int r, int g, int b, int a) {
 		int p = (a << 24) | (r << 16) | (g << 8) | b;
 		return p;
 	}
@@ -141,7 +141,7 @@ public class DCTDriver {
 	
 	/*public static void main(String[] args) {
 		DCTDriver d = new DCTDriver();
-		d.loadImage();
-		d.compressImage();
+		d.loadImage("lena.jpg");
+		d.compressImage(50);
 	}*/
 }
