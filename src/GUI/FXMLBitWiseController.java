@@ -94,7 +94,7 @@ public class FXMLBitWiseController implements Initializable {
     @FXML
     void OnActionBtnClear(ActionEvent event) {
     	inputTextFieldSetA.clear();
-    	inputTextFieldSetA.clear();
+    	inputTextFieldSetB.clear();
     	inputTextFieldResultSet.clear();
     }
      
