@@ -43,7 +43,8 @@ public class FMXLGaborWaveletController implements Initializable {
     private static int count=0;
     
     
-   private static String filePath="file:///C:\\Users\\Marti\\git\\calculatorartemis\\GaborImages\\";
+    //private static String filePath="file:///C:\\Users\\Marti\\git\\calculatorartemis\\GaborImages\\";
+    private static String filePath;
     
     //file path has to be changed on different machines.
 	@Override
@@ -53,6 +54,14 @@ public class FMXLGaborWaveletController implements Initializable {
 		bandw.setText("1");
 		buttonNext.setVisible(false);
 		buttonPrevious.setVisible(false);
+		
+		String absolutePath = new File(".").getAbsolutePath();//Get path of your Project Folder
+		int last = absolutePath.length()-1;
+		absolutePath = absolutePath.substring(0, last);//Remove dot from path
+		String file =  "GaborImages\\";
+		filePath = ("file:///"+absolutePath + file);//Append GaborImages folder
+		filePath = filePath.replace("\\", "/");//replace backslash with forward slash
+		//System.out.println(filePath);
 		
 	}
 	
