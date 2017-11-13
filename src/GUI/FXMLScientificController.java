@@ -25,7 +25,7 @@ public class FXMLScientificController implements Initializable {
 	String memory = "0";
 	String userInput = "";
 	double PI = Math.PI;
-	boolean radians;
+	boolean radians = true;
 	
     @FXML
     private Button memoryClear;
@@ -291,6 +291,7 @@ public class FXMLScientificController implements Initializable {
     	double inMem = Double.parseDouble(memory);
     	double toAdd = Double.parseDouble(inputTextField4.getText());
     	double result = inMem + toAdd;
+    	memory = "";
     	memory += Double.toString(result);
     }
 
