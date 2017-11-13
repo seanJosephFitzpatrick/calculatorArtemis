@@ -74,6 +74,9 @@ public class FMXLGaborWaveletController implements Initializable {
     		Gabor_Driver.runGabor(v, u, b);
     		File f = new File("GaborImages\\");
     		names = new ArrayList<String>(Arrays.asList(f.list()));
+    		names.sort(null);
+    		
+    		
     		System.out.println(names);
     		buttonNext.setVisible(true);
     		buttonPrevious.setVisible(true);

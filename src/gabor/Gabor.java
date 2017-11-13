@@ -52,7 +52,7 @@ public class Gabor
         gaussian=sze/2;
         RunGabor();
         aggregatePixelValues();
-        NormaliseAverageImage();
+//        NormaliseAverageImage();
     }
     
     public void RunGabor()
