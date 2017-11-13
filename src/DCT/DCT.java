@@ -175,8 +175,9 @@ public class DCT {
 	}
 
 	public static ArrayList<double[][]> create8x8s(int[][] source, int N) throws ArrayIndexOutOfBoundsException, NullPointerException  {
-		if (N <= 0)
+		if (N <= 0) {
 			throw new ArrayIndexOutOfBoundsException("Chunks must be atleast 1x1");
+		}
 		int size = source.length / N * (source[0].length / N);
 		ArrayList<double [][]> subArrays = new ArrayList<>();
 
@@ -201,10 +202,33 @@ public class DCT {
 		}
 		return subArrays;
 	}
-
-	/*public static void main(String[] args) {
-		ArrayList<double[][]> grid = new ArrayList<double[][]>();
-		grid.add(MTest);
-		run(grid);
-	}*/
+	
+	public static int[][] recombine8x8s(ArrayList<double[][]> chunks, int width, int height, int chunkSize) {
+		int[][] recombinedMatrix = new int[height][width];
+		int xIndex = 0;
+		int yIndex = 0;
+		int iterator = height / chunkSize;
+		
+		int startValue = 0;
+		int endValue = iterator;
+		int test = 0;
+		
+		
+		for (int x = 0; x < iterator; x++) {
+			for (int k = 0; k < chunkSize; k++) {
+				for (int i = startValue; i < endValue; i++) {
+					for (int j = 0; j < chunks.get(i)[0].length; j++) {
+						recombinedMatrix[yIndex][xIndex] = (int) chunks.get(i)[k][j];
+						xIndex++;
+					}
+				}
+				yIndex++;
+				xIndex = 0;
+			}
+			startValue += iterator;
+			endValue += iterator;
+		}
+		System.out.println("Recombination Successful!");
+		return recombinedMatrix;
+	}
 }
