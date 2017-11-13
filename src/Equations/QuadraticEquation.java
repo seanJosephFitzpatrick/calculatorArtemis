@@ -8,17 +8,36 @@ public class QuadraticEquation {
 
 	static Scanner sc;
 
-	public static void main(String[] args) throws Exception {
-		sc = new Scanner(System.in);
-		System.out.println("Please enter a: ");
-		double a = sc.nextInt();
-		System.out.println("Please enter b: ");
-		double b = sc.nextInt();
-		System.out.println("Please enter c: ");
-		double c = sc.nextInt();	
-		caclQuadratic(a, b, c);
-	}
+	private static String x1;
+	private static String x2;
+
+//	public static void main(String[] args) throws Exception {
+//		sc = new Scanner(System.in);
+//		System.out.println("Please enter a: ");
+//		double a = sc.nextInt();
+//		System.out.println("Please enter b: ");
+//		double b = sc.nextInt();
+//		System.out.println("Please enter c: ");
+//		double c = sc.nextInt();	
+//		caclQuadratic(a, b, c);
+//	}
 	
+	public static String getX1() {
+		return x1;
+	}
+
+	public static void setX1(String x1) {
+		QuadraticEquation.x1 = x1;
+	}
+
+	public static String getX2() {
+		return x2;
+	}
+
+	public static void setX2(String x2) {
+		QuadraticEquation.x2 = x2;
+	}
+
 	public static String caclQuadratic(double a, double b, double c) throws Exception {
 			if (a == 0) {
 				throw new Exception();
