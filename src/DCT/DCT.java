@@ -128,7 +128,7 @@ public class DCT {
 			}
 		}
 	}
-	
+
 	public static void roundArrayForImage(double[][] chunk) {
 		for(int i = 0; i < chunk.length; i++){
 			for(int j = 0; j < chunk[0].length; j++){
@@ -200,18 +200,17 @@ public class DCT {
 		}
 		return subArrays;
 	}
-	
+
 	public static int[][] recombine8x8s(ArrayList<double[][]> chunks, int width, int height, int chunkSize) {
 		int[][] recombinedMatrix = new int[height][width];
 		int xIndex = 0;
 		int yIndex = 0;
 		int iterator = height / chunkSize;
-		
+
 		int startValue = 0;
 		int endValue = iterator;
 		int test = 0;
-		
-		
+
 		for (int x = 0; x < iterator; x++) {
 			for (int k = 0; k < chunkSize; k++) {
 				for (int i = startValue; i < endValue; i++) {
