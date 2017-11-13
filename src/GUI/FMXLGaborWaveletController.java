@@ -41,7 +41,10 @@ public class FMXLGaborWaveletController implements Initializable {
     private ImageView imageViewWindow;
     private static ArrayList<String> names;
     private static int count=0;
-    private static String filePath="file:///C:\\Users\\Marti\\git\\calculatorartemis\\GaborImages\\";
+    
+    
+   private static String filePath="file:///C:\\Users\\Marti\\git\\calculatorartemis\\GaborImages\\";
+    
     //file path has to be changed on different machines.
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -49,7 +52,7 @@ public class FMXLGaborWaveletController implements Initializable {
 		upsi.setText("1");
 		bandw.setText("1");
 		buttonNext.setVisible(false);
-		buttonPrevious.setVisible(false);	
+		buttonPrevious.setVisible(false);
 		
 	}
 	

@@ -27,17 +27,17 @@ public class QuadraticEquation {
 		QuadraticEquation.x2 = x2;
 	}
 
-	// public static void main(String[] args) {
-	// sc = new Scanner(System.in);
-	// System.out.println("Please enter a: ");
-	// double a = sc.nextInt();
-	// System.out.println("Please enter b: ");
-	// double b = sc.nextInt();
-	// System.out.println("Please enter c: ");
-	// double c = sc.nextInt();
-	// caclQuadratic(a, b, c);
-	// }
-	//
+//	 public static void main(String[] args) {
+//	 sc = new Scanner(System.in);
+//	 System.out.println("Please enter a: ");
+//	 double a = sc.nextInt();
+//	 System.out.println("Please enter b: ");
+//	 double b = sc.nextInt();
+//	 System.out.println("Please enter c: ");
+//	 double c = sc.nextInt();
+//	 caclQuadratic(a, b, c);
+//	 }
+	
 	public static String caclQuadratic(double a, double b, double c) {
 		String x0 = "";
 		String y0 = "";

@@ -14,19 +14,19 @@ public class CubicEquations {
 	private static String x3;
 	
 	
-//	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) throws Exception {
 //		sc = new Scanner(System.in);
 //		System.out.println("Please enter a: ");
 //		double a = sc.nextDouble();
 //		System.out.println("Please enter b: ");
-//		double b = sc.nextDouble();
+//		double b = sc.nextDouble();2
 //		System.out.println("Please enter c: ");
 //		double c = sc.nextDouble();
 //		System.out.println("Please enter d: ");
 //		double d = sc.nextDouble();
 //		caclCubicEquation(a, b, c, d);
-//
-//	}
+
+	}
 
 	public static String getX1() {
 		return x1;
