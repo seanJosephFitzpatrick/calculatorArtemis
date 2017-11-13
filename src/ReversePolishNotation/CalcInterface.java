@@ -76,6 +76,8 @@ public class CalcInterface {
 			result = "Syntax Error";
 		} catch (java.lang.NumberFormatException a) {
 			result = "Syntax Error";
+		} catch (java.lang.ArithmeticException f) {
+			result = "Syntax Error";
 		}
 		return result;
 	}

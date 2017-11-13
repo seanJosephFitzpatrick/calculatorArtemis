@@ -106,7 +106,7 @@ public class CalcInterfaceTest {
 	
 	@Test
 	public void testFunctionWithinBracketsOK() {
-		assertEquals("6.86603", CalcInterface.run("1+(5+cos(30))", true));
+		assertEquals("6.86602540", CalcInterface.run("1+(5+cos(30))", true));
 	}
 
 
