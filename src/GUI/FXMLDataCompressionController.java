@@ -33,7 +33,6 @@ public class FXMLDataCompressionController implements Initializable {
     @FXML
     private TextField qValue;
     private String savePath;
-    private String chosenImage;
     private double quantizationValue;
     @FXML
     private Button btnCompare;
@@ -59,11 +58,19 @@ public class FXMLDataCompressionController implements Initializable {
     	quantizationValue = Double.parseDouble(qValue.getText());
     	driver.loadImage(dropdownSelectImage.getSelectionModel().getSelectedItem().toString());
     	driver.compressImage(quantizationValue);
+
+    	File oldFile = new File("Images/" + dropdownSelectImage.getSelectionModel().getSelectedItem().toString());
+    	File newFile = new File("Images/compressedImage.jpg");
+
+    	oldFileSizeTextField.setText(Long.toString(oldFile.length()) + " bytes");
+    	newFileSizeTextField.setText(Long.toString(newFile.length()) + " bytes");
     }
-    
+
     @FXML
     void onActionBtnCompare(ActionEvent event) {
-
+    	driver.resetStringBuilder();
+    	outputTextArea.clear();
+    	outputTextArea.setText(driver.compareChunks(Integer.parseInt(indexTextField.getText())) + "\n\n");
     }
 
     @FXML

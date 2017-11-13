@@ -19,7 +19,9 @@ public class DCTDriver {
 
 	//Full RGBA pixel values (BufferedImage.getRGB())
 	int[][] preCompressionPixelValues;
+	ArrayList<double[][]> preCompressionPixelChunks;
 	int[][] postCompressionPixelValues;
+	ArrayList<double[][]> postCompressionPixelChunks;
 	//Red Values
 	int[][] redValues;
 	ArrayList<double[][]> redChunks;
@@ -39,9 +41,13 @@ public class DCTDriver {
 	int imgHeight;
 	int imgWidth;
 
+	StringBuilder sb;
+
 	public DCTDriver() {
 		imageFactory = new ImageFactory();
 		adct = new DCT();
+		sb = new StringBuilder();
+
 	}
 
 	public void loadImage(String fileName) {
@@ -54,7 +60,9 @@ public class DCTDriver {
 
 	private void instantiateArrays(){
 		preCompressionPixelValues = new int[imgWidth][imgHeight];
+		preCompressionPixelChunks = new ArrayList<double[][]>();
 		postCompressionPixelValues = new int[imgWidth][imgHeight];
+		postCompressionPixelChunks = new ArrayList<double[][]>();
 		redValues = new int[imgWidth][imgHeight];
 		redChunks = new ArrayList<double[][]>();
 		greenValues = new int[imgWidth][imgHeight];
@@ -90,6 +98,19 @@ public class DCTDriver {
 		}
 	}
 
+	public void resetStringBuilder() {
+		sb = new StringBuilder();
+	}
+
+	public String compareChunks(int index) {
+		sb.append("Red Chunk Pre-Compression: \n");
+		sb.append(printArrayToBox(redChunks.get(index)));
+		sb.append("\nVS\n\n");
+		sb.append("Red Chunk Post-Compression: \n");
+		sb.append(printArrayToBox(quantizedRedChunks.get(index)));
+		return sb.toString();
+	}
+
 	private void compressChunks(double qValue) {
 		quantizedRedChunks = adct.run(redChunks, qValue);
 		quantizedGreenChunks = adct.run(greenChunks, qValue);
@@ -97,23 +118,23 @@ public class DCTDriver {
 	}
 
 	private void recombineImage(ArrayList<double[][]> finalRedChunks, ArrayList<double[][]> finalGreenChunks, ArrayList<double[][]> finalBlueChunks) throws IOException {
-		int[][] combinedReds = adct.recombine8x8s(finalRedChunks, 256, 256, 8);
-		int[][] combinedGreens = adct.recombine8x8s(finalGreenChunks, 256, 256, 8);
-		int[][] combinedBlues = adct.recombine8x8s(finalBlueChunks, 256, 256, 8);
+		int[][] combinedReds = adct.recombine8x8s(finalRedChunks, imgWidth, imgHeight, 8);
+		int[][] combinedGreens = adct.recombine8x8s(finalGreenChunks, imgWidth, imgHeight, 8);
+		int[][] combinedBlues = adct.recombine8x8s(finalBlueChunks, imgWidth, imgHeight, 8);
 
 		rebuiltImg = new BufferedImage(imgWidth, imgHeight, BufferedImage.TYPE_INT_ARGB);
 		File f = null;
 
 		for (int i = 0; i < imgHeight; i++) {
 			for (int j = 0; j < imgWidth; j++) {
-				postCompressionPixelValues[i][j] = recombinePixel(combinedReds[i][j], combinedGreens[i][j], combinedBlues[i][j], 1);
+				postCompressionPixelValues[i][j] = recombinePixel(combinedReds[i][j], combinedGreens[i][j], combinedBlues[i][j], alphaValues[i][j]);
 				rebuiltImg.setRGB(i, j, postCompressionPixelValues[i][j]);
 			}
 		}
 
-		//f = new File("Images/compressedImage.jpg");
-		//ImageIO.write(rebuiltImg, "jpg", f);
-		CreateImage c = new CreateImage(postCompressionPixelValues, "compressedImage");
+		f = new File("Images/compressedImage.jpg");
+		ImageIO.write(rebuiltImg, "jpg", f);
+		//CreateImage c = new CreateImage(postCompressionPixelValues, "compressedImage");
 	}
 
 	private int recombinePixel(int r, int g, int b, int a) {
@@ -138,6 +159,17 @@ public class DCTDriver {
 			}
 			System.out.println();
 		}
+	}
+
+	public static String printArrayToBox(double[][] print){
+		StringBuilder sb = new StringBuilder();
+		for(int i = 0; i < print.length; i++){
+			for(int j = 0; j < print.length; j++){
+				sb.append(print[i][j] + "\t");
+			}
+			sb.append("\n");
+		}
+		return sb.toString();
 	}
 
 	public static void main(String[] args) {
