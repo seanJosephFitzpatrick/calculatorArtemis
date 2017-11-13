@@ -40,11 +40,9 @@ public class DCT {
 	static double[][] TMTt = new double[N][N];
 	static double[][] DCTResult = new double[N][N];
 
-	public static ArrayList<double[][]> run(ArrayList<double[][]> grids){
+	public static ArrayList<double[][]> run(ArrayList<double[][]> grids, double q){
 		ArrayList<double[][]> results = new ArrayList<double[][]>();
 		int i = 0;
-		System.out.print("Please enter a value for Q: ");
-		double q = sc.nextDouble();
 		getQMatrix(q);
 		roundArray(Qx);
 		while(i < grids.size()){
