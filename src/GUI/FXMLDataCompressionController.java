@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import DCT.DCTDriver;
+import DCT.ImageFactory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,8 +17,9 @@ import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+//@TODO retrieve qValue from Text Field
+//@TODO show output in TextField
 public class FXMLDataCompressionController implements Initializable {
-	
     @FXML
     private Button btnOpenFile;
     @FXML
@@ -29,9 +33,10 @@ public class FXMLDataCompressionController implements Initializable {
     @FXML
     private TextField qValue;
     private String savePath;
+    private String chosenImage;
+    private double quantizationValue;
     
-    
-    
+    private DCTDriver driver;
     
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -39,16 +44,16 @@ public class FXMLDataCompressionController implements Initializable {
 		dropdownSelectImage.getItems().removeAll(dropdownSelectImage.getItems());
 		dropdownSelectImage.getItems().addAll("Lena", "Baboon", "Barbara", "Moon");
 		dropdownSelectImage.getSelectionModel().select("Lena");
+		driver = new DCTDriver();
+		//placeholder
+		chosenImage = "lena.jpg";
+		quantizationValue = 50;
 	}
 
     @FXML
     void onActionBtnCompress(ActionEvent event) {
-    	
-    	//What to do when compress button selected
-    	//The outputTextArea is just a variable to output your text.
-    	
-    	/*The drop down will have "Lena" auto selected
-    	 * The import file variable will be null unless file selected*/
+    	driver.loadImage(chosenImage);
+    	driver.compressImage(quantizationValue);
     }
 
     @FXML
@@ -57,10 +62,9 @@ public class FXMLDataCompressionController implements Initializable {
         FileChooser chooser = new FileChooser();
         File file = chooser.showOpenDialog(stage);
         if (file != null) {
-        	
         	//The location of the selected image is saved to savepath variable//
             savePath = file.getAbsolutePath().toString();
-            
+            ImageFactory.importImage(savePath);
         } else {
         	savePath = null;
         }
@@ -68,20 +72,20 @@ public class FXMLDataCompressionController implements Initializable {
 
     @FXML
     String onActionDropdownSelectImage(ActionEvent event) {
-    	//This returns the selected string from drop dwon and stores in output
+    	//This returns the selected string from drop down and stores in output
     	String output = dropdownSelectImage.getSelectionModel().getSelectedItem().toString();
     	
     	//This is just if of what to do based on selected drop down
     	if(output.equalsIgnoreCase("Lena")){
-    		return "Lena.jpg";
+    		return "lena.jpg";
     	}else if(output.equalsIgnoreCase("Baboon")){
-    		return "Babbon.png";
+    		return "laboon.png";
     	}else if(output.equalsIgnoreCase("Barbara")){
-    		return "Barbara.png";
+    		return "barbara.png";
     	}else if(output.equalsIgnoreCase("Moon")){
-    		return "Moon.png";
+    		return "moon.png";
     	}else{
-    		return null;
+    		return "lena.jpg";
     	}
     }
 
