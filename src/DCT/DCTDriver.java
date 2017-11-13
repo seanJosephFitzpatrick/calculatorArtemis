@@ -111,8 +111,9 @@ public class DCTDriver {
 			}
 		}
 		
-		f = new File("Images/compressedImage.jpg");
-		ImageIO.write(rebuiltImg, "jpg", f);
+		//f = new File("Images/compressedImage.jpg");
+		//ImageIO.write(rebuiltImg, "jpg", f);
+		CreateImage c = new CreateImage(postCompressionPixelValues, "compressedImage");
 	}
 	
 	private int recombinePixel(int r, int g, int b, int a) {
@@ -139,9 +140,9 @@ public class DCTDriver {
 		}
 	}
 	
-	/*public static void main(String[] args) {
+	public static void main(String[] args) {
 		DCTDriver d = new DCTDriver();
 		d.loadImage("lena.jpg");
-		d.compressImage(50);
-	}*/
+		d.compressImage(90);
+	}
 }
