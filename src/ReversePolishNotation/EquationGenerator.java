@@ -3,7 +3,7 @@ package ReversePolishNotation;
 import CombinationsAndProbability.Factorial;
 
 public class EquationGenerator {
-	
+
 	
 	public static String formatEquation(String userInput){
 		String equation = "";
@@ -22,12 +22,45 @@ public class EquationGenerator {
 		equation = equation.replace("\u221A", "rts");				//Square root
 		equation = equation.replace("ln", "elg");					//Natural Log
 		equation = equation.replace("log", "lgt");					//Log base 10
-		
+		equation = equation.replace("lgx", "nlg");					//Log base x
 		equation = equation.replace("\u03C0", Double.toString(Math.PI));
-		
 		equation = equation.replace("\u00B2", " ^ 2");
 		
+		
+		System.out.println("sfa" + userInput);
+		
+		if(equation.contains("nlg")){
+			equation = evaluateLogBaseX(equation);
+		}
+		
+		
+		System.out.println(equation);
+		
 		return equation;
+	}
+	
+	public static String evaluateLogBaseX(String userInput){
+		String append = "";
+		String d = userInput.substring(userInput.indexOf("nlg"));
+		String f = d.substring(0, d.indexOf(')'));
+		if(f.length() != d.length()){
+			append = d.substring(d.indexOf(')') + 1);
+		}
+		
+		String result = "";
+		MathematicalEvaluator ME = new MathematicalEvaluator(true);
+		String equation = userInput.substring(userInput.indexOf("nlg"), userInput.indexOf(")") + 1);
+		equation = ME.logBaseX(equation);
+		
+		result = userInput.substring(0, userInput.indexOf("nlg"));
+		result += equation;	
+		
+		if(!append.equals("")){
+			result += append;
+		}
+		System.out.println(result);
+		
+		return result;
 	}
 	
 	public static String evaluateFactorial(String input) throws IllegalArgumentException{

@@ -287,10 +287,38 @@ public class MathematicalEvaluator {
 		}
 		
 //		bdResult = bdResult.stripTrailingZeros();
-
-		
+	
 		result = bdResult.toString();
 		return result;
 	}
-
+	
+	public static String logBaseX(String input){		//log12(100)
+		String base = "";
+		String operand = "";
+		String result = "";
+		
+		int i = 3;
+		
+		while(Character.isDigit(input.charAt(i))){
+			base += input.charAt(i);
+			i++;
+		}
+		
+		while(input.charAt(i) != ')'){
+			if(Character.isDigit(input.charAt(i))){
+				operand += input.charAt(i);
+			}
+			i++;
+		}
+		
+		double b = Double.parseDouble(base);
+		double x = Double.parseDouble(operand);
+		
+		double r = Math.log10(x) / Math.log10(b);
+		
+		result = Double.toString(r);
+		
+		return result;
+	}
+	
 }

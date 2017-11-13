@@ -134,8 +134,10 @@ public class FXMLScientificController implements Initializable {
     
     @FXML
     void onActionLogBaseN(ActionEvent event) {
-   
+    	answer = "clear";
+    	inputTextField3.appendText("lgx");
     }
+
 
     @FXML
     void onActionPowerOfN(ActionEvent event) {
