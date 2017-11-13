@@ -108,6 +108,19 @@ public class DCTDriver {
 		sb.append("\nVS\n\n");
 		sb.append("Red Chunk Post-Compression: \n");
 		sb.append(printArrayToBox(quantizedRedChunks.get(index)));
+		sb.append("\n---------------------------------\n\n");
+		sb.append("Green Chunk Pre-Compression: \n");
+		sb.append(printArrayToBox(greenChunks.get(index)));
+		sb.append("\nVS\n\n");
+		sb.append("Green Chunk Post-Compression: \n");
+		sb.append(printArrayToBox(quantizedGreenChunks.get(index)));
+		sb.append("\n---------------------------------\n\n");
+		sb.append("Blue Chunk Pre-Compression: \n");
+		sb.append(printArrayToBox(blueChunks.get(index)));
+		sb.append("\nVS\n\n");
+		sb.append("Blue Chunk Post-Compression: \n");
+		sb.append(printArrayToBox(quantizedBlueChunks.get(index)));
+		sb.append("\n---------------------------------\n\n");
 		return sb.toString();
 	}
 
@@ -172,9 +185,9 @@ public class DCTDriver {
 		return sb.toString();
 	}
 
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		DCTDriver d = new DCTDriver();
 		d.loadImage("lena.jpg");
 		d.compressImage(90);
-	}
+	}*/
 }

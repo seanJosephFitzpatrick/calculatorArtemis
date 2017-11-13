@@ -46,36 +46,17 @@ public class DCT {
 		getQMatrix(q);
 		roundArray(Qx);
 		while(i < grids.size()){
-			//System.out.println("Matrix M: ");
-			//printArray(grids.get(i));
-			//System.out.println();
-
+			T = new double[N][N];
+			Tt = new double[N][N];
+			TM = new double[N][N];
+			TMTt = new double[N][N];
+			DCTResult = new double[N][N];
 			Generate_T();
-			//System.out.println("Matrix T: ");
-			//printArray(T);
-			//System.out.println();
-
-			//System.out.println("Matrix Tt: ");
-			//printArray(Tt);
-			//System.out.println();
-
 			multiply(T, grids.get(i), TM);
-			//System.out.println("Intermediary Matrix TM: ");
-			//printArray(TM);
-			//System.out.println();
-
 			multiply(TM, Tt, TMTt);
 			roundArray(TMTt);
-			//System.out.println("Intermediary Matrix TMTt (Rounded): ");
-			//printArray(TMTt);
-
-			//System.out.println();
 			quantization(TMTt, Qx, DCTResult);
 			roundArrayForImage(DCTResult);
-			//System.out.println();
-
-			//System.out.println("Resulting Matrix: ");
-			//printArray(DCTResult);
 			results.add(DCTResult);
 			i++;
 		}

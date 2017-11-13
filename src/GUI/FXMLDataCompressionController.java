@@ -49,7 +49,7 @@ public class FXMLDataCompressionController implements Initializable {
 		//Sets drop down on initialization
 		dropdownSelectImage.getItems().removeAll(dropdownSelectImage.getItems());
 		dropdownSelectImage.getItems().addAll("lena.jpg", "baboon.png", "moon.png");
-		dropdownSelectImage.getSelectionModel().select("lena");
+		dropdownSelectImage.getSelectionModel().select("lena.jpg");
 		driver = new DCTDriver();
 	}
 
