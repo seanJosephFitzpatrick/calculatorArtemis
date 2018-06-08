@@ -4,7 +4,7 @@
 
 ## Getting Started
 
-Download and extract the zip folder here [calculatorArtemis]()            
+Download and extract the zip folder here [calculatorArtemis](https://github.com/seanJosephFitzpatrick/calculatorArtemis/archive/master.zip)            
 
 ### Prerequisites
 
