@@ -8,7 +8,7 @@ Download and extract the zip folder here [calculatorArtemis](https://github.com/
 
 ### Prerequisites
 
-Eclipse. You can download here [Eclipse]()                 
+Eclipse. You can download here [Eclipse](http://www.eclipse.org/downloads/eclipse-packages/)                 
 Java 8. You can download the latest version of Java here [Java](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)    
 
 ### Installing
