@@ -29,12 +29,12 @@ Video tutorial of How to Install Eclipse Neon on Windows 10 here [Install Eclips
 ## Built With
 
 * [Java 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) - JDK
-* [Eclipse]()  - Eclipse
+* [Eclipse](http://www.eclipse.org/downloads/eclipse-packages/)  - Eclipse Oxygen.2 Release (4.7.2)
 
 
 ## Authors
 
-[Sean Fitzpatrick]()
+[Sean Fitzpatrick](https://github.com/seanJosephFitzpatrick)
 
 ## License
 
