@@ -1,4 +1,6 @@
-# Applied Software Engineering group project
+# Applied Software Engineering group project         
+
+![image](https://user-images.githubusercontent.com/9217947/41166684-2f83983c-6b41-11e8-8154-a62088af7940.PNG)         
 
 
 
@@ -18,14 +20,6 @@ Video tutorial of How to Install Java JDK/JRE here [Install Java](https://www.yo
 
 Install Eclipse             
 Video tutorial of How to Install Eclipse Neon on Windows 10 here [Install Eclipse](https://www.youtube.com/watch?v=WIzzHeWukUU)       
-
-## Deployment
-
-
-* **Eclipse**        
-Launch Eclipse. Select File --> Import --> General --> Existing projects into Workspace. Click next --> Browse and navigate to the project root folder. Click ok --> Finish. Run the main.java in the GUI package. 
-
-
 
 ## Built With
 
