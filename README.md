@@ -35,6 +35,11 @@ Video tutorial of How to Install Eclipse Neon on Windows 10 here [Install Eclips
 ## Authors
 
 [Sean Fitzpatrick](https://github.com/seanJosephFitzpatrick)
+[Oskar Wylaz]()
+[Joe Hulgrain]()
+[Dean Galvin]()
+[Kieran McMahon]()
+[Sviatlana Gordienok]()
 
 ## License
 
