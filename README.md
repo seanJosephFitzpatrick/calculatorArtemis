@@ -22,7 +22,8 @@ Video tutorial of How to Install Eclipse Neon on Windows 10 here [Install Eclips
 ## Deployment
 
 
-* **Eclipse**          
+* **Eclipse**        
+Launch Eclipse. Select File --> Import --> General --> Existing projects into Workspace. Click next --> Browse and navigate to the project root folder. Click ok --> Finish. Run the main.java in the GUI package. 
 
 
 
