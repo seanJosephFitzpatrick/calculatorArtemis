@@ -4,22 +4,32 @@
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Download and extract the zip folder here [calculatorArtemis]()            
 
-### Prerequisites       
+### Prerequisites
 
-[Eclipse](https://www.eclipse.org/downloads/)            
-
+Eclipse. You can download here [Eclipse]()                 
+Java 8. You can download the latest version of Java here [Java](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)    
 
 ### Installing
 
-A step by step series of examples that tell you have to get a development env running
+Insall Java JDK/JRE                
+Video tutorial of How to Install Java JDK/JRE here [Install Java](https://www.youtube.com/watch?v=FzKcJK68z2k)      
 
-Say what the step will be
+Install Eclipse             
+Video tutorial of How to Install Eclipse Neon on Windows 10 here [Install Eclipse]()       
+
+## Deployment
+
+
+* **Eclipse**          
+
+
 
 ## Built With
 
-* [Eclipse Java EE IDE](https://www.eclipse.org/mars/) - Version: Mars.2 Release (4.5.2)
+* [Java 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) - JDK
+* [Eclipse]()  - Eclipse
 
 
 ## Authors
