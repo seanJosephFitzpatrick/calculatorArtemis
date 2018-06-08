@@ -1,4 +1,12 @@
-# Applied Software Engineering group project         
+# Mathematical Expression Evaluator         
+
+This is a 5th year Applied Software Engineering group project. The project is a Mathematical Expression Evaluator for evalutaitng the following:          
+
+* Basic mathematical operations  (+, -,  /,  *) represented in rad or deg’s.         
+* Sin, cos, tan, etc. of a function powers (^), roots (to the nth degree), ln, exp and log.         
+* Graph a function between given ranges. Input a Fourier Series Transform and plot the resulting waveform.         
+* Perform Matric operations and data compression (lossy, lossless).           
+* Calculate combinations and probabilities, determine Sets numerical and alphabetical (bit strings).          
 
 ![image](https://user-images.githubusercontent.com/9217947/41166684-2f83983c-6b41-11e8-8154-a62088af7940.PNG)         
 
