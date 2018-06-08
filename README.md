@@ -38,5 +38,5 @@ Video tutorial of How to Install Eclipse Neon on Windows 10 here [Install Eclips
 
 ## License
 
-[MIT]()
+[MIT](https://github.com/seanJosephFitzpatrick/calculatorArtemis/blob/master/LICENSE)
 
