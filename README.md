@@ -1,8 +1,8 @@
-# Mathematical Expression Evaluator         
+# Mathematical Expression Evaluator 
 
-5th year Applied Software Engineering group project. The project involved the evaluation of the following Mathematical Expressions:
+![image](https://user-images.githubusercontent.com/9217947/41166684-2f83983c-6b41-11e8-8154-a62088af7940.PNG) 
 
-![image](https://user-images.githubusercontent.com/9217947/41166684-2f83983c-6b41-11e8-8154-a62088af7940.PNG)  
+5th year Applied Software Engineering group project. The project involved the evaluation of the following Mathematical Expressions: 
 
 * Basic mathematical operations (+, -, /, *) represented in rad or deg’s.
 * Sin, cos, tan, etc. of a function powers (^), roots (to the nth degree), ln, exp and log.
@@ -10,10 +10,7 @@
 * Perform Matrices operations and data compression (lossy, lossless).
 * Calculating combinations and probabilities, determine Sets numerical and alphabetical (bit strings).         
 
-       
-
-
-
+      
 ## Getting Started
 
 Download and extract the zip folder here [calculatorArtemis](https://github.com/seanJosephFitzpatrick/calculatorArtemis/archive/master.zip)            
