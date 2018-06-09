@@ -11,7 +11,7 @@
 * Calculating combinations and probabilities, determine Sets numerical and alphabetical (bit strings).  
 
 Languages, Technologies and Implementation Architecture used for this project:
-Java, JavaFX, Eclipse.
+* Java, JavaFX, Eclipse.
 
       
 ## Getting Started
