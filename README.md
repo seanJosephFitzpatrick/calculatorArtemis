@@ -8,7 +8,8 @@
 * Sin, cos, tan, etc. of a function powers (^), roots (to the nth degree), ln, exp and log.
 * Graph a function between given ranges. Input a Fourier Series Transform and plot the resulting waveform.
 * Perform Matrices operations and data compression (lossy, lossless).
-* Calculating combinations and probabilities, determine Sets numerical and alphabetical (bit strings).  
+* Calculating combinations and probabilities. 
+* Determine Sets, numerical and alphabetical (bit strings).  
 
 Languages, Technologies and Implementation Architecture used for this project:
 * Java, JavaFX, Eclipse.
